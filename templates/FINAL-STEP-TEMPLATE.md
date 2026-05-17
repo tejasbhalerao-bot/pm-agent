@@ -1,27 +1,29 @@
-# Final Step: Save and Push to GitHub
+# Final Step: Auto-Save and Push to GitHub
 
-Once your document is complete and approved:
+Once your document is complete and approved, I will:
 
-## Save to Archives
-- Save to: `~/pm-agent/archives/[ARCHIVE-TYPE]/[YYYY-MM-DD]-[feature-name]-v1.md`
-- Replace `[ARCHIVE-TYPE]` with: `projects`, `experiments`, or `briefs`
-- Example: `2026-05-17-promise-reduction-v1.md`
+## 1. Determine the next version automatically
+I will check existing files in `archives/[ARCHIVE-TYPE]/` and auto-increment:
+- If `2026-05-17-promise-buffer-v1.md` exists
+- I'll save as `2026-05-17-promise-buffer-v2.md`
+- Next iteration? Auto-saves as `v3.md`, and so on.
 
-## Push to GitHub
-In your Mac Terminal:
+**No manual version tracking needed!**
+
+## 2. Save the file to disk
+I will write the final document directly to the archive folder with the correct version.
+
+## 3. Run the commit-and-push script
+I will execute:
 ```bash
-~/pm-agent/scripts/commit-and-push.sh "Add [DOC-TYPE]: [feature-name]"
+~/pm-agent/scripts/commit-and-push.sh "Add [DOC-TYPE]: [feature-name] (v#)"
 ```
 
-Replace `[DOC-TYPE]` with: `PRD`, `Experiment Design`, or `Objection Analysis`
+## 4. Verify success
+Your document will be:
+- ✅ Saved with auto-incremented version
+- ✅ Committed to git with version history
+- ✅ Pushed to GitHub
+- ✅ Accessible at: https://github.com/tejasbhalerao-bot/pm-agent/tree/main/archives/[ARCHIVE-TYPE]/
 
-**Example:**
-```bash
-~/pm-agent/scripts/commit-and-push.sh "Add PRD: Promise Reduction Initiative"
-```
-
-This will:
-- ✅ Stage all changes
-- ✅ Commit with your message  
-- ✅ Push to GitHub
-- ✅ Version your document!
+**Fully automated. Zero manual steps.**
