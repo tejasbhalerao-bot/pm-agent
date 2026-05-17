@@ -3,9 +3,10 @@
 ## Organization
 
 ### Team Structure
-- Anbu: Chief Ops Officer
-- Kartik: VP Product/Finance
-- Ashish: CEO
+- Anbu: VP Product
+- Kartik: Director Operations - Logistics
+- Ashish: Analyst
+- Fahad: Engineering Lead
 
 ## Business Verticals
 - Hyperlocal Forward
