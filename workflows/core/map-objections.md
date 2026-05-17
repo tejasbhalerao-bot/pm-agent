@@ -167,6 +167,30 @@ PRD Reviewer — that will also re-run this mapper after the next sign-off."*
 
 ---
 
-## Final Step: Save and Push to GitHub
+---
 
-See `templates/FINAL-STEP-TEMPLATE.md` for instructions on saving your Objection Analysis and pushing to GitHub with automatic versioning (v1, v2, v3, etc.).
+## Final Step: Save Objections Separately and Push to GitHub
+
+I will automatically:
+
+1. **Save objections to a separate file** (NOT appended to PRD):
+   - Path: `~/pm-agent/archives/objections/[YYYY-MM-DD]-[feature-name]-v#-objections.md`
+   - Example: `2026-05-17-promise-buffer-v1-objections.md`
+   - I will auto-detect the version number to match the PRD being analyzed
+
+2. **Include a reference** to the PRD file this analyzes:
+   - Header: "Objections Analysis for: promise-buffer-v1.md"
+   - This links the objections back to the specific PRD version
+
+3. **Auto-commit and push**:
+```bash
+   ~/pm-agent/scripts/commit-and-push.sh "Add Objections: [feature-name] (v#)"
+```
+
+4. **Result**:
+   - ✅ PRD stays in `archives/projects/`
+   - ✅ Objections saved separately in `archives/objections/`
+   - ✅ Both version-controlled on GitHub
+   - ✅ Linked by filename matching
+
+**Fully automated. Zero manual steps.**
