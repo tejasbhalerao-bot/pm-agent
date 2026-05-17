@@ -1,187 +1,263 @@
----
-name: context-loader
-description: >
-  Activate this skill whenever the user asks anything about how Truemeds works
-  internally. This includes questions about products, operational processes, business
-  verticals (hyperlocal-forward, hyperlocal-reverse, courier-forward, courier-reverse,
-  B2B-forward, B2B-reverse), SOPs, business rules, team structure, metric definitions,
-  integration docs, or any org-wide process. If the question requires internal knowledge
-  about Truemeds to answer accurately, always use this skill before responding.
----
+# Context Loader — PM Agent Skill
 
-# Context Loader
-
-Fetches org context from Google Drive to answer questions about Truemeds products,
-processes, and operations. Always ends by emitting a load manifest so downstream
-skills (Context Q&A, PRD Creator, Objection Mapper) know exactly what was loaded.
+## Purpose
+Fetch and organize Truemeds organizational context from Google Drive. Use explicit **canonical logistics systems list** (from Cross-Cutting) to intelligently filter documents based on the **"Logistics systems touched"** column. Load only relevant context for the current PRD/task.
 
 ---
 
-## Step 1 — Check the session load manifest
-
-Before fetching anything, check whether a load manifest exists in this conversation.
-A load manifest is a block emitted at the end of a previous Context Loader run in
-this session in the format described in Step 7.
-
-- **Manifest exists and fully covers the question** → skip to Step 7 and re-emit
-  the existing manifest unchanged. Do not re-fetch anything.
-- **Manifest exists but partially covers the question** → identify which vertical(s)
-  or doc type(s) are missing. Fetch only those (Steps 2–6), then merge the new docs
-  into the existing manifest before emitting in Step 7.
-- **No manifest exists** → proceed to Step 2.
+## Entry Point
+Called by **recall-and-route.md** whenever a PM task requires Truemeds-specific context.
 
 ---
 
-## Step 2 — Fetch the master index
+## Step 1: Check for Cached Context
 
-Use `google_drive_fetch` with this link:
+**Check for same-day cache:**
+```
+~/.context-cache.md
+```
 
+**Cache logic:**
+- If cache exists AND contains today's date marker (`Cache date: YYYY-MM-DD`) → Use cache directly
+- If cache is stale OR missing → Fetch fresh context (Step 2)
+- Cache validity: Same calendar day only
+
+**Why:** Avoids redundant Google Drive fetches during a single session
+
+---
+
+## Step 2: Fetch Master Index
+
+**Source:**
 ```
 https://docs.google.com/document/d/1hBjvDB6NS-fYrA4EZUhjpMbvXkveBSRxcI06PlV9Ork/edit
 ```
 
-This returns a table mapping each vertical to its index doc link:
-Cross-Cutting, Hyperlocal Forward, Hyperlocal Reverse, Courier Forward,
-Courier Reverse, B2B Forward, B2B Reverse.
+**Action:**
+- Use `google_drive_fetch` to read the master index
+- Extract the table with Drive Links for all verticals:
+  - Cross-Cutting
+  - Hyperlocal Forward
+  - Hyperlocal Reverse
+  - Courier Forward
+  - Courier Reverse
+  - B2B Forward
+  - B2B Reverse
 
 ---
 
-## Step 3 — Identify the relevant vertical(s)
+## Step 3: Fetch Cross-Cutting Index
 
-Based on the question, determine which vertical(s) to fetch:
+**Fetch:** Cross-Cutting vertical index (from master index)
 
-- **Cross-cutting** → org-wide questions, team structure, platform-wide rules, questions
-  that span more than one vertical
-- **Specific vertical** → any question scoped to one vertical's product, process, or rules
-- **Multiple verticals** → fetch all relevant vertical indices if the question spans more
-  than one
+**Parse columns:**
+- Doc Name
+- Type
+- Drive Link
+- Description
 
-When in doubt, start with Cross-Cutting.
+**Extract immediately:**
+1. **Logistics System Reference doc** — Contains the canonical list of all logistics systems used at Truemeds
+2. **Logistics System Overview doc** — Foundational context that always loads
 
-**Default rule for PM Agent tasks:** always fetch Cross-Cutting in addition to any
-vertical-specific index. Cross-Cutting contains team structure, platform-wide rules,
-and metric definitions that are relevant to PRD authoring and objection mapping
-regardless of which vertical the work touches. Skipping it risks missing constraints
-that cut across verticals.
-
----
-
-## Step 4 — Fetch the vertical index
-
-Use `google_drive_fetch` with the document ID from the master index for each chosen
-vertical.
-
-Each vertical index is a table with these columns:
-`Doc Name | Type | Drive Link | Description`
-
-Types include: Product Flow, SOP, Business Rules, Metric Definitions, Integration Docs,
-and any other type filed over time.
-
-**If the vertical index returns an empty table** → do not proceed silently. Surface
-this immediately before continuing:
-
-> "No docs have been filed for [vertical] yet. Any output I produce will be based
-> on general knowledge rather than Truemeds-specific rules. Should I proceed anyway,
-> or would you prefer to pause and file docs first?"
-
-Wait for the user's response before moving to Step 5.
+**Action:**
+- Fetch the "Logistics System Reference" doc from Cross-Cutting
+- Extract the canonical system list (e.g., Promise Engine, ETA Modeling, Dispatch System, Warehouse Operations, Courier Integration, RTO, DMS, OTD, Checkout, Delivery Legs, etc.)
 
 ---
 
-## Step 5 — Identify the relevant doc(s)
+## Step 4: Understand Which Systems the PRD/Task Touches
 
-Scan the vertical index table. Match the question to the most relevant doc(s) using
-Doc Name, Type, and Description.
+**Instruction to Claude:**
 
-When multiple docs could apply, use this priority order:
+> "Read the PRD/task description provided by the user. Based on the PRD title, features, and scope, identify which logistics systems from this canonical list will be involved or affected:
+>
+> **Canonical systems:** [List from Step 3]
+>
+> Output the systems as a comma-separated list (e.g., 'Promise Engine, ETA Modeling, Dispatch System')"
 
-| Priority | Type | Use for |
-|---|---|---|
-| 1 | Business Rules | What is/isn't allowed, constraints, decision logic |
-| 2 | Product Flow | How a process works end-to-end |
-| 3 | Metric Definitions | Measurement, KPIs, data questions |
-| 4 | SOP | How a team executes a process operationally |
+**Claude reads:**
+- PRD title
+- Feature descriptions
+- Acceptance criteria
+- Any business logic sections
 
-If no doc clearly matches, load the closest-matching doc and flag the gap in Step 7.
-
----
-
-## Step 6 — Fetch the specific doc(s)
-
-Use `google_drive_fetch` with the document ID from the vertical index for each
-relevant doc.
-
-**Handling truncated docs:** if the fetched content appears to end mid-sentence,
-mid-table, or without a clear conclusion, treat it as truncated. When you detect
-truncation:
-
-- Flag it inline immediately after the affected content:
-  [Note: this doc appears truncated — content below may be incomplete.]
-- Mark the doc's status as `partial` in the load manifest (Step 7).
-- Do not silently treat partial content as complete. Downstream skills (PRD Creator,
-  Objection Mapper) need to know when they are working from incomplete source material.
+**Output:** Matched systems from canonical list (e.g., `[Promise Engine, Checkout, ETA Modeling]`)
 
 ---
 
-## Step 7 — Emit the load manifest
+## Step 5: Determine Relevant Vertical(s)
 
-After all fetches are complete, always emit a load manifest before answering or
-handing off. Use this exact format:
+**Instruction to Claude:**
 
+> "Based on the matched systems and the PRD scope, which Truemeds vertical(s) does this PRD belong to?
+>
+> Verticals: Hyperlocal Forward, Hyperlocal Reverse, Courier Forward, Courier Reverse, B2B Forward, B2B Reverse, Cross-Cutting
+>
+> Output: The vertical name(s)"
+
+**Example:**
+- If PRD is about "Promise calibration for same-day delivery" → Hyperlocal Forward
+- If PRD is about "Return-to-origin RTO" → Hyperlocal Reverse, Courier Reverse
+- If PRD is about "General metrics framework" → Cross-Cutting
+
+**Output:** Vertical name(s)
+
+---
+
+## Step 6: Fetch Vertical-Specific Index(es)
+
+**Fetch:** Index for each identified vertical (from master index)
+
+**Parse columns:**
+- Doc Name
+- Type
+- Drive Link
+- Description
+- **Logistics systems touched** ← Filter using this
+
+---
+
+## Step 7: Filter Documents by Matched Systems
+
+**Filtering Logic:**
+
+**For Cross-Cutting vertical:**
+- Always load all Cross-Cutting docs (no filtering)
+- Rationale: Cross-Cutting contains foundational context (team structure, metrics definitions, SOPs) needed for all tasks
+
+**For identified vertical(s):**
+
+1. **Exact match tier (Priority 1):**
+   - Load docs where "Logistics systems touched" contains ANY of the matched systems
+   - Example: If matched systems are `[Promise Engine, ETA Modeling]`, load all docs tagged with either of these
+
+2. **Fallback tier (Priority 2):**
+   - If no exact matches found, load the vertical's general overview doc (if exists)
+   - Rationale: Avoid loading zero docs
+
+3. **Exclude:**
+   - Do not load docs whose "Logistics systems touched" has zero overlap with matched systems
+
+**Example:**
+
+PRD: "Promise Buffer Enhancement for Hyperlocal Forward"
 ```
-CONTEXT LOAD MANIFEST
-Verticals covered: [comma-separated list]
-Docs loaded:
-  - [Doc Name] | [Vertical] | [Type] | [status: full / partial / empty]
-  - ...
-Gaps: [list any verticals or doc types that were needed but not found, or "None"]
+Matched systems: [Promise Engine, Checkout, ETA Modeling]
+Identified vertical: Hyperlocal Forward
+
+Hyperlocal Forward index:
+- Doc A: "Promise Calibration Rules"
+  Logistics systems touched: Promise Engine, Checkout
+  ✅ LOAD (exact match: Promise Engine, Checkout)
+
+- Doc B: "ETA Leg-Level Deep Dive"
+  Logistics systems touched: ETA Modeling, Dispatch
+  ✅ LOAD (exact match: ETA Modeling)
+
+- Doc C: "Courier Partner Performance Tracking"
+  Logistics systems touched: Courier Integration, RTO
+  ❌ SKIP (zero overlap with matched systems)
+
+- Doc D: "Hyperlocal Forward Operations Overview"
+  Logistics systems touched: [all systems]
+  ✅ LOAD (general overview, helpful context)
 ```
-
-Emit this even if only one doc was loaded, and even if all statuses are `empty`.
-Context Q&A, PRD Creator, and Objection Mapper read this manifest to understand
-what context is available without re-scanning the full conversation. A missing or
-incomplete manifest forces those skills to guess.
-
-**Write the cross-session cache:** After emitting the manifest, write a cache file
-to persist today's context for reuse across sessions on the same project. Use the
-Write tool to save `.context-cache.md` at `[project_folder]/.context-cache.md`
-with the following contents:
-
-```
-Cache date: [today's date in YYYY-MM-DD format]
-[full CONTEXT LOAD MANIFEST block]
-```
-
-The project folder is the same folder where PRD files are being saved for this
-project (e.g., `~/Documents/Claude/Projects/DMS/`). If no project folder has been
-established in this session, skip this step. If the Write tool returns an access
-error, skip silently — the cache is a performance optimisation, not required for
-correct operation.
 
 ---
 
-## Step 8 — Answer or hand off
+## Step 8: Build Context Manifest
 
-**Invoked standalone** (user asked a direct question about Truemeds):
-Answer now using the fetched content. Cite which doc each claim comes from. Then stop.
+**Create `.context-cache.md` with structure:**
 
-**Invoked as part of the PM Agent chain** (triggered by Context Recall):
-Stop after emitting the manifest. Do not answer. Return control to Context Recall
-for routing to the appropriate PM skill.
+```markdown
+# Context Cache — Truemeds Org Context
+
+**Cache date:** YYYY-MM-DD
+**Identified vertical(s):** [Vertical name(s)]
+**Matched logistics systems:** [System list from Step 4]
 
 ---
 
-## Edge cases
+## Cross-Cutting (Always Loaded)
+- [Doc names with links]
 
-- **All vertical indexes are empty** → emit the manifest with all doc statuses as
-  `empty`. Surface the gap clearly and ask whether to proceed or pause. Do not
-  silently continue into a PM skill with zero context.
-- **No doc matches the question** → load the closest-matching doc anyway. Flag
-  what is missing inline and record the gap in the manifest. Do not return nothing.
-- **Question spans verticals** → fetch Cross-Cutting + all relevant vertical indices.
-  Do not stop at one vertical when the question clearly touches more than one.
-- **Manifest exists, question already covered** → never re-fetch. Re-emit the
-  existing manifest and proceed.
-- **Manifest exists, new vertical needed** → fetch only the new vertical, add its
-  docs to the manifest, re-emit the updated manifest. Do not reload docs already
-  present.
+## [Vertical Name] (Filtered for matched systems)
+- [Doc names with links]
+- Each doc tagged with: [which systems it touches]
+
+---
+
+## Summary
+- Total docs loaded: X
+- Cross-Cutting: Y
+- Vertical-specific (filtered): Z
+- Systems covered: [List]
+```
+
+---
+
+## Step 9: Present Context to User
+
+**Output format:**
+
+> "✅ **Context loaded for your task:**
+>
+> **Vertical:** [Identified vertical(s)]
+> **Logistics systems:** [Matched systems]
+>
+> **Documents loaded (X total):**
+> - **Cross-Cutting (Y docs):** [doc links]
+> - **[Vertical] (Z docs, filtered):** [doc links]
+>
+> Cached until end of day. Ready for PRD creation, test case design, experiment design, etc."
+
+---
+
+## Step 10: Context Available to Downstream Tasks
+
+**Downstream skills can now:**
+- Reference loaded docs when writing PRD features
+- Use logistics systems list when designing test cases
+- Check context for existing commitments (objection mapping)
+- Validate metrics against context docs (experiment design)
+
+---
+
+## Error Handling
+
+**If canonical system list not found in Cross-Cutting:**
+- Fall back to a hardcoded list (maintain as a reference in this skill file)
+- Notify user: "⚠️ Using fallback system list (canonical list not found in Cross-Cutting)"
+
+**If vertical-specific index fetch fails:**
+- Load only Cross-Cutting docs
+- Notify: "⚠️ Could not load vertical-specific docs. Using Cross-Cutting context only."
+
+**If no documents match identified systems:**
+- Load the vertical's general overview doc
+- Notify: "ℹ️ No docs matched your systems exactly. Loaded general overview instead."
+
+---
+
+## Success Criteria
+
+✅ Cross-Cutting always loaded (no filtering)  
+✅ Vertical(s) correctly identified from PRD scope  
+✅ Systems matched against canonical list  
+✅ Vertical docs filtered by "Logistics systems touched" column  
+✅ Only relevant documents loaded  
+✅ Context cache created with today's date  
+✅ User sees clear summary: which vertical, which systems, how many docs  
+✅ Downstream tasks can reference this context  
+
+---
+
+## Notes for Implementation
+
+- **Canonical system list:** Maintain in Cross-Cutting index. Update once, applies to all context loading.
+- **Explicit matching:** This skill does not infer; it matches against a defined list. Reduces hallucination risk.
+- **Vertical scope rule:** Always fetch only the identified vertical(s) + Cross-Cutting. Avoid loading unrelated verticals.
+- **Cross-Cutting exception:** Never filter Cross-Cutting docs. Always load all of them.
+- **Reusable cache:** Once context is loaded, it can be used by create-prd.md, design-test-cases.md, experiment-designer.md, etc. in the same session.
+
