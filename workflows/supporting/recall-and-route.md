@@ -69,6 +69,7 @@ Read what the user said and infer which PM skill to invoke next:
 | Anticipate objections to a proposal | Objection Mapper |
 | Package a proposal for leadership | Exec Brief Writer |
 | Design or scope an experiment or A/B test | Experiment Designer |
+| Design test cases from a PRD | Test Case Designer |
 
 **If intent is clear** → route directly. Do not ask.
 
