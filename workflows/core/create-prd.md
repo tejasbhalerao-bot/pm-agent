@@ -248,3 +248,8 @@ to completion. PRD Creator's operation ends when Objection Mapper finishes.
   that the review runs automatically before any file is saved. They can choose
   to override sign-off after seeing the results, but the review itself cannot
   be skipped.
+---
+
+## Final Step: Save and Push to GitHub
+
+See `templates/FINAL-STEP-TEMPLATE.md` for instructions on saving your PRD and pushing to GitHub with automatic versioning (v1, v2, v3, etc.).

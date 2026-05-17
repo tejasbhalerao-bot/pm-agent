@@ -404,3 +404,9 @@ metrics are measurable with available data."*
 - **Experiment is in a vertical with specific business rules** → apply them. E.g.,
   B2B experiments may require ops team sign-off before running. Check Cross-Cutting
   context doc for experiment governance rules.
+
+---
+
+## Final Step: Save and Push to GitHub
+
+See `templates/FINAL-STEP-TEMPLATE.md` for instructions on saving your Experiment Design and pushing to GitHub with automatic versioning (v1, v2, v3, etc.).

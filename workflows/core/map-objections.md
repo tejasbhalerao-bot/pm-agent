@@ -164,3 +164,9 @@ PRD Reviewer — that will also re-run this mapper after the next sign-off."*
   PRD Reviewer again. Objection Mapper does not manage this loop — it ends its
   operation after presenting the map. It will run again automatically after the
   next sign-off.
+
+---
+
+## Final Step: Save and Push to GitHub
+
+See `templates/FINAL-STEP-TEMPLATE.md` for instructions on saving your Objection Analysis and pushing to GitHub with automatic versioning (v1, v2, v3, etc.).
