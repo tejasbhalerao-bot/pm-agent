@@ -49,3 +49,31 @@ Metrics section — replace any informal metric statements with the structured o
 **Chain summary:**
 prd-creator (draft) → metrics-designer → prd-creator (incorporates definitions)
 → prd-reviewer (minimum 2 passes)
+
+---
+
+## 2026-05-20 — Load 5-pass gap analysis during Use Case drafting
+
+**Amendment:** When drafting Use Cases in Step 5, load and apply
+`workflows/core/gap-analysis-5pass.md` before writing any UC content.
+
+**Exact insertion point:** After reading `prd-creator-operational-learnings.md`
+(Step 5 lazy-load), before writing the first UC section.
+
+**What to do:** Run all 5 passes on each use case group before outputting that
+group's section. Do not write a UC section that covers only Pass 1 (happy path).
+Minimum standard per UC: Passes 1–2 fully covered, Pass 3 present for any step
+that calls an external system, Pass 5 authorization matrix and audit trail present.
+
+**End of PRD sweep:** After all UC sections are drafted, run the Pass 5 checklist
+once across the full PRD — check authorization matrix, audit trail completeness,
+concurrency model, PII fields, metrics thresholds, rollout plan, open questions.
+
+**Rating before submitting to prd-reviewer:** Use the gap-analysis-5pass.md rating
+heuristic. If score < 8/10, identify which passes are thin and fill gaps before
+handing to reviewer.
+
+**Chain summary (updated):**
+prd-creator (draft, applying 5-pass per UC) → metrics-designer
+→ prd-creator (incorporates definitions + 5-pass final sweep)
+→ prd-reviewer (minimum 2 passes)
