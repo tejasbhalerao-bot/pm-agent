@@ -56,3 +56,48 @@ and use it as the primary diagnostic lens.
 - Passes 3 (non-external-system UCs) and 4: can be explicitly noted as "out of scope"
   if the spec author has consciously decided to exclude them
 
+---
+
+## 2026-05-30 — Enforce widget rendering + structured pass handoff
+
+### F5 — Widget render is a hard STOP
+
+**Amendment to review-prd.md Step 6:** The instruction to "immediately render a visual
+summary using `show_widget`" gets skipped when context is heavy.
+
+**New requirement:** After presenting findings in text (Step 5), output:
+
+> `[WIDGET GATE: rendering pass summary now — Step 7 routing blocked until widget is rendered]`
+
+Then render the widget. Do not output Step 7 routing text until the widget is rendered.
+Widget is mandatory. If `show_widget` is unavailable, output the table in raw HTML in
+a code block — do not skip it.
+
+---
+
+### F4/F7 — Structured pass handoff block (loop continuity)
+
+**New requirement:** At the end of every pass — after the widget, before Step 7 routing —
+output a structured handoff block:
+
+```
+[PASS N HANDOFF]
+Doc version reviewed: vN
+P0s: 
+  1. <Section> — <issue summary>
+  2. ...
+P1s:
+  1. <Section> — <issue summary>
+  2. ...
+P2s: <count> (not listed — see widget)
+Next action: prd-creator fixes P0s and P1s → Pass N+1 runs automatically
+[/PASS N HANDOFF]
+```
+
+If no P0s or P1s: write `P0s: none` / `P1s: none`.
+
+**Purpose:** This block is the source of truth for the loop. Pass N+1 opens by
+reading this block and maps every finding to `resolved / persists / new`.
+Without this block, cross-prompt context loss makes `resolved/persists/new`
+tracking impossible — Pass N+1 becomes a cold-start review, not a verification pass.
+

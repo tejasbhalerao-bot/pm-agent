@@ -96,3 +96,19 @@ Wait for the user's response before routing.
 - **User explicitly chooses to proceed despite empty context** → acknowledge the
   risk inline at the start of the routed skill's output, then proceed. Do not
   re-surface the warning on every response — once is enough.
+- **User says "run Pass 2", "run Pass 3", or "continue review"** → before routing
+  to prd-reviewer, check context for a `[PASS N HANDOFF]` block. If absent, ask:
+  *"I need the Pass N handoff block to track what was flagged in the previous pass.
+  Can you paste it, or should I treat this as a fresh Pass 1?"* Do not silently
+  start a new pass without it — cross-prompt context loss will make resolved/persists/new
+  tracking impossible and the loop guarantee breaks.
+
+## Skill routing — critical note
+
+**PRD Reviewer routing:** When routing to PRD Reviewer, use the Read tool to load
+`~/pm-agent/workflows/core/review-prd.md` and follow it directly.
+
+**DO NOT invoke `anthropic-skills:prd-reviewer`** — that is a generic built-in skill
+with no 5-pass framework, no DMS domain knowledge, no widget rendering, and no
+loop logic. It produces superficially similar but fundamentally inferior output
+with no error or warning. The local workflow file is always the correct target.

@@ -77,3 +77,58 @@ handing to reviewer.
 prd-creator (draft, applying 5-pass per UC) → metrics-designer
 → prd-creator (incorporates definitions + 5-pass final sweep)
 → prd-reviewer (minimum 2 passes)
+
+---
+
+## 2026-05-30 — Enforce chain gates + prohibit wrong skill
+
+### F3 — 5-pass score gate must be visible
+
+**Amendment to 2026-05-20 entry:** "Rating before submitting to prd-reviewer" is not
+sufficient — the check is invisible and gets skipped.
+
+**New requirement:** After the end-of-PRD Pass 5 sweep, output the score explicitly:
+
+> `[5-PASS SCORE: X/10 — Pass N thin: <reason>]`
+
+**If score < 8: STOP. Do not proceed to metrics-designer.** Name which passes are thin
+and what specific gaps need filling. Fill them. Re-score. Only proceed when score ≥ 8.
+Score line must appear in output so the user can verify enforcement.
+
+---
+
+### F1 — metrics-designer is a hard STOP, not a soft suggestion
+
+**Amendment to 2026-05-15 entry:** "do not immediately call prd-reviewer. Instead,
+call metrics-designer first" is too soft — it gets skipped when context is heavy.
+
+**New requirement:** After the Success Metrics section is complete, output:
+
+> `[METRICS GATE: calling metrics-designer now — prd-reviewer blocked until this returns]`
+
+Then call metrics-designer. Do not write any further PRD content. Do not route to
+prd-reviewer. Do not wait for user instruction. This is not optional.
+
+---
+
+### F2 — prd-reviewer chain must be triggered explicitly, not implied
+
+**Amendment:** After metrics-designer output is incorporated into the PRD's Success
+Metrics section, do not stop and wait for the user. Output:
+
+> `[CHAIN: reading ~/pm-agent/workflows/core/review-prd.md → beginning Pass 1]`
+
+Then immediately read `~/pm-agent/workflows/core/review-prd.md` via the Read tool
+and begin Pass 1 review of the full draft. No user instruction needed or expected.
+
+---
+
+### F6 — Correct skill for PRD review
+
+**Critical:** When chaining to PRD Reviewer, use the Read tool to load
+`~/pm-agent/workflows/core/review-prd.md` and follow it.
+
+**DO NOT invoke `anthropic-skills:prd-reviewer`.** That is a generic built-in with
+no 5-pass framework, no DMS context, no widget rendering, and no loop logic.
+The two are completely different. Using the wrong one silently produces inferior output
+with no error or warning. Always verify you are reading the local workflow file.
