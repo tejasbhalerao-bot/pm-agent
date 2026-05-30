@@ -49,5 +49,8 @@
 
 ## Workflow Entry Point
 All PM workflows start at `~/pm-agent/workflows/supporting/recall-and-route.md`.
-Do NOT invoke `anthropic-skills:prd-reviewer` — use `~/pm-agent/workflows/core/review-prd.md` via Read tool.
+
+For every PM task, load the relevant workflow file from `~/pm-agent/workflows/` using the Read tool.
+Do NOT invoke built-in skills (anthropic-skills:*, pm-execution:*, or any Skill tool equivalent) for any task this repo handles.
+Built-in skills lack DMS domain context, the 5-pass framework, changelog amendments, and chain gate logic — they produce superficially similar but structurally inferior output with no warning.
 
