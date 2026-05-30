@@ -1,128 +1,185 @@
 # Workflow Guide
 
-Copy-paste the examples below into Claude Code. Claude does the rest.
+Copy-paste prompts into Claude Code. Claude handles the chain automatically.
 
 ---
 
-## Create a PRD
+## How the chain works
 
-**Paste this in Claude Code:**
+Every prompt goes through the same execution chain. Gates are enforced inline — you see them in the output.
+
+```
+recall-and-route (entry point)
+  → context-loader (Google Drive; skips if ~/pm-agent/.context-cache.md exists and is dated today)
+  → [route to skill]
+
+PRD creation chain:
+  prd-creator (draft + 5-pass gap analysis per UC)
+  → [5-PASS SCORE: X/10 gate — STOP if < 8]
+  → [CHAIN: reading review-prd.md → beginning Pass 1]
+    → [WIDGET GATE: render findings widget]
+    → [PASS 1 HANDOFF] block
+    → prd-creator fixes P0s/P1s
+    → [CHAIN: Pass 2]
+      → [WIDGET GATE]
+      → [PASS 2 HANDOFF] block
+      → if no P0s: offer sign-off
+  → save to archives/ with auto-version
+  → push to GitHub
+  → offer Objection Mapper
+```
+
+**Gate markers** (visible in session output):
+
+| Marker | What it enforces |
+|---|---|
+| `[5-PASS SCORE: X/10 — Pass N thin: reason]` | Score must be ≥ 8 before review starts |
+| `[CHAIN: reading review-prd.md → beginning Pass N]` | Auto-triggers reviewer — no user instruction needed |
+| `[WIDGET GATE: rendering pass summary now]` | Reviewer blocks Step 7 routing until widget renders |
+| `[PASS N HANDOFF] ... [/PASS N HANDOFF]` | Source of truth for pass-to-pass continuity |
+
+---
+
+## Context loading
+
+**In Cowork:** Google Drive MCP is available. Context Loader fetches org docs automatically.
+
+**In Claude Code:** Google Drive MCP is NOT available. Context Loader will fail silently.
+- If `~/pm-agent/.context-cache.md` exists and is dated today, it is used directly.
+- If no cache: Claude proceeds with flagged assumptions. File org docs in Drive first for accurate output.
+
+Cache is written to `~/pm-agent/.context-cache.md` immediately after Cross-Cutting loads (Step 3) and overwritten with full context at Step 8.
+
+---
+
+## Prompts
+
+### Create a PRD
+
+```
 Create a PRD.
 Feature: [Feature name]
-Problem: [What problem does it solve?]
-Success Metric: [How will you measure success?]
+Problem: [What is broken or missing, and for whom?]
+Solution: [Proposed approach]
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
-**What happens:**
-1. Claude loads context
-2. Generates PRD
-3. Reviews it automatically
-4. Maps stakeholder objections
-5. Saves to: `archives/projects/2026-05-17-[feature]-v1.md`
-6. Pushes to GitHub
+```
 
 **Example:**
+```
 Create a PRD.
-Feature: Promise Buffer Enhancement
-Problem: Customers see rushed deliveries because promises are too tight. We want to add a configurable buffer.
-Success Metric: Improve OTD% by 5% without delaying expected delivery dates.
+Feature: Driver Shift Start OTP Confirmation
+Problem: Drivers start shifts without confirmation, causing ghost availability in the dispatch system.
+Solution: Require OTP-verified shift start before driver is marked active in Locus.
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
+```
+
+Output saved to: `archives/projects/YYYY-MM-DD-[feature]-v1.md`
+
 ---
 
-## Design an Experiment
+### Review an existing PRD
 
-**Paste this in Claude Code:**
+```
+Review the PRD for [feature].
+[Paste PRD content or provide Drive link]
+Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
+```
+
+**Resuming Pass 2:** If continuing from a previous session, paste the `[PASS 1 HANDOFF]` block. Without it, Claude cannot track resolved/persists/new — it will ask before starting.
+
+---
+
+### Design an experiment
+
+```
 Design an experiment.
 Hypothesis: [What do you believe will happen?]
 Target Metric: [What are you measuring?]
-Current Value: [What's the baseline?]
+Current Value: [Baseline]
 Target Value: [What improvement matters?]
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
-**Example:**
-Design an experiment.
-Hypothesis: Adding a 4-hour buffer to promises will improve OTD% without hurting customer satisfaction.
-Target Metric: OTD% (on-time delivery percentage)
-Current Value: 92%
-Target Value: 97%
-Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
+```
 
-**Output:** `archives/experiments/2026-05-17-[feature]-v1.md`
+Output saved to: `archives/experiments/YYYY-MM-DD-[feature]-v1.md`
 
 ---
 
-## Map Objections
+### Map stakeholder objections
 
-**Paste this in Claude Code:**
+```
 Map objections for [feature].
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
-**What happens:**
-1. Claude loads your PRD
-2. Identifies concerns by stakeholder (Ops, Finance, Eng, Product)
-3. Saves to: `archives/objections/2026-05-17-[feature]-v1-objections.md`
+```
 
-**Example:**
-Map objections for promise-buffer-v1.
-Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
+Output saved to: `archives/objections/YYYY-MM-DD-[feature]-v1-objections.md`
+
 ---
 
-## Write an Executive Brief
+### Write an executive brief
 
-**Paste this in Claude Code:**
+```
 Write an executive brief.
 Feature: [Feature name]
-Audience: [CEO / Board / Finance]
+Audience: [CEO / COO / Board / Finance]
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
+```
 
-**Example:**
-Write an executive brief.
-Feature: Promise Buffer Enhancement
-Audience: CEO
-Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
-**Output:** `archives/briefs/2026-05-17-[feature]-v1-brief.md`
+Output saved to: `archives/briefs/YYYY-MM-DD-[feature]-v1-brief.md`
 
 ---
 
-## Iterate (Revise & Save as v2)
+### Design test cases from a PRD
 
-Already saved a PRD as v1? Need to revise?
+```
+Design test cases for [feature].
+[Paste PRD content or provide Drive link]
+Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
+```
 
-**Paste this:**
+Output saved to: `archives/test-cases/YYYY-MM-DD-[feature]-v1-test-cases.md`
+
+---
+
+### Revise an existing doc (new version)
+
+```
 Revise the PRD for [feature-name].
 Changes: [What's different in this version?]
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
-**What happens:**
-- Claude detects v1 exists
-- Auto-saves as v2
-- Both versions on GitHub for comparison
-
-**Example:**
-Revise the PRD for promise-buffer.
-Changes: Added more detail on implementation timeline and dependencies with warehouse team.
-Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
-
----
-
-## Push Manually (If Needed)
-
-By default, Claude auto-pushes. If you need to push manually:
-
-```bash
-cd ~/pm-agent
-~/pm-agent/scripts/commit-and-push.sh "Add PRD: Promise Buffer v3"
 ```
 
+Claude detects the existing version and auto-saves as the next version. Both versions remain in `archives/` and on GitHub.
+
 ---
 
-## Check Your Files
+## Manual operations
 
-**On your Mac:**
+### Commit and push manually
+
+```bash
+~/pm-agent/scripts/commit-and-push.sh "Add PRD: feature-name v2"
+```
+
+### Check saved files
+
 ```bash
 ls ~/pm-agent/archives/projects/
+ls ~/pm-agent/archives/experiments/
 ls ~/pm-agent/archives/objections/
+ls ~/pm-agent/archives/briefs/
 ```
 
-**On GitHub:**
+### Check GitHub
+
 https://github.com/tejasbhalerao-bot/pm-agent/tree/main/archives
 
 ---
 
-That's it. Paste examples. Claude handles the rest.
+## Common issues
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| Context Loader runs but loads nothing | Google Drive MCP not available in Claude Code | Expected — Claude flags assumptions and proceeds |
+| "I need the Pass N handoff block" | Resuming a review across sessions without the handoff block | Paste the `[PASS N HANDOFF]` block from the previous session |
+| Wrong reviewer skill used | Model invokes `anthropic-skills:prd-reviewer` instead of local file | Blocked by `recall-and-route.md` and changelogs — if it happens, say "use ~/pm-agent/workflows/core/review-prd.md" |
+| Score stuck below 8 | Pass 2 or Pass 3 genuinely thin | Claude names specific gaps — fill them before proceeding |

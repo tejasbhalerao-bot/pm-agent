@@ -16,10 +16,8 @@ Entry point for all PM Agent work. Always runs first. Never skipped.
 
 ## Step 1 — Load org context
 
-Before invoking Context Loader, check for a cross-session context cache. If the
-user's current project folder is known (e.g., from a previous save in this session
-or from the user mentioning a project name), use the Read tool to look for
-`.context-cache.md` in that folder (e.g., `~/Documents/Claude/Projects/[project-name]/.context-cache.md`).
+Before invoking Context Loader, check for a cross-session context cache. Use the
+Read tool to look for `~/pm-agent/.context-cache.md`.
 
 - **Cache file found and contains today's date (`Cache date: YYYY-MM-DD`)** → use
   its manifest contents directly. Do not invoke Context Loader. Proceed to Step 2.

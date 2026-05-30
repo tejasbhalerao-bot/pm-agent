@@ -1,5 +1,28 @@
 # Final Step: Auto-Save and Push to GitHub
 
+## 0. Add version history header to the document
+
+Before saving, prepend the following block to the top of the approved document:
+
+```markdown
+---
+**Document:** [Feature Name]
+**Type:** [Executable PRD / Initiative Doc / Vision Doc]
+**Version:** vN
+**Date:** YYYY-MM-DD
+**Status:** [Draft / Under Review / Approved]
+**Author:** Tejas Bhalerao
+
+| Version | Date | Changes |
+|---|---|---|
+| v1 | YYYY-MM-DD | Initial draft |
+| vN | YYYY-MM-DD | [Summary of changes from previous version] |
+---
+```
+
+Fill in the version table accurately. For v1, only one row is needed.
+
+
 Once your document is complete and approved, I will:
 
 ## 1. Determine the correct archive path and next version

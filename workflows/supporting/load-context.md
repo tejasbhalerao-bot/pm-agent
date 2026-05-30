@@ -14,7 +14,7 @@ Called by **recall-and-route.md** whenever a PM task requires Truemeds-specific 
 
 **Check for same-day cache:**
 ```
-~/.context-cache.md
+~/pm-agent/.context-cache.md
 ```
 
 **Cache logic:**
@@ -63,6 +63,9 @@ https://docs.google.com/document/d/1hBjvDB6NS-fYrA4EZUhjpMbvXkveBSRxcI06PlV9Ork/
 **Action:**
 - Fetch the "Logistics System Reference" doc from Cross-Cutting
 - Extract the canonical system list (e.g., Promise Engine, ETA Modeling, Dispatch System, Warehouse Operations, Courier Integration, RTO, DMS, OTD, Checkout, Delivery Legs, etc.)
+
+**Write preliminary cache immediately after this step:**
+Write `~/pm-agent/.context-cache.md` with Cross-Cutting docs loaded so far and today's date. Step 8 will overwrite with full context. Writing here ensures the cache exists even if the session ends before Step 8 is reached.
 
 ---
 
@@ -168,7 +171,7 @@ Hyperlocal Forward index:
 
 ## Step 8: Build Context Manifest
 
-**Create `.context-cache.md` with structure:**
+**Overwrite `~/pm-agent/.context-cache.md` with full context:**
 
 ```markdown
 # Context Cache — Truemeds Org Context

@@ -46,8 +46,6 @@ recall-and-route
 PRD Creation chain:
   prd-creator (draft + 5-pass gap analysis per UC)
   → [SCORE: X/10 gate — STOP if < 8, fill gaps first]
-  → [METRICS GATE] metrics-designer (validates Success Metrics section)
-  → prd-creator (incorporates structured metric definitions)
   → [CHAIN] review-prd (Pass 1)
     → [WIDGET GATE] render findings widget
     → [PASS 1 HANDOFF] structured block for loop continuity
@@ -59,7 +57,7 @@ PRD Creation chain:
       → if P0s remain: loop continues (Pass 3+ requires user confirmation)
   → save to archives/ with auto-version
   → push to GitHub
-  → objection-mapper (automatic post sign-off)
+  → objection-mapper (offered to user post sign-off)
 ```
 
 ### Gate markers
@@ -69,7 +67,6 @@ Gates are output as inline markers — they enforce ordering and are visible in 
 | Marker | Meaning |
 |---|---|
 | `[5-PASS SCORE: X/10 — Pass N thin: reason]` | Pre-review quality score; STOP if < 8 |
-| `[METRICS GATE: calling metrics-designer now]` | Hard block before prd-reviewer |
 | `[CHAIN: reading review-prd.md → beginning Pass 1]` | Auto-triggers reviewer |
 | `[WIDGET GATE: rendering pass summary now]` | Blocks Step 7 routing until widget renders |
 | `[PASS N HANDOFF] ... [/PASS N HANDOFF]` | Loop continuity block — required for Pass N+1 |
@@ -197,15 +194,12 @@ Every skill has a paired changelog file in `changelogs/`. Changelogs contain dat
 
 **prd-creator:**
 - Token-optimised lazy loading of operational learnings and style guide (2026-05-16)
-- metrics-designer is a mandatory hard stop before prd-reviewer (2026-05-15)
 - 5-pass framework applied during UC drafting with visible score gate (2026-05-20)
 - Visible `[5-PASS SCORE]` gate; STOP if < 8 (2026-05-30)
-- `[METRICS GATE]` marker enforces metrics-designer call (2026-05-30)
 - `[CHAIN]` marker auto-triggers reviewer without user instruction (2026-05-30)
 - `anthropic-skills:prd-reviewer` explicitly prohibited; must use local `review-prd.md` (2026-05-30)
 
 **prd-reviewer:**
-- Review loop capped at Pass 2 by default; Pass 3+ requires user confirmation (2026-05-16)
 - 5-pass framework used as primary review lens (2026-05-20)
 - `[WIDGET GATE]` marker enforces widget render before routing (2026-05-30)
 - `[PASS N HANDOFF]` block at end of every pass for loop continuity (2026-05-30)

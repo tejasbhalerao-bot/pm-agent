@@ -217,17 +217,16 @@ On confirmation:
 
 ---
 
-## Step 9 — Trigger Objection Mapper (automatic, no permission needed)
+## Step 9 — Offer Objection Mapper
 
-After the doc is saved (and after any scheduler interaction in Step 8), immediately
-invoke the Objection Mapper skill. Do not ask the user whether to run it — it always
-runs after sign-off. The doc is already saved; this step does not gate saving.
+After the doc is saved (and after any scheduler interaction in Step 8), offer the
+Objection Mapper as an optional next step.
 
-Say: *"Doc saved. Running Objection Mapper now to surface stakeholder objections
-before your alignment meeting."*
+Say: *"Doc saved. Would you like me to run Objection Mapper to surface stakeholder
+objections before your alignment meeting?"*
 
-Objection Mapper will ask for the target audience. Pass control to it and let it run
-to completion. PRD Creator's operation ends when Objection Mapper finishes.
+Wait for the user's response. If yes, invoke Objection Mapper. If no, PRD Creator's
+operation ends here.
 
 ---
 

@@ -180,7 +180,7 @@ When the user confirms sign-off:
 
 1. State the final pass number and that no P0s or P1s were found.
 2. List any open P2s the user chose not to fix — these are acknowledged, not blocking.
-3. Confirm: "This XP Doc is approved. Experiment-designer: proceed to the next step in the chain (metrics-designer if not already completed)."
+3. Confirm: "This XP Doc is approved."
 4. Do not re-run the review after sign-off unless the user explicitly requests a new pass.
 
 ---

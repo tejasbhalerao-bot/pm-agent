@@ -28,29 +28,6 @@ Each entry is dated. Later entries override earlier ones where they conflict.
 
 ---
 
-## 2026-05-15 — Chain metrics-designer before prd-reviewer
-
-**Amendment:** After completing the Success Metrics section of any PRD draft, do not
-immediately call prd-reviewer. Instead, call metrics-designer first.
-
-**Exact insertion point:** After the Success Metrics section is drafted (Step 5 in the
-core skill), before handing off to prd-reviewer (Step 6).
-
-**What to pass to metrics-designer:** The full PRD draft with the Success Metrics section
-visible. metrics-designer will read it as "chained from PRD Creator" context.
-
-**What to do with the return:** When metrics-designer returns the structured Metrics
-Definition file, incorporate the validated metric definitions into the PRD's Success
-Metrics section — replace any informal metric statements with the structured output
-(name, definition, unit, direction, baseline, target, timeframe, instrumentation note).
-
-**Then:** Call prd-reviewer as normal.
-
-**Chain summary:**
-prd-creator (draft) → metrics-designer → prd-creator (incorporates definitions)
-→ prd-reviewer (minimum 2 passes)
-
----
 
 ## 2026-05-20 — Load 5-pass gap analysis during Use Case drafting
 
@@ -74,8 +51,7 @@ heuristic. If score < 8/10, identify which passes are thin and fill gaps before
 handing to reviewer.
 
 **Chain summary (updated):**
-prd-creator (draft, applying 5-pass per UC) → metrics-designer
-→ prd-creator (incorporates definitions + 5-pass final sweep)
+prd-creator (draft, applying 5-pass per UC) → 5-pass final sweep (score ≥ 8 gate)
 → prd-reviewer (minimum 2 passes)
 
 ---
@@ -91,30 +67,15 @@ sufficient — the check is invisible and gets skipped.
 
 > `[5-PASS SCORE: X/10 — Pass N thin: <reason>]`
 
-**If score < 8: STOP. Do not proceed to metrics-designer.** Name which passes are thin
+**If score < 8: STOP. Do not proceed to prd-reviewer.** Name which passes are thin
 and what specific gaps need filling. Fill them. Re-score. Only proceed when score ≥ 8.
 Score line must appear in output so the user can verify enforcement.
 
 ---
 
-### F1 — metrics-designer is a hard STOP, not a soft suggestion
-
-**Amendment to 2026-05-15 entry:** "do not immediately call prd-reviewer. Instead,
-call metrics-designer first" is too soft — it gets skipped when context is heavy.
-
-**New requirement:** After the Success Metrics section is complete, output:
-
-> `[METRICS GATE: calling metrics-designer now — prd-reviewer blocked until this returns]`
-
-Then call metrics-designer. Do not write any further PRD content. Do not route to
-prd-reviewer. Do not wait for user instruction. This is not optional.
-
----
-
 ### F2 — prd-reviewer chain must be triggered explicitly, not implied
 
-**Amendment:** After metrics-designer output is incorporated into the PRD's Success
-Metrics section, do not stop and wait for the user. Output:
+**Amendment:** After the 5-pass score reaches ≥ 8, do not stop and wait for the user. Output:
 
 > `[CHAIN: reading ~/pm-agent/workflows/core/review-prd.md → beginning Pass 1]`
 
