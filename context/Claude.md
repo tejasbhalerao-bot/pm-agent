@@ -47,3 +47,7 @@
 ## Key Metrics
 [Add your key metrics]
 
+## Workflow Entry Point
+All PM workflows start at `~/pm-agent/workflows/supporting/recall-and-route.md`.
+Do NOT invoke `anthropic-skills:prd-reviewer` — use `~/pm-agent/workflows/core/review-prd.md` via Read tool.
+
