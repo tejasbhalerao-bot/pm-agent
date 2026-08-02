@@ -25,7 +25,10 @@ Systematically scraping competitor delivery speed promises (by pincode, by produ
 
 ## 3. Competitors in Scope
 
-*To be defined — likely PharmEasy, 1mg, Netmeds, Apollo Pharmacy*
+- Tata 1mg
+- Netmeds
+- Apollo Pharmacy
+- PharmEasy
 
 ---
 
@@ -56,14 +59,18 @@ Systematically scraping competitor delivery speed promises (by pincode, by produ
 
 ## 5. Open Questions
 
-- Which competitors to prioritise?
-- Which pincodes to cover? (All serviceable, or a representative sample first?)
-- How frequently does delivery promise data need to be refreshed?
-- Where does this data surface — internal dashboard, input to logistics team, marketing team?
-- Build vs buy (scraping infrastructure)?
+- Where does this data surface — internal dashboard, input to logistics team, marketing team? *(deferred)*
 
 ---
 
 ## 6. Decisions Log
 
-*None yet*
+### 2026-08-02
+
+| Decision | Choice | Rationale |
+|---|---|---|
+| Competitors in scope | Tata 1mg, Netmeds, Apollo Pharmacy, PharmEasy | The four primary online pharmacy competitors |
+| Pincode coverage | All serviceable pincodes across all competitors, not just Truemeds-serviceable ones | Truemeds may expand to pincodes where competitors already operate; need full picture |
+| Refresh frequency | Every 1 hour | Competitors have dispatch cutoffs that shift delivery promises intraday; hourly captures these changes |
+| Build vs buy | Build the scraping infrastructure | — |
+| Data surfacing | Deferred | Not in scope for now |
