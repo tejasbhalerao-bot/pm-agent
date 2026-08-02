@@ -43,15 +43,20 @@ Systematically scraping competitor delivery speed promises (by pincode, by produ
 - Agreed that web scraping is the mechanism to get there
 - Tejas (PM) has no prior scraping experience — learning journey planned before building
 
-**Learning journey defined (5 stages):**
+**Learning journey defined (8 stages):**
 
-| Stage | Topic | Goal |
+| Stage | Topic | Key questions covered |
 |---|---|---|
-| 1 | How websites work | Understand static vs dynamic pages, what an API call is |
-| 2 | What scraping is | Understand HTML scraping vs browser automation vs API interception |
-| 3 | Operational reality | Anti-bot, rate limiting, maintenance burden, freshness |
-| 4 | Hands-on exposure | See it work once on a real competitor site |
-| 5 | Product spec | Define coverage, frequency, data destination, ownership |
+| 1 | How websites work | Static vs dynamic pages, what an API call is, DevTools exercise on a live competitor site |
+| 2 | Legal, ToS, and competitive risk | Can we legally scrape? What does each competitor's ToS say? What's the risk of being blocked or retaliated against? |
+| 3 | Data definition and benchmark methodology | What does each competitor show for delivery speed? How is it displayed differently across sites? Which product do we use as a proxy? How do we normalize across competitors? |
+| 4 | Scraping approaches and tradeoffs | HTML scraping vs browser automation vs API interception — what each is and when to use which |
+| 5 | Scale, operations, and data quality | Infra cost at ~2M ops/day, anti-bot measures, maintenance burden, failure detection, stale data policy |
+| 6 | Hands-on exposure | See a real scrape on one competitor, one pincode — observe what raw output actually looks like |
+| 7 | Data pipeline: raw to structured | Parsing messy text into numbers, normalization to a common unit, schema design, time-series storage, handling nulls and failure states |
+| 8 | Product spec | Coverage, refresh frequency, ownership, failure SLAs, data destination (deferred) |
+
+*Stages revised from original 5 after two rethinking loops. Key additions: Stage 2 (Legal/ToS, was entirely missing), Stage 3 (Data definition, PM-owned decision), Stage 7 (Data pipeline, gap identified during session).*
 
 **Next step:** Stage 1 — DevTools exercise on a live competitor site
 
