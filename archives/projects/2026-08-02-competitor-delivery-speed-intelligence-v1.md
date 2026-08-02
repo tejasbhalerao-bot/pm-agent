@@ -97,6 +97,20 @@ The architecture will be designed to be extensible — once delivery speed is va
 
 **Next step:** Stage 2 — Legal, ToS, and competitive risk
 
+#### Stage 2 — Legal, ToS, and Competitive Risk ✓
+
+- Most pharmacy sites' ToS prohibit automated access, data mining, and scraping. Violating ToS is a **breach of contract** — a civil matter, not criminal
+- In India, no specific scraping law exists. Relevant laws are IT Act 2000 Section 43 (unauthorized access) and Copyright Act. Scraping **publicly visible** data without logging in is generally not unauthorized access, and factual data (prices, delivery promises) is generally not copyrightable
+- **Most realistic legal exposure**: breach of contract via ToS violation — most likely outcome is a cease and desist, not a lawsuit
+- **No precedent** in India of a pharmacy company suing a competitor for scraping publicly visible pricing or delivery data
+- Critical distinction: scraping data visible to any user without login (safe) vs scraping behind a login wall (significantly higher legal risk). All target data — delivery speed, pricing, SKU listings — is publicly visible
+- **robots.txt** — a file at `/robots.txt` on every site listing paths the site doesn't want crawled. Not legally binding but respecting it is good practice and reduces exposure
+- Realistic risks are **operational, not legal**: IP blocking (most common), rate-based detection, needing to rotate IPs and throttle requests
+- Competitive retaliation risk: competitors may scrape Truemeds in return. Scraping is a two-way street
+- **Build guideline**: scrape only publicly visible data, never behind a login; don't scrape from Truemeds' own IP ranges; throttle requests to mimic human traffic
+
+**Next step:** Stage 3 — Data definition and benchmark methodology
+
 ---
 
 ## 6. Open Questions
