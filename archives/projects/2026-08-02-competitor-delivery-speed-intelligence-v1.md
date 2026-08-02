@@ -83,7 +83,19 @@ The architecture will be designed to be extensible — once delivery speed is va
 
 *Stages revised from original 5 after two rethinking loops. Key additions: Stage 2 (Legal/ToS, was entirely missing), Stage 3 (Data definition, PM-owned decision), Stage 7 (Data pipeline, gap identified during session).*
 
-**Next step:** Stage 1 — DevTools exercise on a live competitor site
+---
+
+### Stage Learnings
+
+#### Stage 1 — How Websites Work ✓
+
+- HTML is a blueprint; the browser renders it into what you see on screen
+- Delivery speed is **dynamic** — it is not present in the initial HTML. It loads after you enter a pincode, triggered by JavaScript firing a background request to the server
+- That background request is called an **API call** — it carries the pincode and returns the delivery promise. This is exactly what a scraper needs to replicate
+- **Static page** = data is already in the HTML when it arrives. **Dynamic page** = HTML arrives mostly empty, JavaScript fetches the real data separately
+- Field observation: 1mg and PharmEasy immediately blocked an automated browser during the live exercise — bot detection is real, active, and will be a primary challenge when building the scraper
+
+**Next step:** Stage 2 — Legal, ToS, and competitive risk
 
 ---
 
