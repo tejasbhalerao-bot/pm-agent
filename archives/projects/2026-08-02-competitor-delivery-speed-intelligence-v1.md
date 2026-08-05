@@ -111,6 +111,27 @@ The architecture will be designed to be extensible — once delivery speed is va
 
 **Next step:** Stage 3 — Data definition and benchmark methodology
 
+#### Stage 3 — Data Definition and Benchmark Methodology ✓
+
+- Each competitor displays delivery speed differently: 1mg uses "Get it by Tomorrow, 10 PM", PharmEasy uses "Expected Delivery by [date]", Netmeds uses "Delivery by [date]", Apollo shows express and standard options side by side — none are directly comparable without normalization
+- **Normalize to hours from time of scrape** — not days. Hourly refresh cadence means intraday shifts (e.g. crossing a dispatch cutoff) must be captured with precision that days-as-unit would lose
+- Normalization logic: convert every raw text string to hours from scrape timestamp. Ranges ("2–3 days") need an explicit decision — best case, worst case, or midpoint
+- **Always store raw text alongside the normalized value** — if normalization logic is wrong, raw data allows reprocessing. Storing only normalized values makes recovery impossible
+- Decisions needed from PM before building normalization:
+
+| Situation | Decision needed |
+|---|---|
+| Range given ("2–3 days") | Best case, worst case, or midpoint? |
+| Express vs standard both shown | Capture both, only standard, or only fastest? |
+| "Out of stock" | Separate state — not a delivery speed data point |
+| Competitor doesn't serve pincode | Separate state — distinct from out of stock |
+| Logged in vs logged out speeds | Scrape logged-out only; member pricing/speeds are not publicly visible |
+
+- **Benchmark product: Dolo 650 (Paracetamol 650mg)** — available on all 4 competitors, OTC, not cold chain, not controlled, highest-selling medicine in India, stable year-round demand
+- One product is mostly sufficient but a single out-of-stock will look like the competitor doesn't serve the pincode — maintain 2–3 backup OTC products in the same category for fallback
+
+**Next step:** Stage 4 — Scraping approaches and tradeoffs
+
 ---
 
 ## 6. Open Questions
