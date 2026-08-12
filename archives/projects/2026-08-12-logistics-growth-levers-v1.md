@@ -80,9 +80,9 @@ The primary cost interventions in FY2026 target SDD operations via DMS — route
 
 ## Execution Phasing
 
-| | H1 | H2 |
-|---|---|---|
-| **Promise** | SDD expansion, SDD cutoff rationalisation, Network optimisation | Ideal and consistent ETA, Network expansion, Serviceability |
-| **OTD** | WH & dispatch OTD (Q2), Courier selection intelligence (Q2–Q3) | Address quality, Customer availability & intent, DE behaviour |
-| **Delivery Experience** | — | Last-mile handover experience, Post-failure recovery |
-| **Cost** | — | Route planning, Supply planning, Driver utilisation |
+| | H1 | H2 | H2+ (ongoing) |
+|---|---|---|---|
+| **Promise** | SDD expansion, SDD cutoff rationalisation, Network optimisation | Ideal and consistent ETA, Network expansion, Serviceability | — |
+| **OTD** | WH & dispatch OTD (Q2), Courier selection intelligence (Q2–Q3) | Address quality | Customer availability & intent, DE behaviour |
+| **Delivery Experience** | — | — | Last-mile handover experience, Post-failure recovery |
+| **Cost** | — | Route planning, Supply planning, Driver utilisation | — |
