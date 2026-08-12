@@ -19,12 +19,12 @@ Logistics contributes to growth across four dimensions:
 
 | # | Lever | Rationale |
 |---|---|---|
-| 1.1 | Buffer optimization | Fastest win. Static buffers are set once and never revisited — data-driven tightening requires no ops change. Separate static (hardcoded) from dynamic (capacity-signal-driven). |
-| 1.2 | Dispatch waves | The dispatch window an order falls into directly determines the promise date. Poorly calibrated cut-offs over-promise (OTD breach) or under-promise (lost conversion). Evening order volume in e-pharma is significant. |
-| 1.3 | Serviceability | Which pincodes we can serve and by which couriers is the foundation of promise. Stale data means lost orders (un-serviceable when we can serve) or guaranteed RTOs (serviceable when we can't). |
-| 1.4 | Outlier investigation | Orders >4 days inflate buffers and damage CX. Root-cause segmentation (courier × pincode × DoW) informs buffer calibration and feeds network design decisions. |
-| 1.5 | SDD expansion | SDD is a step-change in conversion, not an incremental improvement. *(In flight — SDD Expansion Strategy project.)* |
-| 1.6 | Courier network design | Hub density and inter-hub routing set the floor on transit time. No operational fix goes below it. Raise in courier QBRs using outlier investigation findings. |
+| 1.1 | SDD expansion | Identify pincodes where demand is high but conversion is low, customers are open to a faster promise, and we are behind competitors on delivery speed. These are the pincodes where offering same-day delivery will move conversion the most. *(In flight — SDD Expansion Strategy project.)* |
+| 1.2 | Courier network design | Two levers in one: how we route deliveries through the existing courier network, and where we open new fulfillment centers. The closer our inventory is to the customer, the faster and cheaper it is to deliver. Both decisions determine the promise we can make to any given pincode. |
+| 1.3 | Buffer optimization | Fastest operational win. Static buffers are set once and never revisited — data-driven tightening requires no ops change. Separate static (hardcoded) from dynamic (capacity-signal-driven). |
+| 1.4 | Dispatch waves | The dispatch window an order falls into directly determines the promise date. Poorly calibrated cut-offs over-promise (OTD breach) or under-promise (lost conversion). Evening order volume in e-pharma is significant. |
+| 1.5 | Serviceability | Which pincodes we can serve and by which couriers is the foundation of promise. Stale data means lost orders (un-serviceable when we can serve) or guaranteed RTOs (serviceable when we can't). |
+| 1.6 | Outlier investigation | Orders >4 days inflate buffers and damage CX. Root-cause segmentation (courier × pincode × DoW) informs buffer calibration and feeds network design decisions. |
 
 ---
 
