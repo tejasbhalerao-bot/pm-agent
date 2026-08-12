@@ -57,13 +57,11 @@ OTD is an execution metric. The core driver is first-attempt delivery success �
 
 ## Section 3: Delivery Experience
 
-Logistics owns the signals and the handover — not the communication. The charter is: capture the right data, publish it to the right team at the right time, and ensure the physical handover happens correctly. What CX does with those signals is outside scope.
+Logistics owns the handover and the signals that enable it — not customer communication. The charter is to ensure the DE can reach the customer, execute the handover correctly, and that the right status is visible to CX at the right time. What CX does with those signals is outside scope.
 
 | Lever | Rationale | Metric | Baseline | Target | Time Horizon | Interventions |
 |---|---|---|---|---|---|---|
-| Delivery Signal Capture | Logistics cannot diagnose or report what it cannot observe. Granular attempt-level data — DE location, call logs, timestamps — is the prerequisite for status accuracy, NDR root cause, and DE accountability. | Signal completeness % | — | — | H1 | • Geo-validated attempt logging<br>• Call data integration<br>• Delivered location capture (lat/long) |
-| Proactive Status Publishing | Logistics is accountable for classifying each order as early, on-time, or late — and publishing that status to CX before the customer feels the impact. Late or silent publishing puts the burden on CX to recover a failure logistics created. | Status publication latency;<br>% status events published before customer contact | — | — | H1 | • Early/on-time/late classification engine<br>• Status API for CX team<br>• SLA breach prediction alerts |
-| Last-Mile Handover | The DE executes under logistics control. Identity verification, reachability, parcel condition, and proof of delivery are entirely logistics' to own — not courier defaults. | Digital POD rate;<br>mis-delivery rate | — | — | H1 → H2 | • OTP-based digital POD *(DMS)*<br>• Call masking *(DMS)*<br>• DE-customer connect *(DMS)* |
+| Last-Mile Handover Experience | The DE executes under logistics control. A successful handover requires the right delivery signals flowing in, accurate status published before the attempt, and the right tools at the door — reachability, identity verification, and proof of delivery. All enabled through DMS. | Digital POD rate;<br>mis-delivery rate | — | — | H1 → H2 | • Delivery signal capture<br>• Proactive status publishing<br>• OTP-based digital POD *(DMS)*<br>• Call masking *(DMS)*<br>• DE-customer connect *(DMS)* |
 | Post-Failure Recovery | Failed deliveries generate NDR. Re-engaging the customer quickly and closing the loop is logistics execution — not CX communication. Speed of recovery determines whether the order is ever delivered. | NDR resolution rate;<br>% NDR recovered within SLA | — | — | H1 → H2 | • NDR chatbot optimisation<br>• NDR communication workflow |
 
 ---
