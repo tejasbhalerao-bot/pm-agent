@@ -12,7 +12,7 @@ Logistics contributes to growth across four dimensions:
 
 - **Promise** — the ETA shown at checkout. Tighter and accurate promise → higher conversion. A tight promise that can't be kept is net negative.
 - **OTD** — whether we deliver by the promised date. Reflects both execution quality and whether the promise itself was realistic and achievable in the first place.
-- **Delivery Experience** — how the customer feels about the delivery, encompassing everything from communication to the moment the parcel is in their hands.
+- **Delivery Experience** — whether the right signals are captured at the right time, published to the right teams, and whether the physical handover is executed correctly. Customer perception is downstream of this; logistics owns the inputs, not the outcome.
 - **Cost** — logistics cost per order as a direct lever on margins.
 
 ---
@@ -24,7 +24,7 @@ Logistics contributes to growth across four dimensions:
 | Promise | Promise accuracy % | — | — |
 | On-Time Delivery | On-time delivery rate % | — | — |
 | Delivery Experience | Delivery CSAT | — | — |
-| Cost | Logistics cost as % of GMV | — | — |
+| Cost | Cost per delivered order | — | — |
 
 ---
 
@@ -50,7 +50,7 @@ OTD is an execution metric. The core driver is first-attempt delivery success �
 | WH & Dispatch OTD | Pickup misses, late dispatches, and early dispatches all cause OTD failures before the courier is ever involved. | Dispatch on-time % | — | — | Q1 | • Modular payment pending flow<br>• Courier reallocation at WH fulfillment<br>• Context-aware allocation post OP *(hypothesis)* |
 | Courier Selection Intelligence | Route each order to the courier with the highest on-time rate for that lane — reliability, not cost, is the primary selection criterion. | On-time delivery % | — | — | Q2–Q3 | • Performance-based speed calculation<br>• Serviceability check at soft allocation<br>• Thin lane fallback design<br>• On-time parameter in allocation |
 | Address Quality | Bad addresses cause delivery failures that neither the courier nor the customer can resolve at the door. Fix upstream, not after failure. | First attempt delivery success % | — | — | H2 | • Address flow improvement<br>• Poor address migration<br>• Delivered location capture (lat/long)<br>• DMS integration *(SDD only)* |
-| Customer Availability & Intent | A meaningful share of NDR exists simply because the customer didn't know delivery was coming. Acting on availability signals before the attempt prevents avoidable failures. | First attempt delivery success % | — | — | H2 | • Communication revamp (IVR, SMS, WhatsApp, in-app)<br>• Slot selection (SDD) / day selection (non-SDD) |
+| Customer Availability & Intent | A meaningful share of NDR exists simply because the customer didn't know delivery was coming. Acting on availability signals before the attempt prevents avoidable failures. | First attempt delivery success % | — | — | H2 | • Slot selection (SDD) / day selection (non-SDD) |
 | DE Behaviour | Fake attempts and behavioural failures inflate NDR and are invisible without instrumentation — but can only be acted on once address quality is reliable. | First attempt delivery success % | — | — | H2 | • Geo-validated attempt detection *(post address quality improvement)* |
 
 ---
@@ -68,7 +68,7 @@ Logistics owns the handover and the signals that enable it — not customer comm
 
 ## Section 4: Cost
 
-Cost optimization in FY2026 is scoped to SDD. Non-SDD logistics cost is not a priority this year. The three levers — route planning, supply planning, and driver utilization — are all enabled through DMS.
+The primary cost interventions in FY2026 target SDD operations via DMS — route planning, supply planning, and driver utilisation. The headline metric, cost per delivered order, tracks across all delivery types.
 
 | Lever | Rationale | Metric | Baseline | Target | Time Horizon | Interventions |
 |---|---|---|---|---|---|---|
