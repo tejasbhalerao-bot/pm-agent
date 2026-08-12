@@ -57,16 +57,14 @@ OTD is an execution metric. The core driver is first-attempt delivery success �
 
 ## Section 3: Delivery Experience
 
-Delivery experience is broader than OTD. Being on time is necessary but not sufficient — a customer can receive an order on time and still have a poor experience.
+Logistics owns the signals and the handover — not the communication. The charter is: capture the right data, publish it to the right team at the right time, and ensure the physical handover happens correctly. What CX does with those signals is outside scope.
 
 | Lever | Rationale | Metric | Baseline | Target | Time Horizon | Interventions |
 |---|---|---|---|---|---|---|
-| Delivery Milestone Communication | Gaps in the update chain generate WISMO contacts and anxiety. The OFD notification with a time window is the most critical moment — it enables the customer to be available. | Notification coverage rate;<br>WISMO contact rate | — | — | Q1–Q2 | • End-to-end notification ownership<br>• Channel optimisation by segment |
-| Communication Quality & Channel | Sending a message is not the same as communicating. Channel, language, and actionability determine whether communication actually changes customer behaviour. | Engagement rate on delivery notifications | — | — | H1 | • Actionable notification redesign<br>• Channel mix A/B testing |
-| Delay & Exception Communication | Most logistics failures that generate complaints are ones where the customer found out on their own. Proactive outreach turns a trust breakdown into managed disappointment. | % delays proactively communicated before customer contacts support | — | — | H1 | • Delay detection and proactive outreach<br>• NDR communication ownership |
-| Last-Mile Handover Experience | The handover is the only face-to-face moment between the customer and TrueMeds. A poor experience drives negative perception even for on-time deliveries. | Digital POD rate;<br>handover complaint rate | — | — | H1–H2 | • OTP-based digital POD<br>• Flexible handover options |
-| Parcel Condition at Delivery | A damaged or tampered parcel is a trust failure regardless of delivery speed — especially critical for medicines where condition directly affects safety perception. | Damage and tamper complaint rate | — | — | H1 | • Tamper-evidence packaging<br>• Courier damage tracking |
-| Post-Failure Recovery | How quickly and easily a customer gets resolution after a failure determines whether they churn. Owning this moment rather than leaving it to courier defaults is a retention lever. | Post-failure CSAT;<br>recovery rate within SLA | — | — | H2 | • Post-NDR recovery flow<br>• Goodwill framework |
+| Delivery Signal Capture | Logistics cannot diagnose or report what it cannot observe. Granular attempt-level data — DE location, call logs, timestamps — is the prerequisite for status accuracy, NDR root cause, and DE accountability. | Signal completeness % | — | — | H1 | • Geo-validated attempt logging<br>• Call data integration<br>• Delivered location capture (lat/long) |
+| Proactive Status Publishing | Logistics is accountable for classifying each order as early, on-time, or late — and publishing that status to CX before the customer feels the impact. Late or silent publishing puts the burden on CX to recover a failure logistics created. | Status publication latency;<br>% status events published before customer contact | — | — | H1 | • Early/on-time/late classification engine<br>• Status API for CX team<br>• SLA breach prediction alerts |
+| Last-Mile Handover | The DE executes under logistics control. Identity verification, reachability, parcel condition, and proof of delivery are entirely logistics' to own — not courier defaults. | Digital POD rate;<br>mis-delivery rate | — | — | H1 → H2 | • OTP-based digital POD *(DMS)*<br>• Call masking *(DMS)*<br>• DE-customer connect *(DMS)* |
+| Post-Failure Recovery | Failed deliveries generate NDR. Re-engaging the customer quickly and closing the loop is logistics execution — not CX communication. Speed of recovery determines whether the order is ever delivered. | NDR resolution rate;<br>% NDR recovered within SLA | — | — | H1 → H2 | • NDR chatbot optimisation<br>• NDR communication workflow |
 
 ---
 
