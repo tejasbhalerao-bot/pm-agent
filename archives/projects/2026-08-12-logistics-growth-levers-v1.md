@@ -34,10 +34,10 @@ Logistics contributes to growth across four dimensions:
 |---|---|---|---|---|---|---|
 | SDD Expansion | High-traffic, low-conversion pincodes where customers want speed and competitors are ahead are the highest-leverage SDD targets. | Conversion rate;<br>average promise | — | — | H1 → H2 | • Competitor ETA intelligence platform<br>• Promise elasticity experiment |
 | SDD Cutoff Rationalisation | Wave count and timing sets the fastest SDD promise we can quote — rationalising cutoffs against competitive benchmarks maximises speed. | Average promise;<br>actual speed of delivery | — | — | H1 | • Competitor ETA intelligence platform |
-| Ideal and Consistent ETA | The promise shown must match customer expectations, competitive positioning, and supply capability — a gap on any one loses conversion. | Conversion rate;<br>promise accuracy % | — | — | H1 | • Competitor ETA intelligence platform<br>• Promise elasticity experiment |
+| Ideal and Consistent ETA | The promise shown must match customer expectations, competitive positioning, and supply capability — a gap on any one loses conversion. | Conversion rate;<br>promise accuracy % | — | — | H2 | • Competitor ETA intelligence platform<br>• Promise elasticity experiment |
 | Network Optimisation | Optimal warehouse assignment for each order minimises pickup-to-delivery time and directly tightens promise. | Average promise | — | — | H1 | • ClickPost PBA data<br>• Outlier investigation |
 | Network Expansion | Order distribution data and competitive benchmarks reveal where new FCs or last-mile hubs would close the biggest promise gaps. | Average promise | — | — | H2 onwards | • Competitor ETA intelligence platform<br>• Promise elasticity experiment |
-| Serviceability | Two failures: not serving pincodes we should, and not communicating when coverage is lost — both cause silent drop-off. | Pincode coverage %;<br>conversion rate | — | — | Q1–Q2 | • Non-serviceable request capture<br>• Competitor ETA intelligence platform<br>• Serviceability loss communication |
+| Serviceability | Two failures: not serving pincodes we should, and not communicating when coverage is lost — both cause silent drop-off. | Pincode coverage %;<br>conversion rate | — | — | H2 onwards | • Non-serviceable request capture<br>• Competitor ETA intelligence platform<br>• Serviceability loss communication |
 
 ---
 
