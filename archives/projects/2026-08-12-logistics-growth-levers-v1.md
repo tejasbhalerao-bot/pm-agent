@@ -61,8 +61,8 @@ Logistics owns the handover and the signals that enable it — not customer comm
 
 | Lever | Rationale | Metric | Baseline | Target | Time Horizon | Interventions |
 |---|---|---|---|---|---|---|
-| Last-Mile Handover Experience | The DE executes under logistics control. A successful handover requires the right delivery signals flowing in, accurate status published before the attempt, and the right tools at the door — reachability, identity verification, and proof of delivery. All enabled through DMS. | Digital POD rate;<br>mis-delivery rate | — | — | H1 → H2 | • Delivery signal capture<br>• Proactive status publishing<br>• OTP-based digital POD *(DMS)*<br>• Call masking *(DMS)*<br>• DE-customer connect *(DMS)* |
-| Post-Failure Recovery | Failed deliveries generate NDR. Re-engaging the customer quickly and closing the loop is logistics execution — not CX communication. Speed of recovery determines whether the order is ever delivered. | NDR resolution rate;<br>% NDR recovered within SLA | — | — | H1 → H2 | • NDR chatbot optimisation<br>• NDR communication workflow |
+| Last-Mile Handover Experience | The DE executes under logistics control. A successful handover requires the right delivery signals flowing in, accurate status published before the attempt, and the right tools at the door — reachability, identity verification, and proof of delivery. All enabled through DMS. | Digital POD rate;<br>mis-delivery rate | — | — | H2 | • Delivery signal capture<br>• Proactive status publishing<br>• OTP-based digital POD *(DMS)*<br>• Call masking *(DMS)*<br>• DE-customer connect *(DMS)* |
+| Post-Failure Recovery | Failed deliveries generate NDR. Re-engaging the customer quickly and closing the loop is logistics execution — not CX communication. Speed of recovery determines whether the order is ever delivered. | NDR resolution rate;<br>% NDR recovered within SLA | — | — | H2 | • NDR chatbot optimisation<br>• NDR communication workflow |
 
 ---
 
@@ -72,9 +72,9 @@ Cost optimization in FY2026 is scoped to SDD. Non-SDD logistics cost is not a pr
 
 | Lever | Rationale | Metric | Baseline | Target | Time Horizon | Interventions |
 |---|---|---|---|---|---|---|
-| Route Planning | Optimising delivery routes reduces distance per order and time per drop — the most direct cost lever in SDD operations. | Cost per SDD delivery;<br>km per delivery | — | — | H1 | • DMS |
-| Supply Planning | Right-sizing fleet capacity to demand reduces idle supply costs without compromising SDD coverage. | Supply utilisation rate;<br>cost per SDD delivery | — | — | H1 | • DMS |
-| Driver Utilisation | Maximising drops per DE per hour drives down unit cost. Idle time, single-drop runs, and poor zone allocation are the primary inefficiencies. | Drops per DE per hour;<br>cost per SDD delivery | — | — | H1 | • DMS |
+| Route Planning | Optimising delivery routes reduces distance per order and time per drop — the most direct cost lever in SDD operations. | Cost per SDD delivery;<br>km per delivery | — | — | H2 | • DMS |
+| Supply Planning | Right-sizing fleet capacity to demand reduces idle supply costs without compromising SDD coverage. | Supply utilisation rate;<br>cost per SDD delivery | — | — | H2 | • DMS |
+| Driver Utilisation | Maximising drops per DE per hour drives down unit cost. Idle time, single-drop runs, and poor zone allocation are the primary inefficiencies. | Drops per DE per hour;<br>cost per SDD delivery | — | — | H2 | • DMS |
 
 ---
 
