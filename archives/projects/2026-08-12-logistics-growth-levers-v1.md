@@ -47,11 +47,11 @@ OTD is an execution metric. The core driver is first-attempt delivery success �
 
 | Lever | Rationale | Metric | Baseline | Target | Time Horizon | Interventions |
 |---|---|---|---|---|---|---|
-| WH & Dispatch OTD | Pickup misses, late dispatches, and early dispatches all cause OTD failures before the courier is ever involved. | Order-to-dispatch TAT;<br>pickup SLA compliance % | — | — | Q1 | • Modular payment pending flow<br>• Courier reallocation at WH fulfillment<br>• Context-aware allocation post OP *(hypothesis)* |
-| Courier Selection Intelligence | Route each order to the courier with the highest on-time rate for that lane — reliability, not cost, is the primary selection criterion. | First-attempt delivery rate;<br>courier on-time rate by lane | — | — | H1 | • Performance-based speed calculation<br>• Serviceability check at soft allocation<br>• Thin lane fallback design<br>• On-time parameter in allocation |
+| WH & Dispatch OTD | Pickup misses, late dispatches, and early dispatches all cause OTD failures before the courier is ever involved. | Dispatch on-time % | — | — | Q1 | • Modular payment pending flow<br>• Courier reallocation at WH fulfillment<br>• Context-aware allocation post OP *(hypothesis)* |
+| Courier Selection Intelligence | Route each order to the courier with the highest on-time rate for that lane — reliability, not cost, is the primary selection criterion. | On-time delivery % | — | — | H1 | • Performance-based speed calculation<br>• Serviceability check at soft allocation<br>• Thin lane fallback design<br>• On-time parameter in allocation |
 | Address Quality | Bad addresses cause delivery failures that neither the courier nor the customer can resolve at the door. Fix upstream, not after failure. | First attempt delivery success % | — | — | H1 → H2 | • Address flow improvement<br>• Poor address migration<br>• Delivered location capture (lat/long)<br>• DMS integration *(SDD only)* |
 | Customer Availability & Intent | A meaningful share of NDR exists simply because the customer didn't know delivery was coming. Acting on availability signals before the attempt prevents avoidable failures. | First attempt delivery success % | — | — | H1 → H2 | • Communication revamp (IVR, SMS, WhatsApp, in-app)<br>• Slot selection (SDD) / day selection (non-SDD) |
-| DE Behaviour | Fake attempts and behavioural failures inflate NDR and are invisible without instrumentation — but can only be acted on once address quality is reliable. | First attempt delivery success % | — | — | H1 | • Geo-validated attempt detection *(post address quality improvement)*<br>• DE performance scorecard |
+| DE Behaviour | Fake attempts and behavioural failures inflate NDR and are invisible without instrumentation — but can only be acted on once address quality is reliable. | First attempt delivery success % | — | — | H1 | • Geo-validated attempt detection *(post address quality improvement)* |
 
 ---
 
