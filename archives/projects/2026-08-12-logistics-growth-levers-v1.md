@@ -82,7 +82,7 @@ Cost optimization in FY2026 is scoped to SDD. Non-SDD logistics cost is not a pr
 
 | | H1 | H2 |
 |---|---|---|
-| **Promise** | SDD expansion, SDD cutoff rationalisation, Ideal and consistent ETA, Network optimisation, Serviceability | Network expansion planning |
-| **OTD** | WH & dispatch OTD, Courier selection intelligence, OFD alerts, DE behaviour | Address quality full stack, Slot selection |
-| **Delivery Experience** | Milestone communication, Communication quality, Delay alerts, Parcel condition | Last-mile handover, Post-failure recovery |
-| **Cost** | RTO root cause analysis, NDR reattempt reduction | Courier rate renegotiation, Packaging, COD remittance, Split shipment tracking |
+| **Promise** | SDD expansion, SDD cutoff rationalisation, Network optimisation | Ideal and consistent ETA, Network expansion, Serviceability |
+| **OTD** | WH & dispatch OTD (Q1), Courier selection intelligence (Q2–Q3) | Address quality, Customer availability & intent, DE behaviour |
+| **Delivery Experience** | — | Last-mile handover experience, Post-failure recovery |
+| **Cost** | — | Route planning, Supply planning, Driver utilisation |
