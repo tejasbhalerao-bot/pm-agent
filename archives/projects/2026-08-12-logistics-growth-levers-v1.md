@@ -68,16 +68,13 @@ Logistics owns the handover and the signals that enable it — not customer comm
 
 ## Section 4: Cost
 
-Logistics cost per order flows directly into margin. Cost inefficiencies — RTO, reattempts, split shipments — are symptoms of failures in Promise and OTD, so fixing delivery quality and improving margins are often the same work.
+Cost optimization in FY2026 is scoped to SDD. Non-SDD logistics cost is not a priority this year. The three levers — route planning, supply planning, and driver utilization — are all enabled through DMS.
 
 | Lever | Rationale | Metric | Baseline | Target | Time Horizon | Interventions |
 |---|---|---|---|---|---|---|
-| RTO Reduction | Every RTO carries a double cost: forward logistics + return logistics + processing. Reducing RTO is simultaneously a cost and a revenue lever — every recovered delivery is a sale that stays. | RTO rate %;<br>RTO cost per order | — | — | H1 → H2 | • RTO root cause analysis<br>• High-risk COD screening |
-| NDR Reattempt Cost | A failed first attempt generates a reattempt costing ~60–80% of the original delivery. The OTD levers and cost levers are the same interventions — cost savings are a by-product of fixing delivery. | Reattempt rate;<br>cost per reattempt | — | — | H1–H2 | • OTD-led reattempt reduction<br>• Customer-confirmed reattempt slots |
-| Courier Rate Optimisation | Performance-backed negotiation is more defensible than pure volume negotiation. Partners with poor OTD should not command the same rates as high performers. | Cost per delivery by courier | — | — | H2 | • Performance-backed rate negotiation<br>• SLA breach penalty enforcement |
-| Packaging Optimisation | Right-sizing packaging reduces material cost and dimensional weight charges from couriers. Damage rate is the hard constraint — cost cannot be reduced at its expense. | Packaging cost per order;<br>damage rate (must not degrade) | — | — | H2 | • Right-sizing pilot<br>• Damage rate guardrail |
-| COD Remittance Cycle | Cash collected from COD orders sitting with courier partners is a working capital drag — typically 7–10 day cycles on high COD volume. | Remittance days outstanding | — | — | H2 | • Remittance cadence renegotiation<br>• UPI-at-door pilot |
-| Split Shipment Reduction | Orders fulfilled from multiple nodes incur multiple shipment costs. Logistics should quantify the drag and advocate for inventory positioning decisions that reduce splits. | Split shipment rate;<br>incremental cost per split | — | — | H2 | • Split shipment cost quantification<br>• Supply chain inventory positioning advocacy |
+| Route Planning | Optimising delivery routes reduces distance per order and time per drop — the most direct cost lever in SDD operations. | Cost per SDD delivery;<br>km per delivery | — | — | H1 | • DMS |
+| Supply Planning | Right-sizing fleet capacity to demand reduces idle supply costs without compromising SDD coverage. | Supply utilisation rate;<br>cost per SDD delivery | — | — | H1 | • DMS |
+| Driver Utilisation | Maximising drops per DE per hour drives down unit cost. Idle time, single-drop runs, and poor zone allocation are the primary inefficiencies. | Drops per DE per hour;<br>cost per SDD delivery | — | — | H1 | • DMS |
 
 ---
 
