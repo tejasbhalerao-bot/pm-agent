@@ -21,7 +21,7 @@ Logistics contributes to growth across four dimensions:
 
 | Focus Area | Headline Metric | Baseline | Target |
 |---|---|---|---|
-| Promise | Promise accuracy % | 62.1 hrs | — |
+| Promise | Average promise | 62.1 hrs | — |
 | On-Time Delivery | On-time delivery rate % | 51.4% | — |
 | Delivery Experience | Delivery CSAT | — | — |
 | Cost | Cost per delivered order | ₹59.2 | — |
@@ -61,7 +61,7 @@ Logistics owns the handover and the signals that enable it — not customer comm
 
 | Lever | Rationale | Metric | Baseline | Target | Time Horizon | Interventions |
 |---|---|---|---|---|---|---|
-| Last-Mile Handover Experience | The DE executes under logistics control. A successful handover requires the right delivery signals flowing in, accurate status published before the attempt, and the right tools at the door — reachability, identity verification, and proof of delivery. All enabled through DMS. | Digital POD rate;<br>mis-delivery rate | — | — | H2 | • Delivery signal capture<br>• Proactive status publishing<br>• OTP-based digital POD *(DMS)*<br>• Call masking *(DMS)*<br>• DE-customer connect *(DMS)* |
+| Last-Mile Handover Experience | The DE executes under logistics control. A successful handover requires the right delivery signals flowing in, accurate status published before the attempt, and the right tools at the door — reachability, identity verification, and proof of delivery. All enabled through DMS. | Digital POD rate;<br>mis-delivery rate | — | — | H2 | • Delivery signal capture<br>• Proactive status publishing<br>• OTP-based digital POD *(DMS)*<br>• Call masking *(DMS)*<br>• DE-customer connect *(DMS)*<br>• Delivery CSAT capture |
 | Post-Failure Recovery | Failed deliveries generate NDR. Re-engaging the customer quickly and closing the loop is logistics execution — not CX communication. Speed of recovery determines whether the order is ever delivered. | NDR resolution rate;<br>% NDR recovered within SLA | — | — | H2 | • NDR chatbot optimisation<br>• NDR communication workflow |
 
 ---
