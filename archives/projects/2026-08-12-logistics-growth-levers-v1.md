@@ -8,10 +8,10 @@
 
 Logistics contributes to growth across four dimensions:
 
-- **Promise** — the ETA shown at checkout. Tighter promise → higher conversion.
-- **OTD** — whether we deliver by that date. Broken promise → RTO, refunds, churn.
-- **Delivery Experience** — how the customer feels about the delivery, independent of whether it was on time.
-- **Cost** — logistics cost as a lever on pricing, margins, and reinvestment capacity.
+- **Promise** — the ETA shown at checkout. Tighter and accurate promise → higher conversion. A tight promise that can't be kept is net negative.
+- **OTD** — whether we deliver by the promised date. Reflects both execution quality and whether the promise itself was realistic and achievable in the first place.
+- **Delivery Experience** — how the customer feels about the delivery, encompassing everything from communication to the moment the parcel is in their hands.
+- **Cost** — logistics cost per order as a direct lever on margins.
 
 ---
 
@@ -44,7 +44,7 @@ OTD is an execution metric. The core driver is **first-attempt delivery success*
 
 ## Section 3: Delivery Experience
 
-Delivery experience is distinct from OTD. A customer can receive an order on time and still have a poor experience — no updates, a rude DE, a damaged box. Conversely, a late order handled well (proactive alert, easy reschedule, clear communication) can preserve trust. This section covers everything from the moment the order is dispatched to the moment the customer has the product in their hands.
+Delivery experience is broader than OTD. Being on time is necessary but not sufficient — a customer can receive an order on time and still have a poor experience (no updates, a rude DE, a damaged box). This section covers everything from the moment the order is dispatched to the moment the customer has the product in their hands.
 
 | # | Lever | Rationale |
 |---|---|---|
@@ -59,7 +59,7 @@ Delivery experience is distinct from OTD. A customer can receive an order on tim
 
 ## Section 4: Cost
 
-Logistics cost is a growth lever in two ways: directly (lower cost per order improves unit economics and creates room for competitive pricing or free delivery thresholds) and indirectly (cost inefficiencies like RTO and reattempts are symptoms of failures in Promise and OTD that are also hurting growth). Cost levers are ordered by their connection to customer-facing outcomes.
+Logistics cost per order flows directly into margin. Cost inefficiencies — RTO, reattempts, split shipments — are also symptoms of failures in Promise and OTD, so fixing delivery quality and improving margins are often the same work. Levers are ordered by their connection to customer-facing outcomes.
 
 | # | Lever | Rationale |
 |---|---|---|
