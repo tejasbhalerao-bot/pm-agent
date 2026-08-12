@@ -33,12 +33,11 @@ Logistics contributes to growth across four dimensions:
 | Lever | Rationale | Metric | Baseline | Target | Time Horizon | Interventions |
 |---|---|---|---|---|---|---|
 | SDD Expansion | Pincodes with high traffic, low conversion, customer receptivity to faster delivery, and weak competitive positioning are where SDD moves the needle most. | Conversion rate;<br>average promise | — | — | H1 → H2 | • Competitor ETA intelligence platform<br>• Promise elasticity experiment |
-| Network Optimisation | The warehouse assigned to an order determines pickup-to-delivery time and promise date. Routing each order to the optimal warehouse minimises transit distance and tightens promise. | Average promise;<br>pickup-to-delivery P90 | — | — | H1 | • Optimal warehouse assignment model<br>• Warehouse-pincode routing rules |
-| Network Expansion | Where we place new FCs and last-mile hubs determines how close inventory is to the customer — and therefore what promise we can make. | % pincodes within 1-day reach of an FC | — | — | H2 onwards | • Demand gap mapping<br>• FC feasibility assessment |
-| Outlier Investigation | Orders >4 days are a signal, not just a metric — they reveal where the network is structurally failing. Findings feed every lever below. | % orders >4 days | — | — | Q1 | • Courier outlier dashboard<br>• Partner SLA escalation framework |
-| Serviceability | Stale serviceability data means lost orders where we could serve, or guaranteed RTOs where we can't. Fix before optimising how we serve. | Serviceability accuracy rate | — | — | Q1–Q2 | • Serviceability change alerting<br>• Partner sync cadence |
-| Dispatch Waves | The dispatch window an order falls into directly sets the promise date. Over-promising causes OTD breach; under-promising loses conversion. | % orders making same-day dispatch | — | — | H1 | • Cut-off vs dispatch audit<br>• Cut-off-aware promise at checkout |
-| Buffer Optimisation | Buffers calibrated on clean network data are the final tuning layer. Tightening them before fixing outliers and serviceability sets a tight promise on a broken foundation. | Promise date accuracy %;<br>buffer vs actual P90 | — | — | H2 | • P90-driven buffer model<br>• Dynamic buffer layer |
+| SDD Cutoff Rationalisation | For SDD, the number and timing of dispatch waves directly determines the fastest promise we can offer. Rationalising cutoffs — informed by competitive speed benchmarks — maximises delivery speed within operational constraints. | SDD cutoff coverage;<br>SDD average promise | — | — | H1 | • Competition intelligence |
+| Ideal and Consistent ETA | Are we quoting the right promise — one that matches customer expectations, reflects competitive positioning, and is backed by actual supply capability? Misalignment on any of these erodes trust and conversion. | Promise accuracy %;<br>promise vs competitor ETA delta | — | — | H1 | • Competition intelligence<br>• Promise elasticity experiment |
+| Network Optimisation | The warehouse assigned to an order determines pickup-to-delivery time and promise date. Routing each order to the optimal warehouse minimises transit distance and tightens promise. | Average promise;<br>pickup-to-delivery P90 | — | — | H1 | • ClickPost PPA data<br>• Outlier investigation |
+| Network Expansion | Order volume distribution across pincodes reveals where network gaps exist. Competition intel and promise benchmarks inform where new FCs and last-mile hubs need to be placed. | % pincodes within 1-day reach of an FC | — | — | H2 onwards | • Competitor ETA intelligence platform<br>• Promise elasticity experiment |
+| Serviceability | Two failure modes: not serving pincodes we should be serving, and failing to communicate when a previously serviceable pincode loses coverage — both drive silent drop-off. | Non-serviceable request volume by pincode;<br>customer retention on coverage loss | — | — | Q1–Q2 | • Non-serviceable request capture<br>• Competition intelligence<br>• Serviceability loss communication |
 
 ---
 
@@ -90,7 +89,7 @@ Logistics cost per order flows directly into margin. Cost inefficiencies — RTO
 
 | | H1 | H2 |
 |---|---|---|
-| **Promise** | Outlier investigation, Serviceability, Dispatch waves, Network optimisation | Buffer optimisation, SDD expansion rollout, Network expansion planning |
+| **Promise** | SDD expansion, SDD cutoff rationalisation, Ideal and consistent ETA, Network optimisation, Serviceability | Network expansion planning |
 | **OTD** | WH & dispatch OTD, Courier selection intelligence, OFD alerts, DE behaviour | Address quality full stack, Slot selection |
 | **Delivery Experience** | Milestone communication, Communication quality, Delay alerts, Parcel condition | Last-mile handover, Post-failure recovery |
 | **Cost** | RTO root cause analysis, NDR reattempt reduction | Courier rate renegotiation, Packaging, COD remittance, Split shipment tracking |
