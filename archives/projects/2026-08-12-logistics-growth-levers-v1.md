@@ -21,10 +21,10 @@ Logistics contributes to growth across four dimensions:
 
 | Focus Area | Headline Metric | Baseline | Target |
 |---|---|---|---|
-| Promise | Promise accuracy % | — | — |
-| On-Time Delivery | On-time delivery rate % | — | — |
+| Promise | Promise accuracy % | 62.1 hrs | — |
+| On-Time Delivery | On-time delivery rate % | 51.4% | — |
 | Delivery Experience | Delivery CSAT | — | — |
-| Cost | Cost per delivered order | — | — |
+| Cost | Cost per delivered order | ₹59.2 | — |
 
 ---
 
