@@ -32,8 +32,8 @@ Logistics contributes to growth across four dimensions:
 
 | Lever | Rationale | Metric | Baseline | Target | Time Horizon | Interventions |
 |---|---|---|---|---|---|---|
-| SDD Expansion | Pincodes with high traffic, low conversion, customer receptivity to faster delivery, and weak competitive positioning are where SDD moves the needle most. | SDD-eligible pincodes;<br>SDD conversion rate | — | — | H1 → H2 | • Competitor ETA intelligence platform<br>• Promise elasticity experiment |
-| Courier Network Optimisation | Routing efficiency, hub throughput, and transit leg performance can be improved within the existing network without capital investment. | P90 transit time by pincode cluster | — | — | H1 | • Transit performance dashboard by route<br>• Courier QBR scorecard |
+| SDD Expansion | Pincodes with high traffic, low conversion, customer receptivity to faster delivery, and weak competitive positioning are where SDD moves the needle most. | Conversion rate;<br>average promise | — | — | H1 → H2 | • Competitor ETA intelligence platform<br>• Promise elasticity experiment |
+| Network Optimisation | The warehouse assigned to an order determines pickup-to-delivery time and promise date. Routing each order to the optimal warehouse minimises transit distance and tightens promise. | Average promise;<br>pickup-to-delivery P90 | — | — | H1 | • Optimal warehouse assignment model<br>• Warehouse-pincode routing rules |
 | Network Expansion | Where we place new FCs and last-mile hubs determines how close inventory is to the customer — and therefore what promise we can make. | % pincodes within 1-day reach of an FC | — | — | H2 onwards | • Demand gap mapping<br>• FC feasibility assessment |
 | Outlier Investigation | Orders >4 days are a signal, not just a metric — they reveal where the network is structurally failing. Findings feed every lever below. | % orders >4 days | — | — | Q1 | • Courier outlier dashboard<br>• Partner SLA escalation framework |
 | Serviceability | Stale serviceability data means lost orders where we could serve, or guaranteed RTOs where we can't. Fix before optimising how we serve. | Serviceability accuracy rate | — | — | Q1–Q2 | • Serviceability change alerting<br>• Partner sync cadence |
@@ -90,7 +90,7 @@ Logistics cost per order flows directly into margin. Cost inefficiencies — RTO
 
 | | H1 | H2 |
 |---|---|---|
-| **Promise** | Outlier investigation, Serviceability, Dispatch waves, Courier network optimisation | Buffer optimisation, SDD expansion rollout, Network expansion planning |
+| **Promise** | Outlier investigation, Serviceability, Dispatch waves, Network optimisation | Buffer optimisation, SDD expansion rollout, Network expansion planning |
 | **OTD** | WH & dispatch OTD, Courier selection intelligence, OFD alerts, DE behaviour | Address quality full stack, Slot selection |
 | **Delivery Experience** | Milestone communication, Communication quality, Delay alerts, Parcel condition | Last-mile handover, Post-failure recovery |
 | **Cost** | RTO root cause analysis, NDR reattempt reduction | Courier rate renegotiation, Packaging, COD remittance, Split shipment tracking |
