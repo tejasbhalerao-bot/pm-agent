@@ -21,11 +21,11 @@ Logistics contributes to growth across four dimensions:
 |---|---|---|
 | 1.1 | SDD expansion | Identify pincodes where demand is high but conversion is low, customers are open to a faster promise, and we are behind competitors on delivery speed. These are the pincodes where offering same-day delivery will move conversion the most. *(In flight — SDD Expansion Strategy project.)* |
 | 1.2 | Courier network optimisation | How we deliver faster within the existing network — routing efficiency, hub throughput, and transit leg performance. Shorter cycle, operationally driven, and directly improvable without capital investment. |
-| 1.3 | Courier network expansion | Where we grow network density — new fulfillment centers and last-mile hubs placed closer to demand. The closer inventory is to the customer, the faster and cheaper the promise. Longer horizon, driven by demand forecasting and capital availability. |
-| 1.4 | Buffer optimization | Fastest operational win. Static buffers are set once and never revisited — data-driven tightening requires no ops change. Separate static (hardcoded) from dynamic (capacity-signal-driven). |
-| 1.5 | Dispatch waves | The dispatch window an order falls into directly determines the promise date. Poorly calibrated cut-offs over-promise (OTD breach) or under-promise (lost conversion). Evening order volume in e-pharma is significant. |
-| 1.6 | Serviceability | Which pincodes we can serve and by which couriers is the foundation of promise. Stale data means lost orders (un-serviceable when we can serve) or guaranteed RTOs (serviceable when we can't). |
-| 1.7 | Outlier investigation | Orders >4 days inflate buffers and damage CX. Root-cause segmentation (courier × pincode × DoW) informs buffer calibration and feeds network optimisation decisions. |
+| 1.3 | Network expansion | Where we grow network density — new fulfillment centers and last-mile hubs placed closer to demand. The closer inventory is to the customer, the faster and cheaper the promise. Longer horizon, driven by demand forecasting and capital availability. |
+| 1.4 | Outlier investigation | Diagnostic prerequisite for the levers below. Segments orders >4 days by courier × pincode × day-of-week to understand where the network is structurally failing. Findings directly inform serviceability corrections, dispatch wave calibration, and buffer tightening. |
+| 1.5 | Serviceability | Which pincodes we can serve and by which couriers. Outlier investigation may surface pincodes that are incorrectly marked serviceable or ones we're failing systematically — fix this before optimising how we serve them. Stale data means lost orders or guaranteed RTOs. |
+| 1.6 | Dispatch waves | The dispatch window an order falls into directly determines the promise date. Calibrate cut-offs once serviceability is clean — over-promising leads to OTD breach, under-promising loses conversion. Evening order volume in e-pharma is significant. |
+| 1.7 | Buffer optimization | Final tuning layer. Buffers should be tightened on the basis of clean data from the steps above — calibrating them before fixing outliers and serviceability sets a tight promise on a broken foundation. Separate static (hardcoded) from dynamic (capacity-signal-driven). |
 
 ---
 
@@ -77,7 +77,7 @@ Logistics cost per order flows directly into margin. Cost inefficiencies — RTO
 
 | P1 — Act now | P2 — Plan and sequence | P3 — Long lead |
 |---|---|---|
-| Buffer optimization | Outlier investigation | Courier network expansion |
+| Outlier investigation | Buffer optimization | Network expansion |
 | Courier network optimisation | | |
 | Dispatch waves | SDD expansion *(in flight)* | Split shipment reduction |
 | Serviceability | Address quality | |
