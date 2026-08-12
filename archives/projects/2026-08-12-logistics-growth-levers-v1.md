@@ -47,7 +47,7 @@ OTD is an execution metric. The core driver is first-attempt delivery success �
 
 | Lever | Rationale | Metric | Baseline | Target | Time Horizon | Interventions |
 |---|---|---|---|---|---|---|
-| WH & Dispatch OTD | Pickup misses, late dispatches, and early dispatches all cause OTD failures before the courier is ever involved. | Dispatch on-time % | — | — | Q1 | • Modular payment pending flow<br>• Courier reallocation at WH fulfillment<br>• Context-aware allocation post OP *(hypothesis)* |
+| WH & Dispatch OTD | Pickup misses, late dispatches, and early dispatches all cause OTD failures before the courier is ever involved. | Dispatch on-time % | — | — | Q2 | • Modular payment pending flow<br>• Courier reallocation at WH fulfillment<br>• Context-aware allocation post OP *(hypothesis)* |
 | Courier Selection Intelligence | Route each order to the courier with the highest on-time rate for that lane — reliability, not cost, is the primary selection criterion. | On-time delivery % | — | — | Q2–Q3 | • Performance-based speed calculation<br>• Serviceability check at soft allocation<br>• Thin lane fallback design<br>• On-time parameter in allocation |
 | Address Quality | Bad addresses cause delivery failures that neither the courier nor the customer can resolve at the door. Fix upstream, not after failure. | First attempt delivery success % | — | — | H2 | • Address flow improvement<br>• Poor address migration<br>• Delivered location capture (lat/long)<br>• DMS integration *(SDD only)* |
 | Customer Availability & Intent | A meaningful share of NDR exists simply because the customer didn't know delivery was coming. Acting on availability signals before the attempt prevents avoidable failures. | First attempt delivery success % | — | — | H2 | • Slot selection (SDD) / day selection (non-SDD) |
@@ -83,6 +83,6 @@ The primary cost interventions in FY2026 target SDD operations via DMS — route
 | | H1 | H2 |
 |---|---|---|
 | **Promise** | SDD expansion, SDD cutoff rationalisation, Network optimisation | Ideal and consistent ETA, Network expansion, Serviceability |
-| **OTD** | WH & dispatch OTD (Q1), Courier selection intelligence (Q2–Q3) | Address quality, Customer availability & intent, DE behaviour |
+| **OTD** | WH & dispatch OTD (Q2), Courier selection intelligence (Q2–Q3) | Address quality, Customer availability & intent, DE behaviour |
 | **Delivery Experience** | — | Last-mile handover experience, Post-failure recovery |
 | **Cost** | — | Route planning, Supply planning, Driver utilisation |
