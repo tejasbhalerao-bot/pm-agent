@@ -1,6 +1,6 @@
-# Logistics Growth Levers
+# Logistics Annual Operating Plan — FY2026
 
-**Date:** 2026-08-12 | **Author:** Tejas Bhalerao | **Status:** Draft v4
+**Date:** 2026-08-12 | **Author:** Tejas Bhalerao | **Status:** Draft v5
 
 ---
 
@@ -15,17 +15,28 @@ Logistics contributes to growth across four dimensions:
 
 ---
 
+## FY2026 Commitments
+
+| Focus Area | Headline Metric | Baseline | FY Target |
+|---|---|---|---|
+| Promise | Promise accuracy % | [TBD] | [TBD] |
+| On-Time Delivery | On-time delivery rate % | [TBD] | [TBD] |
+| Delivery Experience | Delivery CSAT | [TBD] | [TBD] |
+| Cost | Logistics cost as % of GMV | [TBD] | [TBD] |
+
+---
+
 ## Section 1: Promise
 
-| # | Lever | Rationale |
-|---|---|---|
-| 1.1 | SDD expansion | Identify pincodes where demand is high but conversion is low, customers are open to a faster promise, and we are behind competitors on delivery speed. These are the pincodes where offering same-day delivery will move conversion the most. *(In flight — SDD Expansion Strategy project.)* |
-| 1.2 | Courier network optimisation | How we deliver faster within the existing network — routing efficiency, hub throughput, and transit leg performance. Shorter cycle, operationally driven, and directly improvable without capital investment. |
-| 1.3 | Network expansion | Where we grow network density — new fulfillment centers and last-mile hubs placed closer to demand. The closer inventory is to the customer, the faster and cheaper the promise. Longer horizon, driven by demand forecasting and capital availability. |
-| 1.4 | Outlier investigation | Diagnostic prerequisite for the levers below. Segments orders >4 days by courier × pincode × day-of-week to understand where the network is structurally failing. Findings directly inform serviceability corrections, dispatch wave calibration, and buffer tightening. |
-| 1.5 | Serviceability | Which pincodes we can serve and by which couriers. Outlier investigation may surface pincodes that are incorrectly marked serviceable or ones we're failing systematically — fix this before optimising how we serve them. Stale data means lost orders or guaranteed RTOs. |
-| 1.6 | Dispatch waves | The dispatch window an order falls into directly determines the promise date. Calibrate cut-offs once serviceability is clean — over-promising leads to OTD breach, under-promising loses conversion. Evening order volume in e-pharma is significant. |
-| 1.7 | Buffer optimization | Final tuning layer. Buffers should be tightened on the basis of clean data from the steps above — calibrating them before fixing outliers and serviceability sets a tight promise on a broken foundation. Separate static (hardcoded) from dynamic (capacity-signal-driven). |
+| # | Lever | Metric | Baseline | FY Target | Key Interventions | Time Horizon |
+|---|---|---|---|---|---|---|
+| 1.1 | SDD expansion | SDD-eligible pincodes; SDD conversion rate | [TBD] | [TBD] | Pincode scoring on traffic × conversion gap × customer receptivity × competitive positioning; SKU eligibility mapping; dark store readiness per pincode | H1 (prioritisation) → H2 (rollout) |
+| 1.2 | Courier network optimisation | P90 transit time by pincode cluster | [TBD] | [TBD] | Transit leg performance analysis by route; hub throughput benchmarking; escalate bottleneck routes to courier partners in QBRs | H1 |
+| 1.3 | Network expansion | % pincodes within 1-day reach of an FC | [TBD] | [TBD] | Demand mapping for underserved geographies; FC feasibility assessment; lease and infra planning | H2 onwards |
+| 1.4 | Outlier investigation | % orders >4 days | [TBD] | [TBD] | Build outlier dashboard (courier × pincode × DoW); root cause categorisation; partner SLA escalation for structural outlier routes | Q1 — diagnostic feeds all levers below |
+| 1.5 | Serviceability | Serviceability accuracy rate; % pincodes incorrectly tagged | [TBD] | [TBD] | Regular sync cadence with courier partners for serviceability updates; alerting for additions and removals; audit of incorrect tags surfaced by outlier investigation | Q1–Q2 |
+| 1.6 | Dispatch waves | % orders making same-day dispatch | [TBD] | [TBD] | Audit actual vs assumed cut-off times by warehouse; assess feasibility of evening dispatch run with ops; expose cut-off-aware promise at checkout | H1 |
+| 1.7 | Buffer optimization | Buffer size vs actual P90 transit time; promise date accuracy % | [TBD] | [TBD] | Replace static buffers with data-derived P90 model by pincode cluster; build dynamic buffer layer for peak and capacity signals | H2 — after outlier and serviceability work |
 
 ---
 
@@ -33,62 +44,55 @@ Logistics contributes to growth across four dimensions:
 
 OTD is an execution metric. The core driver is **first-attempt delivery success** — NDR is its inverse. Levers are ordered by where in the delivery chain they act.
 
-| # | Lever | Rationale |
-|---|---|---|
-| 2.1 | WH & dispatch OTD | Covers two upstream handoffs: warehouse order-to-dispatch time and courier pickup SLA. Delays here cascade into OTD failures regardless of courier performance downstream. |
-| 2.2 | Courier selection intelligence | Route to the courier most likely to deliver on first attempt by pincode cluster — scored on P50/P90 transit time, first-attempt rate, and NDR rate. Data already exists in courier logs. |
-| 2.3 | Address quality | ~15–25% of NDR in e-commerce. Three layers: checkout validation (prevent) → pre-delivery outreach for flagged addresses (intercept) → post-NDR address correction (recover). |
-| 2.4 | Customer availability & intent | Identify signals predicting unavailability or low intent — time of day, historical patterns, payment mode — and act before the attempt fails. Downstream fix is slot selection; upstream fix is smarter DE scheduling. |
-| 2.5 | DE behaviour | Covers both behavioural failures (missed attempts, incorrect refusals) and fraud (fake attempts). Signals: NDR reason codes, complaint rate, geo-validation of attempt events. Mechanism is partner accountability via DE scorecards in QBRs. |
+| # | Lever | Metric | Baseline | FY Target | Key Interventions | Time Horizon |
+|---|---|---|---|---|---|---|
+| 2.1 | WH & dispatch OTD | Order-to-dispatch TAT; pickup SLA compliance % | [TBD] | [TBD] | Instrument pickup events (scheduled vs actual scan time); track order-to-dispatch TAT by shift and warehouse; real-time alerting for same-day pickup misses | Q1 |
+| 2.2 | Courier selection intelligence | First-attempt delivery rate; courier NDR rate by pincode cluster | [TBD] | [TBD] | Build courier scorecard (P50/P90 transit, first-attempt rate, NDR rate) by pincode cluster; integrate scorecard into courier allocation logic | H1 |
+| 2.3 | Address quality | Address-related NDR % | [TBD] | [TBD] | Checkout address validation via pincode-to-area lookup; pre-delivery outreach for flagged addresses; post-NDR address correction flow | H1 (validation) → H2 (full stack) |
+| 2.4 | Customer availability & intent | Genuine unavailability NDR % | [TBD] | [TBD] | OFD alerts with time window; delivery slot selection at checkout; DE route scheduling optimised for predicted availability patterns | H1 (OFD alerts) → H2 (slot selection) |
+| 2.5 | DE behaviour | DE-attributed NDR %; fake attempt rate | [TBD] | [TBD] | Geo-validation of delivery attempt events; DE scorecard by partner; monthly review of DE performance data in courier QBRs | H1 |
 
 ---
 
 ## Section 3: Delivery Experience
 
-Delivery experience is broader than OTD. Being on time is necessary but not sufficient — a customer can receive an order on time and still have a poor experience (no updates, a rude DE, a damaged box). This section covers everything from the moment the order is dispatched to the moment the customer has the product in their hands.
+Delivery experience is broader than OTD. Being on time is necessary but not sufficient — a customer can receive an order on time and still have a poor experience. This section covers everything from dispatch to the moment the parcel is in the customer's hands.
 
-| # | Lever | Rationale |
-|---|---|---|
-| 3.1 | Delivery milestone communication | Customers expect updates at every meaningful stage: order confirmed, dispatched, out for delivery (with time window), delivered. Gaps in this chain generate WISMO contacts and anxiety. The OFD notification with a delivery window is the most critical moment — it enables the customer to be available and reduces first-attempt failure. |
-| 3.2 | Communication quality & channel | Sending a message is not the same as communicating. The right channel (SMS for low-data pincodes, WhatsApp for others, push for app users), the right language, and actionable content (one-tap reschedule, live tracking link, DE contact) determine whether the communication actually changes customer behaviour. NDR communication in particular is typically courier-generic — owning and redesigning this moment is a differentiation opportunity. |
-| 3.3 | Delay & exception communication | When something goes wrong — pickup miss, transit delay, failed attempt — proactive outreach before the customer notices is the difference between managed disappointment and a trust breakdown. Most logistics failures that generate complaints are ones where the customer found out on their own. |
-| 3.4 | Last-mile handover experience | The physical handover is the only moment in the entire order journey where the customer has a face-to-face interaction with TrueMeds (via the DE). This covers DE courtesy and professionalism, OTP-based digital proof of delivery, flexible handover options (leave with neighbour, security desk), and contactless delivery. A poor handover experience — even for an on-time delivery — drives negative perception and review. |
-| 3.5 | Parcel condition at delivery | The customer expects to receive the product in the state they ordered it. This covers packaging adequacy (protection during transit), tamper-evidence (critical for medicines), temperature integrity for cold-chain SKUs, and pick accuracy (right product, right quantity). A damaged or tampered parcel is a trust failure regardless of how fast it arrived. |
-| 3.6 | Post-failure recovery | When a delivery fails — damaged product, missed delivery, wrong item — how quickly and easily the customer gets a resolution determines whether they churn. Easy return initiation, fast replacement dispatch, and goodwill gestures for egregious failures convert a negative experience into a retention moment. The post-failure flow is currently courier-default for most players; owning it is an opportunity. |
+| # | Lever | Metric | Baseline | FY Target | Key Interventions | Time Horizon |
+|---|---|---|---|---|---|---|
+| 3.1 | Delivery milestone communication | Notification coverage rate; WISMO contact rate | [TBD] | [TBD] | Audit current notification gaps across order stages; build owned OFD notification with time window; channel optimisation by customer segment (SMS / WhatsApp / push) | Q1–Q2 |
+| 3.2 | Communication quality & channel | Customer engagement rate on delivery notifications | [TBD] | [TBD] | Redesign notification templates with actionable content (reschedule, track, contact DE); language personalisation; A/B test channel mix by pincode and segment | H1 |
+| 3.3 | Delay & exception communication | % delays proactively communicated before customer contacts support | [TBD] | [TBD] | Build delay detection using expected vs actual scan event comparison; proactive outreach trigger for delays beyond threshold; own NDR communication template end-to-end | H1 |
+| 3.4 | Last-mile handover experience | Digital POD rate; handover-related complaint rate | [TBD] | [TBD] | OTP-based digital proof of delivery rollout; DE courtesy standards defined and enforced with courier partners; flexible handover options (neighbour, security desk) | H1–H2 |
+| 3.5 | Parcel condition at delivery | Damage and tamper complaint rate | [TBD] | [TBD] | Packaging standards audit; tamper-evidence implementation for medicine categories; damage rate tracking by courier partner | H1 |
+| 3.6 | Post-failure recovery | Post-failure CSAT; recovery rate (replacement dispatched within SLA) | [TBD] | [TBD] | Own post-NDR customer communication flow; define recovery SLA (replacement dispatch within X hours); build goodwill framework for egregious failures | H2 |
 
 ---
 
 ## Section 4: Cost
 
-Logistics cost per order flows directly into margin. Cost inefficiencies — RTO, reattempts, split shipments — are also symptoms of failures in Promise and OTD, so fixing delivery quality and improving margins are often the same work. Levers are ordered by their connection to customer-facing outcomes.
+Logistics cost per order flows directly into margin. Cost inefficiencies — RTO, reattempts, split shipments — are also symptoms of failures in Promise and OTD, so fixing delivery quality and improving margins are often the same work.
 
-| # | Lever | Rationale |
-|---|---|---|
-| 4.1 | RTO reduction | Every RTO carries a double cost: forward logistics (paid) + return logistics + processing + inventory write-off risk. RTO rate is also a direct symptom of promise accuracy, OTD, and intent-based NDR. Reducing RTO is simultaneously a cost and a revenue lever — every recovered delivery is a sale that stays. |
-| 4.2 | NDR reattempt cost | A failed first attempt generates a reattempt, which costs ~60–80% of the original delivery cost. Improving first-attempt success (via address quality, availability detection, OFD communication) is also the most direct cost lever. The OTD levers and cost levers are the same interventions — cost savings are a by-product of fixing delivery. |
-| 4.3 | Courier rate optimisation | Courier contracts are negotiated on volume and SLA commitments. A courier scorecard (from 2.2) gives leverage to renegotiate — partners with poor OTD should not be paid the same as high performers. Rate optimisation backed by performance data is more defensible than pure volume negotiation. |
-| 4.4 | Packaging optimisation | Right-sizing packaging to product dimensions reduces material cost and dimensional weight charges from couriers (who price on volumetric weight). Maintaining parcel integrity standards (3.5) is the constraint — packaging cost reduction cannot come at the expense of damage rates. |
-| 4.5 | COD remittance cycle | Cash collected from COD orders sits with the courier partner before being remitted, typically on a 7–10 day cycle. For high COD volume, this is a working capital drag. Faster remittance cadence or digital collection (UPI at door) reduces this exposure. |
-| 4.6 | Split shipment reduction | Orders fulfilled from multiple nodes incur multiple shipment costs. Better inventory positioning (ensuring high-velocity SKUs are stocked at the right FC) reduces the frequency of splits. This is a cross-team lever (supply chain owns positioning) but logistics should flag and quantify the cost impact. |
+| # | Lever | Metric | Baseline | FY Target | Key Interventions | Time Horizon |
+|---|---|---|---|---|---|---|
+| 4.1 | RTO reduction | RTO rate %; RTO cost per order | [TBD] | [TBD] | RTO root cause analysis by NDR type; address quality improvements to reduce address-driven RTOs; intent-signal-based screening for high-risk COD orders | H1 (analysis) → H2 (interventions) |
+| 4.2 | NDR reattempt cost | Reattempt rate; cost per reattempt | [TBD] | [TBD] | First-attempt success improvements via OTD levers (2.3, 2.4); customer-confirmed reattempt slots; reattempt scheduling optimisation by DE route | H1–H2 |
+| 4.3 | Courier rate optimisation | Cost per delivery by courier | [TBD] | [TBD] | Build performance-backed negotiation data from courier scorecard; annual rate renegotiation tied to SLA delivery; penalty clause enforcement for breach | H2 — tied to contract cycles |
+| 4.4 | Packaging optimisation | Packaging cost per order; damage rate (constraint) | [TBD] | [TBD] | Dimensional weight audit vs current packaging catalogue; right-sizing pilot for low-damage-risk categories; ensure damage rate does not degrade as a constraint | H2 |
+| 4.5 | COD remittance cycle | Remittance days outstanding | [TBD] | [TBD] | Renegotiate remittance cadence with courier partners; pilot UPI-at-door as a step toward reducing COD volume | H2 |
+| 4.6 | Split shipment reduction | Split shipment rate; incremental cost per split | [TBD] | [TBD] | Quantify split shipment frequency and cost; flag to supply chain for inventory positioning decisions; track as a shared metric | H2 — cross-team |
 
 ---
 
-## Priority Summary
+## Execution Phasing
 
-| P1 — Act now | P2 — Plan and sequence | P3 — Long lead |
+| | H1 | H2 |
 |---|---|---|
-| Outlier investigation | Buffer optimization | Network expansion |
-| Courier network optimisation | | |
-| Dispatch waves | SDD expansion *(in flight)* | Split shipment reduction |
-| Serviceability | Address quality | |
-| WH & dispatch OTD | Customer availability & intent | |
-| Courier selection intelligence | DE behaviour | |
-| Delivery milestone communication | Last-mile handover experience | |
-| Delay & exception communication | Parcel condition at delivery | |
-| RTO reduction | Post-failure recovery | |
-| NDR reattempt cost | Communication quality & channel | |
-| | Courier rate optimisation | |
-| | Packaging optimisation | |
-| | COD remittance cycle | |
+| **Promise** | Outlier investigation, Serviceability audit, Dispatch wave calibration, Courier network optimisation | Buffer optimization, SDD expansion rollout, Network expansion planning |
+| **OTD** | WH & dispatch OTD instrumentation, Courier selection intelligence, OFD alerts, DE behaviour monitoring | Address quality full stack, Slot selection, Ongoing scorecard reviews |
+| **Delivery Experience** | Milestone communication, Communication quality, Delay & exception alerts, Parcel condition standards | Last-mile handover, Post-failure recovery |
+| **Cost** | RTO root cause analysis, NDR reattempt reduction | Courier rate renegotiation, Packaging optimisation, COD remittance, Split shipment tracking |
 
-**Next step:** Validate P1 levers against current data — buffer sizes, dispatch wave cut-offs, serviceability gaps, pickup miss rate — to size opportunity before execution.
+---
+
+*Baselines and targets to be populated once FY2025 actuals are confirmed. Time horizons assume H1 = Q1–Q2, H2 = Q3–Q4.*
