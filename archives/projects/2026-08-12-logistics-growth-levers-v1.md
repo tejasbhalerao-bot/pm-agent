@@ -33,11 +33,11 @@ Logistics contributes to growth across four dimensions:
 | Lever | Rationale | Metric | Baseline | Target | Time Horizon | Interventions |
 |---|---|---|---|---|---|---|
 | SDD Expansion | High-traffic, low-conversion pincodes where customers want speed and competitors are ahead are the highest-leverage SDD targets. | Conversion rate;<br>average promise | — | — | H1 → H2 | • Competitor ETA intelligence platform<br>• Promise elasticity experiment |
-| SDD Cutoff Rationalisation | Wave count and timing sets the fastest SDD promise we can quote — rationalising cutoffs against competitive benchmarks maximises speed. | SDD cutoff coverage;<br>SDD average promise | — | — | H1 | • Competition intelligence |
-| Ideal and Consistent ETA | The promise shown must match customer expectations, competitive positioning, and supply capability — a gap on any one loses conversion. | Promise accuracy %;<br>promise vs competitor ETA delta | — | — | H1 | • Competition intelligence<br>• Promise elasticity experiment |
+| SDD Cutoff Rationalisation | Wave count and timing sets the fastest SDD promise we can quote — rationalising cutoffs against competitive benchmarks maximises speed. | SDD cutoff coverage;<br>SDD average promise | — | — | H1 | • Competitor ETA intelligence platform |
+| Ideal and Consistent ETA | The promise shown must match customer expectations, competitive positioning, and supply capability — a gap on any one loses conversion. | Promise accuracy %;<br>promise vs competitor ETA delta | — | — | H1 | • Competitor ETA intelligence platform<br>• Promise elasticity experiment |
 | Network Optimisation | Optimal warehouse assignment for each order minimises pickup-to-delivery time and directly tightens promise. | Average promise;<br>pickup-to-delivery P90 | — | — | H1 | • ClickPost PPA data<br>• Outlier investigation |
 | Network Expansion | Order distribution data and competitive benchmarks reveal where new FCs or last-mile hubs would close the biggest promise gaps. | % pincodes within 1-day reach of an FC | — | — | H2 onwards | • Competitor ETA intelligence platform<br>• Promise elasticity experiment |
-| Serviceability | Two failures: not serving pincodes we should, and not communicating when coverage is lost — both cause silent drop-off. | Non-serviceable request volume by pincode;<br>customer retention on coverage loss | — | — | Q1–Q2 | • Non-serviceable request capture<br>• Competition intelligence<br>• Serviceability loss communication |
+| Serviceability | Two failures: not serving pincodes we should, and not communicating when coverage is lost — both cause silent drop-off. | Non-serviceable request volume by pincode;<br>customer retention on coverage loss | — | — | Q1–Q2 | • Non-serviceable request capture<br>• Competitor ETA intelligence platform<br>• Serviceability loss communication |
 
 ---
 
