@@ -22,4 +22,4 @@ archives/<project-name>/<doc-type>/<descriptor>-v<n>.md
 - If the project subfolder does not exist, create the full tree before saving.
 - Never save documents to the repo root, `archives/projects/`, or any other flat location.
 
-**Current projects:** `dms`, `competitor-intelligence`, `logistics`, `promise-buffer`, `sdd-expansion`.
+**Current projects:** `dms`, `competitor-intelligence`, `logistics`, `promise-buffer`, `sdd-expansion`, `modular-payment-pending-flow`.
