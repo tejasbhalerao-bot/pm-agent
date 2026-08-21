@@ -90,12 +90,12 @@ User provides a Google Drive link to a PRD document.
 
 **File Path:**
 ```
-archives/test-cases/[DATE]-[feature-name]-v#.md
+archives/<project-name>/test-cases/<descriptor>-v#.md
 ```
 
 **Example:**
 ```
-archives/test-cases/2026-05-17-promise-buffer-v1.md
+archives/promise-buffer/test-cases/test-cases-v1.md
 ```
 
 **File Structure:**
@@ -126,12 +126,12 @@ archives/test-cases/2026-05-17-promise-buffer-v1.md
 
 **Auto-Versioning:**
 - Use `scripts/get-next-version.sh` to get next version number
-- If this is the 1st iteration: `2026-05-17-promise-buffer-v1.md`
-- If this is the 2nd iteration: `2026-05-17-promise-buffer-v2.md`
+- If this is the 1st iteration: `test-cases-v1.md`
+- If this is the 2nd iteration: `test-cases-v2.md`
 
 **Command:**
 ```bash
-v=$(node scripts/get-next-version.sh promise-buffer archives/test-cases)
+v=$(node scripts/get-next-version.sh <descriptor> archives/<project-name>/test-cases)
 ```
 
 ---

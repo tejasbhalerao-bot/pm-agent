@@ -174,12 +174,12 @@ PRD Reviewer — that will also re-run this mapper after the next sign-off."*
 I will automatically:
 
 1. **Save objections to a separate file** (NOT appended to PRD):
-   - Path: `~/pm-agent/archives/objections/[YYYY-MM-DD]-[feature-name]-v#-objections.md`
-   - Example: `2026-05-17-promise-buffer-v1-objections.md`
-   - I will auto-detect the version number to match the PRD being analyzed
+   - Path: `~/pm-agent/archives/<project-name>/objections/<descriptor>-v#.md`
+   - Example: `archives/promise-buffer/objections/objections-v1.md`
+   - Auto-detect the version number to match the PRD being analyzed
 
 2. **Include a reference** to the PRD file this analyzes:
-   - Header: "Objections Analysis for: promise-buffer-v1.md"
+   - Header: "Objections Analysis for: `archives/<project-name>/prds/<descriptor>-v#.md`"
    - This links the objections back to the specific PRD version
 
 3. **Auto-commit and push**:
@@ -188,8 +188,8 @@ I will automatically:
 ```
 
 4. **Result**:
-   - ✅ PRD stays in `archives/projects/`
-   - ✅ Objections saved separately in `archives/objections/`
+   - ✅ PRD stays in `archives/<project-name>/prds/`
+   - ✅ Objections saved separately in `archives/<project-name>/objections/`
    - ✅ Both version-controlled on GitHub
    - ✅ Linked by filename matching
 

@@ -73,7 +73,7 @@ Solution: Require OTP-verified shift start before driver is marked active in Loc
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
 ```
 
-Output saved to: `archives/projects/YYYY-MM-DD-[feature]-v1.md`
+Output saved to: `archives/<project-name>/prds/<descriptor>-v1.md`
 
 ---
 
@@ -100,7 +100,7 @@ Target Value: [What improvement matters?]
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
 ```
 
-Output saved to: `archives/experiments/YYYY-MM-DD-[feature]-v1.md`
+Output saved to: `archives/<project-name>/experiments/<descriptor>-v1.md`
 
 ---
 
@@ -111,7 +111,7 @@ Map objections for [feature].
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
 ```
 
-Output saved to: `archives/objections/YYYY-MM-DD-[feature]-v1-objections.md`
+Output saved to: `archives/<project-name>/objections/<descriptor>-v1.md`
 
 ---
 
@@ -124,7 +124,7 @@ Audience: [CEO / COO / Board / Finance]
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
 ```
 
-Output saved to: `archives/briefs/YYYY-MM-DD-[feature]-v1-brief.md`
+Output saved to: `archives/<project-name>/briefs/<descriptor>-v1.md`
 
 ---
 
@@ -136,7 +136,7 @@ Design test cases for [feature].
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
 ```
 
-Output saved to: `archives/test-cases/YYYY-MM-DD-[feature]-v1-test-cases.md`
+Output saved to: `archives/<project-name>/test-cases/<descriptor>-v1.md`
 
 ---
 
@@ -163,10 +163,10 @@ Claude detects the existing version and auto-saves as the next version. Both ver
 ### Check saved files
 
 ```bash
-ls ~/pm-agent/archives/projects/
-ls ~/pm-agent/archives/experiments/
-ls ~/pm-agent/archives/objections/
-ls ~/pm-agent/archives/briefs/
+ls ~/pm-agent/archives/<project-name>/prds/
+ls ~/pm-agent/archives/<project-name>/experiments/
+ls ~/pm-agent/archives/<project-name>/objections/
+ls ~/pm-agent/archives/<project-name>/briefs/
 ```
 
 ### Check GitHub

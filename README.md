@@ -135,11 +135,12 @@ pm-agent/
 │   └── objection-mapper_changelog.md
 │
 ├── archives/
-│   ├── projects/     ← PRDs (YYYY-MM-DD-feature-vN.md)
-│   ├── experiments/  ← Experiment designs
-│   ├── objections/   ← Objection maps (linked to PRD versions)
-│   ├── briefs/       ← Executive summaries
-│   └── test-cases/   ← Functional test case suites
+│   └── <project-name>/               ← one folder per project (kebab-case slug)
+│       ├── prds/                     ← PRDs, Initiative Docs, Vision Docs
+│       ├── experiments/              ← Experiment / XP Docs
+│       ├── objections/               ← Objection maps
+│       ├── briefs/                   ← Executive summaries
+│       └── test-cases/               ← Functional test case suites
 │
 ├── templates/
 │   ├── FINAL-STEP-TEMPLATE.md          ← save + push instructions for Claude
@@ -157,12 +158,12 @@ pm-agent/
 
 ## Versioning
 
-Files auto-version by date + feature name:
+Files version by descriptor + version number within a project folder:
 
 ```
-archives/projects/2026-05-30-dms-m4-payout-manager-v1.md
-archives/projects/2026-05-30-dms-m4-payout-manager-v2.md
-archives/projects/2026-05-30-dms-m4-payout-manager-v3.md
+archives/dms/prds/m4-payout-manager-v1.md
+archives/dms/prds/m4-payout-manager-v2.md
+archives/dms/prds/m4-payout-manager-v3.md
 ```
 
 `get-next-version.sh` detects the current highest version and increments it. No manual work.

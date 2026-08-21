@@ -26,10 +26,16 @@ Fill in the version table accurately. For v1, only one row is needed.
 Once your document is complete and approved, I will:
 
 ## 1. Determine the correct archive path and next version
-- **PRD**: `archives/projects/[DATE]-[feature-name]-v#.md`
-- **Experiment**: `archives/experiments/[DATE]-[feature-name]-v#.md`
-- **Objections**: `archives/objections/[DATE]-[feature-name]-v#-objections.md`
-- **Executive Brief**: `archives/briefs/[DATE]-[feature-name]-v#-brief.md`
+
+Infer the project slug from context (or ask if ambiguous). Then use the correct doc-type subfolder:
+
+- **PRD**: `archives/<project-name>/prds/<descriptor>-v#.md`
+- **Experiment**: `archives/<project-name>/experiments/<descriptor>-v#.md`
+- **Objections**: `archives/<project-name>/objections/<descriptor>-v#.md`
+- **Executive Brief**: `archives/<project-name>/briefs/<descriptor>-v#.md`
+- **Test Cases**: `archives/<project-name>/test-cases/<descriptor>-v#.md`
+
+If the project subfolder does not exist, create the full tree before saving.
 
 I will use `~/pm-agent/scripts/get-next-version.sh` to auto-increment versions.
 
