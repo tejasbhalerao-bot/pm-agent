@@ -344,7 +344,7 @@ within what timeframe after the experiment concludes.
 
 ---
 
-## Step 11 — Draft and save the XP Doc
+## Step 11 — Draft the XP Doc
 
 Write the complete XP Doc in chat, covering all sections from Steps 2–10.
 The XP Doc must be self-contained — an engineer who has not seen this conversation
@@ -361,24 +361,27 @@ must be able to implement the experiment correctly from the doc alone.
 8. Interaction Effects
 9. Decision Criteria
 
-After writing in chat, save as a Markdown file:
-`[XP] Feature Name.md`
-
-Share the file link with the user.
+Do not save to file yet — that happens after Experiment Reviewer sign-off (Step 12).
 
 ---
 
-## Step 12 — Chain to Metrics Designer (automatic)
+## Step 12 — Chain to Experiment Reviewer (automatic, no permission needed)
 
-After saving the XP Doc, automatically invoke Metrics Designer to validate:
-1. That the primary metric, secondary metrics, and guardrail metrics are all
-   measurable with data available in Metabase or Mixpanel
-2. That the baseline metric value used in the sample size calculation is correct
-3. That the metric definitions in the XP Doc match how the metrics are actually
-   computed in Truemeds' data systems
+After completing the XP Doc draft in chat, immediately output:
 
-Say: *"XP Doc saved. Running Metrics Designer now to validate that all defined
-metrics are measurable with available data."*
+> `[CHAIN: reading ~/pm-agent/workflows/core/review-experiment.md → beginning Pass 1]`
+
+Then use the Read tool to load `~/pm-agent/workflows/core/review-experiment.md` and
+begin Pass 1 review of the full draft. Do not ask the user whether to run the review —
+it always runs. The review is not optional and does not require the user's instruction
+to begin.
+
+Do not save the XP Doc to file until:
+- Experiment Reviewer has run to completion across all rubric items, and
+- The user has given explicit sign-off (per Experiment Reviewer's sign-off loop)
+
+After sign-off, save the approved XP Doc following `templates/FINAL-STEP-TEMPLATE.md`
+and push to GitHub.
 
 ---
 
@@ -409,4 +412,7 @@ metrics are measurable with available data."*
 
 ## Final Step: Save and Push to GitHub
 
-See `templates/FINAL-STEP-TEMPLATE.md` for instructions on saving your Experiment Design and pushing to GitHub with automatic versioning (v1, v2, v3, etc.).
+Triggered only after explicit sign-off from Experiment Reviewer.
+
+See `templates/FINAL-STEP-TEMPLATE.md` for save path and push instructions.
+Use doc-type folder `experiments/` within the project archive.
