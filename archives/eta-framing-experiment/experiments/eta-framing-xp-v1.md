@@ -70,13 +70,15 @@ If we display ETA as relative days ("Delivery in X–Y days") instead of an abso
   - On the Order Summary screen, customers should see the relative days format: "Delivery in X–Y days".
   - X and Y follow the display mapping below. The underlying ETA window calculated by the system does not change; only the display format changes.
 
-| Days between today and promised delivery | Current system display | TG1 display copy |
+| Days to delivery | Current system display | TG1 display copy |
 | :-- | :-- | :-- |
 | 1 day | Single date | Out of scope (Today / Tomorrow — see note below) |
 | 2–3 days | 2-day range | "Delivery in 1–2 days" |
-| 4–5 days | 3-day range | To be confirmed with engineering |
-| 6–7 days | 4-day range | "Delivery in 2–4 days" |
-| More than 7 days | 5-day range | To be confirmed with engineering |
+| 4 days | 3-day range | "Delivery in 2–4 days" |
+| 5 days | 3-day range | "Delivery in 3–5 days" |
+| 6 days | 4-day range | "Delivery in 3–6 days" |
+| 7 days | 4-day range | "Delivery in 4–7 days" |
+| More than 7 days | 5-day range | "Delivery in [n−4]–[n] days" where n = actual days to delivery |
 
 **Note:** This experiment is applicable only if the ETA being shown is not "Delivery by Today" / "Delivery by Tomorrow". For Today and Tomorrow ETAs, existing copy is retained for all groups including TG1.
 
