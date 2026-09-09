@@ -46,6 +46,19 @@ The loop is a mechanism. Levers are what you actually pull. Every initiative bel
 
 ---
 
+## The Plan, One Quarter at a Time
+
+| Quarter | Loop Element(s) | Lever(s) | Impact |
+|---|---|---|---|
+| **JAS** | Better Promises<br>On-Time Delivery<br>Cost | ETA Positioning, Hyperlocal Expansion<br>Dispatch On-Time, Courier Selection Intelligence<br>Dispatch Efficiency | +1pp Conversion<br>SDD 30%→50% +4 metrics *(completes OND)*<br>+1pp Adherence, Hygiene<br>−Rs. 1 CPO *(completes OND)* |
+| **OND** | Better Promises<br>On-Time Delivery<br>OP2OD Uplift<br>Cost | Network Design<br>Courier Selection Intelligence, In-Transit Exception Management<br>Address Quality<br>Route Efficiency, Supply Planning, Dispatch Efficiency | SDD 30%→50% +4 metrics *(completes JAS)*<br>+3pp / +2pp Adherence, −10% support tickets<br>−0.2pp RTO<br>−Rs. 1 CPO *(completes JAS)*, Hygiene |
+| **JFM** | Better Promises<br>On-Time Delivery<br>OP2OD Uplift<br>Cost | Hyperlocal Expansion<br>Courier Selection Intelligence<br>Customer Availability, Reattempt & RTO Policy, Handover Mechanics<br>Cost Aware Courier Allocation | TBD<br>TBD<br>−0.8pp RTO<br>TBD |
+| **AMJ** | Better Promises<br>OP2OD Uplift | ETA Positioning, Network Design<br>Address Quality | TBD, Growth Bet<br>TBD |
+
+The detail behind every cell above — initiative by initiative, problem, and intervention — follows below.
+
+---
+
 ## JAS
 
 *In motion: Better Promises (ETA Positioning, Hyperlocal Expansion) · On-Time Delivery (Dispatch On-Time, Courier Selection Intelligence) · Cost (Dispatch Efficiency)*
