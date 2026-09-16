@@ -26,7 +26,9 @@ archives/<project-name>/<doc-type>/<descriptor>-v<n>.md
 - If the project subfolder does not exist, create the full tree before saving.
 - Never save documents to the repo root, `archives/projects/`, or any other flat location.
 
-**Current projects:** `dms`, `competitor-intelligence`, `logistics`, `promise-buffer`, `sdd-expansion`, `modular-payment-pending-flow`, `logistics-charter-view`, `eta-ranges-experiment`, `eta-framing-experiment`, `promise-elasticity-experiment`, `roadmap`, `mid-mile-entity`, `urgency-trigger-xp`, `awb-sort-identifier-code`, `handover-validation`.
+**Current projects:** `dms`, `competitor-intelligence`, `logistics`, `promise-buffer`, `sdd-expansion`, `modular-payment-pending-flow`, `logistics-charter-view`, `eta-ranges-experiment`, `eta-framing-experiment`, `promise-elasticity-experiment`, `roadmap`, `mid-mile-entity`, `urgency-trigger-xp`, `awb-sort-identifier-code`, `handover-validation`, `dms-v2`.
+
+`dms-v2` is a clean-slate rebuild — do not carry over problem framing, scope, or docs from `dms`. Treat it as an independent project even though the name is related.
 
 ## Delivery format for sign-off (all doc types)
 
