@@ -30,6 +30,8 @@ been in any conversation can build it, and QA can test it, from this doc alone.
   is a prerequisite, one line: *"Assumes [X] is resolved before implementation."*
 - **Name the actor.** Every sentence that describes an action names who or what
   does it (customer, ops agent, Promise service). No passive voice.
+- **People are specified too.** Where a person acts, name the role, the action and
+  the time limit, and the fallback if they do not act. "Ops handles it" is not a requirement.
 - **Requirements use "must".** Avoid "should", "could", "might", "ideally".
   Anything uncertain goes in an Open Question, not a hedge.
 - **Every requirement is testable.** If QA cannot pass or fail it, rewrite it.
@@ -68,27 +70,35 @@ been in any conversation can build it, and QA can test it, from this doc alone.
 
 ## 3. Use Cases
 
-- **Purpose:** every journey the solution must handle, with expected behaviour.
+- **Purpose:** every journey the solution must handle, including where it breaks and
+  how systems and people must behave when it does.
 - **Must contain, per use case:**
-  - ID (UC1, UC1.1) for traceability to tests and metrics;
+  - ID (UC1) for traceability to examples, tests and metrics;
   - actor, trigger and preconditions;
   - main flow as numbered steps;
   - expected outcome, including the resulting system state;
-  - named failure and edge cases nested beneath it (UC1.1, UC1.2), each with the
-    expected system behaviour;
+  - a **Breaks table** covering every step that can break: logically (precondition
+    unmet, skipped, out of order, partial, repeated, late, decided on stale or wrong
+    information, role handoff gap), through a dependency (system, data or partner
+    unavailable or wrong), or through permission (actor not allowed);
   - applicability across verticals where relevant, or an explicit "this vertical only".
-- **Also must contain, once, after all use cases:** Open Questions, each tagged to
-  the use case it blocks.
-- **Roles:** the actor in each use case states who does it. Where different roles
-  have different rights on the same action, add an unauthorised-actor failure case
-  under that use case. No separate authorization table.
+- **Breaks table columns:** ID (UC1.1) | Step | What breaks | System behaviour |
+  Person behaviour | Resulting state | Signal.
+  - *Person behaviour* names the role, the action, the time limit, and the fallback
+    or escalation if they do not act. If no person is involved, write "None: system resolves".
+  - *Signal* is what would be counted to see this break happening.
+  - No row may end at "an error is shown" without saying who acts next, or that nobody needs to.
+- **Also must contain, once, after all use cases:**
+  - **Knock-on effects:** what else moves when the flow works exactly as designed
+    (another flow, metric, vertical or team's workload). Table: Effect | Where it
+    shows up | Expected handling.
+  - **Open Questions:** each tagged to the use case it blocks. Table: Question | Blocks | Owner.
 - **Must not contain:** implementation design, audit-trail or logging specs (these
-  belong in the ARD), or a use case with only a happy path.
+  belong in the ARD), an authorization table, or a use case with only a happy path.
 - **Tone:** procedural and unambiguous; one action per step.
-- **Format:** primary use case as a heading, steps as a numbered list, sub-cases as
-  nested numbered items; Open Questions as a table (Question | Blocks | Owner).
-- **Coverage depth** (how many failure classes to consider) is the Content
-  Generator's job, not this guide's.
+- **Format:** each use case as a heading, steps as a numbered list, then its Breaks
+  table. Knock-on effects and Open Questions as tables.
+- **Coverage depth** (how to find the breaks) is the Content Generator's job, not this guide's.
 
 ## 4. Metrics
 
@@ -99,6 +109,8 @@ been in any conversation can build it, and QA can test it, from this doc alone.
   - **Check** (guardrail that must not regress).
 - **Must contain:** a Definition that leaves no room for two readings: numerator
   and denominator for any rate, and the population it is measured over.
+- **Must contain, for every Check:** the break or knock-on effect it guards, cited by
+  ID in the Definition (e.g. "Guards UC2.3"). A Check with no source does not belong here.
 - **Must not contain:** targets, baselines, timeframes or breach thresholds.
   Targets live in Rollout as Scale Criteria; breach thresholds as Kill Criteria.
   Instrumentation detail belongs in the ARD.
