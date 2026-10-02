@@ -14,6 +14,13 @@ description: >
 Creates and edits PRDs, Initiative Docs, and Vision Docs. Always invoked by Context
 Recall. Never runs standalone. Context is always loaded before this skill runs.
 
+> **Redesign in progress (2026-10-02).** Scope is now **Executable PRDs only**.
+> Initiative Docs, milestone breakdowns and Vision Docs are authored by the PM and
+> are not generated here. Section list, mandatory content, tone and format are
+> governed by `templates/prd/writing-style-guide.md`; where this file conflicts
+> with it, the style guide wins. Steps below that mention Initiative or Vision Docs
+> are superseded and will be removed when the PRD Content Generator replaces this file.
+
 ---
 
 ## Step 1 — Identify mode
@@ -59,21 +66,11 @@ ask for it explicitly before continuing.
 
 ---
 
-## Step 4 — Fetch past PRDs for style reference
+## Step 4 — Load the Writing Style Guide
 
-Before drafting, use `google_drive_search` to find past PRDs relevant to the
-current vertical or topic. Use these to understand writing style, level of
-detail, and how use cases and edge cases are typically structured.
-
-Apply this style reference specifically when drafting the Use Cases section.
-
-**If no past PRDs are found in Drive**, load the fallback style guide using the
-Read tool on `prd-creator-style-guide-fallback.md` in the same folder as this
-skill file, then apply those guidelines instead of producing unconstrained output.
-
-Flag inline that the fallback guide was used rather than a past PRD:
-*"[No past PRDs found in Drive — Use Cases written using built-in style guide.
-Filing a past PRD in Drive will enable style mirroring in future runs.]*"
+Use the Read tool to load `~/pm-agent/templates/prd/writing-style-guide.md`. It is
+the only style source: sections and order, what each must contain, tone, and format.
+Do not search Drive for past PRDs to mirror, and do not use the old fallback style guide.
 
 ---
 
@@ -83,60 +80,24 @@ Write the full doc in chat using the correct section structure for the doc type.
 
 ### Executable PRD sections
 
-**RACI**
-A table identifying who is Responsible, Accountable, Consulted, and Informed.
-Covers key stakeholders across product, engineering, ops, and any other relevant
-function. Sets ownership expectations before work begins.
+Follow `templates/prd/writing-style-guide.md` exactly for the section list and order,
+mandatory content, tone and format. The section definitions that used to be here
+(RACI, per-metric baseline/target/timeframe fields, four-column rollout table) are
+superseded by it.
 
-**Objective**
-A single crisp statement of what this PRD is trying to achieve. The outcome, not
-the problem or the solution.
-
-**Why Now?**
-The business case for prioritising this right now. What has changed recently —
-data, market conditions, operational pain, strategic priority — that makes this
-the right moment to act.
-
-**Use Cases**
-Every user journey this solution must handle. Structure as primary cases with
-sub-cases nested underneath where needed. Each use case covers: who does what,
-under what condition, and what the expected outcome is.
-
-Rules for this section:
-- Always refer to past PRDs fetched in Step 4 (or the fallback style guide if
-  none were found) to mirror writing style
-- Before drafting Use Cases, use the Read tool to load `prd-creator-operational-learnings.md`
-  from the same folder as this skill file and apply the learnings inline
-- Always cover all edge case scenarios that can arise — not just the happy path
-- Solutions must be designed to be applicable across verticals where relevant
-- Solutions must be sustainable for ~1 year
-
-**Metrics**
-The measurable outcomes that will tell you whether this initiative worked.
-Split into:
-- **Primary metrics** — directly measure the objective
-- **Secondary metrics** — leading indicators or guardrail metrics
-
-Each metric must include:
-- **Name** — what is being measured
-- **Definition** — how it is calculated
-- **Baseline** — current state value, or "unknown — to be established in
-  instrumentation phase" if genuinely unavailable at time of writing
-- **Target** — the desired end state, or a directional goal if a precise number
-  is not yet known
-- **Timeframe** — when the target is expected to be reached
-
-Do not leave baseline, target, or timeframe blank without an explicit note on
-why they are unavailable. A metric with no baseline and no target is not a metric
-— it is a label.
-
-**Rollout & Stage Gates**
-How the solution goes live and under what conditions it progresses to the next
-stage. Each stage gate defines the criteria that must be met before proceeding.
+Use Case drafting rules that still apply:
+- Before drafting Use Cases, use the Read tool to load
+  `changelogs/prd-creator-operational-learnings.md` and apply any learning not
+  marked superseded.
+- Cover edge cases and failure modes for every use case, not just the happy path.
+- Solutions must be applicable across verticals where relevant.
+- Solutions must be sustainable for ~1 year.
 
 ---
 
 ### Initiative Doc sections
+
+> **Out of scope (2026-10-02):** authored by the PM, not generated here.
 
 All sections from Executable PRD, plus:
 
@@ -157,6 +118,8 @@ individual Executable PRDs.
 ---
 
 ### Vision Doc sections
+
+> **Out of scope (2026-10-02):** authored by the PM, not generated here.
 
 No fixed template. Before drafting, ask the user what this Vision Doc needs to
 communicate and define the section structure together. Confirm the structure
@@ -237,8 +200,8 @@ operation ends here.
   is missing.
 - **Vision Doc structure unclear** → do not guess. Always define the structure
   with the user before writing.
-- **No past PRDs found in Drive** → load `prd-creator-style-guide-fallback.md` per
-  Step 4. Do not produce the Use Cases section without style guidance of some kind.
+- **Writing Style Guide missing or unreadable** → stop and tell the user. Do not
+  draft without it.
 - **Initiative Doc — milestone count is large** → confirm the full milestones
   table with the user before beginning any Executable PRD drafting. Do not
   start drafting PRDs against milestones that may change.

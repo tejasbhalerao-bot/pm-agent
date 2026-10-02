@@ -51,8 +51,12 @@ Before reviewing, ensure the right context is loaded:
 
 ## Step 3 — Review every section against three rubrics
 
-Apply all three rubrics to **every section** without exception — RACI, Objective,
-Why Now, Use Cases, Metrics, Rollout & Stage Gates, and any other section present.
+Apply all three rubrics to **every section** without exception. The expected
+sections, and what each must contain, are defined in
+`templates/prd/writing-style-guide.md` (Objective, Why Now, Use Cases, Metrics,
+Rollout & Stage Gates, Worked Examples, and Ops SOPs when Ops flows are touched).
+Load it and treat its "Must contain" and "Must not contain" rules as part of the
+Clarity and Metrics rubrics. A missing mandatory element is a finding.
 
 | Rubric | What it checks | Fails if |
 | --- | --- | --- |

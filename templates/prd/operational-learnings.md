@@ -17,8 +17,8 @@ description: >
 
 - **When addressing logic at one data hierarchy level, check the parent and sibling levels too**: If the PRD describes logic at city or state level, ask whether analogous logic is needed at the country level. Data pipelines often have a city → state → country hierarchy; defining logic at one level without specifying the others creates gaps in engineering.
 
-- **Instrumentation requirements need their own structured section, not a bullet under Metrics**: When the PRD includes audit trail or instrumentation requirements, define them in a dedicated Instrumentation section with exact field names — event/table, granularity (order-level, session-level), and field list with expected types.
+- **[Superseded 2026-10-02 by writing-style-guide.md: instrumentation belongs in the ARD]** Instrumentation requirements need their own structured section, not a bullet under Metrics**: When the PRD includes audit trail or instrumentation requirements, define them in a dedicated Instrumentation section with exact field names — event/table, granularity (order-level, session-level), and field list with expected types.
 
 - **For any new algorithmic or model-driven feature, always ask about shadow mode before writing the rollout plan**: If the feature involves ML scoring, ranking, or complex allocation logic, ask: *"Do you want to run this in shadow mode before exposing it to live orders?"* If yes, the Rollout section must include shadow mode as Stage 1 with explicit success criteria for graduating to live.
 
-- **Use tables for the Rollout & Stage Gates section**: Always present rollout stages as a table with columns: Stage | Entry Criteria | Success Criteria | Action on Failure.
+- **[Superseded 2026-10-02 by writing-style-guide.md: new rollout columns]** Use tables for the Rollout & Stage Gates section: Always present rollout stages as a table with columns: Stage | Entry Criteria | Success Criteria | Action on Failure.

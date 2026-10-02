@@ -146,7 +146,8 @@ pm-agent/
 │   ├── FINAL-STEP-TEMPLATE.md          ← save + push instructions for Claude
 │   └── prd/
 │       ├── operational-learnings.md    ← (legacy; now in changelogs/)
-│       └── style-guide-fallback.md     ← style guide when no Drive PRDs found
+│       ├── writing-style-guide.md      ← Executable PRD sections, rules, tone, format (current)
+│       └── style-guide-fallback.md     ← (legacy; superseded by writing-style-guide.md)
 │
 └── scripts/
     ├── commit-and-push.sh              ← git add -A → commit → push
