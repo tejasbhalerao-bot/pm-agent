@@ -62,7 +62,7 @@ Read what the user said and infer which PM skill to invoke next:
 
 | If the user wants to... | Route to |
 | --- | --- |
-| Write a new PRD, Vision Doc, or Initiative Doc | PRD Creator |
+| Write a new Executable PRD (Initiative and Vision Docs are PM-authored) | PRD Creator |
 | Review, improve, or fix an existing PRD | PRD Reviewer |
 | Anticipate objections to a proposal | Objection Mapper |
 | Package a proposal for leadership | Exec Brief Writer |

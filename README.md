@@ -44,30 +44,20 @@ recall-and-route
   → [route to correct skill]
 
 PRD Creation chain:
-  prd-creator (draft + 5-pass gap analysis per UC)
-  → [SCORE: X/10 gate — STOP if < 8, fill gaps first]
-  → [CHAIN] review-prd (Pass 1)
-    → [WIDGET GATE] render findings widget
-    → [PASS 1 HANDOFF] structured block for loop continuity
-    → prd-creator fixes P0s and P1s
-    → review-prd (Pass 2)
-      → [WIDGET GATE] render findings widget (resolved/persists/new)
-      → [PASS 2 HANDOFF] block
-      → if no P0s: offer sign-off
-      → if P0s remain: loop continues (Pass 3+ requires user confirmation)
-  → save to archives/ with auto-version
-  → push to GitHub
-  → objection-mapper (offered to user post sign-off)
+  prd-creator (orchestrator): four inputs
+  → prd-content-generator (reads Writing Style Guide + Context)
+  → PRD draft + handoff note
+  → review-prd (auto-triggered; under redesign)
+  → Final PRD → Artifact sign-off
+  → save to archives/ with auto-version → push to GitHub
 ```
 
 ### Gate markers
 
-Gates are output as inline markers — they enforce ordering and are visible in the session:
+Reviewer gate markers (the reviewer is under redesign; the creator no longer emits markers):
 
 | Marker | Meaning |
 |---|---|
-| `[5-PASS SCORE: X/10 — Pass N thin: reason]` | Pre-review quality score; STOP if < 8 |
-| `[CHAIN: reading review-prd.md → beginning Pass 1]` | Auto-triggers reviewer |
 | `[WIDGET GATE: rendering pass summary now]` | Blocks Step 7 routing until widget renders |
 | `[PASS N HANDOFF] ... [/PASS N HANDOFF]` | Loop continuity block — required for Pass N+1 |
 
@@ -75,7 +65,9 @@ Gates are output as inline markers — they enforce ordering and are visible in 
 
 ## 5-Pass Gap Analysis Framework
 
-Every PRD is written and reviewed through a 5-pass diagnostic lens (`workflows/core/gap-analysis-5pass.md`). Validated across 6 DMS milestone PRDs (May 2026).
+*Superseded for PRD creation (2026-10-02) by the four-lens walk in `generate-prd-content.md`; kept as reference.*
+
+Every PRD was written and reviewed through a 5-pass diagnostic lens (`workflows/core/gap-analysis-5pass.md`). Validated across 6 DMS milestone PRDs (May 2026).
 
 | Pass | Question | What it catches |
 |---|---|---|
@@ -114,6 +106,7 @@ pm-agent/
 │   │   └── weekly-synthesis-routine.md ← self-improvement pipeline
 │   └── core/
 │       ├── create-prd.md               ← PRD / Initiative Doc / Vision Doc creation
+│       ├── generate-prd-content.md     ← PRD Content Generator (inputs → draft)
 │       ├── review-prd.md               ← multi-pass PRD reviewer with widget output
 │       ├── gap-analysis-5pass.md       ← 5-pass coverage framework
 │       ├── design-experiment.md        ← A/B experiment design
@@ -194,7 +187,7 @@ Every skill has a paired changelog file in `changelogs/`. Changelogs contain dat
 
 ### Key amendments currently active
 
-**prd-creator:**
+**prd-creator** *(entries below superseded 2026-10-02 by the orchestrator redesign; see `changelogs/prd-creator_changelog.md`)*:
 - Token-optimised lazy loading of operational learnings and style guide (2026-05-16)
 - 5-pass framework applied during UC drafting with visible score gate (2026-05-20)
 - Visible `[5-PASS SCORE]` gate; STOP if < 8 (2026-05-30)

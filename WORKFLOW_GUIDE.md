@@ -14,27 +14,19 @@ recall-and-route (entry point)
   → [route to skill]
 
 PRD creation chain:
-  prd-creator (draft + 5-pass gap analysis per UC)
-  → [5-PASS SCORE: X/10 gate — STOP if < 8]
-  → [CHAIN: reading review-prd.md → beginning Pass 1]
-    → [WIDGET GATE: render findings widget]
-    → [PASS 1 HANDOFF] block
-    → prd-creator fixes P0s/P1s
-    → [CHAIN: Pass 2]
-      → [WIDGET GATE]
-      → [PASS 2 HANDOFF] block
-      → if no P0s: offer sign-off
+  prd-creator (orchestrator): four inputs
+  → prd-content-generator (reads Writing Style Guide + Context)
+  → PRD draft + handoff note
+  → review-prd (auto-triggered; under redesign)
+  → Final PRD → Artifact sign-off
   → save to archives/ with auto-version
   → push to GitHub
-  → offer Objection Mapper
 ```
 
-**Gate markers** (visible in session output):
+**Reviewer gate markers** (the reviewer is under redesign; the creator no longer emits markers):
 
 | Marker | What it enforces |
 |---|---|
-| `[5-PASS SCORE: X/10 — Pass N thin: reason]` | Score must be ≥ 8 before review starts |
-| `[CHAIN: reading review-prd.md → beginning Pass N]` | Auto-triggers reviewer — no user instruction needed |
 | `[WIDGET GATE: rendering pass summary now]` | Reviewer blocks Step 7 routing until widget renders |
 | `[PASS N HANDOFF] ... [/PASS N HANDOFF]` | Source of truth for pass-to-pass continuity |
 
@@ -58,18 +50,22 @@ Cache is written to `~/pm-agent/.context-cache.md` immediately after Cross-Cutti
 
 ```
 Create a PRD.
-Feature: [Feature name]
-Problem: [What is broken or missing, and for whom?]
-Solution: [Proposed approach]
+Problem: [Who is affected, what is broken or missing, and the measured impact]
+Solution: [What changes in the system or process]
+Success Metrics: [Metrics you want to move, with direction and target if known]
+Systems & Verticals: [e.g. Promise, Allocation / Hyperlocal Forward]
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
 ```
+
+One run produces one Executable PRD. Initiative Docs and milestone breakdowns are yours.
 
 **Example:**
 ```
 Create a PRD.
-Feature: Driver Shift Start OTP Confirmation
-Problem: Drivers start shifts without confirmation, causing ghost availability in the dispatch system.
-Solution: Require OTP-verified shift start before driver is marked active in Locus.
+Problem: Drivers start shifts without confirmation, causing ghost availability in dispatch; ~X% of assignments are made to drivers who are not on shift.
+Solution: Require OTP-verified shift start before a driver is marked active in Locus.
+Success Metrics: Reduce assignments to inactive drivers from X% to under Y%.
+Systems & Verticals: Allocation, 3rd Party Rails (Locus) / Hyperlocal Forward
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
 ```
 
@@ -182,4 +178,3 @@ https://github.com/tejasbhalerao-bot/pm-agent/tree/main/archives
 | Context Loader runs but loads nothing | Google Drive MCP not available in Claude Code | Expected — Claude flags assumptions and proceeds |
 | "I need the Pass N handoff block" | Resuming a review across sessions without the handoff block | Paste the `[PASS N HANDOFF]` block from the previous session |
 | Wrong reviewer skill used | Model invokes `anthropic-skills:prd-reviewer` instead of local file | Blocked by `recall-and-route.md` and changelogs — if it happens, say "use ~/pm-agent/workflows/core/review-prd.md" |
-| Score stuck below 8 | Pass 2 or Pass 3 genuinely thin | Claude names specific gaps — fill them before proceeding |

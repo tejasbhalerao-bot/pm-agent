@@ -93,3 +93,21 @@ and begin Pass 1 review of the full draft. No user instruction needed or expecte
 no 5-pass framework, no DMS context, no widget rendering, and no loop logic.
 The two are completely different. Using the wrong one silently produces inferior output
 with no error or warning. Always verify you are reading the local workflow file.
+
+---
+
+## 2026-10-02 — Redesign: orchestrator + Content Generator (supersedes all earlier entries)
+
+`create-prd.md` is now a thin orchestrator: four inputs → `generate-prd-content.md`
+→ PRD Reviewer → Final PRD. This entry supersedes every amendment above that
+conflicts with it. In particular, the following no longer apply to PRD creation:
+
+- The visible `[5-PASS SCORE: X/10]` gate and the "stop if below 8" rule. Coverage is
+  now a four-lens walk inside the generator, with no score.
+- Loading `gap-analysis-5pass.md` during Use Case drafting.
+- The `[CHAIN: ...]` marker. The reviewer is still auto-triggered, without a marker.
+- Lazy-loading `prd-creator-style-guide-fallback.md` and fetching past PRDs for style.
+  The Writing Style Guide (`templates/prd/writing-style-guide.md`) is the only style source.
+
+Still in force: use the local `review-prd.md`; never invoke `anthropic-skills:prd-reviewer`.
+Earlier entries are kept as history.
