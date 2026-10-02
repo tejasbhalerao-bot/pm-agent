@@ -80,12 +80,16 @@ been in any conversation can build it, and QA can test it, from this doc alone.
   - a **Breaks table** covering every step that can break: logically (precondition
     unmet, skipped, out of order, partial, repeated, late, decided on stale or wrong
     information, role handoff gap), through a dependency (system, data or partner
-    unavailable or wrong), or through permission (actor not allowed);
+    unavailable or wrong), through permission (actor not allowed), or through a
+    person not acting as required (not done, done late, done wrongly, or done by the
+    wrong person: each its own row);
   - applicability across verticals where relevant, or an explicit "this vertical only".
 - **Breaks table columns:** ID (UC1.1) | Step | What breaks | System behaviour |
   Person behaviour | Resulting state | Signal.
   - *Person behaviour* names the role, the action, the time limit, and the fallback
     or escalation if they do not act. If no person is involved, write "None: system resolves".
+    When the break is a person not acting, it states who or what notices (a timer, an
+    ageing queue, another role), after how long, and what that role then does.
   - *Signal* is what would be counted to see this break happening.
   - No row may end at "an error is shown" without saying who acts next, or that nobody needs to.
 - **Also must contain, once, after all use cases:**

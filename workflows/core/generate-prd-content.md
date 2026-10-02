@@ -60,8 +60,8 @@ per use case; a lens applied to the use case as a whole is too shallow to count.
 
 | Lens | Ask, for each step | Lands in the PRD as |
 |---|---|---|
-| A. What breaks | Is its precondition unmet? Was the step skipped, done out of order, or only half done? Is it repeated or late? Is the decision made on stale or wrong information? Do two roles each assume the other acts? Is a dependency (system, data, partner) unavailable or returning bad data? Is the actor not permitted? | A row in the use case's Breaks table |
-| B. Expected behaviour | What does the **system** do (detect, block, retry, queue, route)? What does the **person** do: which role, what action, within what time, what fallback or escalation? What state do we end in? | System, Person and Resulting state columns. If no person is involved, write "None: system resolves". No row may end at "an error is shown". |
+| A. What breaks | Is its precondition unmet? Was the step skipped, done out of order, or only half done? Is it repeated or late? Is the decision made on stale or wrong information? Do two roles each assume the other acts? **For every step a person performs: is it not done, done late, done incorrectly, or done by the wrong person?** Each of these is its own break. Is a dependency (system, data, partner) unavailable or returning bad data? Is the actor not permitted? | A row in the use case's Breaks table |
+| B. Expected behaviour | What does the **system** do (detect, block, retry, queue, route)? What does the **person** do: which role, what action, within what time, what fallback or escalation? **When a person fails to act, who or what notices (a timer, an ageing queue, another role), after how long, and what happens next?** What state do we end in? | System, Person and Resulting state columns. If no person is involved, write "None: system resolves". No row may end at "an error is shown". |
 | C. Signal | What would we count to see this break happening? | The Signal column. Candidates for Checks. |
 | D. Knock-on effects | Once the main flow works exactly as designed, what else moves: another flow, another metric, another vertical, another team's workload? | The Knock-on effects table, once, after all use cases |
 
@@ -96,6 +96,7 @@ Fix, do not report, anything that fails:
 - Every use case has an ID; every sub-case sits under a parent.
 - Every step of every use case was walked through lenses A–D (record in the handoff note).
 - Every Breaks row has a Person behaviour, or "None: system resolves"; none ends at "an error is shown".
+- Every step performed by a person has rows for not done, late, wrong, and wrong person (or a recorded reason one does not apply); each names who notices and after how long.
 - Every Check cites the break or knock-on effect it guards; every high-harm Signal has a Check or a dropped-with-reason entry.
 - Every Success and Check metric is referenced in Rollout; every Rollout metric exists in Metrics.
 - Every Worked Example cites the UC IDs it demonstrates.
