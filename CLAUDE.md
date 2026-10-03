@@ -15,9 +15,6 @@ archives/<project-name>/<doc-type>/<descriptor>-v<n>.md
 | Doc type | Folder |
 |----------|--------|
 | PRD, Vision Doc, Initiative Doc | `prds/` |
-| Executive brief | `briefs/` |
-| Experiment / XP Doc | `experiments/` |
-| Objection map | `objections/` |
 
 **Rules:**
 - `<project-name>` — kebab-case slug (e.g. `dms`, `logistics`, `competitor-intelligence`). Infer from context; ask the user if genuinely ambiguous.
@@ -32,7 +29,7 @@ archives/<project-name>/<doc-type>/<descriptor>-v<n>.md
 
 ## Delivery format for sign-off (all doc types)
 
-Do not draft PRDs, Vision Docs, Initiative Docs, XP Docs, exec briefs, or objection maps as chat text for review. Once a draft has passed its required review pass(es) (per the relevant workflow file), present it as a standalone document (a published Artifact, not a chat message) for the user's sign-off. Do not paste the draft or the review findings into chat as the primary review surface — the document is.
+Do not draft PRDs, Vision Docs, or Initiative Docs as chat text for review. Once a draft has passed its required review pass(es) (per the relevant workflow file), present it as a standalone document (a published Artifact, not a chat message) for the user's sign-off. Do not paste the draft or the review findings into chat as the primary review surface — the document is.
 
 Once the user signs off on that document, saving to the archive path and pushing to GitHub is pre-authorized — proceed with both without asking again for that specific document. State plainly when the push happens (commit message, path) so it stays visible, but do not pause for a separate confirmation.
 
