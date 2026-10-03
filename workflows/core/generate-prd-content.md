@@ -51,6 +51,17 @@ In the same message, ask only the intake questions that apply:
      not fill the gap from general knowledge. Record it as an Open Question and list
      it in the handoff note.
    - Flag any document whose `updated` date is more than 90 days old in the handoff note.
+   - **Latest document wins.** Read each document's `updated` date as you load it.
+     Systems evolve, so an older document (a PRD from January) may describe
+     behaviour a newer one (a PRD or SOP from September) has replaced. Where two
+     loaded documents describe the same system behaving differently, take the one
+     with the later `updated` date as the source of truth and write the PRD from it.
+     Still read the older one for history, but do not use its conflicting statement.
+   - A document with no `updated` date ranks below any dated document. If the
+     conflicting documents have the same date, or the only conflicting one is
+     undated, do not pick one: record an Open Question naming both.
+   - Record every conflict in the handoff note: the system, both documents with
+     their dates, and which statement was used.
 
 ---
 
@@ -114,6 +125,7 @@ Fix, do not report, anything that fails:
 - Objective contains no problem and no solution; Why Now contains no solution.
 - No "should", "could", "might"; no passive actors; no unquantified claims where a number was available.
 - Every unknown is written in the `Unknown:` format; none are silently blank.
+- Every Context conflict is either resolved by the later-dated document or logged as an Open Question; none is silently resolved.
 - Nothing from the "Must not contain" lists (implementation design, audit and logging specs, targets inside the Metrics table).
 
 ## Step 5 — Output
@@ -121,6 +133,7 @@ Fix, do not report, anything that fails:
 Return the PRD draft as the document body, plus a **Generator handoff note** kept
 separate from the PRD (not part of the doc):
 - Assumptions made, and where Context was missing.
+- Conflicts between Context documents, and which one was used.
 - Steps walked through lenses A–D, including steps where nothing was found.
 - Signals and knock-on effects dropped as Checks, with reasons.
 - Metric definitions the PM should confirm.

@@ -35,8 +35,12 @@ updated: YYYY-MM-DD
 - **systems:** only for a document that touches more than one system. File it in
   its primary system's folder, and list the *other* systems here (lowercase folder
   names, e.g. `[tracking, eta]`).
-- **updated:** date the content was last confirmed current. Claude flags documents
-  older than 90 days.
+- **updated:** the date the document was written, or last revised to match how the
+  system works now. For a past PRD, the date it was signed off. Claude uses it to
+  settle conflicts: when two documents disagree about a system, the later date wins.
+  Change it only when the content is actually revised or re-checked, never to
+  "refresh" a stale file. Claude flags documents older than 90 days, and ranks
+  undated documents below dated ones.
 
 ## How Claude loads it
 
