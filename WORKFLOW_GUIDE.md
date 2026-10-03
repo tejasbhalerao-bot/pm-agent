@@ -17,18 +17,13 @@ PRD creation chain:
   prd-creator (orchestrator): four inputs
   → prd-content-generator (reads Writing Style Guide + Context)
   → PRD draft + handoff note
-  → review-prd (auto-triggered; under redesign)
+  → review-prd (auto-triggered; reviews, fixes, re-reviews)
   → Final PRD → Artifact sign-off
   → save to archives/ with auto-version
   → push to GitHub
 ```
 
-**Reviewer gate markers** (the reviewer is under redesign; the creator no longer emits markers):
-
-| Marker | What it enforces |
-|---|---|
-| `[WIDGET GATE: rendering pass summary now]` | Reviewer blocks Step 7 routing until widget renders |
-| `[PASS N HANDOFF] ... [/PASS N HANDOFF]` | Source of truth for pass-to-pass continuity |
+**Gate markers:** none. The creator and reviewer run in one session and emit no markers.
 
 ---
 
@@ -81,7 +76,7 @@ Review the PRD for [feature].
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
 ```
 
-**Resuming Pass 2:** If continuing from a previous session, paste the `[PASS 1 HANDOFF]` block. Without it, Claude cannot track resolved/persists/new — it will ask before starting.
+**Interrupted review:** a review that stops mid-way restarts from the draft; there is no resume block.
 
 ---
 
@@ -176,5 +171,4 @@ https://github.com/tejasbhalerao-bot/pm-agent/tree/main/archives
 | Symptom | Cause | Fix |
 |---|---|---|
 | Context Loader runs but loads nothing | Google Drive MCP not available in Claude Code | Expected — Claude flags assumptions and proceeds |
-| "I need the Pass N handoff block" | Resuming a review across sessions without the handoff block | Paste the `[PASS N HANDOFF]` block from the previous session |
 | Wrong reviewer skill used | Model invokes `anthropic-skills:prd-reviewer` instead of local file | Blocked by `recall-and-route.md` and changelogs — if it happens, say "use ~/pm-agent/workflows/core/review-prd.md" |

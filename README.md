@@ -47,19 +47,14 @@ PRD Creation chain:
   prd-creator (orchestrator): four inputs
   → prd-content-generator (reads Writing Style Guide + Context)
   → PRD draft + handoff note
-  → review-prd (auto-triggered; under redesign)
+  → review-prd (auto-triggered; reviews, fixes, re-reviews)
   → Final PRD → Artifact sign-off
   → save to archives/ with auto-version → push to GitHub
 ```
 
 ### Gate markers
 
-Reviewer gate markers (the reviewer is under redesign; the creator no longer emits markers):
-
-| Marker | Meaning |
-|---|---|
-| `[WIDGET GATE: rendering pass summary now]` | Blocks Step 7 routing until widget renders |
-| `[PASS N HANDOFF] ... [/PASS N HANDOFF]` | Loop continuity block — required for Pass N+1 |
+None. The creator and reviewer no longer emit gate markers; the review loop runs in one session.
 
 ---
 
@@ -194,12 +189,12 @@ Every skill has a paired changelog file in `changelogs/`. Changelogs contain dat
 - `[CHAIN]` marker auto-triggers reviewer without user instruction (2026-05-30)
 - `anthropic-skills:prd-reviewer` explicitly prohibited; must use local `review-prd.md` (2026-05-30)
 
-**prd-reviewer:**
+**prd-reviewer** *(entries below superseded 2026-10-03 by the review-and-fix redesign; see `changelogs/prd-reviewer_changelog.md`)*:
 - 5-pass framework used as primary review lens (2026-05-20)
 - `[WIDGET GATE]` marker enforces widget render before routing (2026-05-30)
 - `[PASS N HANDOFF]` block at end of every pass for loop continuity (2026-05-30)
 
-**recall-and-route:**
+**recall-and-route** *(entries below superseded 2026-10-03: no handoff resume rule; Context now loads from `context/`)*:
 - Resumption guard: "run Pass 2" requires `[PASS N HANDOFF]` block or explicit confirm (2026-05-30)
 - `anthropic-skills:prd-reviewer` prohibited; local workflow file is always the target (2026-05-30)
 

@@ -109,8 +109,3 @@ handles; they lack the local logic and fail silently. In particular, never invok
   before routing, except the PRD-creation exception above.
 - **User wants to do multiple things** → complete one workflow fully before starting
   the next. Do not run workflows in parallel.
-- **User says "run Pass 2", "run Pass 3", or "continue review"** → before routing to
-  PRD Reviewer, check context for a `[PASS N HANDOFF]` block. If absent, ask:
-  *"I need the Pass N handoff block to track what was flagged in the previous pass.
-  Can you paste it, or should I treat this as a fresh Pass 1?"* Do not silently start
-  a new pass without it. *(Pending the PRD Reviewer redesign.)*

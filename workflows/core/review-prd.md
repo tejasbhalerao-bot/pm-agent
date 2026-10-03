@@ -1,171 +1,137 @@
 ---
 name: prd-reviewer
 description: >
-  Activate this skill to review a PRD, Vision Doc, or Initiative Doc. Triggered
-  automatically by PRD Creator after every draft — never requires user instruction
-  to begin. Runs a minimum of two full review passes: Pass 1 flags issues by
-  severity, PRD Creator auto-fixes P0 and P1 issues, Pass 2 re-reviews the updated
-  draft. If Pass 2 still finds issues, PRD Creator is called again automatically —
-  this loop continues until no P0s remain. Visualises findings after each pass.
-  Sign-off is only available after Pass 2 completes with no P0s. For Initiative
-  Docs, runs a separate review cycle per Executable PRD.
+  Reviews an Executable PRD against the Writing Style Guide, a six-check rubric and
+  repo Context, fixes P0 and P1 findings within guardrails, re-reviews, and outputs
+  the Final PRD with separate review notes. Auto-triggered by PRD Creator on every
+  draft. Also runs standalone on a PM-authored PRD, with the same review-and-fix loop.
 ---
 
 # PRD Reviewer
 
-Reviews PRDs, Vision Docs, and Initiative Docs for quality and completeness.
-Always invoked automatically by PRD Creator. Never skips sections. Never suggests
-fixes — only flags, explains, and hands back to PRD Creator to incorporate changes.
-Minimum two full passes. Loop continues automatically until no P0s remain.
+**Inputs:** PRD Draft (plus the generator's handoff note, if any) · Context ·
+Systems & Verticals · the standard in this file and in `templates/prd/writing-style-guide.md`
+**Output:** Final PRD (an Artifact for sign-off) + Review notes
+
+```
+Draft → Pass 1 review → fix P0/P1 → Pass 2 review (fresh) → … → Final PRD + Review notes
+```
+
+Executable PRDs only. If given an Initiative Doc or Vision Doc, say it is out of
+scope and stop.
 
 ---
 
-## Step 1 — Identify the input
+## Step 1 — Set up
 
-Determine what is being reviewed:
+1. **Mode.** Always review **and fix**, whether the document is a generated draft
+   (from PRD Creator) or a PM-authored PRD the PM has handed over. The two differ only
+   in where the inputs come from: for a PM-authored PRD, read the Problem, Solution,
+   Success Metrics and Systems & Verticals out of the document itself.
+2. **Systems & Verticals.** Take them from the generator, or read them from the
+   PRD's content. Ask once only if they cannot be determined.
+3. **Style guide.** Read `templates/prd/writing-style-guide.md`. Required; if it
+   cannot be read, stop and tell the PM.
+4. **Context.** Reuse a `[CONTEXT LOADED]` block if one covers these systems and
+   verticals; otherwise load per `context/README.md`. The latest-dated document wins
+   when Context documents conflict. If Context is empty for a system, skip the
+   Context alignment check for it and say so in the Review notes ("unverified against
+   Context"); this is not a finding.
 
-- **Draft in chat from PRD Creator** → use what's already in context.
-- **Existing doc from Drive** → if a link is provided, use `google_drive_fetch`
-  directly. If only a name is provided, use `google_drive_search`. If multiple
-  results found, surface top matches and ask the user to confirm.
+## Step 2 — Review pass
 
-**For Initiative Docs:** identify how many Executable PRD drafts are present.
-Run a complete, independent review cycle (Steps 2–7) for each one in sequence.
-Do not batch findings across PRDs — each PRD gets its own pass count, its own
-findings visualisation, and its own sign-off.
+Review the **whole document** every pass. Never assume an earlier finding is fixed
+without re-checking. Run all six checks; assign every finding a severity.
 
----
+| Check | What it verifies |
+|---|---|
+| **1. Structure** | Every section in the guide is present, in order, and meets its *Must contain*, *Must not contain* and *Format* rules. Ops SOPs appears only if Ops flows are touched. |
+| **2. Clarity** | No hedging ("should", "might"), no passive actors, no vague claims ("faster", "improved"), every requirement testable, numbers carry units and a source, unknowns written as `Unknown:`. |
+| **3. Coverage** | Re-walk **every step of every use case** through the four lenses in `generate-prd-content.md` (what breaks, expected behaviour of system and person, signal, knock-on effects). Do not rely on the handoff note. Look especially for: steps performed by a person with no not-done / late / wrong / wrong-person rows; Breaks rows with no person behaviour; missing knock-on effects. |
+| **4. Metrics integrity** | Every Success metric appears in a Scale Criteria; every Check in a Kill Criteria; every Check cites the break or knock-on effect it guards; every high-harm Signal has a Check or a recorded reason; definitions leave no room for two readings; Lead metrics plausibly move before the Success metric. |
+| **5. Context alignment** | The PRD does not contradict how the system works per Context (later-dated document wins); SOPs in Context that the flow touches appear in Ops SOPs; system names and metric definitions match Context. |
+| **6. Consistency** | IDs are unique and every sub-case sits under a parent; each Worked Example cites the UC IDs it demonstrates and adds no new requirement; Objective matches the Success Metrics; no section contradicts another. |
 
-## Step 2 — Check and load context
+### Severity
 
-Before reviewing, ensure the right context is loaded:
+| Tier | Meaning | Examples |
+|---|---|---|
+| **P0** | Cannot be built, tested or measured as written, or contradicts Context | Missing mandatory section; Success metric with no definition or no Scale Criteria; Check with no source or no Kill Criteria; core requirement untestable; behaviour contradicting a later-dated Context document |
+| **P1** | Weakens the PRD but it is still buildable | Missing break types or person behaviour; ambiguous wording; unsourced number where a source exists; example that adds a requirement; missing Ops SOP row |
+| **P2** | Polish | Wording, minor format |
 
-- **Use what's already in session** → do not re-fetch context already loaded
-  by Context Recall.
-- **Identify gaps** → read through the PRD and identify any vertical, process,
-  business rule, or integration referenced but not yet covered by loaded context.
-  Fetch only what's missing via Context Loader.
-- Do not proceed to Step 3 until all relevant context is loaded.
+## Step 3 — Fix
 
----
+Fix every P0 and P1 directly in the document, then record each change for the
+Review notes.
 
-## Step 3 — Review every section against three rubrics
+**You may:** correct wording and structure to the guide, including restructuring a PM-authored
+PRD into the guide's sections (move content, never drop it); add missing Breaks rows
+and person behaviour derived from the use case's own steps; tighten metric
+definitions; add missing metric links; fix IDs and example references; correct a
+statement that a later-dated Context document clearly contradicts, naming that document.
 
-Apply all three rubrics to **every section** without exception. The expected
-sections, and what each must contain, are defined in
-`templates/prd/writing-style-guide.md` (Objective, Why Now, Use Cases, Metrics,
-Rollout & Stage Gates, Worked Examples, and Ops SOPs when Ops flows are touched).
-Load it and treat its "Must contain" and "Must not contain" rules as part of the
-Clarity and Metrics rubrics. A missing mandatory element is a finding.
+**You may not:**
+- change the PM's four inputs (Problem, Solution, Success Metrics, Systems & Verticals),
+  whether supplied separately or read out of the PM's own document;
+- drop or rewrite away anything the PM wrote. Content that does not fit a section
+  is moved to where it fits best and noted in the Review notes;
+- invent numbers, SOP names, system behaviour or Context;
+- widen scope beyond the Solution, or delete a use case;
+- resolve a conflict between equally dated Context documents.
 
-| Rubric | What it checks | Fails if |
-| --- | --- | --- |
-| **Clarity** | Language is precise and unambiguous | Wording could mean different things to different readers; a claim is made without enough detail to act on |
-| **Metrics quality** | Metrics are measurable and tied to the goal | Baseline, target, or timeframe is silently absent (a written explanation for why they're unavailable is acceptable); metric can't be measured with available data; impact is described qualitatively where a number is possible |
-| **Use case coverage** | All realistic scenarios are handled | A user journey, edge case, or failure mode is missing; the solution only covers the happy path |
+If a fix needs a decision or fact only the PM has, do not guess. Write an
+`Unknown:` or Open Question in the PRD and list it under "Needs PM decision" in
+the Review notes.
 
-**Metrics note:** do not flag a metric for missing baseline/target/timeframe if the
-PRD explicitly states they are unknown and gives a reason. Flag only if silently absent.
+## Step 4 — Loop
 
----
+Run **at least two passes**. Pass 2 is a fresh review of the fixed document. Stop
+when a pass finds no P0 or P1 that you can fix. Maximum **three passes**. If P0s
+still remain after Pass 3, stop and list them for the PM.
 
-## Step 4 — Assign severity to every finding
+Keep a running record for the Review notes: each finding as *resolved*, *persists*
+or *new* by pass. This is internal; do not emit handoff markers. If a review is
+interrupted, restart from the draft rather than resuming.
 
-Every flagged issue must carry a severity tier:
+## Step 5 — Output
 
-| Tier | Meaning | Gates sign-off? |
-| --- | --- | --- |
-| **P0** | Blocks execution — ambiguity or gap that would cause the feature to be built wrong or unmeasured | Yes — P0s must be resolved before sign-off |
-| **P1** | Degrades quality — weakens the PRD but doesn't make it unbuildable | No — but PRD Creator must address P1s in every fix pass |
-| **P2** | Polish — minor clarity or completeness improvement | No — surfaced for awareness, not action |
+Deliver the Final PRD as an **Artifact** for the PM's sign-off, per `CLAUDE.md`.
+Do not paste the draft or the findings into chat as the review surface; one short
+chat line saying the Artifact is ready is enough.
 
----
+The Artifact has two parts, clearly separated:
+1. **The Final PRD**, the document body, which is what gets saved.
+2. **Review notes**, not part of the PRD and stripped on save:
+   - passes run, and findings by severity per pass;
+   - changes made (section, what, why, which check);
+   - **Needs PM decision:** unfixable P0 and P1 items;
+   - open P2 items;
+   - Context conflicts found and how each was resolved;
+   - Context gaps ("unverified against Context"), and `Unknown:` items;
+   - steps re-walked in Check 3 where nothing was found.
 
-## Step 5 — Output findings section by section
-
-Present findings in this format:
-
-**[Section name]**
-- [P0/P1/P2] [Rubric that failed]: [What was flagged] — [Why it is wrong]
-
-If a section passes all three rubrics:
-**[Section name]** — No issues found.
-
-Do not group by rubric or by severity. Keep findings section by section.
-
----
-
-## Step 6 — Visualise findings
-
-After presenting findings in text, immediately render a visual summary using the
-`show_widget` tool. The widget must be an HTML table with:
-
-- One row per finding
-- Columns: Section | Severity | Rubric | Issue summary
-- Row background colours: P0 = `#fde8e8` (red tint), P1 = `#fef3cd` (amber tint),
-  P2 = `#dbeafe` (blue tint), No issues = `#dcfce7` (green tint)
-- A summary bar at the top showing: Pass number | P0 count | P1 count | P2 count
-- From Pass 2 onward, add a "Status" column: `resolved` for issues from the
-  previous pass that no longer appear, `persists` for issues that remain,
-  `new` for issues that weren't in the previous pass
-
-Title the widget: `PRD Review — Pass [N]: [doc name]`
-
----
-
-## Step 7 — Route based on findings
-
-### Pass 1 routing
-
-- **P0s or P1s found** → hand back to PRD Creator automatically without asking.
-  Say: *"Pass 1 complete — [X] P0s and [Y] P1s found. Handing back to PRD Creator
-  to incorporate fixes. Pass 2 will run automatically."*
-- **Nothing found** → run Pass 2 immediately as a confirmation pass.
-
-### Pass 2 routing (the default exit point)
-
-- **P0s remain** → hand back to PRD Creator automatically.
-  Say: *"Pass 2 complete — [X] P0s remain. Handing back for targeted fixes. Pass 3
-  will run automatically."*
-- **Only P1s remain (no P0s)** → exit the loop. Offer sign-off with open P1s listed:
-  *"Pass 2 complete — no P0s remain. [Y] P1s are open (listed below) — these don't
-  block sign-off but will weaken the doc. Confirm sign-off to save, or say 'fix P1s'
-  to run another pass."* Wait for user choice before proceeding.
-- **Nothing found** → offer sign-off: *"Pass 2 complete — no issues remain. Confirm
-  sign-off to save the doc."*
-
-### Pass 3+ routing (only if P0s persisted past Pass 2)
-
-- **P0s still remain** → surface them and ask: *"Pass [N] complete — [X] P0s still
-  unresolved. Continue fixing (runs Pass [N+1]) or sign off with these open?"*
-  Wait for the user's choice.
-- **No P0s** → follow Pass 2 routing above.
-
-### On sign-off
-
-Run one final recheck before handing back to PRD Creator to save the file. If the
-recheck finds new P0s, re-enter the loop from Pass 2 routing. If only new P1s found,
-surface them and offer sign-off again immediately.
-
-### User override
-
-If the user explicitly instructs to proceed despite open issues, acknowledge by tier
-and count, then hand back to PRD Creator to save the file. Record the override inline
-in the saved doc as a note at the top.
+**Sign-off.** The PM signs off on the Artifact. If P0s remain that only the PM can
+resolve, sign-off needs an explicit override: record it in a note at the top of the
+saved PRD, stating how many P0s were open. On sign-off, save and push per `CLAUDE.md`.
 
 ---
+
+## Rules
+
+- Use only this file and the local style guide. Do not invoke `anthropic-skills:*`
+  skills, including `anthropic-skills:prd-reviewer`.
+- Never skip a pass, never accept sign-off before two passes have run, and never
+  save before sign-off.
+- A PM-authored PRD gets the same loop as a generated draft: review, fix, re-review.
+  Never return findings alone.
 
 ## Edge cases
 
-- **No issues found on Pass 1** → state clearly, run Pass 2 automatically as
-  confirmation, offer sign-off only after Pass 2.
-- **Context insufficient after fetching** → flag inline which areas may be
-  incomplete due to missing org context.
-- **User tries to sign off before Pass 2** → do not accept. Explain that minimum
-  two passes are required and the next pass will begin automatically.
-- **PRD Creator introduces new issues in a fix pass** → these are caught as `new`
-  in the next pass widget. Do not try to predict them in the current pass.
-- **Initiative Doc — one PRD is clean, another has open issues** → each PRD has
-  its own independent loop. A clean PRD can receive sign-off independently.
-- **P1s remain after Pass 2** → do not auto-loop. Surface them as open items and
-  offer sign-off. The user decides whether to fix them or proceed.
+- **No handoff note** (standalone or hand-written draft) → run Check 3 from scratch.
+- **PM-authored PRD in a different structure** → restructure it into the guide's
+  sections in Pass 1 as P1 fixes, preserving every piece of the PM's content.
+- **Draft is missing whole sections** → P0 per section; in generated mode, add the
+  section from the PM's inputs where possible, otherwise as Open Questions.
+- **PM edits the PRD mid-review** → treat the edited version as the new draft and restart at Pass 1.
+- **PM disagrees with a fix** → revert it, and record the disagreement in Review notes.

@@ -81,3 +81,23 @@ reading this block and maps every finding to `resolved / persists / new`.
 Without this block, cross-prompt context loss makes `resolved/persists/new`
 tracking impossible — Pass N+1 becomes a cold-start review, not a verification pass.
 
+---
+
+## 2026-10-03 — Redesign: review-and-fix with a six-check rubric (supersedes all earlier entries)
+
+`review-prd.md` was rewritten. It now reviews against the Writing Style Guide and a
+six-check rubric, fixes P0 and P1 findings itself (generated drafts), runs 2 to 3
+passes, and outputs the Final PRD with Review notes. This entry supersedes every
+amendment above that conflicts with it. In particular, these no longer apply:
+
+- Using `gap-analysis-5pass.md` as the review lens and its pass-level scoring.
+  Coverage is now Check 3, a re-walk of the four lenses in `generate-prd-content.md`.
+- The `[WIDGET GATE]` marker and the findings widget. Findings go in the Artifact's
+  Review notes.
+- The `[PASS N HANDOFF]` block and the cross-prompt resume rule. The loop runs in one
+  session; an interrupted review restarts from the draft.
+- Handing fixes back to PRD Creator. The reviewer fixes P0 and P1 itself.
+
+Still in force: use the local `review-prd.md`; never invoke `anthropic-skills:prd-reviewer`.
+Earlier entries are kept as history.
+
