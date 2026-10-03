@@ -1,26 +1,19 @@
 # Design Test Cases — PM Agent Workflow
 
 ## Entry Point
-User provides a Google Drive link to a PRD document.
+User provides an Executable PRD: a path under `archives/<project>/prds/`, or the pasted content.
 
 ---
 
-## Step 1: Fetch PRD from Google Drive
+## Step 1: Read the PRD
 
-**Instruction to Claude:**
-> "I'm providing you a Google Drive link to a PRD. Fetch the full content and read it carefully."
-
-**User Input:**
-- Google Drive PRD link (e.g., `https://docs.google.com/document/d/DOCUMENT_ID/edit`)
-
-**Action:**
-- Use `google_drive_fetch` tool (or web_fetch if shared link) to read the PRD
-- Extract and summarize:
-  - Feature name
-  - User stories / use cases
-  - Acceptance criteria
-  - Success metrics (if present)
-  - Any business rules or edge cases mentioned
+**Action:** read the PRD from the given path, or use the pasted content. Extract:
+- Feature name and Objective
+- **Use Cases** (UC IDs, actor, trigger, preconditions, main flow steps, expected outcome)
+- **Breaks tables**: every row (ID, step, what breaks, system behaviour, person behaviour, resulting state)
+- **Knock-on effects**
+- **Worked Examples** (concrete values for test data)
+- **Ops SOPs**, if present
 
 **Output:**
 - PRD content summary in your context
@@ -58,6 +51,8 @@ User provides a Google Drive link to a PRD document.
 ```
 ### TC-[FEATURE-#] — [Clear test case title]
 
+**Covers:** [UC and Breaks-row IDs, e.g. UC1, UC1.2]
+
 **Preconditions:**
 - [Setup needed before test]
 
@@ -74,6 +69,12 @@ User provides a Google Drive link to a PRD document.
 **Notes:**
 - [Any special considerations for Truemeds]
 ```
+
+**Coverage rules (from the PRD's structure):**
+- Every use case's main flow has at least one test case.
+- Every Breaks row has at least one test case. Where the row names a person's action, include a manual or ops test.
+- Every Knock-on effect has a regression test case.
+- Use Worked Example values as test data where they exist.
 
 **Coverage Goals:**
 - Main feature flow (5-8 test cases minimum)
@@ -175,7 +176,7 @@ If you need to refine test cases:
 
 ✅ Test cases cover happy path, alternate flows, edge cases, and errors  
 ✅ Each test case is clear, actionable, and has expected results  
-✅ Test cases reference the specific PRD feature  
+✅ Test cases reference the specific PRD feature, with UC and Breaks-row IDs covered  
 ✅ File is versioned in archives/test-cases/  
 ✅ Committed to GitHub  
 

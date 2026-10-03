@@ -70,9 +70,11 @@ Output saved to: `archives/<project-name>/prds/<descriptor>-v1.md`
 
 ```
 Review the PRD for [feature].
-[Paste PRD content or provide Drive link]
+[Paste the PRD, or give its path in this repo]
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
 ```
+
+Claude reviews the PRD, fixes it, and returns the Final PRD for your sign-off.
 
 **Interrupted review:** a review that stops mid-way restarts from the draft; there is no resume block.
 
@@ -121,7 +123,7 @@ Output saved to: `archives/<project-name>/briefs/<descriptor>-v1.md`
 
 ```
 Design test cases for [feature].
-[Paste PRD content or provide Drive link]
+[Paste the PRD, or give its path in this repo]
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
 ```
 
@@ -129,15 +131,11 @@ Output saved to: `archives/<project-name>/test-cases/<descriptor>-v1.md`
 
 ---
 
-### Revise an existing doc (new version)
+### Revise an existing PRD (new version)
 
-```
-Revise the PRD for [feature-name].
-Changes: [What's different in this version?]
-Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
-```
+Send the updated four inputs in the same format as **Create a PRD**. Claude regenerates the PRD and saves it as the next version (v2, v3, ...). Both versions stay in `archives/` and on GitHub.
 
-Claude detects the existing version and auto-saves as the next version. Both versions remain in `archives/` and on GitHub.
+To change a PRD you wrote yourself, use **Review an existing PRD** instead.
 
 ---
 
@@ -169,4 +167,4 @@ https://github.com/tejasbhalerao-bot/pm-agent/tree/main/archives
 | Symptom | Cause | Fix |
 |---|---|---|
 | Claude asks whether to proceed without context | The system's folder under `context/` is empty, or no document is tagged for your vertical | Add documents to `context/<system>/` (see `context/README.md`), or reply "proceed" to continue with flagged assumptions |
-| Wrong reviewer skill used | Model invokes `anthropic-skills:prd-reviewer` instead of local file | Blocked by `recall-and-route.md` and changelogs — if it happens, say "use ~/pm-agent/workflows/core/review-prd.md" |
+| Wrong reviewer skill used | Model invokes `anthropic-skills:prd-reviewer` instead of local file | Blocked by `recall-and-route.md` and `create-prd.md` — if it happens, say "use ~/pm-agent/workflows/core/review-prd.md" |

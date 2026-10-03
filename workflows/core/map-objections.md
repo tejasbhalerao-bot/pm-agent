@@ -2,8 +2,8 @@
 name: objection-mapper
 description: >
   Activate this skill to anticipate stakeholder objections against a document or
-  proposal. Triggered automatically after PRD sign-off — not optional, not
-  user-initiated. Can also be triggered independently on any document (PRD, Vision
+  proposal. Triggered by the PM on request; it is not chained after PRD sign-off.
+  Runs on any document (PRD, Vision
   Doc, Initiative Doc, Quarter Plan, AOP Plan, Insights report, or any other
   proposal) or from a verbal description in chat. Always asks for the target
   audience before running. Fetches strategic docs (Quarter Plan, AOP, in-flight
@@ -16,8 +16,8 @@ description: >
 # Objection Mapper
 
 Anticipates stakeholder objections against proposals before alignment meetings.
-Triggered automatically after PRD sign-off. Never blocks doc saving — the doc is
-already saved before this runs. The objection map is preparation for the alignment
+Triggered by the PM on request, usually on a signed-off Executable PRD or an exec
+brief. Never blocks doc saving. The objection map is preparation for the alignment
 meeting, not a gate on the doc.
 
 ---
@@ -26,8 +26,8 @@ meeting, not a gate on the doc.
 
 Determine what is being mapped:
 
-- **Triggered after PRD sign-off** → the approved doc is already in context.
-  Use it directly. Do not re-fetch.
+- **Executable PRD in the conversation or in this repo** → use it directly. A saved
+  PRD is at `archives/<project>/prds/`; read it from there.
 - **Document provided independently** → if a link is provided, use
   `google_drive_fetch` directly. If a name is provided, use `google_drive_search`.
   If multiple results found, surface top matches and ask the user to confirm.
@@ -49,12 +49,12 @@ personas — different proposals go to different audiences.
 
 ## Step 3 — Load base context
 
-Use context already loaded by Context Recall in the current session. Do not
-re-fetch what is already in context.
+Use the `[CONTEXT LOADED]` block from `recall-and-route.md`. Do not re-load what
+is already loaded.
 
-Identify any additional vertical-specific context needed — operational constraints,
-past decisions, known team priorities, business rules. Fetch only what is missing
-via Context Loader.
+Identify any additional system or vertical context needed — operational constraints,
+past decisions, known team priorities, business rules. Load only what is missing
+from `context/`, per `context/README.md`.
 
 ---
 
@@ -140,8 +140,8 @@ No suggested counters. No recommendations. Objections only.
 
 After presenting all objections, say:
 *"This objection map is ready to use for your alignment meeting. If you want to
-address any of these in the doc before the meeting, amend the PRD and re-trigger
-PRD Reviewer — that will also re-run this mapper after the next sign-off."*
+address any of these in the doc before the meeting, amend the PRD and run PRD
+Reviewer on it again. Ask me to re-run this mapper afterwards for a fresh map."*
 
 ---
 
@@ -160,10 +160,9 @@ PRD Reviewer — that will also re-run this mapper after the next sign-off."*
   warning naming all stale docs before presenting objections.
 - **Verbal description is thin** → ask for enough detail to generate meaningful
   objections before proceeding. Thin input produces surface-level output.
-- **User wants to address objections** → user amends the PRD manually and triggers
-  PRD Reviewer again. Objection Mapper does not manage this loop — it ends its
-  operation after presenting the map. It will run again automatically after the
-  next sign-off.
+- **User wants to address objections** → the PM amends the PRD and runs PRD Reviewer
+  again. Objection Mapper does not manage this loop; it ends after presenting the
+  map and runs again only on request.
 
 ---
 

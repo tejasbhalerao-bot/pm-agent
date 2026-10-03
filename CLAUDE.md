@@ -36,4 +36,4 @@ Do not draft PRDs, Vision Docs, Initiative Docs, XP Docs, exec briefs, or object
 
 Once the user signs off on that document, saving to the archive path and pushing to GitHub is pre-authorized — proceed with both without asking again for that specific document. State plainly when the push happens (commit message, path) so it stays visible, but do not pause for a separate confirmation.
 
-This does not authorize skipping the review workflow itself (5-pass gap analysis, 2-pass experiment review, etc.) — only changes where the reviewable draft lives and removes the extra confirmation step after sign-off.
+This does not authorize skipping the review workflow itself (PRD review passes, 2-pass experiment review, etc.) — only changes where the reviewable draft lives and removes the extra confirmation step after sign-off.

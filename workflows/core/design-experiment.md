@@ -24,9 +24,11 @@ Chains to Metrics Designer to validate metric availability after the doc is comp
 
 Determine what source material is available:
 
-- **Signed-off PRD in context or Drive** → primary source. Extract the hypothesis
-  from the Objective and Why Now sections. Use Metrics section as the basis for
-  metric definitions.
+- **Signed-off Executable PRD (in the conversation or under `archives/<project>/prds/`)**
+  → primary source. Extract the hypothesis from the Objective and Why Now sections.
+  Take metric definitions from the Metrics table (Success, Lead, Check). Targets are
+  in Rollout Scale Criteria and breach thresholds in Kill Criteria. The PRD holds no
+  baseline: get it before Step 5.
 - **Hypothesis + target metric provided verbally** → use directly. Ask for any
   missing inputs before proceeding (Step 2).
 - **Verbal description only** → extract a hypothesis from what the PM has described.

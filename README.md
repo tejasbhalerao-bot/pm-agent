@@ -28,7 +28,7 @@ Claude handles everything from there.
 | Review an experiment design | `Review the experiment for [feature]` |
 | Map stakeholder objections | `Map objections for [feature]` |
 | Write an exec brief | `Write an exec brief for [feature]` |
-| Design test cases from a PRD | `Design test cases for [PRD Drive link]` |
+| Design test cases from a PRD | `Design test cases for [PRD path or pasted content]` |
 
 All prompts route through `workflows/supporting/recall-and-route.md`.
 
@@ -58,89 +58,41 @@ None. The creator and reviewer no longer emit gate markers; the review loop runs
 
 ---
 
-## 5-Pass Gap Analysis Framework
-
-*Superseded for PRD creation (2026-10-02) by the four-lens walk in `generate-prd-content.md`; kept as reference.*
-
-Every PRD was written and reviewed through a 5-pass diagnostic lens (`workflows/core/gap-analysis-5pass.md`). Validated across 6 DMS milestone PRDs (May 2026).
-
-| Pass | Question | What it catches |
-|---|---|---|
-| 1 | What happens when everything works? | Thin happy path specs written as feature names |
-| 2 | What happens when each step fails directly? | Missing duplicate handling, wrong-state actions, race conditions |
-| 3 | What happens when external systems fail? | Missing retry policy, circuit breaker, recovery trigger |
-| 4 | What happens when two valid states collide? | State intersections across UCs, cutover conflicts |
-| 5 | What applies to all UCs? | Auth matrix, audit trail, concurrency model, PII, metrics thresholds, rollout plan |
-
-**Minimum bar before review:**
-- Passes 1–2: fully covered for all UCs
-- Pass 3: present for any UC that calls an external system
-- Pass 5: authorization matrix, audit trail events, open questions table
-
-**Rating heuristic:**
-
-| What's present | Score |
-|---|---|
-| Pass 1 only | 3–4/10 |
-| Pass 1 + partial Pass 2 | 5–6/10 |
-| Pass 1 + full Pass 2 | 7/10 |
-| Pass 1 + Pass 2 + Pass 3 | 7.5–8/10 |
-| All 5 passes | 9–10/10 |
-
----
-
 ## File Structure
 
 ```
 pm-agent/
+├── CLAUDE.md                           ← repo rules: archive structure, sign-off, save
+├── context/
+│   ├── CLAUDE.md                       ← org, team, systems, entry point
+│   ├── README.md                       ← how Context is organised and loaded
+│   └── allocation/ tracking/ serviceability/ eta/   ← one folder per system
 ├── workflows/
 │   ├── supporting/
-│   │   ├── recall-and-route.md         ← entry point for all workflows
-│   │   ├── load-context.md             ← (legacy; Drive-based, not used for PRDs)
-│   │   ├── answer-context-questions.md ← (legacy; depends on the old Context Loader)
-│   │   └── weekly-synthesis-routine.md ← self-improvement pipeline
+│   │   └── recall-and-route.md         ← entry point: intent, systems, Context, route
 │   └── core/
-│       ├── create-prd.md               ← PRD / Initiative Doc / Vision Doc creation
-│       ├── generate-prd-content.md     ← PRD Content Generator (inputs → draft)
-│       ├── review-prd.md               ← multi-pass PRD reviewer with widget output
-│       ├── gap-analysis-5pass.md       ← 5-pass coverage framework
+│       ├── create-prd.md               ← orchestrator: four inputs → draft → review → Final PRD
+│       ├── generate-prd-content.md     ← PRD Content Generator
+│       ├── review-prd.md               ← PRD Reviewer: review, fix, re-review
 │       ├── design-experiment.md        ← A/B experiment design
 │       ├── review-experiment.md        ← experiment design reviewer
 │       ├── map-objections.md           ← stakeholder objection mapping
 │       ├── write-exec-brief.md         ← exec brief / leadership summary
-│       └── design-test-cases.md        ← test case design from PRD
-│
-├── changelogs/
-│   ├── prd-creator_changelog.md        ← behavioral amendments to prd-creator
-│   ├── prd-reviewer_changelog.md       ← behavioral amendments to prd-reviewer
-│   ├── prd-creator-operational-learnings.md  ← principles from real sessions
-│   ├── context-loader_changelog.md
-│   ├── context-recall_changelog.md
-│   ├── context-qna_changelog.md
-│   ├── exec-brief-writer_changelog.md
-│   ├── experiment-designer_changelog.md
-│   ├── experiment-reviewer_changelog.md
-│   └── objection-mapper_changelog.md
-│
-├── archives/
-│   └── <project-name>/               ← one folder per project (kebab-case slug)
-│       ├── prds/                     ← PRDs, Initiative Docs, Vision Docs
-│       ├── experiments/              ← Experiment / XP Docs
-│       ├── objections/               ← Objection maps
-│       ├── briefs/                   ← Executive summaries
-│       └── test-cases/               ← Functional test case suites
-│
+│       └── design-test-cases.md        ← test case design from a PRD
 ├── templates/
 │   ├── FINAL-STEP-TEMPLATE.md          ← save + push instructions for Claude
 │   └── prd/
-│       ├── operational-learnings.md    ← (legacy; now in changelogs/)
-│       ├── writing-style-guide.md      ← Executable PRD sections, rules, tone, format (current)
-│       └── style-guide-fallback.md     ← (legacy; superseded by writing-style-guide.md)
-│
-└── scripts/
-    ├── commit-and-push.sh              ← commits and pushes only the paths you name
-    ├── get-next-version.sh             ← prints next <descriptor>-v<n>.md for a folder
-    └── weekly_synthesis.py            ← changelog self-improvement pipeline
+│       └── writing-style-guide.md      ← Executable PRD sections, rules, tone, format
+├── scripts/
+│   ├── commit-and-push.sh              ← commits and pushes only the paths you name
+│   └── get-next-version.sh             ← prints next <descriptor>-v<n>.md for a folder
+└── archives/
+    └── <project-name>/                 ← one folder per project (kebab-case slug)
+        ├── prds/                       ← Executable PRDs (and any Initiative / Vision Docs you file)
+        ├── experiments/                ← Experiment / XP Docs
+        ├── objections/                 ← Objection maps
+        ├── briefs/                     ← Executive summaries
+        └── test-cases/                 ← Functional test case suites
 ```
 
 ---
@@ -167,46 +119,6 @@ Context lives in `context/`, one folder per system (`allocation`, `tracking`, `s
 2. Claude reads every document in each system's folder (plus cross-tagged documents), keeping those tagged for the requested verticals
 3. If two documents disagree about a system, the later-dated one wins
 4. If a system has no documents, Claude asks whether to pause and add some, or proceed with flagged assumptions
-
----
-
-## Changelog System
-
-Every skill has a paired changelog file in `changelogs/`. Changelogs contain dated behavioral amendments that override the core workflow file when they conflict. Later entries take precedence.
-
-**Read order at runtime:** core workflow file → changelog → apply amendments → execute.
-
-**Do not edit changelogs manually.** They are updated by the weekly synthesis pipeline or by post-session analysis (see below).
-
-### Key amendments currently active
-
-**prd-creator** *(entries below superseded 2026-10-02 by the orchestrator redesign; see `changelogs/prd-creator_changelog.md`)*:
-- Token-optimised lazy loading of operational learnings and style guide (2026-05-16)
-- 5-pass framework applied during UC drafting with visible score gate (2026-05-20)
-- Visible `[5-PASS SCORE]` gate; STOP if < 8 (2026-05-30)
-- `[CHAIN]` marker auto-triggers reviewer without user instruction (2026-05-30)
-- `anthropic-skills:prd-reviewer` explicitly prohibited; must use local `review-prd.md` (2026-05-30)
-
-**prd-reviewer** *(entries below superseded 2026-10-03 by the review-and-fix redesign; see `changelogs/prd-reviewer_changelog.md`)*:
-- 5-pass framework used as primary review lens (2026-05-20)
-- `[WIDGET GATE]` marker enforces widget render before routing (2026-05-30)
-- `[PASS N HANDOFF]` block at end of every pass for loop continuity (2026-05-30)
-
-**recall-and-route** *(entries below superseded 2026-10-03: no handoff resume rule; Context now loads from `context/`)*:
-- Resumption guard: "run Pass 2" requires `[PASS N HANDOFF]` block or explicit confirm (2026-05-30)
-- `anthropic-skills:prd-reviewer` prohibited; local workflow file is always the target (2026-05-30)
-
----
-
-## Self-Learning Pipeline
-
-`scripts/weekly_synthesis.py` (triggered via `scripts/run-synthesis.js`) runs weekly:
-
-1. Reads the last 7 days of git diffs
-2. Calls Claude API to extract new learnings from corrections and patterns
-3. Appends them to the relevant changelog file — deduplicated, no manual edits needed
-
-The agent improves based on actual usage. Corrections made during sessions become rules that apply in future sessions.
 
 ---
 

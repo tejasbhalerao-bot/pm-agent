@@ -24,8 +24,9 @@ is produced.
 
 Determine what source material is available. This skill accepts any combination of:
 
-- **PRD or Initiative Doc in context or Drive** → primary source; use for The Ask,
-  Why Now, and Recommendation sections
+- **Executable PRD (in the conversation or under `archives/<project>/prds/`) or a
+  PM-authored Initiative Doc** → primary source. From an Executable PRD: Objective
+  → The Ask, Why Now → Why Now, Metrics and Rollout → Recommendation.
 - **Supporting data docs** (metrics, post-release analyses, market research) →
   use to quantify claims in Why Now and Recommendation
 - **Verbal description in chat** → use when no formal doc exists; treat as the
