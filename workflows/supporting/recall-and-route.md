@@ -23,14 +23,17 @@ Context: no Drive, no cache file.
 
 Read what the user said and infer which workflow to run:
 
-| If the user wants to... | Route to |
-| --- | --- |
-| Write a new Executable PRD (Initiative and Vision Docs are PM-authored) | PRD Creator |
-| Review, improve, or fix an existing PRD | PRD Reviewer |
-| Anticipate objections to a proposal | Objection Mapper |
-| Package a proposal for leadership | Exec Brief Writer |
-| Design or scope an experiment or A/B test | Experiment Designer |
-| Design test cases from a PRD | Test Case Designer |
+| If the user wants to... | Route to | Workflow file |
+| --- | --- | --- |
+| Write a new Executable PRD (Initiative and Vision Docs are PM-authored) | PRD Creator | `create-prd.md` |
+| Review, improve, or fix an existing PRD | PRD Reviewer | `review-prd.md` |
+| Anticipate objections to a proposal | Objection Mapper | `map-objections.md` |
+| Package a proposal for leadership | Exec Brief Writer | `write-exec-brief.md` |
+| Design or scope an experiment or A/B test | Experiment Designer | `design-experiment.md` |
+| Review an experiment design (XP Doc) | Experiment Reviewer | `review-experiment.md` |
+| Design test cases from a PRD | Test Case Designer | `design-test-cases.md` |
+
+All files are in `~/pm-agent/workflows/core/`.
 
 **If intent is clear** → continue. Do not ask.
 
@@ -93,8 +96,8 @@ of the routed workflow's output, and do not repeat it.
 
 ## Step 4 — Route
 
-Use the Read tool to load the matching workflow file from `~/pm-agent/workflows/core/`
-and follow it. Do not invoke `anthropic-skills:*` skills for any task this repo
+Use the Read tool to load the workflow file named in the Step 1 table, from
+`~/pm-agent/workflows/core/`, and follow it. Do not invoke `anthropic-skills:*` skills for any task this repo
 handles; they lack the local logic and fail silently. In particular, never invoke
 `anthropic-skills:prd-reviewer`; always load `~/pm-agent/workflows/core/review-prd.md`.
 

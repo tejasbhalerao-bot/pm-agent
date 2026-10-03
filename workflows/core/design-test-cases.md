@@ -131,7 +131,7 @@ archives/promise-buffer/test-cases/test-cases-v1.md
 
 **Command:**
 ```bash
-v=$(node scripts/get-next-version.sh <descriptor> archives/<project-name>/test-cases)
+v=$(~/pm-agent/scripts/get-next-version.sh archives/<project-name>/test-cases <descriptor>)
 ```
 
 ---
@@ -143,10 +143,7 @@ v=$(node scripts/get-next-version.sh <descriptor> archives/<project-name>/test-c
 After saving the test cases file:
 
 ```bash
-cd ~/pm-agent
-git add archives/test-cases/
-git commit -m "Design test cases: [feature name] (v#) — [X] functional test scenarios"
-git push origin main
+~/pm-agent/scripts/commit-and-push.sh "Design test cases: [feature name] (v#) — [X] functional test scenarios" archives/<project-name>/test-cases/<descriptor>-v#.md
 ```
 
 **Commit Message Format:**

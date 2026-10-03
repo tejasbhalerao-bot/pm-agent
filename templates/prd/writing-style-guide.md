@@ -30,6 +30,8 @@ been in any conversation can build it, and QA can test it, from this doc alone.
   is a prerequisite, one line: *"Assumes [X] is resolved before implementation."*
 - **Name the actor.** Every sentence that describes an action names who or what
   does it (customer, ops agent, Promise service). No passive voice.
+- **ARD** means Analytics Requirement Document, the separate doc that defines events,
+  tables, fields and audit logging. This PRD does not specify them.
 - **People are specified too.** Where a person acts, name the role, the action and
   the time limit, and the fallback if they do not act. "Ops handles it" is not a requirement.
 - **Requirements use "must".** Avoid "should", "could", "might", "ideally".

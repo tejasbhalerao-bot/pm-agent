@@ -184,7 +184,7 @@ I will automatically:
 
 3. **Auto-commit and push**:
 ```bash
-   ~/pm-agent/scripts/commit-and-push.sh "Add Objections: [feature-name] (v#)"
+   ~/pm-agent/scripts/commit-and-push.sh "Add Objections: [feature-name] (v#)" archives/<project-name>/objections/<descriptor>-v#.md
 ```
 
 4. **Result**:

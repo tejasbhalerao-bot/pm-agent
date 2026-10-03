@@ -7,7 +7,7 @@ Before saving, prepend the following block to the top of the approved document:
 ```markdown
 ---
 **Document:** [Feature Name]
-**Type:** [Executable PRD / Initiative Doc / Vision Doc]
+**Type:** [Executable PRD / XP Doc / Executive Brief / Objection Map / Test Cases]
 **Version:** vN
 **Date:** YYYY-MM-DD
 **Status:** [Draft / Under Review / Approved]
@@ -37,15 +37,15 @@ Infer the project slug from context (or ask if ambiguous). Then use the correct 
 
 If the project subfolder does not exist, create the full tree before saving.
 
-I will use `~/pm-agent/scripts/get-next-version.sh` to auto-increment versions.
+Get the next filename with `~/pm-agent/scripts/get-next-version.sh archives/<project-name>/<doc-type-folder> <descriptor>`. It prints `<descriptor>-v<n>.md` with no date prefix.
 
 ## 2. Save the file to disk
-I will write the final document directly to the correct archive folder.
+I will write the final document directly to the correct archive folder. Save the document body only: do not include the Review notes section. If the PM signed off with open P0s, put the override note at the top.
 
 ## 3. Run the commit-and-push script
 I will execute:
 ```bash
-~/pm-agent/scripts/commit-and-push.sh "Add [DOC-TYPE]: [feature-name] (v#)"
+~/pm-agent/scripts/commit-and-push.sh "Add [DOC-TYPE]: [feature-name] (v#)" <saved-file-path>
 ```
 
 ## 4. Verify success

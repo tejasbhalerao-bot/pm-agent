@@ -1,6 +1,6 @@
 # PM Agent
 
-GitHub-backed PM workflow system for Truemeds. Loads Truemeds org context from Google Drive, creates and reviews PRDs and experiment designs, enforces quality gates, and auto-versions everything to Git.
+GitHub-backed PM workflow system for Truemeds. Loads Truemeds org context from the repo's `context/` folders, creates and reviews PRDs and experiment designs, enforces quality gates, and auto-versions everything to Git.
 
 ---
 
@@ -40,7 +40,7 @@ Every workflow follows this chain. All steps are automatic — no user prompts n
 
 ```
 recall-and-route
-  → context-loader (loads org context from Google Drive; cached same-day)
+  → context from context/ (one folder per system; verticals are tags)
   → [route to correct skill]
 
 PRD Creation chain:
@@ -96,8 +96,8 @@ pm-agent/
 ├── workflows/
 │   ├── supporting/
 │   │   ├── recall-and-route.md         ← entry point for all workflows
-│   │   ├── load-context.md             ← loads org context from Google Drive
-│   │   ├── answer-context-questions.md ← follow-up Q&A on loaded context
+│   │   ├── load-context.md             ← (legacy; Drive-based, not used for PRDs)
+│   │   ├── answer-context-questions.md ← (legacy; depends on the old Context Loader)
 │   │   └── weekly-synthesis-routine.md ← self-improvement pipeline
 │   └── core/
 │       ├── create-prd.md               ← PRD / Initiative Doc / Vision Doc creation
@@ -138,8 +138,8 @@ pm-agent/
 │       └── style-guide-fallback.md     ← (legacy; superseded by writing-style-guide.md)
 │
 └── scripts/
-    ├── commit-and-push.sh              ← git add -A → commit → push
-    ├── get-next-version.sh             ← auto-increments vN for a feature
+    ├── commit-and-push.sh              ← commits and pushes only the paths you name
+    ├── get-next-version.sh             ← prints next <descriptor>-v<n>.md for a folder
     └── weekly_synthesis.py            ← changelog self-improvement pipeline
 ```
 
@@ -161,14 +161,12 @@ archives/dms/prds/m4-payout-manager-v3.md
 
 ## Context Loading
 
-Before any workflow, Claude loads Truemeds-specific org context from Google Drive via `load-context.md`:
+Context lives in `context/`, one folder per system (`allocation`, `tracking`, `serviceability`, `eta`). Business verticals are tags on each document. See [context/README.md](context/README.md).
 
-1. Reads the master index to identify relevant vertical docs
-2. Always loads Cross-Cutting (team structure, platform rules, metric definitions)
-3. Loads only vertical docs that the current request touches
-4. Caches for the session — same-day re-runs skip re-fetching
-
-If context is empty or stale, Claude surfaces a choice before proceeding: pause and file docs, or continue with flagged assumptions.
+1. `recall-and-route.md` identifies the systems and verticals in the request
+2. Claude reads every document in each system's folder (plus cross-tagged documents), keeping those tagged for the requested verticals
+3. If two documents disagree about a system, the later-dated one wins
+4. If a system has no documents, Claude asks whether to pause and add some, or proceed with flagged assumptions
 
 ---
 
@@ -232,11 +230,11 @@ Active project as of May 2026 — replacing Shipsy with Locus across hyperlocal 
 
 ```bash
 # Commit and push with a message
-~/pm-agent/scripts/commit-and-push.sh "Add PRD: feature-name v2"
+~/pm-agent/scripts/commit-and-push.sh "Add PRD: feature-name v2" archives/<project>/prds/feature-name-v2.md
 
 # Get next auto-versioned filename for a feature
-~/pm-agent/scripts/get-next-version.sh "archives/projects" "feature-name"
-# → 2026-05-30-feature-name-v2.md
+~/pm-agent/scripts/get-next-version.sh archives/<project>/prds feature-name
+# → feature-name-v2.md
 ```
 
 ---

@@ -38,8 +38,10 @@
 - Serviceability
 - Allocation
 - Tracking (Actuals)
-- Promise (ETA)
-- 3rd Party Rails (Clickpost, Locus)
+- ETA (also called Promise)
+
+Each of the four has a folder of documents in `context/<system>/`. 3rd Party Rails
+(Clickpost, Locus) has no context folder yet.
 
 ## Current Priorities
 [Add your Q2 2026 priorities]
@@ -52,5 +54,5 @@ All PM workflows start at `~/pm-agent/workflows/supporting/recall-and-route.md`.
 
 For every PM task, load the relevant workflow file from `~/pm-agent/workflows/` using the Read tool.
 Do NOT invoke built-in skills (anthropic-skills:*, pm-execution:*, or any Skill tool equivalent) for any task this repo handles.
-Built-in skills lack DMS domain context, the 5-pass framework, changelog amendments, and chain gate logic — they produce superficially similar but structurally inferior output with no warning.
+Built-in skills lack Truemeds context, the style guide and the review rules in this repo — they produce superficially similar but structurally inferior output with no warning.
 

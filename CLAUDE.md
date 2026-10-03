@@ -2,7 +2,7 @@
 
 ## Workflow context (read first)
 
-Before doing any PM work in this repo, always read `context/Claude.md` using the Read tool. It contains the workflow entry point, team structure, logistics systems, and a critical instruction prohibiting the use of built-in skills for any task this repo handles. Do not skip this step even if the task seems simple.
+Before doing any PM work in this repo, always read `context/CLAUDE.md` using the Read tool. It contains the workflow entry point, team structure, logistics systems, and a critical instruction prohibiting the use of built-in skills for any task this repo handles. Do not skip this step even if the task seems simple.
 
 ## Archive structure
 

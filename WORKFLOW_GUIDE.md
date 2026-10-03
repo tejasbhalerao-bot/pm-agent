@@ -10,7 +10,7 @@ Every prompt goes through the same execution chain. Gates are enforced inline �
 
 ```
 recall-and-route (entry point)
-  → context-loader (Google Drive; skips if ~/pm-agent/.context-cache.md exists and is dated today)
+  → context from context/ (one folder per system; verticals are tags)
   → [route to skill]
 
 PRD creation chain:
@@ -29,13 +29,11 @@ PRD creation chain:
 
 ## Context loading
 
-**In Cowork:** Google Drive MCP is available. Context Loader fetches org docs automatically.
+Context lives in `~/pm-agent/context/`: one folder per system (`allocation`, `tracking`, `serviceability`, `eta`), with verticals as tags on each document. Add documents there; conventions are in `context/README.md`.
 
-**In Claude Code:** Google Drive MCP is NOT available. Context Loader will fail silently.
-- If `~/pm-agent/.context-cache.md` exists and is dated today, it is used directly.
-- If no cache: Claude proceeds with flagged assumptions. File org docs in Drive first for accurate output.
-
-Cache is written to `~/pm-agent/.context-cache.md` immediately after Cross-Cutting loads (Step 3) and overwritten with full context at Step 8.
+- Claude reads the folders for the systems named in your request.
+- If a system's folder is empty, Claude asks once whether to pause and add documents, or proceed with assumptions flagged.
+- If two documents conflict, the later `updated` date wins.
 
 ---
 
@@ -148,7 +146,7 @@ Claude detects the existing version and auto-saves as the next version. Both ver
 ### Commit and push manually
 
 ```bash
-~/pm-agent/scripts/commit-and-push.sh "Add PRD: feature-name v2"
+~/pm-agent/scripts/commit-and-push.sh "Add PRD: feature-name v2" archives/<project>/prds/feature-name-v2.md
 ```
 
 ### Check saved files
@@ -170,5 +168,5 @@ https://github.com/tejasbhalerao-bot/pm-agent/tree/main/archives
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| Context Loader runs but loads nothing | Google Drive MCP not available in Claude Code | Expected — Claude flags assumptions and proceeds |
+| Claude asks whether to proceed without context | The system's folder under `context/` is empty, or no document is tagged for your vertical | Add documents to `context/<system>/` (see `context/README.md`), or reply "proceed" to continue with flagged assumptions |
 | Wrong reviewer skill used | Model invokes `anthropic-skills:prd-reviewer` instead of local file | Blocked by `recall-and-route.md` and changelogs — if it happens, say "use ~/pm-agent/workflows/core/review-prd.md" |
