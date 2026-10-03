@@ -18,7 +18,7 @@ description: >
 
 All four are required. If any is missing or invalid, ask for everything missing in
 one message, then stop.
-- **Systems:** from `allocation`, `tracking`, `serviceability`, `eta`. For any other
+- **Systems:** from `allocation`, `tracking`, `serviceability`, `eta`, `communications`. For any other
   system (for example 3rd Party Rails), tell the PM no folder exists and ask what to do.
 - **Verticals:** from `hyperlocal-forward`, `hyperlocal-reverse`, `courier-forward`,
   `courier-reverse`, `b2b-forward`, `b2b-reverse`, or `all`.

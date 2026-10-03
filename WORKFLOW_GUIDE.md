@@ -29,7 +29,7 @@ PRD creation chain:
 
 ## Context loading
 
-Context lives in `~/pm-agent/context/`: one folder per system (`allocation`, `tracking`, `serviceability`, `eta`), with verticals as tags on each document. Add documents there; conventions are in `context/README.md`.
+Context lives in `~/pm-agent/context/`: one folder per system (`allocation`, `tracking`, `serviceability`, `eta`, `communications`), with verticals as tags on each document. Add documents there; conventions are in `context/README.md`.
 
 - Claude reads the folders for the systems named in your request.
 - If a system's folder is empty, Claude asks once whether to pause and add documents, or proceed with assumptions flagged.
@@ -71,7 +71,7 @@ Output saved to: `archives/<project-name>/prds/<descriptor>-v1.md`
 ```
 Add context.
 Drive link: [Google Drive link]
-Systems touched: [Allocation, Tracking, Serviceability, ETA]
+Systems touched: [Allocation, Tracking, Serviceability, ETA, Communications]
 Verticals touched: [e.g. Hyperlocal Forward, or All]
 Date revisited: [YYYY-MM-DD]
 Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md

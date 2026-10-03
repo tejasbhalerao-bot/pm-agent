@@ -29,7 +29,7 @@ in **one** message, then stop. Do not draft on guesses.
 | Problem | Who is affected, what is broken or missing, and any measured impact. Impact may be marked unknown, but must be stated as unknown. |
 | Solution | What changes in the system or process, specific enough to derive use cases. |
 | Success Metrics | At least one metric, with direction of change. A target value is needed to write Scale Criteria; if absent it becomes an `Unknown:`. |
-| Systems & Verticals | Systems from the four with context folders (Allocation, Tracking, Serviceability, ETA) and verticals from the six (Hyperlocal / Courier / B2B, Forward / Reverse). A system outside the four has no context: tell the PM and continue only if they confirm. |
+| Systems & Verticals | Systems from those with context folders (Allocation, Tracking, Serviceability, ETA, Communications) and verticals from the six (Hyperlocal / Courier / B2B, Forward / Reverse). A system outside the four has no context: tell the PM and continue only if they confirm. |
 
 In the same message, ask only the intake questions that apply:
 - A specific parameter value was given (e.g. a threshold) → fixed value, or calibrate by experiment?
@@ -43,7 +43,7 @@ In the same message, ask only the intake questions that apply:
    `[CONTEXT LOADED]` block already covers these systems and verticals, reuse it; load
    only what is missing:
    - For each system in the Systems input, read every document in `context/<system>/`
-     (`allocation`, `tracking`, `serviceability`, `eta`). A document filed in more
+     (`allocation`, `tracking`, `serviceability`, `eta`, `communications`). A document filed in more
      than one folder (same `source`) is read once.
    - Keep documents whose `verticals` tag includes one of the requested verticals
      or `all`. Skip the rest.

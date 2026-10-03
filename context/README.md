@@ -12,6 +12,7 @@ cut across several verticals.
 | `tracking/` | Tracking (Actuals) |
 | `serviceability/` | Serviceability |
 | `eta/` | ETA (also called Promise in older docs) |
+| `communications/` | Communications |
 
 A system with an empty folder has no context. Claude records that as an Open
 Question in the PRD; it does not fill the gap from general knowledge.

@@ -62,7 +62,7 @@ pm-agent/
 ├── context/
 │   ├── CLAUDE.md                       ← org, team, systems, entry point
 │   ├── README.md                       ← how Context is organised and loaded
-│   └── allocation/ tracking/ serviceability/ eta/   ← one folder per system
+│   └── allocation/ tracking/ serviceability/ eta/ communications/   ← one folder per system
 ├── workflows/
 │   ├── supporting/
 │   │   └── recall-and-route.md         ← entry point: intent, systems, Context, route
@@ -101,7 +101,7 @@ archives/dms/prds/m4-payout-manager-v3.md
 
 ## Context Loading
 
-Context lives in `context/`, one folder per system (`allocation`, `tracking`, `serviceability`, `eta`). Business verticals are tags on each document. See [context/README.md](context/README.md).
+Context lives in `context/`, one folder per system (`allocation`, `tracking`, `serviceability`, `eta`, `communications`). Business verticals are tags on each document. See [context/README.md](context/README.md).
 
 1. `recall-and-route.md` identifies the systems and verticals in the request
 2. Claude reads every document in each system's folder (plus cross-tagged documents), keeping those tagged for the requested verticals
