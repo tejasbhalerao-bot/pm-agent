@@ -46,7 +46,7 @@ without re-checking. Run all six checks; assign every finding a severity.
 | Check | What it verifies |
 |---|---|
 | **1. Structure** | Every section in the guide is present, in order, and meets its *Must contain*, *Must not contain* and *Format* rules. Ops SOPs appears only if Ops flows are touched. |
-| **2. Clarity** | No hedging ("should", "might"), no passive actors, no vague claims ("faster", "improved"), every requirement testable, numbers carry units and a source, unknowns written as `Unknown:`. |
+| **2. Clarity** | No hedging ("should", "might"), no passive actors, no vague claims ("faster", "improved"), every requirement testable, numbers carry units and a source, unknowns written as `Unknown:`. **Brevity** per the guide: text that fails the delete test, facts stated more than once, preambles and recaps, filler, paragraphs where a table or list fits, steps or requirements over about 20 words. |
 | **3. Coverage** | Re-walk **every step of every use case** through the four lenses in `generate-prd-content.md` (what breaks, expected behaviour of system and person, signal, knock-on effects). Do not rely on the handoff note. Look especially for: steps performed by a person with no not-done / late / wrong / wrong-person rows; Breaks rows with no person behaviour; missing knock-on effects. |
 | **4. Metrics integrity** | Every Success metric appears in a Scale Criteria; every Check in a Kill Criteria; every Check cites the break or knock-on effect it guards; every high-harm Signal has a Check or a recorded reason; definitions leave no room for two readings; Lead metrics plausibly move before the Success metric. |
 | **5. Context alignment** | The PRD does not contradict how the system works per Context (later-dated document wins); SOPs in Context that the flow touches appear in Ops SOPs; system names and metric definitions match Context. |
@@ -57,7 +57,7 @@ without re-checking. Run all six checks; assign every finding a severity.
 | Tier | Meaning | Examples |
 |---|---|---|
 | **P0** | Cannot be built, tested or measured as written, or contradicts Context | Missing mandatory section; Success metric with no definition or no Scale Criteria; Check with no source or no Kill Criteria; core requirement untestable; behaviour contradicting a later-dated Context document |
-| **P1** | Weakens the PRD but it is still buildable | Missing break types or person behaviour; ambiguous wording; unsourced number where a source exists; example that adds a requirement; missing Ops SOP row |
+| **P1** | Weakens the PRD but it is still buildable | Missing break types or person behaviour; ambiguous wording; verbosity (repeated facts, filler, preamble or recap); unsourced number where a source exists; example that adds a requirement; missing Ops SOP row |
 | **P2** | Polish | Wording, minor format |
 
 ## Step 3 — Fix
@@ -65,7 +65,7 @@ without re-checking. Run all six checks; assign every finding a severity.
 Fix every P0 and P1 directly in the document, then record each change for the
 Review notes.
 
-**You may:** correct wording and structure to the guide, including restructuring a PM-authored
+**You may:** cut text that fails the delete test, merge repeated facts into one statement with an ID reference, and shorten wordy steps; correct wording and structure to the guide, including restructuring a PM-authored
 PRD into the guide's sections (move content, never drop it); add missing Breaks rows
 and person behaviour derived from the use case's own steps; tighten metric
 definitions; add missing metric links; fix IDs and example references; correct a
@@ -74,6 +74,7 @@ statement that a later-dated Context document clearly contradicts, naming that d
 **You may not:**
 - change the PM's four inputs (Problem, Solution, Success Metrics, Systems & Verticals),
   whether supplied separately or read out of the PM's own document;
+- cut a use case, Breaks row, metric, Check or stage for brevity; trim words only, never coverage;
 - drop or rewrite away anything the PM wrote. Content that does not fit a section
   is moved to where it fits best and noted in the Review notes;
 - invent numbers, SOP names, system behaviour or Context;
@@ -99,6 +100,8 @@ interrupted, restart from the draft rather than resuming.
 Deliver the Final PRD as an **Artifact** for the PM's sign-off, per `CLAUDE.md`.
 Do not paste the draft or the findings into chat as the review surface; one short
 chat line saying the Artifact is ready is enough.
+
+Keep the Review notes terse: one line per change, bullets only, no narrative.
 
 The Artifact has two parts, clearly separated:
 1. **The Final PRD**, the document body, which is what gets saved.

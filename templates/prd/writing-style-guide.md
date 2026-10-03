@@ -42,7 +42,22 @@ been in any conversation can build it, and QA can test it, from this doc alone.
 - **Parameter values:** where a number is a tunable threshold, state whether it is
   fixed or to be calibrated by experiment.
 - **Unknowns are written, not hidden.** Use `Unknown: <what> — <why> — <owner/by when>`.
-- **Brevity.** Cut any sentence that does not change what gets built or measured.
+- **Brevity (mandatory).** Write the shortest text that still lets engineering build
+  it, QA test it, and the team measure it.
+  - **Delete test:** if removing a sentence or phrase would not change what gets
+    built, tested or measured, remove it.
+  - One idea per sentence. Requirements and steps are one action, about 20 words or fewer.
+  - **State each fact once.** Do not restate it in another section; refer to it by ID
+    (UC2.1, a metric name).
+  - No preamble, no summary of what a section is about, no closing recap, no
+    meta-commentary ("This section describes…").
+  - No filler: drop "in order to", "it is important to note", "basically", and
+    adverbs that add no meaning. Prefer a table or list wherever the section's
+    Format allows one; avoid paragraphs.
+  - Explain only what a reader on this team would not already know. Do not explain
+    terms found in Context.
+  - **Brevity never overrides "Must contain".** Cut words, not coverage: do not drop a
+    use case, a Breaks row, a metric, a Check or a stage to save space.
 
 ---
 

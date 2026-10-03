@@ -67,6 +67,11 @@ In the same message, ask only the intake questions that apply:
 
 ## Step 3 — Write the sections, in the guide's order
 
+**Write tersely from the first draft.** Apply the style guide's Brevity rules while
+writing, not as a later trim: delete test, one idea per sentence, each fact stated
+once, no preamble or recap. Cut words, never coverage. Your questions to the PM
+(Step 1) and the handoff note (Step 5) follow the same rule.
+
 Follow the guide's Must contain, Must not contain, Tone and Format for every
 section. The rules below say how to derive each section from the inputs.
 
@@ -125,6 +130,7 @@ Fix, do not report, anything that fails:
 - Objective contains no problem and no solution; Why Now contains no solution.
 - No "should", "could", "might"; no passive actors; no unquantified claims where a number was available.
 - Every unknown is written in the `Unknown:` format; none are silently blank.
+- Brevity: no sentence fails the delete test; no fact is stated twice; no section opens with a preamble or ends with a recap. Cut anything that does, without removing any use case, Breaks row, metric, Check or stage.
 - Every Context conflict is either resolved by the later-dated document or logged as an Open Question; none is silently resolved.
 - Nothing from the "Must not contain" lists (implementation design, audit and logging specs, targets inside the Metrics table).
 
