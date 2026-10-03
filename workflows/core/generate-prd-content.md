@@ -43,8 +43,8 @@ In the same message, ask only the intake questions that apply:
    `[CONTEXT LOADED]` block already covers these systems and verticals, reuse it; load
    only what is missing:
    - For each system in the Systems input, read every document in `context/<system>/`
-     (`allocation`, `tracking`, `serviceability`, `eta`), plus any document in
-     another system's folder whose `systems:` frontmatter lists that system.
+     (`allocation`, `tracking`, `serviceability`, `eta`). A document filed in more
+     than one folder (same `source`) is read once.
    - Keep documents whose `verticals` tag includes one of the requested verticals
      or `all`. Skip the rest.
    - If a system's folder is empty, or nothing matches the requested verticals, do

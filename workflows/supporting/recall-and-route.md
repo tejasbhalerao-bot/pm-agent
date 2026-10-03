@@ -27,19 +27,23 @@ Read what the user said and infer which workflow to run:
 | --- | --- | --- |
 | Write a new Executable PRD (Initiative and Vision Docs are PM-authored) | PRD Creator | `create-prd.md` |
 | Review, improve, or fix an existing PRD | PRD Reviewer | `review-prd.md` |
+| Add a document to Context (from Google Drive) | Add Context | `add-context.md` |
 
 All files are in `~/pm-agent/workflows/core/`.
 
 **If intent is clear** → continue. Do not ask.
 
 **If intent is ambiguous** → ask once, concisely:
-*"Which would you like to do — create a new PRD or review an existing PRD?"*
+*"Which would you like to do — create a new PRD, review an existing PRD, or add a document to Context?"*
 
 Wait for the response before continuing.
 
 ---
 
 ## Step 2 — Identify systems and verticals
+
+**Exception:** for adding a Context document, skip Steps 2 and 3. Go straight to Step 4;
+`add-context.md` collects its own inputs and does not load Context.
 
 From the request, identify:
 - **Systems touched**, from: Allocation, Tracking, Serviceability, ETA.

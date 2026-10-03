@@ -66,6 +66,21 @@ Output saved to: `archives/<project-name>/prds/<descriptor>-v1.md`
 
 ---
 
+### Add a document to Context
+
+```
+Add context.
+Drive link: [Google Drive link]
+Systems touched: [Allocation, Tracking, Serviceability, ETA]
+Verticals touched: [e.g. Hyperlocal Forward, or All]
+Date revisited: [YYYY-MM-DD]
+Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
+```
+
+Claude copies the document verbatim into markdown, adds a header, files an identical copy in each touched system's folder under `context/`, and pushes.
+
+---
+
 ### Review an existing PRD
 
 ```

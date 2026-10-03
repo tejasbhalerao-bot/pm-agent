@@ -18,33 +18,35 @@ Question in the PRD; it does not fill the gap from general knowledge.
 
 ## Document convention
 
-One markdown file per document. Start each file with:
+One markdown file per document, per folder. Start each file with:
 
 ```
 ---
 title: <document name>
+source: <Google Drive link>
 type: system-overview | sop | metric-definition | business-rule | past-prd | other
 verticals: [all]
-systems: []
+systems: [allocation, tracking]
 updated: YYYY-MM-DD
 ---
 ```
 
 - **verticals:** use `all`, or any of `hyperlocal-forward`, `hyperlocal-reverse`,
   `courier-forward`, `courier-reverse`, `b2b-forward`, `b2b-reverse`.
-- **systems:** only for a document that touches more than one system. File it in
-  its primary system's folder, and list the *other* systems here (lowercase folder
-  names, e.g. `[tracking, eta]`).
-- **updated:** the date the document was written, or last revised to match how the
-  system works now. For a past PRD, the date it was signed off. Claude uses it to
-  settle conflicts: when two documents disagree about a system, the later date wins.
-  Change it only when the content is actually revised or re-checked, never to
-  "refresh" a stale file. Claude flags documents older than 90 days, and ranks
+- **systems:** every system the document touches (lowercase folder names). File an
+  identical copy in each of those systems' folders. When a document changes, update
+  every copy.
+- **updated:** the date the document was last revisited: re-read and confirmed
+  current, or revised. Claude uses it to settle conflicts: when two documents
+  disagree about a system, the later date wins. Change it only when the document
+  was actually revisited. Claude flags documents older than 90 days, and ranks
   undated documents below dated ones.
+
+To add a document from Google Drive, see `workflows/core/add-context.md`.
 
 ## How Claude loads it
 
 For the systems named in the PRD request, Claude reads every document in each
-system's folder, plus any document in another folder whose `systems:` lists that
-system. It keeps documents whose `verticals` include one of the requested
-verticals or `all`, and skips the rest.
+system's folder. It keeps documents whose `verticals` include one of the requested
+verticals or `all`, and skips the rest. A document filed in more than one folder
+(same `source`) is read once.

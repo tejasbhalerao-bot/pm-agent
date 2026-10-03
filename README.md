@@ -23,6 +23,7 @@ Claude handles everything from there.
 | Want to... | Ask Claude |
 |---|---|
 | Create a PRD | `Create a PRD for [feature]` |
+| Add a document to Context | `Add context: [Drive link], systems: [...], verticals: [...], revisited: YYYY-MM-DD` |
 | Review an existing PRD | `Review the PRD for [feature]` |
 
 All prompts route through `workflows/supporting/recall-and-route.md`.
@@ -68,6 +69,7 @@ pm-agent/
 │   └── core/
 │       ├── create-prd.md               ← orchestrator: four inputs → draft → review → Final PRD
 │       ├── generate-prd-content.md     ← PRD Content Generator
+│       ├── add-context.md              ← add a Google Drive document to context/
 │       └── review-prd.md               ← PRD Reviewer: review, fix, re-review
 ├── templates/
 │   ├── FINAL-STEP-TEMPLATE.md          ← save + push instructions for Claude
