@@ -39,7 +39,9 @@ In the same message, ask only the intake questions that apply:
 ## Step 2 — Load references
 
 1. Read `templates/prd/writing-style-guide.md`. It is required. If it cannot be read, stop and tell the PM.
-2. Load Context from `~/pm-agent/context/` (conventions in `context/README.md`):
+2. Load Context from `~/pm-agent/context/` (conventions in `context/README.md`). If a
+   `[CONTEXT LOADED]` block already covers these systems and verticals, reuse it; load
+   only what is missing:
    - For each system in the Systems input, read every document in `context/<system>/`
      (`allocation`, `tracking`, `serviceability`, `eta`), plus any document in
      another system's folder whose `systems:` frontmatter lists that system.
