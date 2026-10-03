@@ -29,7 +29,7 @@ in **one** message, then stop. Do not draft on guesses.
 | Problem | Who is affected, what is broken or missing, and any measured impact. Impact may be marked unknown, but must be stated as unknown. |
 | Solution | What changes in the system or process, specific enough to derive use cases. |
 | Success Metrics | At least one metric, with direction of change. A target value is needed to write Scale Criteria; if absent it becomes an `Unknown:`. |
-| Systems & Verticals | Systems from the canonical list (Serviceability, Allocation, Tracking, Promise, 3rd Party Rails) and verticals from the six (Hyperlocal / Courier / B2B, Forward / Reverse). |
+| Systems & Verticals | Systems from the four with context folders (Allocation, Tracking, Serviceability, ETA) and verticals from the six (Hyperlocal / Courier / B2B, Forward / Reverse). A system outside the four has no context: tell the PM and continue only if they confirm. |
 
 In the same message, ask only the intake questions that apply:
 - A specific parameter value was given (e.g. a threshold) → fixed value, or calibrate by experiment?
@@ -39,9 +39,18 @@ In the same message, ask only the intake questions that apply:
 ## Step 2 — Load references
 
 1. Read `templates/prd/writing-style-guide.md`. It is required. If it cannot be read, stop and tell the PM.
-2. Load Context for the stated Systems & Verticals *(Context skill: to be defined)*.
-   If Context is empty or missing for a stated system or vertical, do not fill the
-   gap from general knowledge. Record it as an Open Question and list it in the handoff note.
+2. Load Context from `~/pm-agent/context/` (conventions in `context/README.md`):
+   - For each system in the Systems input, read every document in `context/<system>/`
+     (`allocation`, `tracking`, `serviceability`, `eta`), plus any document in
+     another system's folder whose `systems:` frontmatter lists that system.
+   - Keep documents whose `verticals` tag includes one of the requested verticals
+     or `all`. Skip the rest.
+   - If a system's folder is empty, or nothing matches the requested verticals, do
+     not fill the gap from general knowledge. Record it as an Open Question and list
+     it in the handoff note.
+   - Flag any document whose `updated` date is more than 90 days old in the handoff note.
+
+---
 
 ## Step 3 — Write the sections, in the guide's order
 

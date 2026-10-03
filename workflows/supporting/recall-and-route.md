@@ -16,6 +16,11 @@ Entry point for all PM Agent work. Always runs first. Never skipped.
 
 ## Step 1 — Load org context
 
+> **Exception — PRD creation (2026-10-03):** skip this step and Step 2 for Executable
+> PRD creation. The PRD Content Generator loads Context itself from `~/pm-agent/context/`
+> (one folder per system; verticals are tags). Go straight to Step 3 and route to PRD
+> Creator. All other tasks still use Context Loader as described below.
+
 Before invoking Context Loader, check for a cross-session context cache. Use the
 Read tool to look for `~/pm-agent/.context-cache.md`.
 
