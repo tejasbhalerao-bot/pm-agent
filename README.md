@@ -1,6 +1,6 @@
 # PM Agent
 
-GitHub-backed PM workflow system for Truemeds. Loads Truemeds org context from the repo's `context/` folders, creates and reviews PRDs and experiment designs, enforces quality gates, and auto-versions everything to Git.
+GitHub-backed PM workflow system for Truemeds. Loads Truemeds org context from the repo's `context/` folders, creates and reviews PRDs, enforces quality gates, and auto-versions everything to Git.
 
 ---
 
@@ -24,11 +24,6 @@ Claude handles everything from there.
 |---|---|
 | Create a PRD | `Create a PRD for [feature]` |
 | Review an existing PRD | `Review the PRD for [feature]` |
-| Design an A/B experiment | `Design an experiment for [hypothesis]` |
-| Review an experiment design | `Review the experiment for [feature]` |
-| Map stakeholder objections | `Map objections for [feature]` |
-| Write an exec brief | `Write an exec brief for [feature]` |
-| Design test cases from a PRD | `Design test cases for [PRD path or pasted content]` |
 
 All prompts route through `workflows/supporting/recall-and-route.md`.
 
@@ -73,12 +68,7 @@ pm-agent/
 │   └── core/
 │       ├── create-prd.md               ← orchestrator: four inputs → draft → review → Final PRD
 │       ├── generate-prd-content.md     ← PRD Content Generator
-│       ├── review-prd.md               ← PRD Reviewer: review, fix, re-review
-│       ├── design-experiment.md        ← A/B experiment design
-│       ├── review-experiment.md        ← experiment design reviewer
-│       ├── map-objections.md           ← stakeholder objection mapping
-│       ├── write-exec-brief.md         ← exec brief / leadership summary
-│       └── design-test-cases.md        ← test case design from a PRD
+│       └── review-prd.md               ← PRD Reviewer: review, fix, re-review
 ├── templates/
 │   ├── FINAL-STEP-TEMPLATE.md          ← save + push instructions for Claude
 │   └── prd/
@@ -88,11 +78,7 @@ pm-agent/
 │   └── get-next-version.sh             ← prints next <descriptor>-v<n>.md for a folder
 └── archives/
     └── <project-name>/                 ← one folder per project (kebab-case slug)
-        ├── prds/                       ← Executable PRDs (and any Initiative / Vision Docs you file)
-        ├── experiments/                ← Experiment / XP Docs
-        ├── objections/                 ← Objection maps
-        ├── briefs/                     ← Executive summaries
-        └── test-cases/                 ← Functional test case suites
+        └── prds/                       ← Executable PRDs (and any Initiative / Vision Docs you file)
 ```
 
 ---

@@ -80,57 +80,6 @@ Claude reviews the PRD, fixes it, and returns the Final PRD for your sign-off.
 
 ---
 
-### Design an experiment
-
-```
-Design an experiment.
-Hypothesis: [What do you believe will happen?]
-Target Metric: [What are you measuring?]
-Current Value: [Baseline]
-Target Value: [What improvement matters?]
-Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
-```
-
-Output saved to: `archives/<project-name>/experiments/<descriptor>-v1.md`
-
----
-
-### Map stakeholder objections
-
-```
-Map objections for [feature].
-Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
-```
-
-Output saved to: `archives/<project-name>/objections/<descriptor>-v1.md`
-
----
-
-### Write an executive brief
-
-```
-Write an executive brief.
-Feature: [Feature name]
-Audience: [CEO / COO / Board / Finance]
-Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
-```
-
-Output saved to: `archives/<project-name>/briefs/<descriptor>-v1.md`
-
----
-
-### Design test cases from a PRD
-
-```
-Design test cases for [feature].
-[Paste the PRD, or give its path in this repo]
-Entry point: ~/pm-agent/workflows/supporting/recall-and-route.md
-```
-
-Output saved to: `archives/<project-name>/test-cases/<descriptor>-v1.md`
-
----
-
 ### Revise an existing PRD (new version)
 
 Send the updated four inputs in the same format as **Create a PRD**. Claude regenerates the PRD and saves it as the next version (v2, v3, ...). Both versions stay in `archives/` and on GitHub.
@@ -151,9 +100,6 @@ To change a PRD you wrote yourself, use **Review an existing PRD** instead.
 
 ```bash
 ls ~/pm-agent/archives/<project-name>/prds/
-ls ~/pm-agent/archives/<project-name>/experiments/
-ls ~/pm-agent/archives/<project-name>/objections/
-ls ~/pm-agent/archives/<project-name>/briefs/
 ```
 
 ### Check GitHub

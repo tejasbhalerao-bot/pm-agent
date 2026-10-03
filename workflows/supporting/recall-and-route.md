@@ -27,19 +27,13 @@ Read what the user said and infer which workflow to run:
 | --- | --- | --- |
 | Write a new Executable PRD (Initiative and Vision Docs are PM-authored) | PRD Creator | `create-prd.md` |
 | Review, improve, or fix an existing PRD | PRD Reviewer | `review-prd.md` |
-| Anticipate objections to a proposal | Objection Mapper | `map-objections.md` |
-| Package a proposal for leadership | Exec Brief Writer | `write-exec-brief.md` |
-| Design or scope an experiment or A/B test | Experiment Designer | `design-experiment.md` |
-| Review an experiment design (XP Doc) | Experiment Reviewer | `review-experiment.md` |
-| Design test cases from a PRD | Test Case Designer | `design-test-cases.md` |
 
 All files are in `~/pm-agent/workflows/core/`.
 
 **If intent is clear** → continue. Do not ask.
 
 **If intent is ambiguous** → ask once, concisely:
-*"Which would you like to do — create a new PRD, review an existing one, map
-objections, write an exec brief, or design an experiment?"*
+*"Which would you like to do — create a new PRD or review an existing PRD?"*
 
 Wait for the response before continuing.
 
