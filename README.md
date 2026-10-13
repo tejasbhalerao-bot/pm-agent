@@ -44,7 +44,7 @@ PRD Creation chain:
   → prd-content-generator (reads Writing Style Guide + Context)
   → PRD draft + handoff note
   → review-prd (auto-triggered; reviews, fixes, re-reviews)
-  → Final PRD → Artifact sign-off
+  → Final PRD (.md file) → sign-off
   → save to archives/ with auto-version → push to GitHub
 ```
 

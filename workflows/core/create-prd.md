@@ -51,10 +51,12 @@ output. Create PRD does not manage passes, fixes or findings.
 
 ## Step 4 — Sign-off and save
 
-The reviewed Final PRD is delivered and saved per `CLAUDE.md` (Artifact for
-sign-off; after sign-off, save under `archives/<project>/prds/` with the version
-header from `templates/FINAL-STEP-TEMPLATE.md`, then push). Nothing is saved before
-sign-off. Create PRD ends here.
+The reviewed Final PRD is delivered per `CLAUDE.md` as a Markdown file at
+`archives/<project>/prds/<descriptor>-v<n>.md`, with the version header from
+`templates/FINAL-STEP-TEMPLATE.md` and Status "Under Review". It is not an
+Artifact. Nothing is committed or pushed before sign-off. After sign-off, the
+Review notes are removed, Status becomes Approved, and the file is pushed.
+Create PRD ends here.
 
 ---
 

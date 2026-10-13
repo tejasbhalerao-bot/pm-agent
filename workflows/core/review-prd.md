@@ -11,7 +11,7 @@ description: >
 
 **Inputs:** PRD Draft (plus the generator's handoff note, if any) · Context ·
 Systems & Verticals · the standard in this file and in `templates/prd/writing-style-guide.md`
-**Output:** Final PRD (an Artifact for sign-off) + Review notes
+**Output:** Final PRD as a Markdown file for sign-off, with Review notes at the end of the file
 
 ```
 Draft → Pass 1 review → fix P0/P1 → Pass 2 review (fresh) → … → Final PRD + Review notes
@@ -108,15 +108,18 @@ interrupted, restart from the draft rather than resuming.
 
 ## Step 5 — Output
 
-Deliver the Final PRD as an **Artifact** for the PM's sign-off, per `CLAUDE.md`.
-Do not paste the draft or the findings into chat as the review surface; one short
-chat line saying the Artifact is ready is enough.
+Deliver the Final PRD as a **Markdown (.md) file**, never an Artifact. Write it to
+its archive path, `archives/<project>/prds/<descriptor>-v<n>.md` (next version from
+`scripts/get-next-version.sh`), with the version header and Status "Under Review".
+Leave it uncommitted. Do not paste the draft or the findings into chat; one short
+chat line with the clickable file path is enough.
 
 Keep the Review notes terse: one line per change, bullets only, no narrative.
 
-The Artifact has two parts, clearly separated:
+The file has two parts, clearly separated:
 1. **The Final PRD**, the document body, which is what gets saved.
-2. **Review notes**, not part of the PRD and stripped on save:
+2. **Review notes**, at the end of the same file under the heading
+   `# REVIEW NOTES — not part of the PRD, removed at sign-off`:
    - passes run, and findings by severity per pass;
    - changes made (section, what, why, which check);
    - **Needs PM decision:** unfixable P0 and P1 items;
@@ -125,9 +128,10 @@ The Artifact has two parts, clearly separated:
    - Context gaps ("unverified against Context"), and unknowns stated in the PRD;
    - invented behaviour found, and whether it was removed or flagged.
 
-**Sign-off.** The PM signs off on the Artifact. If P0s remain that only the PM can
+**Sign-off.** The PM signs off on the file. If P0s remain that only the PM can
 resolve, sign-off needs an explicit override: record it in a note at the top of the
-saved PRD, stating how many P0s were open. On sign-off, save and push per `CLAUDE.md`.
+PRD, stating how many P0s were open. On sign-off, remove the Review notes section,
+set Status to Approved, then commit and push that one file per `CLAUDE.md`.
 
 ---
 

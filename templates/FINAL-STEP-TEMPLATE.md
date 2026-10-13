@@ -35,8 +35,9 @@ If the project subfolder does not exist, create the full tree before saving.
 
 Get the next filename with `~/pm-agent/scripts/get-next-version.sh archives/<project-name>/prds <descriptor>`. It prints `<descriptor>-v<n>.md` with no date prefix.
 
-## 2. Save the file to disk
-I will write the final document directly to the correct archive folder. Save the document body only: do not include the Review notes section. If the PM signed off with open P0s, put the override note at the top.
+## 2. Finalise the file
+The reviewed draft already exists at the archive path as a Markdown file with Status
+"Under Review". On sign-off, remove its Review notes section and set Status to Approved. If the PM signed off with open P0s, put the override note at the top.
 
 ## 3. Run the commit-and-push script
 I will execute:

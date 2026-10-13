@@ -29,8 +29,8 @@ archives/<project-name>/<doc-type>/<descriptor>-v<n>.md
 
 ## Delivery format for sign-off (all doc types)
 
-Do not draft PRDs, Vision Docs, or Initiative Docs as chat text for review. Once a draft has passed its required review pass(es) (per the relevant workflow file), present it as a standalone document (a published Artifact, not a chat message) for the user's sign-off. Do not paste the draft or the review findings into chat as the primary review surface — the document is.
+Do not draft PRDs, Vision Docs, or Initiative Docs as chat text for review. Once a draft has passed its required review pass(es) (per the relevant workflow file), deliver it as a Markdown (.md) file for the user's sign-off, never as an Artifact and never pasted into chat. Write the file at its archive path (`archives/<project>/prds/<descriptor>-v<n>.md`) with Status "Under Review", leave it uncommitted, and give the user the clickable path. Put the review notes at the end of that file under a clearly marked heading; they are removed at sign-off. Do not paste the draft or the review findings into chat as the primary review surface — the file is.
 
-Once the user signs off on that document, saving to the archive path and pushing to GitHub is pre-authorized — proceed with both without asking again for that specific document. State plainly when the push happens (commit message, path) so it stays visible, but do not pause for a separate confirmation.
+Once the user signs off on that file, finalising it (remove the review notes, set Status to Approved) and pushing it to GitHub is pre-authorized — proceed with both without asking again for that specific document. State plainly when the push happens (commit message, path) so it stays visible, but do not pause for a separate confirmation.
 
 This does not authorize skipping the review workflow itself (PRD review passes, etc.) — only changes where the reviewable draft lives and removes the extra confirmation step after sign-off.
