@@ -13,7 +13,7 @@ description: >
 Entry point for all PM Agent work. Always runs first. Never skipped.
 
 Context lives in `~/pm-agent/context/`: one folder per system (`allocation`,
-`tracking`, `serviceability`, `eta`, `communications`), with business verticals as tags on each
+`tracking`, `serviceability`, `eta`, `communications`, `address`), with business verticals as tags on each
 document. Loading rules are in `context/README.md`. There is no other source of
 Context: no Drive, no cache file.
 
@@ -46,7 +46,7 @@ Wait for the response before continuing.
 `add-context.md` collects its own inputs and does not load Context.
 
 From the request, identify:
-- **Systems touched**, from: Allocation, Tracking, Serviceability, ETA, Communications.
+- **Systems touched**, from: Allocation, Tracking, Serviceability, ETA, Communications, Address.
 - **Verticals touched**, from: Hyperlocal Forward, Hyperlocal Reverse, Courier Forward,
   Courier Reverse, B2B Forward, B2B Reverse.
 
