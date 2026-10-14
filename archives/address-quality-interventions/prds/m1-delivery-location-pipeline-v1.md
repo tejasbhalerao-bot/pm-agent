@@ -3,7 +3,7 @@
 **Type:** Executable PRD
 **Version:** v1
 **Date:** 2026-10-14
-**Status:** Under Review
+**Status:** Approved
 **Author:** Tejas Bhalerao
 
 | Version | Date | Changes |
@@ -157,50 +157,3 @@ All values are illustrative.
 | SOP | Step or role affected | Change | Owner | Readiness needed |
 |---|---|---|---|---|
 | Delivery Executive SOP (not yet filed in Context) | Delivery executive marking an order Delivered on the Shipsy driver app | Added: mark Delivered only at the customer's exact location | Logistics Ops | SOP live and communicated to all Shipsy delivery executives before Stage 2. Adherence measurement and review cadence set. |
-
----
-
-# REVIEW NOTES — not part of the PRD, removed at sign-off
-
-**Inputs used.** Problem: milestone tab + M1 "Why Now". Solution: M1 Use Cases 1–3 and the Delivery Executive SOP pre-condition. Success Metrics and guardrails: M1 Metrics table (direction: increase; no targets given). Rollout: "no staged rollouts, all orders in one go". Source: Google Doc 1JQIATiWS47wcwpXGB-8ZSZbZGcvWoE0qvlwJ486LjiM.
-
-**Context loaded.** Address: folder created today, empty — whole PRD unverified against Address Context. Tracking (hyperlocal-forward): awb-sort-identifier-code (2026-09-29), mid-mile-entity-introduction (2026-09-10), courier-shipment-status-tracking (2026-04-06, older than 90 days). No conflicts between documents.
-
-**Passes run**
-- Pass 1: 0 P0 · 6 P1 · 1 P2.
-- Pass 2: 0 P0 · 1 P1 (new) · 1 P2. All Pass 1 P1s resolved.
-- Pass 3: 0 P0 · 0 P1. Stopped.
-
-**Changes made**
-- Why Now (Clarity): cut unsupported claim that delayed capture loses "the most reliable deliveries"; replaced with cost of waiting from the PM's input. Pass 1, P1.
-- Use Cases (Fidelity): removed invented "Ops follows up with the delivery executive and their DC" from 2.3; points to the SOP row instead. Pass 1, P1.
-- Use Cases (Coverage): merged "Order already has a record" edge case into the record definition, so it also covers duplicate Delivered statuses in Use Case 2. Pass 1, P1.
-- Use Cases (Brevity): removed Side effects; both bullets repeated the pre-condition and Why Now. Pass 1, P1.
-- Use Cases (Brevity): cut "every stored location is only as accurate as this SOP"; the SOP Adherence check already carries it. Pass 1, P1.
-- Metrics (Integrity): Capture Failure % denominator changed to orders *received* from Shipsy, so orders missing from the report are not double-counted with report coverage. Pass 1, P1.
-- Why Now (Fidelity): coordination frequency now says "customer availability and address quality", per the source doc. Pass 2, P1.
-
-**Needs PM decision**
-- ~~Vertical scope~~ — confirmed by PM 2026-10-14: M1 covers Hyperlocal Forward (Shipsy) only.
-- Overlap rule: one record per Order ID, first record wins (covers historical report overlapping live capture, and duplicate Delivered statuses). Confirm.
-- Live capture must never block or delay the Delivered status update (Use Case 2.2). Confirm.
-- Rollout split into two gated stages (historical load, live capture), each at 100% of Shipsy orders, to honour "no staged rollout" while giving each Check a kill criterion. Confirm.
-- Targets for both Success metrics and thresholds for all four Checks are not set; Rollout says so plainly.
-
-**Generator assumptions — please confirm**
-- "Valid coordinate" check on lat long (missing or invalid → skipped). No range rule specified.
-- Delivered Status Update Failure % added as a Check (not in your list). It came from the failure where location storing interferes with the Delivered update.
-- Kill action for SOP Adherence: Milestone 2 does not read the data until adherence recovers.
-- Use Case 3 adds: reason available for every delivered order with no record. Needed to compute both failure rates.
-
-**Considered, not included**
-- Order marked Delivered then reverted (e.g. to RTO): rare; no M1 handling defined.
-- Customer deletes an address: record stays against the Address ID; no build change.
-- Shipsy fails to share the historical report: blocks Stage 1; covered by the report-format open point.
-- Driver marks Delivered late, from the hub: same handling as Use Case 2.3.
-
-**Open P2**
-- Pre-condition and Ops SOPs row both say Logistics Ops owns the SOP; kept because the pre-condition is your text.
-- Stage 2 Kill Criteria cell is long; could split if the table renders poorly.
-
-**Invented behaviour found:** one ("follows up with DC") — removed.
