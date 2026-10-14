@@ -55,7 +55,8 @@ The reviewed Final PRD is delivered per `CLAUDE.md` as a Markdown file at
 `archives/<project>/prds/<descriptor>-v<n>.md`, with the version header from
 `templates/FINAL-STEP-TEMPLATE.md` and Status "Under Review". It is not an
 Artifact. Nothing is committed or pushed before sign-off. After sign-off, the
-Review notes are removed, Status becomes Approved, and the file is pushed.
+Status becomes Approved and the PRD file is pushed. Review notes are never in the
+PRD file; they live in `archives/<project>/reviews/` (gitignored).
 Create PRD ends here.
 
 ---

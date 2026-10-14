@@ -37,7 +37,7 @@ Get the next filename with `~/pm-agent/scripts/get-next-version.sh archives/<pro
 
 ## 2. Finalise the file
 The reviewed draft already exists at the archive path as a Markdown file with Status
-"Under Review". On sign-off, remove its Review notes section and set Status to Approved. If the PM signed off with open P0s, put the override note at the top.
+"Under Review". On sign-off, set Status to Approved. The PRD never contains Review notes; they live in `archives/<project>/reviews/<descriptor>-v<n>-review-notes.md`, which is gitignored and never pushed. If the PM signed off with open P0s, put the override note at the top.
 
 ## 3. Run the commit-and-push script
 I will execute:

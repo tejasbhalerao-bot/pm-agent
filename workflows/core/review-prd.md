@@ -3,7 +3,7 @@ name: prd-reviewer
 description: >
   Reviews an Executable PRD against the Writing Style Guide, a six-check rubric and
   repo Context, fixes P0 and P1 findings within guardrails (never adding length or
-  invented behaviour), re-reviews, and outputs the Final PRD with separate review notes. Auto-triggered by PRD Creator on every
+  invented behaviour), re-reviews, and outputs the Final PRD plus a separate review-notes file (never inside the PRD). Auto-triggered by PRD Creator on every
   draft. Also runs standalone on a PM-authored PRD, with the same review-and-fix loop.
 ---
 
@@ -11,7 +11,7 @@ description: >
 
 **Inputs:** PRD Draft (plus the generator's handoff note, if any) · Context ·
 Systems & Verticals · the standard in this file and in `templates/prd/writing-style-guide.md`
-**Output:** Final PRD as a Markdown file for sign-off, with Review notes at the end of the file
+**Output:** Final PRD as a Markdown file for sign-off, and Review notes in a separate file. The PRD never contains Review notes.
 
 ```
 Draft → Pass 1 review → fix P0/P1 → Pass 2 review (fresh) → … → Final PRD + Review notes
@@ -116,10 +116,13 @@ chat line with the clickable file path is enough.
 
 Keep the Review notes terse: one line per change, bullets only, no narrative.
 
-The file has two parts, clearly separated:
-1. **The Final PRD**, the document body, which is what gets saved.
-2. **Review notes**, at the end of the same file under the heading
-   `# REVIEW NOTES — not part of the PRD, removed at sign-off`:
+Write two files:
+1. **The Final PRD** at `archives/<project>/prds/<descriptor>-v<n>.md`. It contains
+   only the PRD: no Review notes, no review heading, no findings, no reviewer
+   commentary of any kind.
+2. **Review notes** at `archives/<project>/reviews/<descriptor>-v<n>-review-notes.md`,
+   titled `# Review notes — <descriptor> v<n>`. This folder is gitignored, so the
+   notes are never pushed. Give the PM both clickable paths. The notes contain:
    - passes run, and findings by severity per pass;
    - changes made (section, what, why, which check);
    - **Needs PM decision:** unfixable P0 and P1 items;
@@ -130,8 +133,13 @@ The file has two parts, clearly separated:
 
 **Sign-off.** The PM signs off on the file. If P0s remain that only the PM can
 resolve, sign-off needs an explicit override: record it in a note at the top of the
-PRD, stating how many P0s were open. On sign-off, remove the Review notes section,
-set Status to Approved, then commit and push that one file per `CLAUDE.md`.
+PRD, stating how many P0s were open. On sign-off, set Status to Approved, then
+commit and push the PRD file only, per `CLAUDE.md`. The review-notes file stays
+local.
+
+**Check before handing over and before pushing.** The PRD file must not contain
+Review notes. If it does, move them to the review-notes file first.
+`scripts/commit-and-push.sh` refuses to push a PRD that contains them.
 
 ---
 
@@ -141,6 +149,8 @@ set Status to Approved, then commit and push that one file per `CLAUDE.md`.
   skills, including `anthropic-skills:prd-reviewer`.
 - Never skip a pass, never accept sign-off before two passes have run, and never
   save before sign-off.
+- Never put Review notes, findings or reviewer commentary in the PRD file. They go
+  only in the review-notes file.
 - A PM-authored PRD gets the same loop as a generated draft: review, fix, re-review.
   Never return findings alone.
 

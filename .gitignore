@@ -4,3 +4,6 @@
 .DS_Store
 .vscode/
 .idea/
+
+# Review notes for PRDs: local only, never pushed
+archives/*/reviews/
