@@ -145,13 +145,15 @@ not in the room must be able to build it, and QA test it, from this doc alone.
   - **Lead** (early indicator that a Success metric is moving);
   - **Check** (guardrail that must not regress).
 - **Must contain:** a one-line Definition that leaves no room for two readings:
-  the numerator and denominator for a rate, and the population. Where a rate has
-  causes worth tracking, list them in the same cell, not as extra rows.
-- **Must contain, for every Check:** what it protects, in plain words.
-- **Must not contain:** targets, baselines, timeframes or breach thresholds.
-  Targets live in Rollout as Scale Criteria; breach thresholds as Kill Criteria.
-  Instrumentation detail belongs in the ARD. Internal tags or use-case IDs.
-- **Tone:** precise.
+  the numerator ÷ denominator for a rate, with the population. Nothing else.
+- **Keep it crisp and lean.** The Definition cell holds only the definition. Each
+  metric is one row; no notes, paragraphs or text outside the table.
+- **Must not contain:** what a metric protects or why it matters; causes,
+  breakdowns or reporting splits; cross-references to other sections; measurement
+  method; targets, baselines, timeframes or breach thresholds (targets live in
+  Rollout as Scale Criteria, breach thresholds as Kill Criteria); instrumentation
+  detail (ARD); internal tags or use-case IDs.
+- **Tone:** precise, terse.
 - **Format:** one table — Metric Type | Metric | Definition.
 
 ## 5. Rollout & Stage Gates
