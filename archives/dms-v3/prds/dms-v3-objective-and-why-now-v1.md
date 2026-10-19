@@ -15,7 +15,7 @@ Give Ops systematic visibility and control over the hyperlocal delivery leg, fro
 
 ### Hyperlocal is the growth push, and the network behind it is about to multiply
 
-The organisation is pushing hyperlocal hard. It will expand serviceable pincodes through the hub-and-spoke model, where deliveries run through DCs, and experiment with hour-level promise commitments. Hyperlocal's share of deliveries is expected to rise from 30% to 40% while order volumes also grow. We run 20 DCs today, and we expect 35 by October 2026 and 70 by January 2027. Shipsy order share is expected to move from 25% to 35% between September 2026 and March 2027.
+The organisation is pushing hyperlocal hard. It will expand serviceable pincodes through the hub-and-spoke model, where deliveries run through DCs. Hyperlocal's share of deliveries is expected to rise from 30% to 40% while order volumes also grow. We run 20 DCs today, and we expect 35 by October 2026 and 70 by January 2027. Shipsy order share is expected to move from 25% to 35% between September 2026 and March 2027.
 
 The push rests on two premises:
 
