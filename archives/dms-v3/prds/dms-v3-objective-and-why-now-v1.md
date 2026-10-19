@@ -45,26 +45,26 @@ The foundations are being laid already. Mid-Mile Entity Introduction makes Zones
 
 ## Milestones
 
-DMS v3 covers the 16 initiatives in the DC Expansion Plan that DMS powers: 14 in Oct-Dec 2026 (OND) and 2 in Jan-Mar 2027 (JFM). Each initiative is its own milestone, because an initiative is the smallest unit that ships and delivers value on its own. Each milestone is an Executable PRD in itself, and each one assigns its own systems and verticals.
+DMS v3 covers the 16 initiatives in the DC Expansion Plan that DMS powers. Each initiative is its own milestone, because an initiative is the smallest unit that ships and delivers value on its own. Each milestone is an Executable PRD in itself, and each one assigns its own systems and verticals.
 
-| # | Milestone | What it delivers | Needs | Quarter |
-|---|---|---|---|---|
-| M1 | Driver Onboarding Module | Collect driver details and set the driver as mid-mile or last-mile | Mid-Mile Entity | OND |
-| M2 | Driver Earnings Module | Define earnings structures and tag each driver to one | M1 | OND |
-| M3 | Driver Serviceability Module | Set up hubs and delivery zones, tag drivers to them, and blacklist pincodes per driver | M1, Mid-Mile Entity | OND |
-| M4 | Driver Availability Tracker | Drivers mark arrival at the hub, which records attendance | M1 | OND |
-| M5 | Serviceability Based Vanilla Driver Allocation | Group open orders by delivery zone and allocate each batch to an available, serviceable driver within carrying capacity | M3, M4 | OND |
-| M6 | Previous Delivery Location Consumption | Use a customer's previous delivery locations as the address input | None | OND |
-| M7 | Route Optimisation Module | Sequence the drops in a batch from resolved lat-longs, with priority orders ranked first, and assign the route to the driver | M5, M6 | OND |
-| M8 | Navigation Module | Driver accepts the trip, sees orders in sequence and navigates to each | M7 | OND |
-| M9 | Proof of Delivery | Capture proof at handover and update order status | M8 | OND |
-| M10 | Driver's Rescheduling Initiation | Driver reschedules an order when the customer is unavailable; the order leaves the trip and a reschedule plan is triggered | M8 | OND |
-| M11 | Driver Earnings Visibility | Driver sees earnings per trip in the app | M2, M9 | OND |
-| M12 | Driver Incentive Module | Define incentive structures and qualification criteria, and assign incentives to drivers | M1 | OND |
-| M13 | Driver Incentive Visibility | Driver sees active and past incentives, qualification criteria and progress in the app | M12, M9 | OND |
-| M14 | Dynamic QR | Driver collects COD through a QR code | M9 | OND |
-| M15 | OTP Based Deliveries | Generate a delivery OTP, send it to the customer, and complete handover when the driver enters it | M9 | JFM |
-| M16 | Delivery Location Geofence | Enforce driver-initiated reschedules against the driver's location at the delivery address | M6, M10 | JFM |
+| # | Milestone | What it delivers | Needs |
+|---|---|---|---|
+| M1 | Driver Onboarding Module | Collect driver details and set the driver as mid-mile or last-mile | Mid-Mile Entity |
+| M2 | Driver Earnings Module | Define earnings structures and tag each driver to one | M1 |
+| M3 | Driver Serviceability Module | Set up hubs and delivery zones, tag drivers to them, and blacklist pincodes per driver | M1, Mid-Mile Entity |
+| M4 | Driver Availability Tracker | Drivers mark arrival at the hub, which records attendance | M1 |
+| M5 | Serviceability Based Vanilla Driver Allocation | Group open orders by delivery zone and allocate each batch to an available, serviceable driver within carrying capacity | M3, M4 |
+| M6 | Previous Delivery Location Consumption | Use a customer's previous delivery locations as the address input | None |
+| M7 | Route Optimisation Module | Sequence the drops in a batch from resolved lat-longs, with priority orders ranked first, and assign the route to the driver | M5, M6 |
+| M8 | Navigation Module | Driver accepts the trip, sees orders in sequence and navigates to each | M7 |
+| M9 | Proof of Delivery | Capture proof at handover and update order status | M8 |
+| M10 | Driver's Rescheduling Initiation | Driver reschedules an order when the customer is unavailable; the order leaves the trip and a reschedule plan is triggered | M8 |
+| M11 | Driver Earnings Visibility | Driver sees earnings per trip in the app | M2, M9 |
+| M12 | Driver Incentive Module | Define incentive structures and qualification criteria, and assign incentives to drivers | M1 |
+| M13 | Driver Incentive Visibility | Driver sees active and past incentives, qualification criteria and progress in the app | M12, M9 |
+| M14 | Dynamic QR | Driver collects COD through a QR code | M9 |
+| M15 | OTP Based Deliveries | Generate a delivery OTP, send it to the customer, and complete handover when the driver enters it | M9 |
+| M16 | Delivery Location Geofence | Enforce driver-initiated reschedules against the driver's location at the delivery address | M6, M10 |
 
 ### Sequencing
 
