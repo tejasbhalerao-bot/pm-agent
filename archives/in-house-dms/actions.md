@@ -2,8 +2,6 @@
 
 The actions each actor performs, derived from [jobs.md](jobs.md). Each action sits under the job it serves.
 
-Columns: Action, Entity acted on, Trigger, Output, Vertical (Forward, Reverse or Both). Entities are from [entities.md](entities.md). A dash means the action applies to the system's rules, which are not yet an entity.
-
 ## Last Mile Driver
 
 *Job: Start each shift ready, with attendance marked and a working device and vehicle.*
@@ -40,7 +38,7 @@ Columns: Action, Entity acted on, Trigger, Output, Vertical (Forward, Reverse or
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Collects payment from the Customer | Money, Shipment | Delivery of an order with payment due | Amount recorded against the shipment | Forward |
-| Hands cash in | Money | End of the driver's duty | Handover recorded for confirmation by the receiver | Forward |
+| Hands cash in | Money | End of the driver's duty | Cash handover recorded | Forward |
 
 *Job: When a delivery fails or is cancelled, record why and bring the parcel back safely to the DC or warehouse.*
 
@@ -240,14 +238,14 @@ Columns: Action, Entity acted on, Trigger, Output, Vertical (Forward, Reverse or
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Checks the drivers on duty | People | Start of day | Drivers ready for batching | Both |
-| Confirms each driver is accounted for | People | End of day | All drivers confirmed back | Both |
+| Confirms each driver is accounted for | People | End of day | Every driver accounted for | Both |
 
 *Job: Receive returns and failed deliveries from drivers, and release them back towards the warehouse.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Receives returned parcels from drivers and scans them | Shipment, Barcode, Manifest | Driver brings a parcel back | Receipt recorded | Reverse |
-| Releases returned parcels towards the warehouse | Shipment, Consignment | Returned parcels held at the DC | Parcels sent back | Reverse |
+| Releases returned parcels towards the warehouse | Shipment | Returned parcels held at the DC | Parcels sent back | Reverse |
 
 *Job: Collect, record and bank the cash handed in, and escalate any mismatch.*
 
@@ -300,8 +298,8 @@ Columns: Action, Entity acted on, Trigger, Output, Vertical (Forward, Reverse or
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Reviews delivery problems in the city | Shipment | Delays or failures arise | Problems identified | Forward |
-| Acts to fix a delivery problem | Shipment | Problem identified | Problem resolved | Forward |
+| Reviews delivery problems in the city | Shipment | Delays or failures arise | Problems identified | Both |
+| Takes action on a delivery problem | Shipment | Problem identified | Problem resolved | Both |
 
 *Job: Plan mid-mile trips with the Dispatcher.*
 
@@ -388,9 +386,9 @@ Columns: Action, Entity acted on, Trigger, Output, Vertical (Forward, Reverse or
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Defines SLAs | — | New or changed SLA | SLAs applied by the system | Both |
-| Defines batching and allocation rules | — | New or changed rule | Rules applied by the system | Forward |
-| Defines delivery attempts and cut-offs | — | New or changed rule | Rules applied by the system | Both |
+| Defines SLAs | Shipment | New or changed SLA | SLAs applied by the system | Both |
+| Defines batching and allocation rules | Shipment, People | New or changed rule | Rules applied by the system | Forward |
+| Defines delivery attempts and cut-offs | Shipment | New or changed rule | Rules applied by the system | Both |
 | Defines pay, incentives and penalties | Money | New or changed rule | Rules applied by the system | Both |
 
 *Job: Manage roles and access across the system.*
@@ -562,46 +560,46 @@ Columns: Action, Entity acted on, Trigger, Output, Vertical (Forward, Reverse or
 
 ## System
 
-*Job: Receive each order with its details, and apply cancellations and changes, including after dispatch.*
+*Responsibility: Receive each order with its details, and apply cancellations and changes, including after dispatch.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Receives an order with its details | Order | Order sent to the system | Order held | Both |
 | Applies a cancellation or change | Order, Shipment | Order cancelled or changed | Order and shipment updated | Both |
 
-*Job: Create a shipment for each order and generate its AWB.*
+*Responsibility: Create a shipment for each order and generate its AWB.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Creates a shipment | Shipment | Order received | Shipment created | Forward |
 | Generates the AWB | Shipment | Shipment created | AWB assigned to the shipment | Forward |
 
-*Job: Decide each shipment's path (via DC or direct) from the rules.*
+*Responsibility: Decide each shipment's path (via DC or direct) from the rules.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Decides the path | Shipment, Serving Location | Shipment created | Shipment routed via DC or direct | Forward |
 
-*Job: Keep every shipment's status and location current.*
+*Responsibility: Keep every shipment's status and location current.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Updates status and location | Shipment | Every scan or event | Status and location current | Both |
 
-*Job: Generate barcodes for shipments and consignments.*
+*Responsibility: Generate barcodes for shipments and consignments.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Generates a barcode | Barcode, Shipment, Consignment | Shipment or consignment created | Barcode available to print or display | Both |
 
-*Job: Resolve every scan to the right entity, and reject invalid or duplicate scans.*
+*Responsibility: Resolve every scan to the right entity, and reject invalid or duplicate scans.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Resolves a scan to its entity | Barcode | Scan received | Entity identified | Both |
 | Rejects an invalid or duplicate scan | Barcode | Scan is invalid or a duplicate | Scan rejected and the user told | Both |
 
-*Job: Generate a manifest for every handover, record the scans against it, and flag anything missing or mismatched.*
+*Responsibility: Generate a manifest for every handover, record the scans against it, and flag anything missing or mismatched.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
@@ -609,32 +607,32 @@ Columns: Action, Entity acted on, Trigger, Output, Vertical (Forward, Reverse or
 | Records scans against the manifest | Manifest, Barcode | Scan during handover | Scan recorded | Both |
 | Flags missing or mismatched items | Manifest | Handover ends with differences | Differences flagged to the people involved | Both |
 
-*Job: Create consignments by grouping shipments by destination DC.*
+*Responsibility: Create consignments by grouping shipments by destination DC.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Creates a consignment | Consignment, Shipment | Shipments scanned into a consignment | Consignment created with its manifest | Forward |
 
-*Job: Record the vendor, vehicle number, and the driver's name and phone against each consignment. No driver profile is kept.*
+*Responsibility: Record the vendor, vehicle number, and the driver's name and phone against each consignment. No driver profile is kept.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Records the vendor, vehicle and driver details | Consignment, Vendor, Vehicle | Dispatcher enters the details at loading | Details held against the consignment | Forward |
 
-*Job: Show live mid-mile vehicle location from IoT devices.*
+*Responsibility: Show live mid-mile vehicle location from IoT devices.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Shows the live location of a vehicle | Vehicle | Consignment in transit | Location visible to the Dispatcher and DC Executive | Both |
 
-*Job: Tell the DC Executive which bin each shipment belongs in, and keep track of what each bin holds.*
+*Responsibility: Tell the DC Executive which bin each shipment belongs in, and keep track of what each bin holds.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Shows which bin a shipment belongs in | Sorting Bin, Shipment | Shipment scanned at the DC | Bin shown | Forward |
 | Tracks bin contents | Sorting Bin | Shipment placed in or taken from a bin | Bin contents current | Forward |
 
-*Job: Create delivery batches and routes, allocate Last Mile Drivers, and send the orders to the Driver's app.*
+*Responsibility: Create delivery batches and routes, allocate Last Mile Drivers, and send the orders to the Driver's app.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
@@ -643,106 +641,106 @@ Columns: Action, Entity acted on, Trigger, Output, Vertical (Forward, Reverse or
 | Allocates Last Mile Drivers | People, Shipment | Batches and routes ready | Batch assigned to a driver | Forward |
 | Sends the orders to the driver's app | Shipment, Device | Batch allocated | Orders appear on the driver's app | Forward |
 
-*Job: Show medicine details to the Last Mile Driver only in the returns flow.*
+*Responsibility: Show medicine details to the Last Mile Driver only in the returns flow.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Shows medicine details on a return pickup | Order, Shipment | Return pickup assigned | Medicine details visible to the driver | Reverse |
 
-*Job: Keep driver apps working offline, and sync when the network returns.*
+*Responsibility: Keep driver apps working offline, and sync when the network returns.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Holds actions taken offline and syncs them | Device, Shipment | Network lost, then restored | Actions sent and statuses updated | Both |
 
-*Job: Hold serving locations and serviced locations. In Forward, serving locations are warehouses and DCs, and serviced locations are Customers' locations. In Reverse, they flip.*
+*Responsibility: Hold serving locations and serviced locations. In Forward, serving locations are warehouses and DCs, and serviced locations are Customers' locations. In Reverse, they flip.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Holds serving and serviced locations | Serving Location, Serviced Location | Locations set up | Locations available, flipped for Reverse | Both |
 
-*Job: Hold the links between warehouses and DCs, and which flow each location uses.*
+*Responsibility: Hold the links between warehouses and DCs, and which flow each location uses.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Holds the links and the flow per location | Serving Location | Central Logistics Ops sets them | Links and flows available | Both |
 
-*Job: Hold users, drivers, Customers and their details, and enforce who can do what.*
+*Responsibility: Hold users, drivers, Customers and their details, and enforce who can do what.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Holds users, drivers and Customers | People | Record created or updated | Details held | Both |
 | Enforces who can do what | People | Any access attempt | Allowed or blocked by role | Both |
 
-*Job: Register devices and record which driver holds each one.*
+*Responsibility: Register devices and record which driver holds each one.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Registers a device and records its holder | Device, People | Device assigned to a driver | Device and holder recorded | Both |
 
-*Job: Mask phone numbers between Customers and Drivers.*
+*Responsibility: Mask phone numbers between Customers and Drivers.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Masks phone numbers on a call | People | Call between a Customer and a driver | Call connects without exposing numbers | Both |
 
-*Job: Record every payment collected, every cash handover and every deposit, and match them against what was owed.*
+*Responsibility: Record every payment collected, every cash handover and every deposit, and match them against what was owed.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Records payments, cash handovers and deposits | Money | Each money movement | Movement recorded | Forward |
 | Matches them against what was owed | Money, Shipment | Deposit recorded | Match or discrepancy shown | Forward |
 
-*Job: Record vendor payments.*
+*Responsibility: Record vendor payments.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Records a vendor payment | Money, Vendor | Finance pays a vendor | Payment recorded | Both |
 
-*Job: Hold vendors and their vehicles.*
+*Responsibility: Hold vendors and their vehicles.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Holds vendors and their vehicles | Vendor, Vehicle | Vendor onboarded or vehicle recorded | Records held | Both |
 
-*Job: Raise, route and track tickets to resolution within their time limits.*
+*Responsibility: Raise, route and track tickets to resolution within their time limits.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Raises and routes a ticket | Ticket | Ticket created | Ticket reaches the right owner | Both |
 | Tracks a ticket to resolution | Ticket | Ticket open | Status and time limit tracked | Both |
 
-*Job: Send the right notices to the right people at the right time.*
+*Responsibility: Send the right notices to the right people at the right time.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Sends a notice | Order, Shipment, Ticket | Event that needs a notice | Notice reaches the right person | Both |
 
-*Job: Detect failures and fraud signals: missed scans, delays, mismatches, cash anomalies, and deliveries marked from the wrong place.*
+*Responsibility: Detect failures and fraud signals: missed scans, delays, mismatches, cash anomalies, and deliveries marked from the wrong place.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Detects a failure or fraud signal | Shipment, Money | Missed scan, delay, mismatch, cash anomaly or delivery marked from the wrong place | Flag raised to the right actor | Both |
 
-*Job: Keep a full audit trail of every scan and change.*
+*Responsibility: Keep a full audit trail of every scan and change.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Records every scan and change | Shipment, Barcode, People | Any scan or change | Audit entry recorded | Both |
 
-*Job: Hold and apply the rules.*
+*Responsibility: Hold and apply the rules.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Applies the rules | — | Any event the rules cover | Rule applied | Both |
+| Applies the rules | Shipment, Money | Any event the rules cover | Rule applied | Both |
 
-*Job: Provide reports and a data feed.*
+*Responsibility: Provide reports and a data feed.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Provides reports and a data feed | Shipment, Money | Report or data requested | Report or data delivered | Both |
 
-*Job: Switch a location between Shipsy and the new system, and roll back, during cutover.*
+*Responsibility: Switch a location between Shipsy and the new system, and roll back, during cutover.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
