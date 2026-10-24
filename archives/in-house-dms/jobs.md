@@ -4,7 +4,7 @@ The outcomes each actor needs to achieve. Actions are derived from these.
 
 The system starts at AWB generation.
 
-The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, and sending orders directly from the warehouse to the Customer. "Cutover" jobs apply while locations move from Shipsy to the new system. "Later" jobs are scoped in after the first release.
+The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, and sending orders directly from the warehouse to the Customer. "Cutover" jobs apply while locations move from Shipsy to the new system.
 
 ## Last Mile Driver
 - Start each shift ready, with attendance marked and a working device and vehicle.
@@ -31,7 +31,7 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Collate and sort ready shipments by destination DC, create consignments and send them on time. Record the vendor, vehicle number, and the driver's name and phone against each consignment, load it and scan the handover.
 - Plan mid-mile trips with the Team Lead so consignments leave on time.
 - Flag any loss, damage or delay of a consignment in transit.
-- Later: see the live location of mid-mile vehicles on a portal.
+- See the live location of mid-mile vehicles on a portal.
 
 **Flow 2: direct from the warehouse**
 - Batch shipments, plan routes and allocate Last Mile Drivers, and hand over with a scan.
@@ -49,7 +49,7 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 ## DC Executive
 - Receive consignments arriving on the mid-mile vehicle, scan and unload them, and catch anything missing, damaged or mismatched.
 - Flag any loss, damage or delay of a consignment in transit.
-- Later: see the live location of mid-mile vehicles on a portal.
+- See the live location of mid-mile vehicles on a portal.
 - Sort every shipment into the right bin, and hand sorted batches to Last Mile Drivers with a scanned handover.
 - Keep the DC's Last Mile Drivers ready and accounted for each day.
 - Receive returns and failed deliveries from drivers, and release them back towards the warehouse.
@@ -89,7 +89,6 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Keep a trustworthy record of every money movement.
 
 ## Grievance & Escalation Management Team
-Scoped in later.
 - Resolve every Customer ticket quickly and fairly, escalating when needed.
 - Resolve driver tickets, such as penalties, app problems and incidents.
 - Investigate incidents such as loss, damage, fraud and accidents, with the Team Lead.
@@ -107,7 +106,7 @@ Scoped in later.
 - Reach the Driver, and be reached, without sharing personal numbers.
 - Pay easily.
 - Return an order easily and know when it will be collected.
-- Later: get help when something goes wrong and raise a ticket.
+- Get help when something goes wrong and raise a ticket.
 
 ## System
 Responsibilities, not jobs.
@@ -125,4 +124,4 @@ Responsibilities, not jobs.
 - Hold and apply the rules.
 - Provide reports and a data feed.
 - Switch a location between Shipsy and the new system, and roll back, during cutover.
-- Later: show live mid-mile vehicle location from IoT devices.
+- Show live mid-mile vehicle location from IoT devices.
