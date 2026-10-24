@@ -14,6 +14,5 @@ Index of the project's documents. Content lives in the files below; this file on
 | [background.md](background.md) | Why the project exists, the leadership decision, the Shipsy parity baseline and the migration approach |
 | [actors.md](actors.md) | The people and systems that take part in the flow, and what each does |
 | [entities.md](entities.md) | The things actors act on |
-| [scope.md](scope.md) | What is in scope, out of scope and scoped in later, and the decisions behind it |
 | [jobs.md](jobs.md) | The jobs each actor needs done, and the System's responsibilities. The source for actions |
 | [open-questions.md](open-questions.md) | Questions waiting for a decision |

@@ -109,6 +109,7 @@ Scoped in later.
 
 ## System
 Responsibilities, not jobs.
+- Generate the AWB for each shipment.
 - Decide each shipment's path (via DC or direct) from the rules, and create consignments and manifests.
 - Create batches and routes, and allocate drivers.
 - Keep every shipment's status and location current, with a full audit trail of every scan and change.
