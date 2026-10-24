@@ -43,6 +43,7 @@ Actors that exist today, irrespective of location:
 7. Central Logistics Ops
 8. Grievance & Escalation Management Team
 9. Customer
+10. System (automated actor: acts without a human triggering it; added 2026-10-24)
 
 Clarifications:
 - Hyperlocal Reverse uses the same actors as Forward.
