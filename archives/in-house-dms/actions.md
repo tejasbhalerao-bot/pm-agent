@@ -77,13 +77,20 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Schedules a return pickup from the Customer | Shipment, Order | Customer return requested | Pickup scheduled | Reverse |
-| Schedules the return of a failed delivery | Shipment | Delivery failed | Return scheduled | Reverse |
+| Schedules the return of a failed delivery | Shipment | RTO initiated | Return scheduled | Reverse |
 
-*Job: Trigger a replan when a driver can't complete their batch, a delivery fails, or an order is cancelled or changed after dispatch, and accept the new plan or rearrange it as the situation on the ground needs.*
+*Job: Trigger a replan when a driver can't complete their batch, or an order is cancelled or changed after dispatch, and accept the new plan or rearrange it as the situation on the ground needs.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Triggers a replan | Shipment, People | Driver cannot complete the batch, delivery fails, or order is cancelled or changed after dispatch | System replans the affected batches and routes | Forward |
+| Triggers a replan | Shipment, People | Driver cannot complete the batch, or order is cancelled or changed after dispatch | System replans the affected batches and routes | Forward |
+| Accepts the new plan or rearranges it | Shipment, People | New plan shown | Plan confirmed and batches updated | Forward |
+
+*Job: Trigger a replan for the next day when a failed delivery needs to be reattempted, and accept the new plan or rearrange it as the situation on the ground needs.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Triggers a replan for the next day | Shipment | Delivery failed and needs a reattempt | System replans the delivery for the next day | Forward |
 | Accepts the new plan or rearranges it | Shipment, People | New plan shown | Plan confirmed and batches updated | Forward |
 
 *Job: Keep a healthy pool of drivers at the warehouse.*
@@ -149,11 +156,18 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 | Checks the drivers on duty | People | Start of day | Drivers ready for batching | Both |
 | Confirms each driver is accounted for | People | End of day | Every driver accounted for | Both |
 
-*Job: Trigger a replan for the DC's drivers when a driver can't complete their batch, a delivery fails, or an order is cancelled or changed after dispatch, and accept the new plan or rearrange it as the situation on the ground needs.*
+*Job: Trigger a replan for the DC's drivers when a driver can't complete their batch, or an order is cancelled or changed after dispatch, and accept the new plan or rearrange it as the situation on the ground needs.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Triggers a replan | Shipment, People | Driver cannot complete the batch, delivery fails, or order is cancelled or changed after dispatch | System replans the affected batches and routes | Forward |
+| Triggers a replan | Shipment, People | Driver cannot complete the batch, or order is cancelled or changed after dispatch | System replans the affected batches and routes | Forward |
+| Accepts the new plan or rearranges it | Shipment, People | New plan shown | Plan confirmed and batches updated | Forward |
+
+*Job: Trigger a replan for the next day when one of the DC's failed deliveries needs to be reattempted, and accept the new plan or rearrange it as the situation on the ground needs.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Triggers a replan for the next day | Shipment | Delivery failed and needs a reattempt | System replans the delivery for the next day | Forward |
 | Accepts the new plan or rearranges it | Shipment, People | New plan shown | Plan confirmed and batches updated | Forward |
 
 *Job: Receive returns and failed deliveries from drivers, and release them back towards the warehouse.*
@@ -602,11 +616,12 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 | Allocates Last Mile Drivers | People, Shipment | Batches and routes ready | Batch assigned to a driver | Forward |
 | Sends the orders to the driver's app | Shipment, Device | Batch allocated | Orders appear on the driver's app | Forward |
 
-*Responsibility: Replan the affected batches and routes when the Dispatcher or DC Executive triggers it.*
+*Responsibility: Replan the affected batches and routes, including reattempts for the next day, when the Dispatcher or DC Executive triggers it.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Replans the affected batches and routes | Shipment, People | Replan triggered | New plan shown to the Dispatcher or DC Executive | Forward |
+| Replans a failed delivery for the next day | Shipment | Replan triggered for a reattempt | Delivery included in the next day's plan, shown to the Dispatcher or DC Executive | Forward |
 
 *Responsibility: Show medicine details to the Last Mile Driver only in the returns flow.*
 

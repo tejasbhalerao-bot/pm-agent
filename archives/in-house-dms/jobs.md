@@ -24,7 +24,8 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 **Both flows**
 - Add gel packs to every order that needs them, so medicines do not spoil.
 - Schedule return pickups and failed-delivery returns without delay.
-- Trigger a replan when a driver can't complete their batch, a delivery fails, or an order is cancelled or changed after dispatch, and accept the new plan or rearrange it as the situation on the ground needs.
+- Trigger a replan for the next day when a failed delivery needs to be reattempted, and accept the new plan or rearrange it as the situation on the ground needs.
+- Trigger a replan when a driver can't complete their batch, or an order is cancelled or changed after dispatch, and accept the new plan or rearrange it as the situation on the ground needs.
 - Keep a healthy pool of drivers at the warehouse.
 - Onboard the warehouse's Last Mile Drivers and keep their details current.
 - Settle payout disputes raised by the warehouse's drivers.
@@ -36,7 +37,8 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - See the live location of mid-mile vehicles on a portal.
 - Sort every shipment into the right bin, and hand sorted batches to Last Mile Drivers with a scanned handover.
 - Keep the DC's Last Mile Drivers ready and accounted for each day.
-- Trigger a replan for the DC's drivers when a driver can't complete their batch, a delivery fails, or an order is cancelled or changed after dispatch, and accept the new plan or rearrange it as the situation on the ground needs.
+- Trigger a replan for the DC's drivers when a driver can't complete their batch, or an order is cancelled or changed after dispatch, and accept the new plan or rearrange it as the situation on the ground needs.
+- Trigger a replan for the next day when one of the DC's failed deliveries needs to be reattempted, and accept the new plan or rearrange it as the situation on the ground needs.
 - Receive returns and failed deliveries from drivers, and release them back towards the warehouse.
 - Collect, record and bank the cash handed in, and escalate any mismatch.
 - Onboard the DC's Last Mile Drivers and keep their details current.
@@ -126,7 +128,7 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 
 **Allocation and delivery**
 - Create delivery batches and routes, allocate Last Mile Drivers, and send the orders to the Driver's app.
-- Replan the affected batches and routes when the Dispatcher or DC Executive triggers it.
+- Replan the affected batches and routes, including reattempts for the next day, when the Dispatcher or DC Executive triggers it.
 - Show medicine details to the Last Mile Driver only in the returns flow.
 - Keep driver apps working offline, and sync when the network returns.
 
