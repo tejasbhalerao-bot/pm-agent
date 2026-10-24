@@ -25,11 +25,11 @@
 
 **Mid-mile**
 - Mid-Mile Drivers have no app. They only drive.
-- Vendors are onboarded, not drivers. The Team Lead onboards and manages vendors.
+- Mid-mile drivers are not onboarded; their vendors are. The Team Lead onboards and manages vendors, who supply both mid-mile and last-mile drivers.
 - At loading, the Dispatcher records the vendor, vehicle number, and the driver's name and phone against each consignment. No driver profile is kept.
 - The Dispatcher loads and scans at the origin. The DC Executive unloads and scans at the DC.
 - The driver and the vendor are accountable for loss, damage and delay in transit. The Dispatcher and DC Executive flag it.
-- Finance pays mid-mile vendors.
+- Finance pays vendors.
 
 **Medicines**
 - Cold-chain proofing means the Dispatcher adds gel packs to orders that need them.

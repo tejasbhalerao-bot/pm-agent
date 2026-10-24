@@ -15,4 +15,4 @@ The things actors act on.
 11. People
 12. Money
 13. Ticket
-14. Vendor (mid-mile fleet partner)
+14. Vendor (fleet partner supplying mid-mile and last-mile drivers)

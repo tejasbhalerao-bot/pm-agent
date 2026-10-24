@@ -64,7 +64,7 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Manage the city's drivers: document checks and renewals, suspension and exit, and performance.
 - Settle payout disputes raised by the city's drivers.
 - Manage the city's users and their access.
-- Onboard and manage mid-mile vendors.
+- Onboard and manage vendors.
 - Keep the city's vehicles and devices accounted for.
 - Plan the city's capacity as new locations open.
 - Investigate loss, fraud and cash anomalies in the city.
@@ -83,7 +83,7 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 
 ## Finance
 - Make sure every rupee collected matches what was owed and is banked, approve cash deposits and close discrepancies.
-- Pay drivers and mid-mile vendors accurately and on time under the pay rules.
+- Pay drivers and vendors accurately and on time under the pay rules.
 - Keep a trustworthy record of every money movement.
 
 ## Grievance & Escalation Management Team
@@ -116,7 +116,7 @@ Responsibilities, not jobs.
 - Detect failures and fraud signals: missed scans, delays, mismatches, cash anomalies, and deliveries marked from the wrong place.
 - Keep driver apps working offline and sync when the network returns.
 - Mask phone numbers between Customers and Drivers.
-- Hold mid-mile vendors, and record the vehicle number and the driver's name and phone against each consignment. No driver profile is kept.
+- Hold vendors, and record the vehicle number and the driver's name and phone against each consignment. No driver profile is kept.
 - Show medicine details to the Last Mile Driver only in the returns flow.
 - Enforce who can do what.
 - Hold and apply the rules.
