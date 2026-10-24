@@ -6,197 +6,104 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 
 *Job: Start each shift ready, with attendance marked and a working device and vehicle.*
 
-**Marks duty start** (Both)
-
-- Entity: People
-- Trigger: Shift begins
-- Output: Attendance recorded; driver becomes available for batching and allocation
-
-**Confirms the device and vehicle in use** (Both)
-
-- Entity: Device, Vehicle
-- Trigger: Duty start
-- Output: Device and vehicle recorded against the driver for the shift
-
-**Marks duty end** (Both)
-
-- Entity: People
-- Trigger: Shift ends
-- Output: Attendance closed
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Marks duty start | People | Shift begins | Attendance recorded; driver becomes available for batching and allocation | Both |
+| Confirms the device and vehicle in use | Device, Vehicle | Duty start | Device and vehicle recorded against the driver for the shift | Both |
+| Marks duty end | People | Shift ends | Attendance closed | Both |
 
 *Job: Know what to pick up and from where (warehouse or DC), and collect it with a scanned handover.*
 
-**Views the assigned batch and the pickup point** (Both)
-
-- Entity: Shipment
-- Trigger: Batch allocated to the driver
-- Output: Driver sees what to collect and where
-
-**Scans each shipment on collection** (Both)
-
-- Entity: Shipment, Barcode, Manifest
-- Trigger: Handover from the Dispatcher or DC Executive
-- Output: Handover recorded against the manifest
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Views the assigned batch and the pickup point | Shipment | Batch allocated to the driver | Driver sees what to collect and where | Both |
+| Scans each shipment on collection | Shipment, Barcode, Manifest | Handover from the Dispatcher or DC Executive | Handover recorded against the manifest | Both |
 
 *Job: Deliver each shipment on time, by an efficient route, with proof of delivery.*
 
-**Views the route for the batch** (Forward)
-
-- Entity: Shipment, Serviced Location
-- Trigger: Batch collected
-- Output: Stops shown in route order
-
-**Navigates to the Customer's location** (Forward)
-
-- Entity: Serviced Location
-- Trigger: Next stop begins
-- Output: Driver reaches the Customer
-
-**Collects proof of delivery** (Forward)
-
-- Entity: Shipment
-- Trigger: Shipment handed to the Customer
-- Output: Proof recorded; shipment marked delivered
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Views the route for the batch | Shipment, Serviced Location | Batch collected | Stops shown in route order | Forward |
+| Navigates to the Customer's location | Serviced Location | Next stop begins | Driver reaches the Customer | Forward |
+| Collects proof of delivery | Shipment | Shipment handed to the Customer | Proof recorded; shipment marked delivered | Forward |
 
 *Job: Reach the Customer, and be reachable, without exposing personal numbers.*
 
-**Calls the Customer through the app** (Both)
-
-- Entity: People
-- Trigger: Driver needs to reach the Customer
-- Output: Call connects with both numbers masked
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Calls the Customer through the app | People | Driver needs to reach the Customer | Call connects with both numbers masked | Both |
 
 *Job: Collect payment accurately and hand cash in with a clear record.*
 
-**Collects payment from the Customer** (Forward)
-
-- Entity: Money, Shipment
-- Trigger: Delivery of an order with payment due
-- Output: Amount recorded against the shipment
-
-**Hands cash in** (Forward)
-
-- Entity: Money
-- Trigger: End of the driver's duty
-- Output: Cash handover recorded
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Collects payment from the Customer | Money, Shipment | Delivery of an order with payment due | Amount recorded against the shipment | Forward |
+| Hands cash in | Money | End of the driver's duty | Cash handover recorded | Forward |
 
 *Job: When a delivery fails or is cancelled, record why and bring the parcel back safely to the DC or warehouse.*
 
-**Marks the delivery as failed, with a reason** (Forward)
-
-- Entity: Shipment
-- Trigger: Delivery cannot be completed or is cancelled
-- Output: Shipment marked failed with the reason; Dispatcher informed
-
-**Brings the parcel back to the DC or warehouse and scans the handover** (Reverse)
-
-- Entity: Shipment, Barcode, Manifest
-- Trigger: Delivery failed or cancelled
-- Output: Parcel returned; handover recorded
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Marks the delivery as failed, with a reason | Shipment | Delivery cannot be completed or is cancelled | Shipment marked failed with the reason; Dispatcher informed | Forward |
+| Brings the parcel back to the DC or warehouse and scans the handover | Shipment, Barcode, Manifest | Delivery failed or cancelled | Parcel returned; handover recorded | Reverse |
 
 *Job: Collect returns from Customers safely, checking the medicine against the order details at the doorstep before taking it back.*
 
-**Views the return pickup and the medicine details** (Reverse)
-
-- Entity: Shipment, Order
-- Trigger: Return pickup assigned
-- Output: Driver sees what to collect and the medicine details
-
-**Checks the medicine against the order details** (Reverse)
-
-- Entity: Shipment, Order
-- Trigger: Driver is with the Customer
-- Output: Result of the check recorded
-
-**Takes the parcel and scans it** (Reverse)
-
-- Entity: Shipment, Barcode
-- Trigger: Check complete
-- Output: Return collected; handover recorded
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Views the return pickup and the medicine details | Shipment, Order | Return pickup assigned | Driver sees what to collect and the medicine details | Reverse |
+| Checks the medicine against the order details | Shipment, Order | Driver is with the Customer | Result of the check recorded | Reverse |
+| Takes the parcel and scans it | Shipment, Barcode | Check complete | Return collected; handover recorded | Reverse |
 
 *Job: Keep working with poor or no network.*
 
-**Continues working in the app without a network** (Both)
-
-- Entity: Device
-- Trigger: Network is lost
-- Output: Actions held on the device
-
-**Syncs held actions** (Both)
-
-- Entity: Device, Shipment
-- Trigger: Network returns
-- Output: Held actions sent; statuses updated
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Continues working in the app without a network | Device | Network is lost | Actions held on the device | Both |
+| Syncs held actions | Device, Shipment | Network returns | Held actions sent; statuses updated | Both |
 
 *Job: Raise a payout dispute when pay looks wrong.*
 
-**Raises a payout dispute** (Both)
-
-- Entity: Ticket, Money
-- Trigger: Pay looks wrong
-- Output: Dispute sent to the Dispatcher or DC Executive
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Raises a payout dispute | Ticket, Money | Pay looks wrong | Dispute sent to the Dispatcher or DC Executive | Both |
 
 *Job: Get help fast in an accident, breakdown or emergency.*
 
-**Raises a help request** (Both)
-
-- Entity: Ticket
-- Trigger: Accident, breakdown or emergency
-- Output: Request reaches the first point of contact (Dispatcher or DC Executive)
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Raises a help request | Ticket | Accident, breakdown or emergency | Request reaches the first point of contact (Dispatcher or DC Executive) | Both |
 
 *Job: Cutover: move to the new app with minimal disruption.*
 
-**Starts using the new app** (Both)
-
-- Entity: People, Device
-- Trigger: Driver's location is cut over
-- Output: Driver active on the new app
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Starts using the new app | People, Device | Driver's location is cut over | Driver active on the new app | Both |
 
 ## Mid-Mile Driver
 
 *Job: Show up and drive consignments between locations, safely and on time.*
 
-**Drives the consignment from the origin to the destination** (Both)
-
-- Entity: Consignment, Vehicle
-- Trigger: Consignment loaded on the vehicle
-- Output: Consignment arrives at the destination
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Drives the consignment from the origin to the destination | Consignment, Vehicle | Consignment loaded on the vehicle | Consignment arrives at the destination | Both |
 
 ## WH Ops
 
 *Job: Hand every shipment that is ready for dispatch to the Dispatcher with a scanned handover.*
 
-**Hands ready shipments to the Dispatcher** (Forward)
-
-- Entity: Shipment
-- Trigger: Shipments ready for dispatch
-- Output: Shipments with the Dispatcher
-
-**Scans each shipment at handover** (Forward)
-
-- Entity: Shipment, Barcode, Manifest
-- Trigger: Handover to the Dispatcher
-- Output: Handover recorded against the manifest
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Hands ready shipments to the Dispatcher | Shipment | Shipments ready for dispatch | Shipments with the Dispatcher | Forward |
+| Scans each shipment at handover | Shipment, Barcode, Manifest | Handover to the Dispatcher | Handover recorded against the manifest | Forward |
 
 *Job: Receive every returned parcel back into the warehouse, and report damage or mismatch on arrival.*
 
-**Receives the returned parcel** (Reverse)
-
-- Entity: Shipment
-- Trigger: Parcel arrives at the warehouse
-- Output: Parcel received
-
-**Scans the parcel on receipt** (Reverse)
-
-- Entity: Shipment, Barcode, Manifest
-- Trigger: Parcel received
-- Output: Receipt recorded against the manifest
-
-**Reports damage or mismatch** (Reverse)
-
-- Entity: Shipment, Manifest
-- Trigger: Damage or mismatch found on arrival
-- Output: Reported against the shipment
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Receives the returned parcel | Shipment | Parcel arrives at the warehouse | Parcel received | Reverse |
+| Scans the parcel on receipt | Shipment, Barcode, Manifest | Parcel received | Receipt recorded against the manifest | Reverse |
+| Reports damage or mismatch | Shipment, Manifest | Damage or mismatch found on arrival | Reported against the shipment | Reverse |
 
 ## Dispatcher
 
@@ -204,1208 +111,638 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 
 *Job: Collate and sort ready shipments by destination DC, create consignments and send them on time. Record the vendor, vehicle number, and the driver's name and phone against each consignment, load it and scan the handover.*
 
-**Collates ready shipments by destination DC** (Forward)
-
-- Entity: Shipment
-- Trigger: Shipments received from WH Ops
-- Output: Shipments grouped by destination DC
-
-**Sorts shipments into bins by destination** (Forward)
-
-- Entity: Sorting Bin, Shipment
-- Trigger: Shipments collated
-- Output: Shipments held in the right bin
-
-**Scans shipments into a consignment** (Forward)
-
-- Entity: Consignment, Shipment, Barcode
-- Trigger: Shipments sorted for a destination DC
-- Output: Consignment and manifest created
-
-**Records the vendor, vehicle number, and the driver's name and phone** (Forward)
-
-- Entity: Consignment, Vendor, Vehicle
-- Trigger: Mid-mile vehicle arrives for loading
-- Output: Details recorded against the consignment
-
-**Loads the consignment and scans the handover** (Forward)
-
-- Entity: Consignment, Barcode, Manifest
-- Trigger: Details recorded
-- Output: Consignment dispatched; handover recorded
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Collates ready shipments by destination DC | Shipment | Shipments received from WH Ops | Shipments grouped by destination DC | Forward |
+| Sorts shipments into bins by destination | Sorting Bin, Shipment | Shipments collated | Shipments held in the right bin | Forward |
+| Scans shipments into a consignment | Consignment, Shipment, Barcode | Shipments sorted for a destination DC | Consignment and manifest created | Forward |
+| Records the vendor, vehicle number, and the driver's name and phone | Consignment, Vendor, Vehicle | Mid-mile vehicle arrives for loading | Details recorded against the consignment | Forward |
+| Loads the consignment and scans the handover | Consignment, Barcode, Manifest | Details recorded | Consignment dispatched; handover recorded | Forward |
 
 *Job: Plan mid-mile trips with the Team Lead so consignments leave on time.*
 
-**Plans mid-mile departures with the Team Lead** (Both)
-
-- Entity: Consignment, Vendor
-- Trigger: Consignments due to move
-- Output: Departure plan agreed
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Plans mid-mile departures with the Team Lead | Consignment, Vendor | Consignments due to move | Departure plan agreed | Both |
 
 *Job: Flag any loss, damage or delay of a consignment in transit.*
 
-**Flags a consignment as lost, damaged or delayed** (Both)
-
-- Entity: Consignment
-- Trigger: Consignment is late, damaged or missing
-- Output: Flag raised against the consignment, its vendor and driver
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Flags a consignment as lost, damaged or delayed | Consignment | Consignment is late, damaged or missing | Flag raised against the consignment, its vendor and driver | Both |
 
 *Job: See the live location of mid-mile vehicles on a portal.*
 
-**Views the live location of a mid-mile vehicle** (Both)
-
-- Entity: Vehicle, Consignment
-- Trigger: Consignment in transit
-- Output: Dispatcher sees where the vehicle is
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Views the live location of a mid-mile vehicle | Vehicle, Consignment | Consignment in transit | Dispatcher sees where the vehicle is | Both |
 
 **Flow 2: direct from the warehouse**
 
 *Job: Batch shipments, plan routes and allocate Last Mile Drivers, and hand over with a scan.*
 
-**Batches shipments** (Forward)
-
-- Entity: Shipment
-- Trigger: Shipments ready for direct delivery
-- Output: Delivery batches formed
-
-**Plans the route for each batch** (Forward)
-
-- Entity: Shipment, Serviced Location
-- Trigger: Batches formed
-- Output: Route set for each batch
-
-**Allocates a Last Mile Driver to each batch** (Forward)
-
-- Entity: People, Shipment
-- Trigger: Routes planned and drivers on duty
-- Output: Batch assigned to a driver
-
-**Hands the batch to the driver and scans the handover** (Forward)
-
-- Entity: Shipment, Barcode, Manifest
-- Trigger: Driver arrives at the warehouse
-- Output: Handover recorded
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Batches shipments | Shipment | Shipments ready for direct delivery | Delivery batches formed | Forward |
+| Plans the route for each batch | Shipment, Serviced Location | Batches formed | Route set for each batch | Forward |
+| Allocates a Last Mile Driver to each batch | People, Shipment | Routes planned and drivers on duty | Batch assigned to a driver | Forward |
+| Hands the batch to the driver and scans the handover | Shipment, Barcode, Manifest | Driver arrives at the warehouse | Handover recorded | Forward |
 
 **Both flows**
 
 *Job: Make sure each shipment takes the right path, via DC or direct.*
 
-**Confirms the path for each shipment** (Forward)
-
-- Entity: Shipment, Serving Location
-- Trigger: Shipment arrives for dispatch
-- Output: Shipment goes via DC or direct
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Confirms the path for each shipment | Shipment, Serving Location | Shipment arrives for dispatch | Shipment goes via DC or direct | Forward |
 
 *Job: Add gel packs to every order that needs them, so medicines do not spoil.*
 
-**Adds gel packs to orders that need them** (Forward)
-
-- Entity: Order, Shipment
-- Trigger: Order needing cold-chain protection is ready
-- Output: Gel packs added
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Adds gel packs to orders that need them | Order, Shipment | Order needing cold-chain protection is ready | Gel packs added | Forward |
 
 *Job: Schedule return pickups and failed-delivery returns without delay.*
 
-**Schedules a return pickup from the Customer** (Reverse)
-
-- Entity: Shipment, Order
-- Trigger: Customer return requested
-- Output: Pickup scheduled
-
-**Schedules the return of a failed delivery** (Reverse)
-
-- Entity: Shipment
-- Trigger: Delivery failed
-- Output: Return scheduled
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Schedules a return pickup from the Customer | Shipment, Order | Customer return requested | Pickup scheduled | Reverse |
+| Schedules the return of a failed delivery | Shipment | Delivery failed | Return scheduled | Reverse |
 
 *Job: Reassign shipments quickly when a driver can't complete their batch, a delivery fails, or an order is cancelled or changed after dispatch.*
 
-**Reassigns the batch to another driver** (Forward)
-
-- Entity: Shipment, People
-- Trigger: Driver cannot complete the batch
-- Output: Batch moved to another driver
-
-**Reassigns a shipment after a failed delivery** (Forward)
-
-- Entity: Shipment
-- Trigger: Delivery failed
-- Output: Shipment reassigned
-
-**Removes or updates a shipment** (Forward)
-
-- Entity: Order, Shipment
-- Trigger: Order cancelled or changed after dispatch
-- Output: Shipment taken off or updated in its batch
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reassigns the batch to another driver | Shipment, People | Driver cannot complete the batch | Batch moved to another driver | Forward |
+| Reassigns a shipment after a failed delivery | Shipment | Delivery failed | Shipment reassigned | Forward |
+| Removes or updates a shipment | Order, Shipment | Order cancelled or changed after dispatch | Shipment taken off or updated in its batch | Forward |
 
 *Job: Keep a healthy pool of drivers at the warehouse.*
 
-**Reviews the drivers on duty against the day's shipments** (Forward)
-
-- Entity: People, Shipment
-- Trigger: Start of day
-- Output: Shortfall or surplus of drivers known
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews the drivers on duty against the day's shipments | People, Shipment | Start of day | Shortfall or surplus of drivers known | Forward |
 
 *Job: Onboard the warehouse's Last Mile Drivers and keep their details current.*
 
-**Onboards a Last Mile Driver** (Both)
-
-- Entity: People
-- Trigger: New driver joins
-- Output: Driver record created and activated
-
-**Updates a driver's details** (Both)
-
-- Entity: People
-- Trigger: Driver's details change
-- Output: Record updated
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Onboards a Last Mile Driver | People | New driver joins | Driver record created and activated | Both |
+| Updates a driver's details | People | Driver's details change | Record updated | Both |
 
 *Job: Settle payout disputes raised by the warehouse's drivers.*
 
-**Reviews a payout dispute** (Both)
-
-- Entity: Ticket, Money
-- Trigger: Driver raises a dispute
-- Output: Dispute understood
-
-**Settles the dispute and informs the driver** (Both)
-
-- Entity: Ticket, Money
-- Trigger: Review complete
-- Output: Dispute closed with an outcome
-
-**Escalates a dispute to Central Logistics Ops** (Both)
-
-- Entity: Ticket
-- Trigger: Dispute cannot be settled
-- Output: Dispute passed on
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews a payout dispute | Ticket, Money | Driver raises a dispute | Dispute understood | Both |
+| Settles the dispute and informs the driver | Ticket, Money | Review complete | Dispute closed with an outcome | Both |
+| Escalates a dispute to Central Logistics Ops | Ticket | Dispute cannot be settled | Dispute passed on | Both |
 
 *Job: Be the first point of contact for drivers on the road in the direct flow.*
 
-**Responds to a driver's help request** (Forward)
-
-- Entity: Ticket
-- Trigger: Driver raises a help request
-- Output: Driver supported
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Responds to a driver's help request | Ticket | Driver raises a help request | Driver supported | Forward |
 
 ## DC Executive
 
 *Job: Receive consignments arriving on the mid-mile vehicle, scan and unload them, and catch anything missing, damaged or mismatched.*
 
-**Receives the consignment from the vehicle** (Forward)
-
-- Entity: Consignment, Vehicle
-- Trigger: Mid-mile vehicle arrives
-- Output: Consignment received
-
-**Scans and unloads the consignment** (Forward)
-
-- Entity: Consignment, Shipment, Barcode, Manifest
-- Trigger: Consignment received
-- Output: Receipt recorded against the manifest
-
-**Flags anything missing, damaged or mismatched** (Forward)
-
-- Entity: Shipment, Consignment, Manifest
-- Trigger: Scan does not match the manifest, or damage is seen
-- Output: Discrepancy recorded
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Receives the consignment from the vehicle | Consignment, Vehicle | Mid-mile vehicle arrives | Consignment received | Forward |
+| Scans and unloads the consignment | Consignment, Shipment, Barcode, Manifest | Consignment received | Receipt recorded against the manifest | Forward |
+| Flags anything missing, damaged or mismatched | Shipment, Consignment, Manifest | Scan does not match the manifest, or damage is seen | Discrepancy recorded | Forward |
 
 *Job: Flag any loss, damage or delay of a consignment in transit.*
 
-**Flags a consignment as lost, damaged or delayed** (Both)
-
-- Entity: Consignment
-- Trigger: Consignment is late, damaged or missing
-- Output: Flag raised against the consignment, its vendor and driver
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Flags a consignment as lost, damaged or delayed | Consignment | Consignment is late, damaged or missing | Flag raised against the consignment, its vendor and driver | Both |
 
 *Job: See the live location of mid-mile vehicles on a portal.*
 
-**Views the live location of a mid-mile vehicle** (Both)
-
-- Entity: Vehicle, Consignment
-- Trigger: Consignment in transit to the DC
-- Output: DC Executive sees where the vehicle is
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Views the live location of a mid-mile vehicle | Vehicle, Consignment | Consignment in transit to the DC | DC Executive sees where the vehicle is | Both |
 
 *Job: Sort every shipment into the right bin, and hand sorted batches to Last Mile Drivers with a scanned handover.*
 
-**Sorts each shipment into its bin** (Forward)
-
-- Entity: Sorting Bin, Shipment
-- Trigger: Shipment unloaded
-- Output: Shipment held in the bin the system shows
-
-**Hands the sorted batch to a driver and scans the handover** (Forward)
-
-- Entity: Shipment, Barcode, Manifest
-- Trigger: Driver arrives at the DC
-- Output: Handover recorded
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Sorts each shipment into its bin | Sorting Bin, Shipment | Shipment unloaded | Shipment held in the bin the system shows | Forward |
+| Hands the sorted batch to a driver and scans the handover | Shipment, Barcode, Manifest | Driver arrives at the DC | Handover recorded | Forward |
 
 *Job: Keep the DC's Last Mile Drivers ready and accounted for each day.*
 
-**Checks the drivers on duty** (Both)
-
-- Entity: People
-- Trigger: Start of day
-- Output: Drivers ready for batching
-
-**Confirms each driver is accounted for** (Both)
-
-- Entity: People
-- Trigger: End of day
-- Output: Every driver accounted for
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Checks the drivers on duty | People | Start of day | Drivers ready for batching | Both |
+| Confirms each driver is accounted for | People | End of day | Every driver accounted for | Both |
 
 *Job: Receive returns and failed deliveries from drivers, and release them back towards the warehouse.*
 
-**Receives returned parcels from drivers and scans them** (Reverse)
-
-- Entity: Shipment, Barcode, Manifest
-- Trigger: Driver brings a parcel back
-- Output: Receipt recorded
-
-**Releases returned parcels towards the warehouse** (Reverse)
-
-- Entity: Shipment
-- Trigger: Returned parcels held at the DC
-- Output: Parcels sent back
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Receives returned parcels from drivers and scans them | Shipment, Barcode, Manifest | Driver brings a parcel back | Receipt recorded | Reverse |
+| Releases returned parcels towards the warehouse | Shipment | Returned parcels held at the DC | Parcels sent back | Reverse |
 
 *Job: Collect, record and bank the cash handed in, and escalate any mismatch.*
 
-**Receives cash from drivers** (Forward)
-
-- Entity: Money
-- Trigger: Driver hands cash in
-- Output: Cash received
-
-**Records the cash collected** (Forward)
-
-- Entity: Money
-- Trigger: Cash received
-- Output: Amount recorded against the driver and shipments
-
-**Deposits the cash in the bank** (Forward)
-
-- Entity: Money
-- Trigger: Cash recorded
-- Output: Deposit made and recorded for Finance approval
-
-**Escalates a mismatch** (Forward)
-
-- Entity: Money, Ticket
-- Trigger: Cash differs from what was owed
-- Output: Mismatch raised
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Receives cash from drivers | Money | Driver hands cash in | Cash received | Forward |
+| Records the cash collected | Money | Cash received | Amount recorded against the driver and shipments | Forward |
+| Deposits the cash in the bank | Money | Cash recorded | Deposit made and recorded for Finance approval | Forward |
+| Escalates a mismatch | Money, Ticket | Cash differs from what was owed | Mismatch raised | Forward |
 
 *Job: Onboard the DC's Last Mile Drivers and keep their details current.*
 
-**Onboards a Last Mile Driver** (Both)
-
-- Entity: People
-- Trigger: New driver joins
-- Output: Driver record created and activated
-
-**Updates a driver's details** (Both)
-
-- Entity: People
-- Trigger: Driver's details change
-- Output: Record updated
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Onboards a Last Mile Driver | People | New driver joins | Driver record created and activated | Both |
+| Updates a driver's details | People | Driver's details change | Record updated | Both |
 
 *Job: Settle payout disputes raised by the DC's drivers.*
 
-**Reviews a payout dispute** (Both)
-
-- Entity: Ticket, Money
-- Trigger: Driver raises a dispute
-- Output: Dispute understood
-
-**Settles the dispute and informs the driver** (Both)
-
-- Entity: Ticket, Money
-- Trigger: Review complete
-- Output: Dispute closed with an outcome
-
-**Escalates a dispute to Central Logistics Ops** (Both)
-
-- Entity: Ticket
-- Trigger: Dispute cannot be settled
-- Output: Dispute passed on
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews a payout dispute | Ticket, Money | Driver raises a dispute | Dispute understood | Both |
+| Settles the dispute and informs the driver | Ticket, Money | Review complete | Dispute closed with an outcome | Both |
+| Escalates a dispute to Central Logistics Ops | Ticket | Dispute cannot be settled | Dispute passed on | Both |
 
 *Job: Assign and recover devices and vehicles, and handle a lost or broken device.*
 
-**Assigns a device and a vehicle to a driver** (Both)
-
-- Entity: Device, Vehicle, People
-- Trigger: Driver joins or starts duty
-- Output: Recorded against the driver
-
-**Recovers the device and vehicle** (Both)
-
-- Entity: Device, Vehicle, People
-- Trigger: Driver leaves or returns the equipment
-- Output: Recorded as returned
-
-**Handles a lost or broken device** (Both)
-
-- Entity: Device
-- Trigger: Device is lost or broken
-- Output: Device marked and a replacement assigned
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Assigns a device and a vehicle to a driver | Device, Vehicle, People | Driver joins or starts duty | Recorded against the driver | Both |
+| Recovers the device and vehicle | Device, Vehicle, People | Driver leaves or returns the equipment | Recorded as returned | Both |
+| Handles a lost or broken device | Device | Device is lost or broken | Device marked and a replacement assigned | Both |
 
 *Job: Be the first point of contact for drivers at the DC.*
 
-**Responds to a driver's help request** (Both)
-
-- Entity: Ticket
-- Trigger: Driver raises a help request
-- Output: Driver supported
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Responds to a driver's help request | Ticket | Driver raises a help request | Driver supported | Both |
 
 ## Team Lead
 
 *Job: Keep enough drivers on shift for the city's orders, with cover for leave and absences.*
 
-**Reviews drivers on shift against the city's expected orders** (Both)
-
-- Entity: People, Order
-- Trigger: Before each shift
-- Output: Gaps identified
-
-**Arranges cover for leave and absences** (Both)
-
-- Entity: People
-- Trigger: Driver on leave or absent
-- Output: Cover arranged
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews drivers on shift against the city's expected orders | People, Order | Before each shift | Gaps identified | Both |
+| Arranges cover for leave and absences | People | Driver on leave or absent | Cover arranged | Both |
 
 *Job: Spot and fix delivery problems in the city before they become complaints.*
 
-**Reviews delivery problems in the city** (Both)
-
-- Entity: Shipment
-- Trigger: Delays or failures arise
-- Output: Problems identified
-
-**Takes action on a delivery problem** (Both)
-
-- Entity: Shipment
-- Trigger: Problem identified
-- Output: Problem resolved
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews delivery problems in the city | Shipment | Delays or failures arise | Problems identified | Both |
+| Takes action on a delivery problem | Shipment | Problem identified | Problem resolved | Both |
 
 *Job: Plan mid-mile trips with the Dispatcher.*
 
-**Plans mid-mile departures with the Dispatcher** (Both)
-
-- Entity: Consignment, Vendor
-- Trigger: Consignments due to move
-- Output: Departure plan agreed
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Plans mid-mile departures with the Dispatcher | Consignment, Vendor | Consignments due to move | Departure plan agreed | Both |
 
 *Job: Manage the city's drivers: document checks and renewals, suspension and exit, and performance.*
 
-**Checks a driver's documents** (Both)
-
-- Entity: People
-- Trigger: Onboarding or renewal due
-- Output: Documents verified or flagged
-
-**Suspends a driver** (Both)
-
-- Entity: People
-- Trigger: Reason to suspend
-- Output: Driver cannot take work
-
-**Exits a driver** (Both)
-
-- Entity: People
-- Trigger: Driver leaves
-- Output: Record closed
-
-**Reviews a driver's performance** (Both)
-
-- Entity: People, Shipment
-- Trigger: Periodic review
-- Output: Performance known
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Checks a driver's documents | People | Onboarding or renewal due | Documents verified or flagged | Both |
+| Suspends a driver | People | Reason to suspend | Driver cannot take work | Both |
+| Exits a driver | People | Driver leaves | Record closed | Both |
+| Reviews a driver's performance | People, Shipment | Periodic review | Performance known | Both |
 
 *Job: Settle payout disputes raised by the city's drivers.*
 
-**Reviews a payout dispute** (Both)
-
-- Entity: Ticket, Money
-- Trigger: Driver raises a dispute
-- Output: Dispute understood
-
-**Settles the dispute and informs the driver** (Both)
-
-- Entity: Ticket, Money
-- Trigger: Review complete
-- Output: Dispute closed with an outcome
-
-**Escalates a dispute to Central Logistics Ops** (Both)
-
-- Entity: Ticket
-- Trigger: Dispute cannot be settled
-- Output: Dispute passed on
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews a payout dispute | Ticket, Money | Driver raises a dispute | Dispute understood | Both |
+| Settles the dispute and informs the driver | Ticket, Money | Review complete | Dispute closed with an outcome | Both |
+| Escalates a dispute to Central Logistics Ops | Ticket | Dispute cannot be settled | Dispute passed on | Both |
 
 *Job: Manage the city's users and their access.*
 
-**Creates a user and assigns a role** (Both)
-
-- Entity: People
-- Trigger: New user needed
-- Output: User active with the role's access
-
-**Changes or removes a user's access** (Both)
-
-- Entity: People
-- Trigger: Role change or exit
-- Output: Access updated
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Creates a user and assigns a role | People | New user needed | User active with the role's access | Both |
+| Changes or removes a user's access | People | Role change or exit | Access updated | Both |
 
 *Job: Onboard and manage vendors.*
 
-**Onboards a vendor** (Both)
-
-- Entity: Vendor
-- Trigger: New vendor engaged
-- Output: Vendor record created
-
-**Updates or deactivates a vendor** (Both)
-
-- Entity: Vendor
-- Trigger: Details change or engagement ends
-- Output: Record updated
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Onboards a vendor | Vendor | New vendor engaged | Vendor record created | Both |
+| Updates or deactivates a vendor | Vendor | Details change or engagement ends | Record updated | Both |
 
 *Job: Keep the city's vehicles and devices accounted for.*
 
-**Reviews the city's vehicles and devices** (Both)
-
-- Entity: Vehicle, Device
-- Trigger: Periodic review
-- Output: Anything missing identified
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews the city's vehicles and devices | Vehicle, Device | Periodic review | Anything missing identified | Both |
 
 *Job: Plan the city's capacity as new locations open.*
 
-**Plans drivers and DC capacity for a new location** (Both)
-
-- Entity: Serving Location, People
-- Trigger: New location planned
-- Output: Capacity plan ready
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Plans drivers and DC capacity for a new location | Serving Location, People | New location planned | Capacity plan ready | Both |
 
 *Job: Investigate loss, fraud and cash anomalies in the city.*
 
-**Investigates a loss, fraud or cash anomaly** (Both)
-
-- Entity: Shipment, Consignment, Money
-- Trigger: Flag raised by the system or by staff
-- Output: Findings recorded
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Investigates a loss, fraud or cash anomaly | Shipment, Consignment, Money | Flag raised by the system or by staff | Findings recorded | Both |
 
 *Job: Cutover: train drivers, run the new system alongside Shipsy, and roll back if needed.*
 
-**Trains drivers on the new app** (Both)
-
-- Entity: People
-- Trigger: Location nears cutover
-- Output: Drivers trained
-
-**Runs the location on the new system alongside Shipsy** (Both)
-
-- Entity: Serving Location
-- Trigger: Cutover begins
-- Output: Both systems run in parallel
-
-**Rolls the location back to Shipsy** (Both)
-
-- Entity: Serving Location
-- Trigger: Cutover does not meet its criteria
-- Output: Location back on Shipsy
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Trains drivers on the new app | People | Location nears cutover | Drivers trained | Both |
+| Runs the location on the new system alongside Shipsy | Serving Location | Cutover begins | Both systems run in parallel | Both |
+| Rolls the location back to Shipsy | Serving Location | Cutover does not meet its criteria | Location back on Shipsy | Both |
 
 ## Central Logistics Ops
 
 *Job: See country-wide performance and step in where it drops.*
 
-**Views performance across the country** (Both)
-
-- Entity: Shipment, Serving Location
-- Trigger: Any time
-- Output: Performance visible by location
-
-**Steps in where performance drops** (Both)
-
-- Entity: Serving Location
-- Trigger: Performance drops
-- Output: Action taken at the location
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Views performance across the country | Shipment, Serving Location | Any time | Performance visible by location | Both |
+| Steps in where performance drops | Serving Location | Performance drops | Action taken at the location | Both |
 
 *Job: Set up cities, locations, serviceable areas and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.*
 
-**Creates a city and its serving locations** (Both)
-
-- Entity: Serving Location
-- Trigger: Expansion to a new city
-- Output: City and locations set up
-
-**Defines the serviced locations each serving location covers** (Both)
-
-- Entity: Serviced Location, Serving Location
-- Trigger: Location set up or coverage changes
-- Output: Coverage recorded
-
-**Links warehouses and DCs** (Both)
-
-- Entity: Serving Location
-- Trigger: Locations set up
-- Output: Links recorded
-
-**Sets whether a location uses the direct flow or the DC flow** (Forward)
-
-- Entity: Serving Location
-- Trigger: Location set up
-- Output: Flow recorded for the location
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Creates a city and its serving locations | Serving Location | Expansion to a new city | City and locations set up | Both |
+| Defines the serviced locations each serving location covers | Serviced Location, Serving Location | Location set up or coverage changes | Coverage recorded | Both |
+| Links warehouses and DCs | Serving Location | Locations set up | Links recorded | Both |
+| Sets whether a location uses the direct flow or the DC flow | Serving Location | Location set up | Flow recorded for the location | Forward |
 
 *Job: Define the rules the system runs on: SLAs, batching, allocation, delivery attempts, cut-offs, and pay, incentives and penalties.*
 
-**Defines SLAs** (Both)
-
-- Entity: Shipment
-- Trigger: New or changed SLA
-- Output: SLAs applied by the system
-
-**Defines batching and allocation rules** (Forward)
-
-- Entity: Shipment, People
-- Trigger: New or changed rule
-- Output: Rules applied by the system
-
-**Defines delivery attempts and cut-offs** (Both)
-
-- Entity: Shipment
-- Trigger: New or changed rule
-- Output: Rules applied by the system
-
-**Defines pay, incentives and penalties** (Both)
-
-- Entity: Money
-- Trigger: New or changed rule
-- Output: Rules applied by the system
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Defines SLAs | Shipment | New or changed SLA | SLAs applied by the system | Both |
+| Defines batching and allocation rules | Shipment, People | New or changed rule | Rules applied by the system | Forward |
+| Defines delivery attempts and cut-offs | Shipment | New or changed rule | Rules applied by the system | Both |
+| Defines pay, incentives and penalties | Money | New or changed rule | Rules applied by the system | Both |
 
 *Job: Manage roles and access across the system.*
 
-**Defines roles and what each can do** (Both)
-
-- Entity: People
-- Trigger: New role needed
-- Output: Role available
-
-**Assigns roles to users** (Both)
-
-- Entity: People
-- Trigger: New user or role change
-- Output: Access updated
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Defines roles and what each can do | People | New role needed | Role available | Both |
+| Assigns roles to users | People | New user or role change | Access updated | Both |
 
 *Job: Forecast demand and plan drivers and DC capacity for growth from 39 to 150 locations.*
 
-**Forecasts demand by location** (Both)
-
-- Entity: Order, Serving Location
-- Trigger: Planning cycle
-- Output: Demand forecast
-
-**Plans drivers and DC capacity** (Both)
-
-- Entity: People, Serving Location
-- Trigger: Forecast ready
-- Output: Capacity plan
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Forecasts demand by location | Order, Serving Location | Planning cycle | Demand forecast | Both |
+| Plans drivers and DC capacity | People, Serving Location | Forecast ready | Capacity plan | Both |
 
 *Job: Detect and act on fraud and leakage patterns.*
 
-**Reviews fraud and leakage patterns** (Both)
-
-- Entity: Shipment, Money
-- Trigger: Periodic review or system flag
-- Output: Patterns identified
-
-**Acts on a pattern** (Both)
-
-- Entity: Shipment, Money
-- Trigger: Pattern identified
-- Output: Action taken
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews fraud and leakage patterns | Shipment, Money | Periodic review or system flag | Patterns identified | Both |
+| Acts on a pattern | Shipment, Money | Pattern identified | Action taken | Both |
 
 *Job: Settle payout disputes that the Dispatcher, DC Executive and Team Lead cannot.*
 
-**Settles an escalated payout dispute** (Both)
-
-- Entity: Ticket, Money
-- Trigger: Dispute escalated
-- Output: Dispute closed with an outcome
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Settles an escalated payout dispute | Ticket, Money | Dispute escalated | Dispute closed with an outcome | Both |
 
 *Job: Give leadership and analytics the reports and data they need.*
 
-**Shares reports with leadership** (Both)
-
-- Entity: Shipment, Money
-- Trigger: Reporting cycle or request
-- Output: Report delivered
-
-**Provides data to analytics** (Both)
-
-- Entity: Shipment, Money
-- Trigger: Request from analytics
-- Output: Data provided
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Shares reports with leadership | Shipment, Money | Reporting cycle or request | Report delivered | Both |
+| Provides data to analytics | Shipment, Money | Request from analytics | Data provided | Both |
 
 *Job: Cutover: own the location-by-location plan, including readiness criteria, go or no-go, and rollback.*
 
-**Sets readiness criteria for a location** (Both)
-
-- Entity: Serving Location
-- Trigger: Location planned for cutover
-- Output: Criteria defined
-
-**Decides go or no-go** (Both)
-
-- Entity: Serving Location
-- Trigger: Location assessed against criteria
-- Output: Decision recorded
-
-**Decides on a rollback** (Both)
-
-- Entity: Serving Location
-- Trigger: Cutover does not meet its criteria
-- Output: Rollback decided
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Sets readiness criteria for a location | Serving Location | Location planned for cutover | Criteria defined | Both |
+| Decides go or no-go | Serving Location | Location assessed against criteria | Decision recorded | Both |
+| Decides on a rollback | Serving Location | Cutover does not meet its criteria | Rollback decided | Both |
 
 ## Finance
 
 *Job: Make sure every rupee collected matches what was owed and is banked, approve cash deposits and close discrepancies.*
 
-**Reviews cash collected against what was owed** (Forward)
-
-- Entity: Money, Shipment
-- Trigger: Deposit recorded
-- Output: Match or discrepancy identified
-
-**Approves a cash deposit** (Forward)
-
-- Entity: Money
-- Trigger: Deposit matches what was owed
-- Output: Deposit approved
-
-**Closes a discrepancy** (Forward)
-
-- Entity: Money
-- Trigger: Discrepancy explained or resolved
-- Output: Discrepancy closed
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews cash collected against what was owed | Money, Shipment | Deposit recorded | Match or discrepancy identified | Forward |
+| Approves a cash deposit | Money | Deposit matches what was owed | Deposit approved | Forward |
+| Closes a discrepancy | Money | Discrepancy explained or resolved | Discrepancy closed | Forward |
 
 *Job: Pay vendors accurately and on time, every month, under the pay rules.*
 
-**Calculates the amount owed to each vendor** (Both)
-
-- Entity: Money, Vendor
-- Trigger: Month end
-- Output: Monthly amount per vendor
-
-**Pays the vendor** (Both)
-
-- Entity: Money, Vendor
-- Trigger: Amount ready
-- Output: Payment made
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Calculates the amount owed to each vendor | Money, Vendor | Month end | Monthly amount per vendor | Both |
+| Pays the vendor | Money, Vendor | Amount ready | Payment made | Both |
 
 *Job: Keep a trustworthy record of every money movement.*
 
-**Reviews the record of money movements** (Both)
-
-- Entity: Money
-- Trigger: Periodic review
-- Output: Record confirmed complete and traceable
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews the record of money movements | Money | Periodic review | Record confirmed complete and traceable | Both |
 
 ## Grievance & Escalation Management Team
 
 *Job: Resolve every Customer ticket quickly and fairly, escalating when needed.*
 
-**Reviews a Customer ticket** (Both)
-
-- Entity: Ticket
-- Trigger: Customer raises a ticket
-- Output: Issue understood
-
-**Resolves the ticket and informs the Customer** (Both)
-
-- Entity: Ticket
-- Trigger: Review complete
-- Output: Ticket closed with an outcome
-
-**Escalates a ticket** (Both)
-
-- Entity: Ticket
-- Trigger: Ticket cannot be resolved
-- Output: Ticket passed on
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews a Customer ticket | Ticket | Customer raises a ticket | Issue understood | Both |
+| Resolves the ticket and informs the Customer | Ticket | Review complete | Ticket closed with an outcome | Both |
+| Escalates a ticket | Ticket | Ticket cannot be resolved | Ticket passed on | Both |
 
 *Job: Resolve driver tickets, such as penalties, app problems and incidents.*
 
-**Reviews a driver ticket** (Both)
-
-- Entity: Ticket, People
-- Trigger: Driver raises a ticket
-- Output: Issue understood
-
-**Resolves the ticket and informs the driver** (Both)
-
-- Entity: Ticket
-- Trigger: Review complete
-- Output: Ticket closed with an outcome
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews a driver ticket | Ticket, People | Driver raises a ticket | Issue understood | Both |
+| Resolves the ticket and informs the driver | Ticket | Review complete | Ticket closed with an outcome | Both |
 
 *Job: Investigate incidents such as loss, damage, fraud and accidents, with the Team Lead.*
 
-**Investigates an incident with the Team Lead** (Both)
-
-- Entity: Ticket, Shipment, Consignment
-- Trigger: Incident reported
-- Output: Findings recorded
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Investigates an incident with the Team Lead | Ticket, Shipment, Consignment | Incident reported | Findings recorded | Both |
 
 *Job: Spot patterns in tickets so recurring problems get fixed at the root.*
 
-**Reviews tickets for recurring problems** (Both)
-
-- Entity: Ticket
-- Trigger: Periodic review
-- Output: Patterns identified
-
-**Raises a root-cause fix with the owning team** (Both)
-
-- Entity: Ticket
-- Trigger: Pattern identified
-- Output: Fix requested
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews tickets for recurring problems | Ticket | Periodic review | Patterns identified | Both |
+| Raises a root-cause fix with the owning team | Ticket | Pattern identified | Fix requested | Both |
 
 *Job: Keep tickets within their time limits.*
 
-**Tracks tickets against their time limits** (Both)
-
-- Entity: Ticket
-- Trigger: Ticket open
-- Output: Tickets near or past the limit identified
-
-**Follows up on a ticket near its limit** (Both)
-
-- Entity: Ticket
-- Trigger: Ticket near its limit
-- Output: Ticket moved forward
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Tracks tickets against their time limits | Ticket | Ticket open | Tickets near or past the limit identified | Both |
+| Follows up on a ticket near its limit | Ticket | Ticket near its limit | Ticket moved forward | Both |
 
 ## Control Tower
 
 *Job: Watch live deliveries independently of Logistics Ops, and call out operational failures so none are hidden.*
 
-**Watches live deliveries** (Both)
-
-- Entity: Shipment
-- Trigger: Continuous
-- Output: Operational failures spotted
-
-**Calls out an operational failure** (Both)
-
-- Entity: Shipment, Ticket
-- Trigger: Failure spotted
-- Output: Failure raised to its owner and recorded
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Watches live deliveries | Shipment | Continuous | Operational failures spotted | Both |
+| Calls out an operational failure | Shipment, Ticket | Failure spotted | Failure raised to its owner and recorded | Both |
 
 ## Customer
 
 *Job: Know when the order will arrive, track it, and be told about changes.*
 
-**Views the expected arrival and status of the order** (Forward)
-
-- Entity: Order, Shipment
-- Trigger: Order placed
-- Output: Customer sees status
-
-**Receives notices about changes** (Both)
-
-- Entity: Order
-- Trigger: Order changes
-- Output: Customer informed
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Views the expected arrival and status of the order | Order, Shipment | Order placed | Customer sees status | Forward |
+| Receives notices about changes | Order | Order changes | Customer informed | Both |
 
 *Job: Receive the order securely and confirm it.*
 
-**Receives the order from the driver** (Forward)
-
-- Entity: Shipment
-- Trigger: Driver arrives
-- Output: Order handed over
-
-**Confirms receipt** (Forward)
-
-- Entity: Shipment
-- Trigger: Order handed over
-- Output: Delivery confirmed
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Receives the order from the driver | Shipment | Driver arrives | Order handed over | Forward |
+| Confirms receipt | Shipment | Order handed over | Delivery confirmed | Forward |
 
 *Job: Reschedule, cancel or reject a delivery easily.*
 
-**Reschedules a delivery** (Forward)
-
-- Entity: Shipment
-- Trigger: Customer unavailable
-- Output: New delivery time set
-
-**Cancels an order** (Forward)
-
-- Entity: Order
-- Trigger: Customer no longer wants the order
-- Output: Order cancelled
-
-**Rejects a delivery at the door** (Forward)
-
-- Entity: Shipment
-- Trigger: Driver arrives
-- Output: Delivery marked failed with the reason
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reschedules a delivery | Shipment | Customer unavailable | New delivery time set | Forward |
+| Cancels an order | Order | Customer no longer wants the order | Order cancelled | Forward |
+| Rejects a delivery at the door | Shipment | Driver arrives | Delivery marked failed with the reason | Forward |
 
 *Job: Correct an address or phone number before delivery.*
 
-**Updates the delivery address or phone number** (Forward)
-
-- Entity: Order, Serviced Location
-- Trigger: Details are wrong
-- Output: Details updated and the driver informed
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Updates the delivery address or phone number | Order, Serviced Location | Details are wrong | Details updated and the driver informed | Forward |
 
 *Job: Reach the Driver, and be reached, without sharing personal numbers.*
 
-**Calls the driver through the app** (Both)
-
-- Entity: People
-- Trigger: Customer needs to reach the driver
-- Output: Call connects with both numbers masked
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Calls the driver through the app | People | Customer needs to reach the driver | Call connects with both numbers masked | Both |
 
 *Job: Pay easily.*
 
-**Pays for the order** (Forward)
-
-- Entity: Money, Order
-- Trigger: Payment due
-- Output: Payment recorded against the order
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Pays for the order | Money, Order | Payment due | Payment recorded against the order | Forward |
 
 *Job: Return an order easily and know when it will be collected.*
 
-**Requests a return** (Reverse)
-
-- Entity: Order, Shipment
-- Trigger: Customer wants to return an order
-- Output: Return pickup requested
-
-**Views the pickup time** (Reverse)
-
-- Entity: Shipment
-- Trigger: Pickup scheduled
-- Output: Pickup time shown
-
-**Hands the return to the driver** (Reverse)
-
-- Entity: Shipment
-- Trigger: Driver arrives
-- Output: Return handed over
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Requests a return | Order, Shipment | Customer wants to return an order | Return pickup requested | Reverse |
+| Views the pickup time | Shipment | Pickup scheduled | Pickup time shown | Reverse |
+| Hands the return to the driver | Shipment | Driver arrives | Return handed over | Reverse |
 
 *Job: Get help when something goes wrong and raise a ticket.*
 
-**Raises a ticket** (Both)
-
-- Entity: Ticket
-- Trigger: Something goes wrong
-- Output: Ticket created
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Raises a ticket | Ticket | Something goes wrong | Ticket created | Both |
 
 ## System
 
 *Responsibility: Receive each order with its details, and apply cancellations and changes, including after dispatch.*
 
-**Receives an order with its details** (Both)
-
-- Entity: Order
-- Trigger: Order sent to the system
-- Output: Order held
-
-**Applies a cancellation or change** (Both)
-
-- Entity: Order, Shipment
-- Trigger: Order cancelled or changed
-- Output: Order and shipment updated
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Receives an order with its details | Order | Order sent to the system | Order held | Both |
+| Applies a cancellation or change | Order, Shipment | Order cancelled or changed | Order and shipment updated | Both |
 
 *Responsibility: Create a shipment for each order and generate its AWB.*
 
-**Creates a shipment** (Forward)
-
-- Entity: Shipment
-- Trigger: Order received
-- Output: Shipment created
-
-**Generates the AWB** (Forward)
-
-- Entity: Shipment
-- Trigger: Shipment created
-- Output: AWB assigned to the shipment
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Creates a shipment | Shipment | Order received | Shipment created | Forward |
+| Generates the AWB | Shipment | Shipment created | AWB assigned to the shipment | Forward |
 
 *Responsibility: Decide each shipment's path (via DC or direct) from the rules.*
 
-**Decides the path** (Forward)
-
-- Entity: Shipment, Serving Location
-- Trigger: Shipment created
-- Output: Shipment routed via DC or direct
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Decides the path | Shipment, Serving Location | Shipment created | Shipment routed via DC or direct | Forward |
 
 *Responsibility: Keep every shipment's status and location current.*
 
-**Updates status and location** (Both)
-
-- Entity: Shipment
-- Trigger: Every scan or event
-- Output: Status and location current
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Updates status and location | Shipment | Every scan or event | Status and location current | Both |
 
 *Responsibility: Generate barcodes for shipments and consignments.*
 
-**Generates a barcode** (Both)
-
-- Entity: Barcode, Shipment, Consignment
-- Trigger: Shipment or consignment created
-- Output: Barcode available to print or display
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Generates a barcode | Barcode, Shipment, Consignment | Shipment or consignment created | Barcode available to print or display | Both |
 
 *Responsibility: Resolve every scan to the right entity, and reject invalid or duplicate scans.*
 
-**Resolves a scan to its entity** (Both)
-
-- Entity: Barcode
-- Trigger: Scan received
-- Output: Entity identified
-
-**Rejects an invalid or duplicate scan** (Both)
-
-- Entity: Barcode
-- Trigger: Scan is invalid or a duplicate
-- Output: Scan rejected and the user told
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Resolves a scan to its entity | Barcode | Scan received | Entity identified | Both |
+| Rejects an invalid or duplicate scan | Barcode | Scan is invalid or a duplicate | Scan rejected and the user told | Both |
 
 *Responsibility: Generate a manifest for every handover, record the scans against it, and flag anything missing or mismatched.*
 
-**Generates a manifest** (Both)
-
-- Entity: Manifest
-- Trigger: Handover begins
-- Output: Manifest lists the items to hand over
-
-**Records scans against the manifest** (Both)
-
-- Entity: Manifest, Barcode
-- Trigger: Scan during handover
-- Output: Scan recorded
-
-**Flags missing or mismatched items** (Both)
-
-- Entity: Manifest
-- Trigger: Handover ends with differences
-- Output: Differences flagged to the people involved
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Generates a manifest | Manifest | Handover begins | Manifest lists the items to hand over | Both |
+| Records scans against the manifest | Manifest, Barcode | Scan during handover | Scan recorded | Both |
+| Flags missing or mismatched items | Manifest | Handover ends with differences | Differences flagged to the people involved | Both |
 
 *Responsibility: Create consignments by grouping shipments by destination DC.*
 
-**Creates a consignment** (Forward)
-
-- Entity: Consignment, Shipment
-- Trigger: Shipments scanned into a consignment
-- Output: Consignment created with its manifest
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Creates a consignment | Consignment, Shipment | Shipments scanned into a consignment | Consignment created with its manifest | Forward |
 
 *Responsibility: Record the vendor, vehicle number, and the driver's name and phone against each consignment. No driver profile is kept.*
 
-**Records the vendor, vehicle and driver details** (Forward)
-
-- Entity: Consignment, Vendor, Vehicle
-- Trigger: Dispatcher enters the details at loading
-- Output: Details held against the consignment
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Records the vendor, vehicle and driver details | Consignment, Vendor, Vehicle | Dispatcher enters the details at loading | Details held against the consignment | Forward |
 
 *Responsibility: Show live mid-mile vehicle location from IoT devices.*
 
-**Shows the live location of a vehicle** (Both)
-
-- Entity: Vehicle
-- Trigger: Consignment in transit
-- Output: Location visible to the Dispatcher and DC Executive
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Shows the live location of a vehicle | Vehicle | Consignment in transit | Location visible to the Dispatcher and DC Executive | Both |
 
 *Responsibility: Tell the DC Executive which bin each shipment belongs in, and keep track of what each bin holds.*
 
-**Shows which bin a shipment belongs in** (Forward)
-
-- Entity: Sorting Bin, Shipment
-- Trigger: Shipment scanned at the DC
-- Output: Bin shown
-
-**Tracks bin contents** (Forward)
-
-- Entity: Sorting Bin
-- Trigger: Shipment placed in or taken from a bin
-- Output: Bin contents current
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Shows which bin a shipment belongs in | Sorting Bin, Shipment | Shipment scanned at the DC | Bin shown | Forward |
+| Tracks bin contents | Sorting Bin | Shipment placed in or taken from a bin | Bin contents current | Forward |
 
 *Responsibility: Create delivery batches and routes, allocate Last Mile Drivers, and send the orders to the Driver's app.*
 
-**Creates delivery batches** (Forward)
-
-- Entity: Shipment
-- Trigger: Shipments ready and drivers on duty
-- Output: Batches formed
-
-**Creates routes** (Forward)
-
-- Entity: Shipment, Serviced Location
-- Trigger: Batches formed
-- Output: Route set for each batch
-
-**Allocates Last Mile Drivers** (Forward)
-
-- Entity: People, Shipment
-- Trigger: Batches and routes ready
-- Output: Batch assigned to a driver
-
-**Sends the orders to the driver's app** (Forward)
-
-- Entity: Shipment, Device
-- Trigger: Batch allocated
-- Output: Orders appear on the driver's app
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Creates delivery batches | Shipment | Shipments ready and drivers on duty | Batches formed | Forward |
+| Creates routes | Shipment, Serviced Location | Batches formed | Route set for each batch | Forward |
+| Allocates Last Mile Drivers | People, Shipment | Batches and routes ready | Batch assigned to a driver | Forward |
+| Sends the orders to the driver's app | Shipment, Device | Batch allocated | Orders appear on the driver's app | Forward |
 
 *Responsibility: Show medicine details to the Last Mile Driver only in the returns flow.*
 
-**Shows medicine details on a return pickup** (Reverse)
-
-- Entity: Order, Shipment
-- Trigger: Return pickup assigned
-- Output: Medicine details visible to the driver
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Shows medicine details on a return pickup | Order, Shipment | Return pickup assigned | Medicine details visible to the driver | Reverse |
 
 *Responsibility: Keep driver apps working offline, and sync when the network returns.*
 
-**Holds actions taken offline and syncs them** (Both)
-
-- Entity: Device, Shipment
-- Trigger: Network lost, then restored
-- Output: Actions sent and statuses updated
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Holds actions taken offline and syncs them | Device, Shipment | Network lost, then restored | Actions sent and statuses updated | Both |
 
 *Responsibility: Hold serving locations and serviced locations. In Forward, serving locations are warehouses and DCs, and serviced locations are Customers' locations. In Reverse, they flip.*
 
-**Holds serving and serviced locations** (Both)
-
-- Entity: Serving Location, Serviced Location
-- Trigger: Locations set up
-- Output: Locations available, flipped for Reverse
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Holds serving and serviced locations | Serving Location, Serviced Location | Locations set up | Locations available, flipped for Reverse | Both |
 
 *Responsibility: Hold the links between warehouses and DCs, and which flow each location uses.*
 
-**Holds the links and the flow per location** (Both)
-
-- Entity: Serving Location
-- Trigger: Central Logistics Ops sets them
-- Output: Links and flows available
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Holds the links and the flow per location | Serving Location | Central Logistics Ops sets them | Links and flows available | Both |
 
 *Responsibility: Hold users, drivers, Customers and their details, and enforce who can do what.*
 
-**Holds users, drivers and Customers** (Both)
-
-- Entity: People
-- Trigger: Record created or updated
-- Output: Details held
-
-**Enforces who can do what** (Both)
-
-- Entity: People
-- Trigger: Any access attempt
-- Output: Allowed or blocked by role
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Holds users, drivers and Customers | People | Record created or updated | Details held | Both |
+| Enforces who can do what | People | Any access attempt | Allowed or blocked by role | Both |
 
 *Responsibility: Register devices and record which driver holds each one.*
 
-**Registers a device and records its holder** (Both)
-
-- Entity: Device, People
-- Trigger: Device assigned to a driver
-- Output: Device and holder recorded
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Registers a device and records its holder | Device, People | Device assigned to a driver | Device and holder recorded | Both |
 
 *Responsibility: Mask phone numbers between Customers and Drivers.*
 
-**Masks phone numbers on a call** (Both)
-
-- Entity: People
-- Trigger: Call between a Customer and a driver
-- Output: Call connects without exposing numbers
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Masks phone numbers on a call | People | Call between a Customer and a driver | Call connects without exposing numbers | Both |
 
 *Responsibility: Record every payment collected, every cash handover and every deposit, and match them against what was owed.*
 
-**Records payments, cash handovers and deposits** (Forward)
-
-- Entity: Money
-- Trigger: Each money movement
-- Output: Movement recorded
-
-**Matches them against what was owed** (Forward)
-
-- Entity: Money, Shipment
-- Trigger: Deposit recorded
-- Output: Match or discrepancy shown
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Records payments, cash handovers and deposits | Money | Each money movement | Movement recorded | Forward |
+| Matches them against what was owed | Money, Shipment | Deposit recorded | Match or discrepancy shown | Forward |
 
 *Responsibility: Record vendor payments.*
 
-**Records a vendor payment** (Both)
-
-- Entity: Money, Vendor
-- Trigger: Finance pays a vendor
-- Output: Payment recorded
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Records a vendor payment | Money, Vendor | Finance pays a vendor | Payment recorded | Both |
 
 *Responsibility: Hold vendors and their vehicles.*
 
-**Holds vendors and their vehicles** (Both)
-
-- Entity: Vendor, Vehicle
-- Trigger: Vendor onboarded or vehicle recorded
-- Output: Records held
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Holds vendors and their vehicles | Vendor, Vehicle | Vendor onboarded or vehicle recorded | Records held | Both |
 
 *Responsibility: Raise, route and track tickets to resolution within their time limits.*
 
-**Raises and routes a ticket** (Both)
-
-- Entity: Ticket
-- Trigger: Ticket created
-- Output: Ticket reaches the right owner
-
-**Tracks a ticket to resolution** (Both)
-
-- Entity: Ticket
-- Trigger: Ticket open
-- Output: Status and time limit tracked
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Raises and routes a ticket | Ticket | Ticket created | Ticket reaches the right owner | Both |
+| Tracks a ticket to resolution | Ticket | Ticket open | Status and time limit tracked | Both |
 
 *Responsibility: Send the right notices to the right people at the right time.*
 
-**Sends a notice** (Both)
-
-- Entity: Order, Shipment, Ticket
-- Trigger: Event that needs a notice
-- Output: Notice reaches the right person
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Sends a notice | Order, Shipment, Ticket | Event that needs a notice | Notice reaches the right person | Both |
 
 *Responsibility: Detect failures and fraud signals: missed scans, delays, mismatches, cash anomalies, and deliveries marked from the wrong place.*
 
-**Detects a failure or fraud signal** (Both)
-
-- Entity: Shipment, Money
-- Trigger: Missed scan, delay, mismatch, cash anomaly or delivery marked from the wrong place
-- Output: Flag raised to the right actor
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Detects a failure or fraud signal | Shipment, Money | Missed scan, delay, mismatch, cash anomaly or delivery marked from the wrong place | Flag raised to the right actor | Both |
 
 *Responsibility: Keep a full audit trail of every scan and change.*
 
-**Records every scan and change** (Both)
-
-- Entity: Shipment, Barcode, People
-- Trigger: Any scan or change
-- Output: Audit entry recorded
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Records every scan and change | Shipment, Barcode, People | Any scan or change | Audit entry recorded | Both |
 
 *Responsibility: Hold and apply the rules.*
 
-**Applies the rules** (Both)
-
-- Entity: Shipment, Money
-- Trigger: Any event the rules cover
-- Output: Rule applied
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Applies the rules | Shipment, Money | Any event the rules cover | Rule applied | Both |
 
 *Responsibility: Provide reports and a data feed.*
 
-**Provides reports and a data feed** (Both)
-
-- Entity: Shipment, Money
-- Trigger: Report or data requested
-- Output: Report or data delivered
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Provides reports and a data feed | Shipment, Money | Report or data requested | Report or data delivered | Both |
 
 *Responsibility: Switch a location between Shipsy and the new system, and roll back, during cutover.*
 
-**Switches a location between Shipsy and the new system** (Both)
-
-- Entity: Serving Location
-- Trigger: Go decision for a location
-- Output: Location runs on the new system
-
-**Rolls a location back to Shipsy** (Both)
-
-- Entity: Serving Location
-- Trigger: Rollback decision
-- Output: Location runs on Shipsy again
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Switches a location between Shipsy and the new system | Serving Location | Go decision for a location | Location runs on the new system | Both |
+| Rolls a location back to Shipsy | Serving Location | Rollback decision | Location runs on Shipsy again | Both |
