@@ -29,12 +29,11 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 
 **Flow 1: via DC**
 
-*Job: Collate and sort ready shipments by destination DC, create consignments and send them on time. Record the vendor, vehicle number, and the driver's name and phone against each consignment, load it and scan the handover.*
+*Job: Sort ready shipments by destination DC, scan them into the consignments the system creates, and send them on time. Record the vendor, vehicle number, and the driver's name and phone against each consignment, load it and scan the handover.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Collates ready shipments by destination DC | Shipment | Shipments received from WH Ops | Shipments grouped by destination DC | Forward |
-| Sorts shipments into bins by destination | Sorting Bin, Shipment | Shipments collated | Shipments held in the right bin | Forward |
+| Sorts shipments into bins by destination | Sorting Bin, Shipment | Shipments received from WH Ops | Shipments held in the right bin | Forward |
 | Scans shipments into a consignment | Consignment, Shipment, Barcode | Shipments sorted for a destination DC | Consignment and manifest created | Forward |
 | Records the vendor, vehicle number, and the driver's name and phone | Consignment, Vendor, Vehicle | Mid-mile vehicle arrives for loading | Details recorded against the consignment | Forward |
 | Loads the consignment and scans the handover | Consignment, Barcode, Manifest | Details recorded | Consignment dispatched; handover recorded | Forward |
@@ -59,22 +58,13 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 
 **Flow 2: direct from the warehouse**
 
-*Job: Batch shipments, plan routes and allocate Last Mile Drivers, and hand over with a scan.*
+*Job: Hand each batch to its Last Mile Driver with a scan.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Batches shipments | Shipment | Shipments ready for direct delivery | Delivery batches formed | Forward |
-| Plans the route for each batch | Shipment, Serviced Location | Batches formed | Route set for each batch | Forward |
-| Allocates a Last Mile Driver to each batch | People, Shipment | Routes planned and drivers on duty | Batch assigned to a driver | Forward |
 | Hands the batch to the driver and scans the handover | Shipment, Barcode, Manifest | Driver arrives at the warehouse | Handover recorded | Forward |
 
 **Both flows**
-
-*Job: Make sure each shipment takes the right path, via DC or direct.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Confirms the path for each shipment | Shipment, Serving Location | Shipment arrives for dispatch | Shipment goes via DC or direct | Forward |
 
 *Job: Add gel packs to every order that needs them, so medicines do not spoil.*
 

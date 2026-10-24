@@ -13,16 +13,15 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 
 ## Dispatcher
 **Flow 1: via DC**
-- Collate and sort ready shipments by destination DC, create consignments and send them on time. Record the vendor, vehicle number, and the driver's name and phone against each consignment, load it and scan the handover.
+- Sort ready shipments by destination DC, scan them into the consignments the system creates, and send them on time. Record the vendor, vehicle number, and the driver's name and phone against each consignment, load it and scan the handover.
 - Plan mid-mile trips with the Team Lead so consignments leave on time.
 - Flag any loss, damage or delay of a consignment in transit.
 - See the live location of mid-mile vehicles on a portal.
 
 **Flow 2: direct from the warehouse**
-- Batch shipments, plan routes and allocate Last Mile Drivers, and hand over with a scan.
+- Hand each batch to its Last Mile Driver with a scan.
 
 **Both flows**
-- Make sure each shipment takes the right path, via DC or direct.
 - Add gel packs to every order that needs them, so medicines do not spoil.
 - Schedule return pickups and failed-delivery returns without delay.
 - Reassign shipments quickly when a driver can't complete their batch, a delivery fails, or an order is cancelled or changed after dispatch.
