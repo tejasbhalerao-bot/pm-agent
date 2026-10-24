@@ -14,7 +14,6 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Collect returns from Customers safely, checking the medicine against the order details at the doorstep before taking it back.
 - Keep working with poor or no network.
 - Get help fast in an accident, breakdown or emergency.
-- Get paid correctly, see how pay was worked out, and raise a dispute if it is wrong.
 - Cutover: move to the new app with minimal disruption.
 
 ## Mid-Mile Driver
@@ -73,7 +72,7 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 ## Central Logistics Ops (whole country)
 - See country-wide performance and step in where it drops.
 - Set up cities, locations, serviceable areas and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.
-- Define the rules the system runs on: SLAs, batching, allocation, delivery attempts, cut-offs, and driver pay, incentives and penalties.
+- Define the rules the system runs on: SLAs, batching, allocation, delivery attempts, cut-offs, and pay, incentives and penalties.
 - Manage roles and access across the system.
 - Forecast demand and plan drivers and DC capacity for growth from 39 to 150 locations.
 - Detect and act on fraud and leakage patterns.
@@ -83,7 +82,7 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 
 ## Finance
 - Make sure every rupee collected matches what was owed and is banked, approve cash deposits and close discrepancies.
-- Pay drivers and vendors accurately and on time under the pay rules.
+- Pay vendors accurately and on time under the pay rules.
 - Keep a trustworthy record of every money movement.
 
 ## Grievance & Escalation Management Team

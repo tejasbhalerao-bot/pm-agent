@@ -13,6 +13,7 @@
 ## Scoped in later
 - Grievance & Escalation Management, and ticket handling.
 - Mid-mile vehicle tracking through IoT devices and a portal. Today, vehicles are tracked through WhatsApp live location.
+- Linking each driver to a vendor.
 
 ## Decisions
 **Roles**
@@ -29,7 +30,6 @@
 - At loading, the Dispatcher records the vendor, vehicle number, and the driver's name and phone against each consignment. No driver profile is kept.
 - The Dispatcher loads and scans at the origin. The DC Executive unloads and scans at the DC.
 - The driver and the vendor are accountable for loss, damage and delay in transit. The Dispatcher and DC Executive flag it.
-- Finance pays vendors.
 
 **Medicines**
 - Cold-chain proofing means the Dispatcher adds gel packs to orders that need them.
@@ -37,3 +37,4 @@
 
 **Other**
 - Drivers are supplied by fleet partners today. The jobs do not change.
+- Payouts go to the vendor, who disburses to drivers outside our flow. Finance pays vendors, not drivers.
