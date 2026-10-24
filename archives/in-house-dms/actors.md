@@ -5,7 +5,7 @@ The same actors apply in every location and in both Hyperlocal Forward and Rever
 | Actor | Role |
 |---|---|
 | Last Mile Driver | Delivers orders to Customers and collects returns |
-| Mid-Mile Driver | Drives consignments between locations. Has no app |
+| Mid-Mile Driver | Drives consignments between locations |
 | DC Executive | Runs the DC: receives, sorts and hands out shipments, handles cash, and onboards the DC's Last Mile Drivers |
 | Dispatcher | Sends shipments out of the warehouse, either via a DC or directly to the Customer, and onboards the warehouse's Last Mile Drivers |
 | WH Ops | Hands shipments to the Dispatcher and receives returns |
