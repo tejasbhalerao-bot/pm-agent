@@ -20,7 +20,7 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Cutover: move to the new app with minimal disruption.
 
 ## Mid-Mile Driver
-- Show up and drive consignments between locations, safely and on time. The driver has no app and does no scanning, attendance, trip start or end, loading or unloading.
+- Show up and drive consignments between locations, safely and on time.
 
 ## WH Ops
 - Hand every shipment that is ready for dispatch to the Dispatcher with a scanned handover.
