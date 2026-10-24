@@ -44,6 +44,7 @@ Actors that exist today, irrespective of location:
 8. Grievance & Escalation Management Team
 9. Customer
 10. System (automated actor: acts without a human triggering it; added 2026-10-24)
+11. WH Ops (added 2026-10-24; appeared in the PM's flow board legend; likely owns Pick & Pack and AWB Print)
 
 Clarifications:
 - Hyperlocal Reverse uses the same actors as Forward.
