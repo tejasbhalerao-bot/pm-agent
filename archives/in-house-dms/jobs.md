@@ -2,6 +2,8 @@
 
 The outcomes each actor needs to achieve. Actions are derived from these.
 
+The system starts at AWB generation.
+
 The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, and sending orders directly from the warehouse to the Customer. "Cutover" jobs apply while locations move from Shipsy to the new system. "Later" jobs are scoped in after the first release.
 
 ## Last Mile Driver
@@ -83,7 +85,7 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 
 ## Finance
 - Make sure every rupee collected matches what was owed and is banked, approve cash deposits and close discrepancies.
-- Pay vendors accurately and on time under the pay rules.
+- Pay vendors accurately and on time, every month, under the pay rules.
 - Keep a trustworthy record of every money movement.
 
 ## Grievance & Escalation Management Team
@@ -95,7 +97,7 @@ Scoped in later.
 - Keep tickets within their time limits.
 
 ## Control Tower
-- Watch live deliveries and step in on problems before they become complaints.
+- Watch live deliveries independently of Logistics Ops, and call out operational failures so none are hidden.
 
 ## Customer
 - Know when the order will arrive, track it, and be told about changes.
