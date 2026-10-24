@@ -66,7 +66,7 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 
 **Flow 2: direct from the warehouse**
 
-In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers handing over batches, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving consignments or releasing returns, since WH Ops receives returns at the warehouse.
+In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers scanning the orders each driver brings, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving consignments or releasing returns, since WH Ops receives returns at the warehouse.
 
 **Both flows, returns**
 
@@ -121,12 +121,12 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Flags a consignment as lost, damaged or delayed | Consignment | Consignment is late, damaged or missing | Flag raised against the consignment, its vendor and driver | Both |
 
-*Job: Sort every shipment into the right bin, and hand sorted batches to Last Mile Drivers with a scanned handover.*
+*Job: Sort every shipment into the right bin, and scan on the portal the orders each Last Mile Driver brings from the bin.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Sorts each shipment into its bin | Sorting Bin, Shipment | Shipment unloaded | Shipment held in the bin the system shows | Forward |
-| Hands the sorted batch to a driver and scans the handover | Shipment, Barcode, Manifest | Driver arrives at the DC | Handover recorded | Forward |
+| Scans the orders the driver brings | Shipment, Barcode, Manifest | Driver brings the picked orders | Handover recorded against the manifest | Forward |
 
 *Job: Be the first point of contact for drivers at the DC.*
 
@@ -274,12 +274,13 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Confirms the device and vehicle in use | Device, Vehicle | Duty start | Device and vehicle recorded against the driver for the shift | Both |
 | Marks duty end | People | Shift ends | Attendance closed | Both |
 
-*Job: Know what to pick up and from where (warehouse or DC), and collect it with a scanned handover.*
+*Job: Know what to pick up and from where (warehouse or DC), pick the assigned orders from the bin, and take them to the DC Executive to scan.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Views the assigned batch and the pickup point | Shipment | Batch allocated to the driver | Driver sees what to collect and where | Both |
-| Scans each shipment on collection | Shipment, Barcode, Manifest | Handover from the Dispatcher or DC Executive | Handover recorded against the manifest | Both |
+| Picks the assigned orders from the bin | Shipment, Sorting Bin | Driver reaches the bin | Driver holds the orders assigned to them | Both |
+| Takes the orders to the DC Executive | Shipment | Orders picked | Orders ready to be scanned | Both |
 
 *Job: Reach the Customer, and be reachable, without exposing personal numbers.*
 
@@ -307,7 +308,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Marks the delivery as failed, with a reason | Shipment | Delivery cannot be completed or is cancelled | Shipment marked failed with the reason; Dispatcher informed | Forward |
-| Brings the parcel back to the DC or warehouse and scans the handover | Shipment, Barcode, Manifest | Delivery failed or cancelled | Parcel returned; handover recorded | Reverse |
+| Brings the parcel back to the DC or warehouse | Shipment | Delivery failed or cancelled | Parcel handed over at the DC or warehouse | Reverse |
 
 *Job: Collect returns from Customers safely, checking the medicine against the order details at the doorstep before taking it back.*
 

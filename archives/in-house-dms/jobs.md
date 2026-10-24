@@ -22,7 +22,7 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Flag any loss, damage or delay of a consignment in transit.
 
 **Flow 2: direct from the warehouse**
-In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers handing over batches, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving consignments or releasing returns, since WH Ops receives returns at the warehouse.
+In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers scanning the orders each driver brings, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving consignments or releasing returns, since WH Ops receives returns at the warehouse.
 
 **Both flows, returns**
 - Schedule return pickups and failed-delivery returns without delay.
@@ -34,7 +34,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 - See the live location of mid-mile vehicles on a portal.
 - Receive consignments arriving on the mid-mile vehicle, scan and unload them, and catch anything missing, damaged or mismatched.
 - Flag any loss, damage or delay of a consignment in transit.
-- Sort every shipment into the right bin, and hand sorted batches to Last Mile Drivers with a scanned handover.
+- Sort every shipment into the right bin, and scan on the portal the orders each Last Mile Driver brings from the bin.
 - Be the first point of contact for drivers at the DC.
 - Trigger a replan for the DC's drivers when a driver can't complete their batch, or an order is cancelled or changed after dispatch, and accept the new plan or rearrange it as the situation on the ground needs.
 - Receive returns and failed deliveries from drivers, and release them towards the warehouse as consignments.
@@ -61,7 +61,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 ## Last Mile Driver
 - Cutover: move to the new app with minimal disruption.
 - Start each shift ready, with attendance marked and a working device and vehicle.
-- Know what to pick up and from where (warehouse or DC), and collect it with a scanned handover.
+- Know what to pick up and from where (warehouse or DC), pick the assigned orders from the bin, and take them to the DC Executive to scan.
 - Reach the Customer, and be reachable, without exposing personal numbers.
 - Deliver each shipment on time, by an efficient route, with proof of delivery.
 - Collect payment accurately and hand cash in with a clear record.
