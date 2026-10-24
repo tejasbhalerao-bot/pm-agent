@@ -58,20 +58,7 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 
 **Flow 2: direct from the warehouse**
 
-*Job: Hand each batch to its Last Mile Driver with a scan.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Hands the batch to the driver and scans the handover | Shipment, Barcode, Manifest | Driver arrives at the warehouse | Handover recorded | Forward |
-
-*Job: Collect, record and bank the cash handed in by the warehouse's drivers, and escalate any mismatch.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Receives cash from drivers | Money | Driver hands cash in | Cash received | Forward |
-| Records the cash collected | Money | Cash received | Amount recorded against the driver and shipments | Forward |
-| Deposits the cash in the bank | Money | Cash recorded | Deposit made and recorded for Finance approval | Forward |
-| Escalates a mismatch | Money, Ticket | Cash differs from what was owed | Mismatch raised | Forward |
+In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers handing over batches, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving consignments or releasing returns, since WH Ops receives returns at the warehouse.
 
 **Both flows**
 
@@ -87,47 +74,6 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 |---|---|---|---|---|
 | Schedules a return pickup from the Customer | Shipment, Order | Customer return requested | Pickup scheduled | Reverse |
 | Schedules the return of a failed delivery | Shipment | RTO initiated | Return scheduled | Reverse |
-
-*Job: Trigger a replan when a driver can't complete their batch, or an order is cancelled or changed after dispatch, and accept the new plan or rearrange it as the situation on the ground needs.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Triggers a replan | Shipment, People | Driver cannot complete the batch, or order is cancelled or changed after dispatch | System replans the affected batches and routes | Forward |
-| Accepts the new plan or rearranges it | Shipment, People | New plan shown | Plan confirmed and batches updated | Forward |
-
-*Job: Trigger a replan for the next day when a failed delivery needs to be reattempted, and accept the new plan or rearrange it as the situation on the ground needs.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Triggers a replan for the next day | Shipment | Reattempt initiated | System replans the delivery for the next day | Forward |
-| Accepts the new plan or rearranges it | Shipment, People | New plan shown | Plan confirmed and batches updated | Forward |
-
-*Job: Keep a healthy pool of drivers at the warehouse.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Reviews the drivers on duty against the day's shipments | People, Shipment | Start of day | Shortfall or surplus of drivers known | Forward |
-
-*Job: Onboard the warehouse's Last Mile Drivers and keep their details current.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Onboards a Last Mile Driver | People | New driver joins | Driver record created and activated | Both |
-| Updates a driver's details | People | Driver's details change | Record updated | Both |
-
-*Job: Settle payout disputes raised by the warehouse's drivers.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Reviews a payout dispute | Ticket, Money | Driver raises a dispute | Dispute understood | Both |
-| Settles the dispute and informs the driver | Ticket, Money | Review complete | Dispute closed with an outcome | Both |
-| Escalates a dispute to Central Logistics Ops | Ticket | Dispute cannot be settled | Dispute passed on | Both |
-
-*Job: Be the first point of contact for drivers on the road in the direct flow.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Responds to a driver's help request | Ticket | Driver raises a help request | Driver supported | Forward |
 
 ## DC Executive
 

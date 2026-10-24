@@ -19,18 +19,11 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - See the live location of mid-mile vehicles on a portal.
 
 **Flow 2: direct from the warehouse**
-- Hand each batch to its Last Mile Driver with a scan.
-- Collect, record and bank the cash handed in by the warehouse's drivers, and escalate any mismatch.
+In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers handing over batches, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving consignments or releasing returns, since WH Ops receives returns at the warehouse.
 
 **Both flows**
 - Add gel packs to every order that needs them, so medicines do not spoil.
 - Schedule return pickups and failed-delivery returns without delay.
-- Trigger a replan for the next day when a failed delivery needs to be reattempted, and accept the new plan or rearrange it as the situation on the ground needs.
-- Trigger a replan when a driver can't complete their batch, or an order is cancelled or changed after dispatch, and accept the new plan or rearrange it as the situation on the ground needs.
-- Keep a healthy pool of drivers at the warehouse.
-- Onboard the warehouse's Last Mile Drivers and keep their details current.
-- Settle payout disputes raised by the warehouse's drivers.
-- Be the first point of contact for drivers on the road in the direct flow.
 
 ## DC Executive
 - Receive consignments arriving on the mid-mile vehicle, scan and unload them, and catch anything missing, damaged or mismatched.
