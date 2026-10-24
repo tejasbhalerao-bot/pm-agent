@@ -11,6 +11,7 @@ The same actors apply in every location and in both Hyperlocal Forward and Rever
 | WH Ops | Hands shipments to the Dispatcher and receives returns |
 | Team Lead | Manages one city: drivers, users, vendors and daily operations |
 | Central Logistics Ops | Manages the whole country: geography, rules, access and performance |
+| Control Tower | Monitors live deliveries and steps in on problems |
 | Finance | Reconciles cash and pays drivers and vendors |
 | Grievance & Escalation Management Team | Resolves tickets (scoped in later) |
 | Customer | Receives and returns orders |

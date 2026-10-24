@@ -17,7 +17,8 @@
 ## Decisions
 **Roles**
 - Central Logistics Ops manages the whole country, including geography. A Team Lead manages one city.
-- The Control Tower role is folded into Central Logistics Ops and the Team Lead.
+- The Control Tower is a separate actor.
+- Payout disputes are settled by Team Leads, DC Executives, Dispatchers and Central Logistics Ops, not by the Grievance team.
 - The DC Executive onboards Last Mile Drivers who deliver from the DC. The Dispatcher onboards those who deliver from the warehouse.
 - The Dispatcher and the Team Lead plan mid-mile trips together.
 - WH Ops only gives and receives parcels.

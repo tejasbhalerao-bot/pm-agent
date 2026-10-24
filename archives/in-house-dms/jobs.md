@@ -41,6 +41,7 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Reassign shipments quickly when a driver can't complete their batch, a delivery fails, or an order is cancelled or changed after dispatch.
 - Keep a healthy pool of drivers at the warehouse.
 - Onboard the warehouse's Last Mile Drivers and keep their details current.
+- Settle payout disputes raised by the warehouse's drivers.
 - Be the first point of contact for drivers on the road in the direct flow.
 
 ## DC Executive
@@ -52,14 +53,16 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Receive returns and failed deliveries from drivers, and release them back towards the warehouse.
 - Collect, record and bank the cash handed in, and escalate any mismatch.
 - Onboard the DC's Last Mile Drivers and keep their details current.
+- Settle payout disputes raised by the DC's drivers.
 - Assign and recover devices and vehicles, and handle a lost or broken device.
 - Be the first point of contact for drivers at the DC.
 
 ## Team Lead (one city)
 - Keep enough drivers on shift for the city's orders, with cover for leave and absences.
-- Watch live deliveries and fix problems before they become complaints. This includes the Control Tower's monitoring role.
+- Spot and fix delivery problems in the city before they become complaints.
 - Plan mid-mile trips with the Dispatcher.
-- Manage the city's drivers: document checks and renewals, suspension and exit, performance, and first-line dispute handling.
+- Manage the city's drivers: document checks and renewals, suspension and exit, and performance.
+- Settle payout disputes raised by the city's drivers.
 - Manage the city's users and their access.
 - Onboard and manage mid-mile vendors.
 - Keep the city's vehicles and devices accounted for.
@@ -68,12 +71,13 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Cutover: train drivers, run the new system alongside Shipsy, and roll back if needed.
 
 ## Central Logistics Ops (whole country)
-- See country-wide performance and step in where it drops, including the Control Tower's monitoring role.
+- See country-wide performance and step in where it drops.
 - Set up cities, locations, serviceable areas and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.
 - Define the rules the system runs on: SLAs, batching, allocation, delivery attempts, cut-offs, and driver pay, incentives and penalties.
 - Manage roles and access across the system.
 - Forecast demand and plan drivers and DC capacity for growth from 39 to 150 locations.
 - Detect and act on fraud and leakage patterns.
+- Settle payout disputes that the Dispatcher, DC Executive and Team Lead cannot.
 - Give leadership and analytics the reports and data they need.
 - Cutover: own the location-by-location plan, including readiness criteria, go or no-go, and rollback.
 
@@ -81,15 +85,17 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Make sure every rupee collected matches what was owed and is banked, approve cash deposits and close discrepancies.
 - Pay drivers and mid-mile vendors accurately and on time under the pay rules.
 - Keep a trustworthy record of every money movement.
-- Later: resolve payout disputes with the Grievance team.
 
 ## Grievance & Escalation Management Team
 Scoped in later.
 - Resolve every Customer ticket quickly and fairly, escalating when needed.
-- Resolve driver tickets, such as payout disputes, penalties, app problems and incidents.
+- Resolve driver tickets, such as penalties, app problems and incidents.
 - Investigate incidents such as loss, damage, fraud and accidents, with the Team Lead.
 - Spot patterns in tickets so recurring problems get fixed at the root.
 - Keep tickets within their time limits.
+
+## Control Tower
+- Watch live deliveries and step in on problems before they become complaints.
 
 ## Customer
 - Know when the order will arrive, track it, and be told about changes.
