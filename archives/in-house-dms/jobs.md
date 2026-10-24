@@ -109,6 +109,7 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 - Create a shipment for each order.
 - Generate the AWB for each shipment and make it available to print.
 - Decide each shipment's path (via DC or direct) from the rules.
+- After a failed delivery, decide from the rules whether to reattempt it or initiate an RTO.
 - Keep every shipment's status and location current.
 
 **Barcodes and scanning**

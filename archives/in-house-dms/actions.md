@@ -90,7 +90,7 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Triggers a replan for the next day | Shipment | Delivery failed and needs a reattempt | System replans the delivery for the next day | Forward |
+| Triggers a replan for the next day | Shipment | Reattempt initiated | System replans the delivery for the next day | Forward |
 | Accepts the new plan or rearranges it | Shipment, People | New plan shown | Plan confirmed and batches updated | Forward |
 
 *Job: Keep a healthy pool of drivers at the warehouse.*
@@ -167,7 +167,7 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Triggers a replan for the next day | Shipment | Delivery failed and needs a reattempt | System replans the delivery for the next day | Forward |
+| Triggers a replan for the next day | Shipment | Reattempt initiated | System replans the delivery for the next day | Forward |
 | Accepts the new plan or rearranges it | Shipment, People | New plan shown | Plan confirmed and batches updated | Forward |
 
 *Job: Receive returns and failed deliveries from drivers, and release them back towards the warehouse.*
@@ -554,6 +554,12 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Decides the path | Shipment, Serving Location | Shipment created | Shipment routed via DC or direct | Forward |
+
+*Responsibility: After a failed delivery, decide from the rules whether to reattempt it or initiate an RTO.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Decides between a reattempt and an RTO | Shipment | Delivery failed | Reattempt initiated, or RTO initiated | Forward |
 
 *Responsibility: Keep every shipment's status and location current.*
 
