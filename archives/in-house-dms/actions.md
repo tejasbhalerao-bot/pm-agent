@@ -243,13 +243,12 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Plans drivers and DC capacity for a new location | Serving Location, People | New location planned | Capacity plan ready | Both |
 
-*Job: Cutover: train drivers, run the new system alongside Shipsy, and roll back if needed.*
+*Job: Cutover: train drivers and run the new system alongside Shipsy.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Trains drivers on the new app | People | Location nears cutover | Drivers trained | Both |
 | Runs the location on the new system alongside Shipsy | Serving Location | Cutover begins | Both systems run in parallel | Both |
-| Rolls the location back to Shipsy | Serving Location | Cutover does not meet its criteria | Location back on Shipsy | Both |
 
 ## Mid-Mile Driver
 
