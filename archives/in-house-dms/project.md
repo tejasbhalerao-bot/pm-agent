@@ -15,4 +15,5 @@ Index of the project's documents. Content lives in the files below; this file on
 | [actors.md](actors.md) | The people and systems that take part in the flow, and what each does |
 | [entities.md](entities.md) | The things actors act on |
 | [jobs.md](jobs.md) | The jobs each actor needs done, and the System's responsibilities. The source for actions |
+| [actions.md](actions.md) | The actions each actor performs, each tied to the job it serves. The source for events and flows |
 | [open-questions.md](open-questions.md) | Questions waiting for a decision |
