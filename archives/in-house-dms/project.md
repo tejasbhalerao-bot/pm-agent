@@ -30,3 +30,22 @@ created: 2026-10-24
 - Tracking and reporting via the Shipsy portal
 
 **Migration approach:** Build a parity version, then cut over location by location.
+
+## Actors (step 1, as listed by the PM, 2026-10-24)
+
+Actors that exist today, irrespective of location:
+1. Driver
+2. DC Executive
+3. Dispatcher
+4. Team Lead
+5. Central Logistics Ops
+6. Finance
+7. Grievance & Escalation Management Team
+8. Customer (added by the PM; must be present as an actor)
+
+Clarifications:
+- Hyperlocal Reverse uses the same actors as Forward.
+- Driver onboarding and lifecycle is handled by the Dispatcher and the DC Executive.
+- Admin (system configuration) is handled by Central Logistics Ops and the Team Lead.
+
+Actions per actor: pending (PM drafting).
