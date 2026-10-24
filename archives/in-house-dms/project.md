@@ -77,7 +77,7 @@ Open: whether Barcode stays a separate entity (Shipment and Consignment ideally 
 - Refunds are out of scope.
 - Central Logistics Ops (whole country) owns geography setup (cities and locations). A Team Lead handles one city.
 
-## Jobs to be done per actor (step 2, draft v4, 2026-10-24)
+## Jobs to be done per actor (step 2, draft v5, 2026-10-24)
 
 Dispatcher has two flows: (1) send orders to a DC for last-mile delivery (warehouse to DC via Mid-Mile, then DC to Customer); (2) send orders directly from the warehouse to the Customer. Items marked † are assumptions to confirm.
 
@@ -108,8 +108,8 @@ Decisions applied in v3: the system starts at "ready for dispatch", which is aft
 
 ### WH Ops
 - Hand every shipment that is ready for dispatch to the Dispatcher with a scanned handover. (The system starts here; picking and packing are outside it.)
-- † Catch and fix a wrong or missing item at the point of handover.
 - Receive every returned parcel back into the warehouse correctly, and report damage or mismatch on arrival. (The system's scope ends here.)
+- WH Ops is limited to giving and receiving parcels for this project.
 
 ### Dispatcher
 Flow 1, via DC:
@@ -200,4 +200,4 @@ Both flows:
 - Switch a location between Shipsy and the new system, and roll back, during cutover.
 
 ### Open questions
-1. † WH Ops: is catching a wrong or missing item at the point of handover a real job now that picking and packing are outside the system?
+None at present.
