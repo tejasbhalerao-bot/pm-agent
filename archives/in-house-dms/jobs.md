@@ -63,7 +63,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 - Start each shift ready, with attendance marked and a working device and vehicle.
 - Know what to pick up and from where (warehouse or DC), pick the assigned orders from the bin, and take them to the DC Executive to scan.
 - Reach the Customer, and be reachable, without exposing personal numbers.
-- Deliver each shipment on time, by an efficient route, with a scan and proof of delivery.
+- Deliver each shipment on time, by an efficient route, with proof of delivery.
 - Collect payment accurately and hand cash in with a clear record.
 - When a delivery fails or is cancelled, record why and bring the parcel back safely to the DC or warehouse.
 - Collect returns from Customers safely, checking the medicine against the order details at the doorstep before taking it back.
