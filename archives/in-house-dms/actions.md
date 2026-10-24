@@ -27,7 +27,21 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 
 ## Dispatcher
 
+**Both flows, before dispatch**
+
+*Job: Add gel packs to every order that needs them, so medicines do not spoil.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Adds gel packs to orders that need them | Order, Shipment | Order needing cold-chain protection is ready | Gel packs added | Forward |
+
 **Flow 1: via DC**
+
+*Job: Plan mid-mile trips with the Team Lead so consignments leave on time.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Plans mid-mile departures with the Team Lead | Consignment, Vendor | Consignments due to move | Departure plan agreed | Both |
 
 *Job: Sort ready shipments by destination DC, scan them into the consignments the system creates, and send them on time. Record the vendor, vehicle number, and the driver's name and phone against each consignment, load it and scan the handover.*
 
@@ -38,11 +52,11 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 | Records the vendor, vehicle number, and the driver's name and phone | Consignment, Vendor, Vehicle | Mid-mile vehicle arrives for loading | Details recorded against the consignment | Forward |
 | Loads the consignment and scans the handover | Consignment, Barcode, Manifest | Details recorded | Consignment dispatched; handover recorded | Forward |
 
-*Job: Plan mid-mile trips with the Team Lead so consignments leave on time.*
+*Job: See the live location of mid-mile vehicles on a portal.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Plans mid-mile departures with the Team Lead | Consignment, Vendor | Consignments due to move | Departure plan agreed | Both |
+| Views the live location of a mid-mile vehicle | Vehicle, Consignment | Consignment in transit | Dispatcher sees where the vehicle is | Both |
 
 *Job: Flag any loss, damage or delay of a consignment in transit.*
 
@@ -50,23 +64,11 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 |---|---|---|---|---|
 | Flags a consignment as lost, damaged or delayed | Consignment | Consignment is late, damaged or missing | Flag raised against the consignment, its vendor and driver | Both |
 
-*Job: See the live location of mid-mile vehicles on a portal.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Views the live location of a mid-mile vehicle | Vehicle, Consignment | Consignment in transit | Dispatcher sees where the vehicle is | Both |
-
 **Flow 2: direct from the warehouse**
 
 In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers handing over batches, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving consignments or releasing returns, since WH Ops receives returns at the warehouse.
 
-**Both flows**
-
-*Job: Add gel packs to every order that needs them, so medicines do not spoil.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Adds gel packs to orders that need them | Order, Shipment | Order needing cold-chain protection is ready | Gel packs added | Forward |
+**Both flows, returns**
 
 *Job: Schedule return pickups and failed-delivery returns without delay.*
 
@@ -76,6 +78,34 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Schedules the return of a failed delivery | Shipment | RTO initiated | Return scheduled | Reverse |
 
 ## DC Executive
+
+*Job: Onboard the DC's Last Mile Drivers and keep their details current.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Onboards a Last Mile Driver | People | New driver joins | Driver record created and activated | Both |
+| Updates a driver's details | People | Driver's details change | Record updated | Both |
+
+*Job: Assign and recover devices and vehicles, and handle a lost or broken device.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Assigns a device and a vehicle to a driver | Device, Vehicle, People | Driver joins or starts duty | Recorded against the driver | Both |
+| Recovers the device and vehicle | Device, Vehicle, People | Driver leaves or returns the equipment | Recorded as returned | Both |
+| Handles a lost or broken device | Device | Device is lost or broken | Device marked and a replacement assigned | Both |
+
+*Job: Keep the DC's Last Mile Drivers ready and accounted for each day.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Checks the drivers on duty | People | Start of day | Drivers ready for batching | Both |
+| Confirms each driver is accounted for | People | End of day | Every driver accounted for | Both |
+
+*Job: See the live location of mid-mile vehicles on a portal.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Views the live location of a mid-mile vehicle | Vehicle, Consignment | Consignment in transit to the DC | DC Executive sees where the vehicle is | Both |
 
 *Job: Receive consignments arriving on the mid-mile vehicle, scan and unload them, and catch anything missing, damaged or mismatched.*
 
@@ -91,12 +121,6 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Flags a consignment as lost, damaged or delayed | Consignment | Consignment is late, damaged or missing | Flag raised against the consignment, its vendor and driver | Both |
 
-*Job: See the live location of mid-mile vehicles on a portal.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Views the live location of a mid-mile vehicle | Vehicle, Consignment | Consignment in transit to the DC | DC Executive sees where the vehicle is | Both |
-
 *Job: Sort every shipment into the right bin, and hand sorted batches to Last Mile Drivers with a scanned handover.*
 
 | Action | Entity | Trigger | Output | Vertical |
@@ -104,12 +128,11 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Sorts each shipment into its bin | Sorting Bin, Shipment | Shipment unloaded | Shipment held in the bin the system shows | Forward |
 | Hands the sorted batch to a driver and scans the handover | Shipment, Barcode, Manifest | Driver arrives at the DC | Handover recorded | Forward |
 
-*Job: Keep the DC's Last Mile Drivers ready and accounted for each day.*
+*Job: Be the first point of contact for drivers at the DC.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Checks the drivers on duty | People | Start of day | Drivers ready for batching | Both |
-| Confirms each driver is accounted for | People | End of day | Every driver accounted for | Both |
+| Responds to a driver's help request | Ticket | Driver raises a help request | Driver supported | Both |
 
 *Job: Trigger a replan for the DC's drivers when a driver can't complete their batch, or an order is cancelled or changed after dispatch, and accept the new plan or rearrange it as the situation on the ground needs.*
 
@@ -118,19 +141,19 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Triggers a replan | Shipment, People | Driver cannot complete the batch, or order is cancelled or changed after dispatch | System replans the affected batches and routes | Forward |
 | Accepts the new plan or rearranges it | Shipment, People | New plan shown | Plan confirmed and batches updated | Forward |
 
-*Job: Trigger a replan for the next day when one of the DC's failed deliveries needs to be reattempted, and accept the new plan or rearrange it as the situation on the ground needs.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Triggers a replan for the next day | Shipment | Reattempt initiated | System replans the delivery for the next day | Forward |
-| Accepts the new plan or rearranges it | Shipment, People | New plan shown | Plan confirmed and batches updated | Forward |
-
 *Job: Receive returns and failed deliveries from drivers, and release them towards the warehouse as consignments.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Receives returned parcels from drivers and scans them | Shipment, Barcode, Manifest | Driver brings a parcel back | Receipt recorded | Reverse |
 | Scans returned shipments into a consignment and releases it towards the warehouse | Consignment, Shipment, Barcode, Manifest | Returned shipments held at the DC | Consignment created with its manifest and sent back | Reverse |
+
+*Job: Trigger a replan for the next day when one of the DC's failed deliveries needs to be reattempted, and accept the new plan or rearrange it as the situation on the ground needs.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Triggers a replan for the next day | Shipment | Reattempt initiated | System replans the delivery for the next day | Forward |
+| Accepts the new plan or rearranges it | Shipment, People | New plan shown | Plan confirmed and batches updated | Forward |
 
 *Job: Collect, record and bank the cash handed in, and escalate any mismatch.*
 
@@ -141,13 +164,6 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Deposits the cash in the bank | Money | Cash recorded | Deposit made and recorded for Finance approval | Forward |
 | Escalates a mismatch | Money, Ticket | Cash differs from what was owed | Mismatch raised | Forward |
 
-*Job: Onboard the DC's Last Mile Drivers and keep their details current.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Onboards a Last Mile Driver | People | New driver joins | Driver record created and activated | Both |
-| Updates a driver's details | People | Driver's details change | Record updated | Both |
-
 *Job: Settle payout disputes raised by the DC's drivers.*
 
 | Action | Entity | Trigger | Output | Vertical |
@@ -156,58 +172,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Settles the dispute and informs the driver | Ticket, Money | Review complete | Dispute closed with an outcome | Both |
 | Escalates a dispute to Central Logistics Ops | Ticket | Dispute cannot be settled | Dispute passed on | Both |
 
-*Job: Assign and recover devices and vehicles, and handle a lost or broken device.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Assigns a device and a vehicle to a driver | Device, Vehicle, People | Driver joins or starts duty | Recorded against the driver | Both |
-| Recovers the device and vehicle | Device, Vehicle, People | Driver leaves or returns the equipment | Recorded as returned | Both |
-| Handles a lost or broken device | Device | Device is lost or broken | Device marked and a replacement assigned | Both |
-
-*Job: Be the first point of contact for drivers at the DC.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Responds to a driver's help request | Ticket | Driver raises a help request | Driver supported | Both |
-
 ## Team Lead
-
-*Job: Keep enough drivers on shift for the city's orders, with cover for leave and absences.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Reviews drivers on shift against the city's expected orders | People, Order | Before each shift | Gaps identified | Both |
-| Arranges cover for leave and absences | People | Driver on leave or absent | Cover arranged | Both |
-
-*Job: Spot and fix delivery problems in the city before they become complaints.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Reviews delivery problems in the city | Shipment | Delays or failures arise | Problems identified | Both |
-| Takes action on a delivery problem | Shipment | Problem identified | Problem resolved | Both |
-
-*Job: Plan mid-mile trips with the Dispatcher.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Plans mid-mile departures with the Dispatcher | Consignment, Vendor | Consignments due to move | Departure plan agreed | Both |
-
-*Job: Manage the city's drivers: document checks and renewals, suspension and exit, and performance.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Checks a driver's documents | People | Onboarding or renewal due | Documents verified or flagged | Both |
-| Suspends a driver | People | Reason to suspend | Driver cannot take work | Both |
-| Exits a driver | People | Driver leaves | Record closed | Both |
-| Reviews a driver's performance | People, Shipment | Periodic review | Performance known | Both |
-
-*Job: Settle payout disputes raised by the city's drivers.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Reviews a payout dispute | Ticket, Money | Driver raises a dispute | Dispute understood | Both |
-| Settles the dispute and informs the driver | Ticket, Money | Review complete | Dispute closed with an outcome | Both |
-| Escalates a dispute to Central Logistics Ops | Ticket | Dispute cannot be settled | Dispute passed on | Both |
 
 *Job: Manage the city's users and their access.*
 
@@ -223,23 +188,60 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Onboards a vendor | Vendor | New vendor engaged | Vendor record created | Both |
 | Updates or deactivates a vendor | Vendor | Details change or engagement ends | Record updated | Both |
 
+*Job: Manage the city's drivers: document checks and renewals, suspension and exit, and performance.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Checks a driver's documents | People | Onboarding or renewal due | Documents verified or flagged | Both |
+| Suspends a driver | People | Reason to suspend | Driver cannot take work | Both |
+| Exits a driver | People | Driver leaves | Record closed | Both |
+| Reviews a driver's performance | People, Shipment | Periodic review | Performance known | Both |
+
 *Job: Keep the city's vehicles and devices accounted for.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Reviews the city's vehicles and devices | Vehicle, Device | Periodic review | Anything missing identified | Both |
 
-*Job: Plan the city's capacity as new locations open.*
+*Job: Keep enough drivers on shift for the city's orders, with cover for leave and absences.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Plans drivers and DC capacity for a new location | Serving Location, People | New location planned | Capacity plan ready | Both |
+| Reviews drivers on shift against the city's expected orders | People, Order | Before each shift | Gaps identified | Both |
+| Arranges cover for leave and absences | People | Driver on leave or absent | Cover arranged | Both |
+
+*Job: Plan mid-mile trips with the Dispatcher.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Plans mid-mile departures with the Dispatcher | Consignment, Vendor | Consignments due to move | Departure plan agreed | Both |
+
+*Job: Spot and fix delivery problems in the city before they become complaints.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews delivery problems in the city | Shipment | Delays or failures arise | Problems identified | Both |
+| Takes action on a delivery problem | Shipment | Problem identified | Problem resolved | Both |
+
+*Job: Settle payout disputes raised by the city's drivers.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews a payout dispute | Ticket, Money | Driver raises a dispute | Dispute understood | Both |
+| Settles the dispute and informs the driver | Ticket, Money | Review complete | Dispute closed with an outcome | Both |
+| Escalates a dispute to Central Logistics Ops | Ticket | Dispute cannot be settled | Dispute passed on | Both |
 
 *Job: Investigate loss, fraud and cash anomalies in the city.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Investigates a loss, fraud or cash anomaly | Shipment, Consignment, Money | Flag raised by the system or by staff | Findings recorded | Both |
+
+*Job: Plan the city's capacity as new locations open.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Plans drivers and DC capacity for a new location | Serving Location, People | New location planned | Capacity plan ready | Both |
 
 *Job: Cutover: train drivers, run the new system alongside Shipsy, and roll back if needed.*
 
@@ -259,6 +261,12 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 ## Last Mile Driver
 
+*Job: Cutover: move to the new app with minimal disruption.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Starts using the new app | People, Device | Driver's location is cut over | Driver active on the new app | Both |
+
 *Job: Start each shift ready, with attendance marked and a working device and vehicle.*
 
 | Action | Entity | Trigger | Output | Vertical |
@@ -274,6 +282,12 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Views the assigned batch and the pickup point | Shipment | Batch allocated to the driver | Driver sees what to collect and where | Both |
 | Scans each shipment on collection | Shipment, Barcode, Manifest | Handover from the Dispatcher or DC Executive | Handover recorded against the manifest | Both |
 
+*Job: Reach the Customer, and be reachable, without exposing personal numbers.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Calls the Customer through the app | People | Driver needs to reach the Customer | Call connects with both numbers masked | Both |
+
 *Job: Deliver each shipment on time, by an efficient route, with proof of delivery.*
 
 | Action | Entity | Trigger | Output | Vertical |
@@ -281,12 +295,6 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Views the route for the batch | Shipment, Serviced Location | Batch collected | Stops shown in route order | Forward |
 | Navigates to the Customer's location | Serviced Location | Next stop begins | Driver reaches the Customer | Forward |
 | Collects proof of delivery | Shipment | Shipment handed to the Customer | Proof recorded; shipment marked delivered | Forward |
-
-*Job: Reach the Customer, and be reachable, without exposing personal numbers.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Calls the Customer through the app | People | Driver needs to reach the Customer | Call connects with both numbers masked | Both |
 
 *Job: Collect payment accurately and hand cash in with a clear record.*
 
@@ -317,23 +325,17 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Continues working in the app without a network | Device | Network is lost | Actions held on the device | Both |
 | Syncs held actions | Device, Shipment | Network returns | Held actions sent; statuses updated | Both |
 
-*Job: Raise a payout dispute when pay looks wrong.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Raises a payout dispute | Ticket, Money | Pay looks wrong | Dispute sent to the Dispatcher or DC Executive | Both |
-
 *Job: Get help fast in an accident, breakdown or emergency.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Raises a help request | Ticket | Accident, breakdown or emergency | Request reaches the first point of contact (Dispatcher or DC Executive) | Both |
 
-*Job: Cutover: move to the new app with minimal disruption.*
+*Job: Raise a payout dispute when pay looks wrong.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Starts using the new app | People, Device | Driver's location is cut over | Driver active on the new app | Both |
+| Raises a payout dispute | Ticket, Money | Pay looks wrong | Dispute sent to the Dispatcher or DC Executive | Both |
 
 ## Customer
 
@@ -344,12 +346,11 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Views the expected arrival and status of the order | Order, Shipment | Order placed | Customer sees status | Forward |
 | Receives notices about changes | Order | Order changes | Customer informed | Both |
 
-*Job: Receive the order securely and confirm it.*
+*Job: Correct an address or phone number before delivery.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Receives the order from the driver | Shipment | Driver arrives | Order handed over | Forward |
-| Confirms receipt | Shipment | Order handed over | Delivery confirmed | Forward |
+| Updates the delivery address or phone number | Order, Serviced Location | Details are wrong | Details updated and the driver informed | Forward |
 
 *Job: Reschedule, cancel or reject a delivery easily.*
 
@@ -359,17 +360,18 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Cancels an order | Order | Customer no longer wants the order | Order cancelled | Forward |
 | Rejects a delivery at the door | Shipment | Driver arrives | Delivery marked failed with the reason | Forward |
 
-*Job: Correct an address or phone number before delivery.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Updates the delivery address or phone number | Order, Serviced Location | Details are wrong | Details updated and the driver informed | Forward |
-
 *Job: Reach the Driver, and be reached, without sharing personal numbers.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Calls the driver through the app | People | Customer needs to reach the driver | Call connects with both numbers masked | Both |
+
+*Job: Receive the order securely and confirm it.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Receives the order from the driver | Shipment | Driver arrives | Order handed over | Forward |
+| Confirms receipt | Shipment | Order handed over | Delivery confirmed | Forward |
 
 *Job: Pay easily.*
 
@@ -416,13 +418,6 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 ## Central Logistics Ops
 
-*Job: See country-wide performance and step in where it drops.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Views performance across the country | Shipment, Serving Location | Any time | Performance visible by location | Both |
-| Steps in where performance drops | Serving Location | Performance drops | Action taken at the location | Both |
-
 *Job: Set up cities, locations, serviceable areas and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.*
 
 | Action | Entity | Trigger | Output | Vertical |
@@ -455,6 +450,21 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Forecasts demand by location | Order, Serving Location | Planning cycle | Demand forecast | Both |
 | Plans drivers and DC capacity | People, Serving Location | Forecast ready | Capacity plan | Both |
 
+*Job: Cutover: own the location-by-location plan, including readiness criteria, go or no-go, and rollback.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Sets readiness criteria for a location | Serving Location | Location planned for cutover | Criteria defined | Both |
+| Decides go or no-go | Serving Location | Location assessed against criteria | Decision recorded | Both |
+| Decides on a rollback | Serving Location | Cutover does not meet its criteria | Rollback decided | Both |
+
+*Job: See country-wide performance and step in where it drops.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Views performance across the country | Shipment, Serving Location | Any time | Performance visible by location | Both |
+| Steps in where performance drops | Serving Location | Performance drops | Action taken at the location | Both |
+
 *Job: Detect and act on fraud and leakage patterns.*
 
 | Action | Entity | Trigger | Output | Vertical |
@@ -475,15 +485,44 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Shares reports with leadership | Shipment, Money | Reporting cycle or request | Report delivered | Both |
 | Provides data to analytics | Shipment, Money | Request from analytics | Data provided | Both |
 
-*Job: Cutover: own the location-by-location plan, including readiness criteria, go or no-go, and rollback.*
+## System
+
+*Responsibility: Hold serving locations and serviced locations. In Forward, serving locations are warehouses and DCs, and serviced locations are Customers' locations. In Reverse, they flip.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Sets readiness criteria for a location | Serving Location | Location planned for cutover | Criteria defined | Both |
-| Decides go or no-go | Serving Location | Location assessed against criteria | Decision recorded | Both |
-| Decides on a rollback | Serving Location | Cutover does not meet its criteria | Rollback decided | Both |
+| Holds serving and serviced locations | Serving Location, Serviced Location | Locations set up | Locations available, flipped for Reverse | Both |
 
-## System
+*Responsibility: Hold the links between warehouses and DCs, and which flow each location uses.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Holds the links and the flow per location | Serving Location | Central Logistics Ops sets them | Links and flows available | Both |
+
+*Responsibility: Hold users, drivers, Customers and their details, and enforce who can do what.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Holds users, drivers and Customers | People | Record created or updated | Details held | Both |
+| Enforces who can do what | People | Any access attempt | Allowed or blocked by role | Both |
+
+*Responsibility: Register devices and record which driver holds each one.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Registers a device and records its holder | Device, People | Device assigned to a driver | Device and holder recorded | Both |
+
+*Responsibility: Mask phone numbers between Customers and Drivers.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Masks phone numbers on a call | People | Call between a Customer and a driver | Call connects without exposing numbers | Both |
+
+*Responsibility: Hold vendors and their vehicles.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Holds vendors and their vehicles | Vendor, Vehicle | Vendor onboarded or vehicle recorded | Records held | Both |
 
 *Responsibility: Receive each order with its details, and apply cancellations and changes, including after dispatch.*
 
@@ -509,12 +548,6 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Decides the path | Shipment, Serving Location | Shipment created | Shipment routed via DC or direct | Forward |
-
-*Responsibility: After a failed delivery, decide from the rules whether to reattempt it or initiate an RTO.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Decides between a reattempt and an RTO | Shipment | Delivery failed | Reattempt initiated, or RTO initiated | Forward |
 
 *Responsibility: Keep every shipment's status and location current.*
 
@@ -584,6 +617,12 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Replans the affected batches and routes | Shipment, People | Replan triggered | New plan shown to the Dispatcher or DC Executive | Forward |
 | Replans a failed delivery for the next day | Shipment | Replan triggered for a reattempt | Delivery included in the next day's plan, shown to the Dispatcher or DC Executive | Forward |
 
+*Responsibility: After a failed delivery, decide from the rules whether to reattempt it or initiate an RTO.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Decides between a reattempt and an RTO | Shipment | Delivery failed | Reattempt initiated, or RTO initiated | Forward |
+
 *Responsibility: Show medicine details to the Last Mile Driver only in the returns flow.*
 
 | Action | Entity | Trigger | Output | Vertical |
@@ -595,37 +634,6 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Holds actions taken offline and syncs them | Device, Shipment | Network lost, then restored | Actions sent and statuses updated | Both |
-
-*Responsibility: Hold serving locations and serviced locations. In Forward, serving locations are warehouses and DCs, and serviced locations are Customers' locations. In Reverse, they flip.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Holds serving and serviced locations | Serving Location, Serviced Location | Locations set up | Locations available, flipped for Reverse | Both |
-
-*Responsibility: Hold the links between warehouses and DCs, and which flow each location uses.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Holds the links and the flow per location | Serving Location | Central Logistics Ops sets them | Links and flows available | Both |
-
-*Responsibility: Hold users, drivers, Customers and their details, and enforce who can do what.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Holds users, drivers and Customers | People | Record created or updated | Details held | Both |
-| Enforces who can do what | People | Any access attempt | Allowed or blocked by role | Both |
-
-*Responsibility: Register devices and record which driver holds each one.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Registers a device and records its holder | Device, People | Device assigned to a driver | Device and holder recorded | Both |
-
-*Responsibility: Mask phone numbers between Customers and Drivers.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Masks phone numbers on a call | People | Call between a Customer and a driver | Call connects without exposing numbers | Both |
 
 *Responsibility: Record every payment collected, every cash handover and every deposit, and match them against what was owed.*
 
@@ -639,12 +647,6 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Records a vendor payment | Money, Vendor | Finance pays a vendor | Payment recorded | Both |
-
-*Responsibility: Hold vendors and their vehicles.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Holds vendors and their vehicles | Vendor, Vehicle | Vendor onboarded or vehicle recorded | Records held | Both |
 
 *Responsibility: Raise, route and track tickets to resolution within their time limits.*
 

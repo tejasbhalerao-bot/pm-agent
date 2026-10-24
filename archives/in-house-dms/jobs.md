@@ -12,69 +12,71 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Receive every returned parcel back into the warehouse, and report damage or mismatch on arrival.
 
 ## Dispatcher
+**Both flows, before dispatch**
+- Add gel packs to every order that needs them, so medicines do not spoil.
+
 **Flow 1: via DC**
-- Sort ready shipments by destination DC, scan them into the consignments the system creates, and send them on time. Record the vendor, vehicle number, and the driver's name and phone against each consignment, load it and scan the handover.
 - Plan mid-mile trips with the Team Lead so consignments leave on time.
-- Flag any loss, damage or delay of a consignment in transit.
+- Sort ready shipments by destination DC, scan them into the consignments the system creates, and send them on time. Record the vendor, vehicle number, and the driver's name and phone against each consignment, load it and scan the handover.
 - See the live location of mid-mile vehicles on a portal.
+- Flag any loss, damage or delay of a consignment in transit.
 
 **Flow 2: direct from the warehouse**
 In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers handing over batches, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving consignments or releasing returns, since WH Ops receives returns at the warehouse.
 
-**Both flows**
-- Add gel packs to every order that needs them, so medicines do not spoil.
+**Both flows, returns**
 - Schedule return pickups and failed-delivery returns without delay.
 
 ## DC Executive
+- Onboard the DC's Last Mile Drivers and keep their details current.
+- Assign and recover devices and vehicles, and handle a lost or broken device.
+- Keep the DC's Last Mile Drivers ready and accounted for each day.
+- See the live location of mid-mile vehicles on a portal.
 - Receive consignments arriving on the mid-mile vehicle, scan and unload them, and catch anything missing, damaged or mismatched.
 - Flag any loss, damage or delay of a consignment in transit.
-- See the live location of mid-mile vehicles on a portal.
 - Sort every shipment into the right bin, and hand sorted batches to Last Mile Drivers with a scanned handover.
-- Keep the DC's Last Mile Drivers ready and accounted for each day.
-- Trigger a replan for the DC's drivers when a driver can't complete their batch, or an order is cancelled or changed after dispatch, and accept the new plan or rearrange it as the situation on the ground needs.
-- Trigger a replan for the next day when one of the DC's failed deliveries needs to be reattempted, and accept the new plan or rearrange it as the situation on the ground needs.
-- Receive returns and failed deliveries from drivers, and release them towards the warehouse as consignments.
-- Collect, record and bank the cash handed in, and escalate any mismatch.
-- Onboard the DC's Last Mile Drivers and keep their details current.
-- Settle payout disputes raised by the DC's drivers.
-- Assign and recover devices and vehicles, and handle a lost or broken device.
 - Be the first point of contact for drivers at the DC.
+- Trigger a replan for the DC's drivers when a driver can't complete their batch, or an order is cancelled or changed after dispatch, and accept the new plan or rearrange it as the situation on the ground needs.
+- Receive returns and failed deliveries from drivers, and release them towards the warehouse as consignments.
+- Trigger a replan for the next day when one of the DC's failed deliveries needs to be reattempted, and accept the new plan or rearrange it as the situation on the ground needs.
+- Collect, record and bank the cash handed in, and escalate any mismatch.
+- Settle payout disputes raised by the DC's drivers.
 
 ## Team Lead (one city)
-- Keep enough drivers on shift for the city's orders, with cover for leave and absences.
-- Spot and fix delivery problems in the city before they become complaints.
-- Plan mid-mile trips with the Dispatcher.
-- Manage the city's drivers: document checks and renewals, suspension and exit, and performance.
-- Settle payout disputes raised by the city's drivers.
 - Manage the city's users and their access.
 - Onboard and manage vendors.
+- Manage the city's drivers: document checks and renewals, suspension and exit, and performance.
 - Keep the city's vehicles and devices accounted for.
-- Plan the city's capacity as new locations open.
+- Keep enough drivers on shift for the city's orders, with cover for leave and absences.
+- Plan mid-mile trips with the Dispatcher.
+- Spot and fix delivery problems in the city before they become complaints.
+- Settle payout disputes raised by the city's drivers.
 - Investigate loss, fraud and cash anomalies in the city.
+- Plan the city's capacity as new locations open.
 - Cutover: train drivers, run the new system alongside Shipsy, and roll back if needed.
 
 ## Mid-Mile Driver
 - Show up and drive consignments between locations, safely and on time.
 
 ## Last Mile Driver
+- Cutover: move to the new app with minimal disruption.
 - Start each shift ready, with attendance marked and a working device and vehicle.
 - Know what to pick up and from where (warehouse or DC), and collect it with a scanned handover.
-- Deliver each shipment on time, by an efficient route, with proof of delivery.
 - Reach the Customer, and be reachable, without exposing personal numbers.
+- Deliver each shipment on time, by an efficient route, with proof of delivery.
 - Collect payment accurately and hand cash in with a clear record.
 - When a delivery fails or is cancelled, record why and bring the parcel back safely to the DC or warehouse.
 - Collect returns from Customers safely, checking the medicine against the order details at the doorstep before taking it back.
 - Keep working with poor or no network.
-- Raise a payout dispute when pay looks wrong.
 - Get help fast in an accident, breakdown or emergency.
-- Cutover: move to the new app with minimal disruption.
+- Raise a payout dispute when pay looks wrong.
 
 ## Customer
 - Know when the order will arrive, track it, and be told about changes.
-- Receive the order securely and confirm it.
-- Reschedule, cancel or reject a delivery easily.
 - Correct an address or phone number before delivery.
+- Reschedule, cancel or reject a delivery easily.
 - Reach the Driver, and be reached, without sharing personal numbers.
+- Receive the order securely and confirm it.
 - Pay easily.
 - Return an order easily and know when it will be collected.
 - Get help when something goes wrong and raise a ticket.
@@ -85,25 +87,37 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 - Keep a trustworthy record of every money movement.
 
 ## Central Logistics Ops (whole country)
-- See country-wide performance and step in where it drops.
 - Set up cities, locations, serviceable areas and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.
 - Define the rules the system runs on: SLAs, batching, allocation, delivery attempts, cut-offs, and pay, incentives and penalties.
 - Manage roles and access across the system.
 - Forecast demand and plan drivers and DC capacity for growth from 39 to 150 locations.
+- Cutover: own the location-by-location plan, including readiness criteria, go or no-go, and rollback.
+- See country-wide performance and step in where it drops.
 - Detect and act on fraud and leakage patterns.
 - Settle payout disputes that the Dispatcher, DC Executive and Team Lead cannot.
 - Give leadership and analytics the reports and data they need.
-- Cutover: own the location-by-location plan, including readiness criteria, go or no-go, and rollback.
 
 ## System
 Responsibilities, not jobs. Grouped by the entities the System manages.
+
+
+**Locations**
+- Hold serving locations and serviced locations. In Forward, serving locations are warehouses and DCs, and serviced locations are Customers' locations. In Reverse, they flip.
+- Hold the links between warehouses and DCs, and which flow each location uses.
+
+**People, devices and access**
+- Hold users, drivers, Customers and their details, and enforce who can do what.
+- Register devices and record which driver holds each one.
+- Mask phone numbers between Customers and Drivers.
+
+**Vendors**
+- Hold vendors and their vehicles.
 
 **Orders and shipments**
 - Receive each order with its details, and apply cancellations and changes, including after dispatch.
 - Create a shipment for each order.
 - Generate the AWB for each shipment and make it available to print.
 - Decide each shipment's path (via DC or direct) from the rules.
-- After a failed delivery, decide from the rules whether to reattempt it or initiate an RTO.
 - Keep every shipment's status and location current.
 
 **Barcodes and scanning**
@@ -124,24 +138,13 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 **Allocation and delivery**
 - Create delivery batches and routes, allocate Last Mile Drivers, and send the orders to the Driver's app.
 - Replan the affected batches and routes, including reattempts for the next day, when the Dispatcher or DC Executive triggers it.
+- After a failed delivery, decide from the rules whether to reattempt it or initiate an RTO.
 - Show medicine details to the Last Mile Driver only in the returns flow.
 - Keep driver apps working offline, and sync when the network returns.
-
-**Locations**
-- Hold serving locations and serviced locations. In Forward, serving locations are warehouses and DCs, and serviced locations are Customers' locations. In Reverse, they flip.
-- Hold the links between warehouses and DCs, and which flow each location uses.
-
-**People, devices and access**
-- Hold users, drivers, Customers and their details, and enforce who can do what.
-- Register devices and record which driver holds each one.
-- Mask phone numbers between Customers and Drivers.
 
 **Money**
 - Record every payment collected, every cash handover and every deposit, and match them against what was owed.
 - Record vendor payments.
-
-**Vendors**
-- Hold vendors and their vehicles.
 
 **Tickets**
 - Raise, route and track tickets to resolution within their time limits.
