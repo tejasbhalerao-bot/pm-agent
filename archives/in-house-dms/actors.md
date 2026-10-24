@@ -13,6 +13,6 @@ The same actors apply in every location and in both Hyperlocal Forward and Rever
 | Central Logistics Ops | Manages the whole country: geography, rules, access and performance |
 | Control Tower | Monitors live deliveries and steps in on problems |
 | Finance | Reconciles cash and pays drivers and vendors |
-| Grievance & Escalation Management Team | Resolves tickets (scoped in later) |
+| Grievance & Escalation Management Team | Resolves tickets |
 | Customer | Receives and returns orders |
 | System | Acts automatically, without a person triggering it |
