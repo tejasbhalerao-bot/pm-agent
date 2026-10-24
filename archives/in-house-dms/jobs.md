@@ -7,6 +7,7 @@ The system starts at AWB generation.
 The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, and sending orders directly from the warehouse to the Customer. "Cutover" jobs apply while locations move from Shipsy to the new system.
 
 ## WH Ops
+- Print the AWB for every shipment.
 - Hand every shipment that is ready for dispatch to the Dispatcher with a scanned handover.
 - Receive every returned parcel back into the warehouse, and report damage or mismatch on arrival.
 
@@ -103,7 +104,8 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 
 **Orders and shipments**
 - Receive each order with its details, and apply cancellations and changes, including after dispatch.
-- Create a shipment for each order and generate its AWB.
+- Create a shipment for each order.
+- Generate the AWB for each shipment and make it available to print.
 - Decide each shipment's path (via DC or direct) from the rules.
 - Keep every shipment's status and location current.
 
