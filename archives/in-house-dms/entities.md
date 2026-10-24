@@ -14,5 +14,5 @@ The things actors act on.
 10. Device
 11. People
 12. Money
-13. Ticket (scoped in later)
+13. Ticket
 14. Vendor (mid-mile fleet partner)
