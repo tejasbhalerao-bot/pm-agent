@@ -109,19 +109,57 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Get help when something goes wrong and raise a ticket.
 
 ## System
-Responsibilities, not jobs.
-- Generate the AWB for each shipment.
-- Decide each shipment's path (via DC or direct) from the rules, and create consignments and manifests.
-- Create batches and routes, and allocate drivers.
-- Keep every shipment's status and location current, with a full audit trail of every scan and change.
+Responsibilities, not jobs. Grouped by the entities the System manages.
+
+**Orders and shipments**
+- Receive each order with its details, and apply cancellations and changes, including after dispatch.
+- Create a shipment for each order and generate its AWB.
+- Decide each shipment's path (via DC or direct) from the rules.
+- Keep every shipment's status and location current.
+
+**Barcodes and scanning**
+- Generate barcodes for shipments and consignments.
+- Resolve every scan to the right entity, and reject invalid or duplicate scans.
+
+**Manifests and handovers**
+- Generate a manifest for every handover, record the scans against it, and flag anything missing or mismatched.
+
+**Consignments and mid-mile**
+- Create consignments by grouping shipments by destination DC.
+- Record the vendor, vehicle number, and the driver's name and phone against each consignment. No driver profile is kept.
+- Show live mid-mile vehicle location from IoT devices.
+
+**Sorting**
+- Tell the DC Executive which bin each shipment belongs in, and keep track of what each bin holds.
+
+**Allocation and delivery**
+- Create delivery batches and routes, allocate Last Mile Drivers, and send the orders to the Driver's app.
+- Show medicine details to the Last Mile Driver only in the returns flow.
+- Keep driver apps working offline, and sync when the network returns.
+
+**Locations**
+- Hold serving locations, the links between warehouses and DCs, and which flow each location uses.
+- Hold the serviced locations and map them to serving locations.
+
+**People, devices and access**
+- Hold users, drivers, Customers and their details, and enforce who can do what.
+- Register devices and record which driver holds each one.
+- Mask phone numbers between Customers and Drivers.
+
+**Money**
+- Record every payment collected, every cash handover and every deposit, and match them against what was owed.
+- Record vendor payments.
+
+**Vendors**
+- Hold vendors and their vehicles.
+
+**Tickets**
+- Raise, route and track tickets to resolution within their time limits.
+
+**Across the system**
 - Send the right notices to the right people at the right time.
 - Detect failures and fraud signals: missed scans, delays, mismatches, cash anomalies, and deliveries marked from the wrong place.
-- Keep driver apps working offline and sync when the network returns.
-- Mask phone numbers between Customers and Drivers.
-- Hold vendors, and record the vehicle number and the driver's name and phone against each consignment. No driver profile is kept.
-- Show medicine details to the Last Mile Driver only in the returns flow.
-- Enforce who can do what.
+- Keep a full audit trail of every scan and change.
 - Hold and apply the rules.
 - Provide reports and a data feed.
 - Switch a location between Shipsy and the new system, and roll back, during cutover.
-- Show live mid-mile vehicle location from IoT devices.
