@@ -20,6 +20,7 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 
 **Flow 2: direct from the warehouse**
 - Hand each batch to its Last Mile Driver with a scan.
+- Collect, record and bank the cash handed in by the warehouse's drivers, and escalate any mismatch.
 
 **Both flows**
 - Add gel packs to every order that needs them, so medicines do not spoil.

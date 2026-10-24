@@ -64,6 +64,15 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 |---|---|---|---|---|
 | Hands the batch to the driver and scans the handover | Shipment, Barcode, Manifest | Driver arrives at the warehouse | Handover recorded | Forward |
 
+*Job: Collect, record and bank the cash handed in by the warehouse's drivers, and escalate any mismatch.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Receives cash from drivers | Money | Driver hands cash in | Cash received | Forward |
+| Records the cash collected | Money | Cash received | Amount recorded against the driver and shipments | Forward |
+| Deposits the cash in the bank | Money | Cash recorded | Deposit made and recorded for Finance approval | Forward |
+| Escalates a mismatch | Money, Ticket | Cash differs from what was owed | Mismatch raised | Forward |
+
 **Both flows**
 
 *Job: Add gel packs to every order that needs them, so medicines do not spoil.*
