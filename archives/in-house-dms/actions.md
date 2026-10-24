@@ -2,92 +2,6 @@
 
 The actions each actor performs, derived from [jobs.md](jobs.md). Each action sits under the job it serves.
 
-## Last Mile Driver
-
-*Job: Start each shift ready, with attendance marked and a working device and vehicle.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Marks duty start | People | Shift begins | Attendance recorded; driver becomes available for batching and allocation | Both |
-| Confirms the device and vehicle in use | Device, Vehicle | Duty start | Device and vehicle recorded against the driver for the shift | Both |
-| Marks duty end | People | Shift ends | Attendance closed | Both |
-
-*Job: Know what to pick up and from where (warehouse or DC), and collect it with a scanned handover.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Views the assigned batch and the pickup point | Shipment | Batch allocated to the driver | Driver sees what to collect and where | Both |
-| Scans each shipment on collection | Shipment, Barcode, Manifest | Handover from the Dispatcher or DC Executive | Handover recorded against the manifest | Both |
-
-*Job: Deliver each shipment on time, by an efficient route, with proof of delivery.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Views the route for the batch | Shipment, Serviced Location | Batch collected | Stops shown in route order | Forward |
-| Navigates to the Customer's location | Serviced Location | Next stop begins | Driver reaches the Customer | Forward |
-| Collects proof of delivery | Shipment | Shipment handed to the Customer | Proof recorded; shipment marked delivered | Forward |
-
-*Job: Reach the Customer, and be reachable, without exposing personal numbers.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Calls the Customer through the app | People | Driver needs to reach the Customer | Call connects with both numbers masked | Both |
-
-*Job: Collect payment accurately and hand cash in with a clear record.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Collects payment from the Customer | Money, Shipment | Delivery of an order with payment due | Amount recorded against the shipment | Forward |
-| Hands cash in | Money | End of the driver's duty | Cash handover recorded | Forward |
-
-*Job: When a delivery fails or is cancelled, record why and bring the parcel back safely to the DC or warehouse.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Marks the delivery as failed, with a reason | Shipment | Delivery cannot be completed or is cancelled | Shipment marked failed with the reason; Dispatcher informed | Forward |
-| Brings the parcel back to the DC or warehouse and scans the handover | Shipment, Barcode, Manifest | Delivery failed or cancelled | Parcel returned; handover recorded | Reverse |
-
-*Job: Collect returns from Customers safely, checking the medicine against the order details at the doorstep before taking it back.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Views the return pickup and the medicine details | Shipment, Order | Return pickup assigned | Driver sees what to collect and the medicine details | Reverse |
-| Checks the medicine against the order details | Shipment, Order | Driver is with the Customer | Result of the check recorded | Reverse |
-| Takes the parcel and scans it | Shipment, Barcode | Check complete | Return collected; handover recorded | Reverse |
-
-*Job: Keep working with poor or no network.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Continues working in the app without a network | Device | Network is lost | Actions held on the device | Both |
-| Syncs held actions | Device, Shipment | Network returns | Held actions sent; statuses updated | Both |
-
-*Job: Raise a payout dispute when pay looks wrong.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Raises a payout dispute | Ticket, Money | Pay looks wrong | Dispute sent to the Dispatcher or DC Executive | Both |
-
-*Job: Get help fast in an accident, breakdown or emergency.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Raises a help request | Ticket | Accident, breakdown or emergency | Request reaches the first point of contact (Dispatcher or DC Executive) | Both |
-
-*Job: Cutover: move to the new app with minimal disruption.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Starts using the new app | People, Device | Driver's location is cut over | Driver active on the new app | Both |
-
-## Mid-Mile Driver
-
-*Job: Show up and drive consignments between locations, safely and on time.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Drives the consignment from the origin to the destination | Consignment, Vehicle | Consignment loaded on the vehicle | Consignment arrives at the destination | Both |
-
 ## WH Ops
 
 *Job: Hand every shipment that is ready for dispatch to the Dispatcher with a scanned handover.*
@@ -364,6 +278,171 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 | Runs the location on the new system alongside Shipsy | Serving Location | Cutover begins | Both systems run in parallel | Both |
 | Rolls the location back to Shipsy | Serving Location | Cutover does not meet its criteria | Location back on Shipsy | Both |
 
+## Mid-Mile Driver
+
+*Job: Show up and drive consignments between locations, safely and on time.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Drives the consignment from the origin to the destination | Consignment, Vehicle | Consignment loaded on the vehicle | Consignment arrives at the destination | Both |
+
+## Last Mile Driver
+
+*Job: Start each shift ready, with attendance marked and a working device and vehicle.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Marks duty start | People | Shift begins | Attendance recorded; driver becomes available for batching and allocation | Both |
+| Confirms the device and vehicle in use | Device, Vehicle | Duty start | Device and vehicle recorded against the driver for the shift | Both |
+| Marks duty end | People | Shift ends | Attendance closed | Both |
+
+*Job: Know what to pick up and from where (warehouse or DC), and collect it with a scanned handover.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Views the assigned batch and the pickup point | Shipment | Batch allocated to the driver | Driver sees what to collect and where | Both |
+| Scans each shipment on collection | Shipment, Barcode, Manifest | Handover from the Dispatcher or DC Executive | Handover recorded against the manifest | Both |
+
+*Job: Deliver each shipment on time, by an efficient route, with proof of delivery.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Views the route for the batch | Shipment, Serviced Location | Batch collected | Stops shown in route order | Forward |
+| Navigates to the Customer's location | Serviced Location | Next stop begins | Driver reaches the Customer | Forward |
+| Collects proof of delivery | Shipment | Shipment handed to the Customer | Proof recorded; shipment marked delivered | Forward |
+
+*Job: Reach the Customer, and be reachable, without exposing personal numbers.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Calls the Customer through the app | People | Driver needs to reach the Customer | Call connects with both numbers masked | Both |
+
+*Job: Collect payment accurately and hand cash in with a clear record.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Collects payment from the Customer | Money, Shipment | Delivery of an order with payment due | Amount recorded against the shipment | Forward |
+| Hands cash in | Money | End of the driver's duty | Cash handover recorded | Forward |
+
+*Job: When a delivery fails or is cancelled, record why and bring the parcel back safely to the DC or warehouse.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Marks the delivery as failed, with a reason | Shipment | Delivery cannot be completed or is cancelled | Shipment marked failed with the reason; Dispatcher informed | Forward |
+| Brings the parcel back to the DC or warehouse and scans the handover | Shipment, Barcode, Manifest | Delivery failed or cancelled | Parcel returned; handover recorded | Reverse |
+
+*Job: Collect returns from Customers safely, checking the medicine against the order details at the doorstep before taking it back.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Views the return pickup and the medicine details | Shipment, Order | Return pickup assigned | Driver sees what to collect and the medicine details | Reverse |
+| Checks the medicine against the order details | Shipment, Order | Driver is with the Customer | Result of the check recorded | Reverse |
+| Takes the parcel and scans it | Shipment, Barcode | Check complete | Return collected; handover recorded | Reverse |
+
+*Job: Keep working with poor or no network.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Continues working in the app without a network | Device | Network is lost | Actions held on the device | Both |
+| Syncs held actions | Device, Shipment | Network returns | Held actions sent; statuses updated | Both |
+
+*Job: Raise a payout dispute when pay looks wrong.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Raises a payout dispute | Ticket, Money | Pay looks wrong | Dispute sent to the Dispatcher or DC Executive | Both |
+
+*Job: Get help fast in an accident, breakdown or emergency.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Raises a help request | Ticket | Accident, breakdown or emergency | Request reaches the first point of contact (Dispatcher or DC Executive) | Both |
+
+*Job: Cutover: move to the new app with minimal disruption.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Starts using the new app | People, Device | Driver's location is cut over | Driver active on the new app | Both |
+
+## Customer
+
+*Job: Know when the order will arrive, track it, and be told about changes.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Views the expected arrival and status of the order | Order, Shipment | Order placed | Customer sees status | Forward |
+| Receives notices about changes | Order | Order changes | Customer informed | Both |
+
+*Job: Receive the order securely and confirm it.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Receives the order from the driver | Shipment | Driver arrives | Order handed over | Forward |
+| Confirms receipt | Shipment | Order handed over | Delivery confirmed | Forward |
+
+*Job: Reschedule, cancel or reject a delivery easily.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reschedules a delivery | Shipment | Customer unavailable | New delivery time set | Forward |
+| Cancels an order | Order | Customer no longer wants the order | Order cancelled | Forward |
+| Rejects a delivery at the door | Shipment | Driver arrives | Delivery marked failed with the reason | Forward |
+
+*Job: Correct an address or phone number before delivery.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Updates the delivery address or phone number | Order, Serviced Location | Details are wrong | Details updated and the driver informed | Forward |
+
+*Job: Reach the Driver, and be reached, without sharing personal numbers.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Calls the driver through the app | People | Customer needs to reach the driver | Call connects with both numbers masked | Both |
+
+*Job: Pay easily.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Pays for the order | Money, Order | Payment due | Payment recorded against the order | Forward |
+
+*Job: Return an order easily and know when it will be collected.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Requests a return | Order, Shipment | Customer wants to return an order | Return pickup requested | Reverse |
+| Views the pickup time | Shipment | Pickup scheduled | Pickup time shown | Reverse |
+| Hands the return to the driver | Shipment | Driver arrives | Return handed over | Reverse |
+
+*Job: Get help when something goes wrong and raise a ticket.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Raises a ticket | Ticket | Something goes wrong | Ticket created | Both |
+
+## Finance
+
+*Job: Make sure every rupee collected matches what was owed and is banked, approve cash deposits and close discrepancies.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews cash collected against what was owed | Money, Shipment | Deposit recorded | Match or discrepancy identified | Forward |
+| Approves a cash deposit | Money | Deposit matches what was owed | Deposit approved | Forward |
+| Closes a discrepancy | Money | Discrepancy explained or resolved | Discrepancy closed | Forward |
+
+*Job: Pay vendors accurately and on time, every month, under the pay rules.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Calculates the amount owed to each vendor | Money, Vendor | Month end | Monthly amount per vendor | Both |
+| Pays the vendor | Money, Vendor | Amount ready | Payment made | Both |
+
+*Job: Keep a trustworthy record of every money movement.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews the record of money movements | Money | Periodic review | Record confirmed complete and traceable | Both |
+
 ## Central Logistics Ops
 
 *Job: See country-wide performance and step in where it drops.*
@@ -432,131 +511,6 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 | Sets readiness criteria for a location | Serving Location | Location planned for cutover | Criteria defined | Both |
 | Decides go or no-go | Serving Location | Location assessed against criteria | Decision recorded | Both |
 | Decides on a rollback | Serving Location | Cutover does not meet its criteria | Rollback decided | Both |
-
-## Finance
-
-*Job: Make sure every rupee collected matches what was owed and is banked, approve cash deposits and close discrepancies.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Reviews cash collected against what was owed | Money, Shipment | Deposit recorded | Match or discrepancy identified | Forward |
-| Approves a cash deposit | Money | Deposit matches what was owed | Deposit approved | Forward |
-| Closes a discrepancy | Money | Discrepancy explained or resolved | Discrepancy closed | Forward |
-
-*Job: Pay vendors accurately and on time, every month, under the pay rules.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Calculates the amount owed to each vendor | Money, Vendor | Month end | Monthly amount per vendor | Both |
-| Pays the vendor | Money, Vendor | Amount ready | Payment made | Both |
-
-*Job: Keep a trustworthy record of every money movement.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Reviews the record of money movements | Money | Periodic review | Record confirmed complete and traceable | Both |
-
-## Grievance & Escalation Management Team
-
-*Job: Resolve every Customer ticket quickly and fairly, escalating when needed.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Reviews a Customer ticket | Ticket | Customer raises a ticket | Issue understood | Both |
-| Resolves the ticket and informs the Customer | Ticket | Review complete | Ticket closed with an outcome | Both |
-| Escalates a ticket | Ticket | Ticket cannot be resolved | Ticket passed on | Both |
-
-*Job: Resolve driver tickets, such as penalties, app problems and incidents.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Reviews a driver ticket | Ticket, People | Driver raises a ticket | Issue understood | Both |
-| Resolves the ticket and informs the driver | Ticket | Review complete | Ticket closed with an outcome | Both |
-
-*Job: Investigate incidents such as loss, damage, fraud and accidents, with the Team Lead.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Investigates an incident with the Team Lead | Ticket, Shipment, Consignment | Incident reported | Findings recorded | Both |
-
-*Job: Spot patterns in tickets so recurring problems get fixed at the root.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Reviews tickets for recurring problems | Ticket | Periodic review | Patterns identified | Both |
-| Raises a root-cause fix with the owning team | Ticket | Pattern identified | Fix requested | Both |
-
-*Job: Keep tickets within their time limits.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Tracks tickets against their time limits | Ticket | Ticket open | Tickets near or past the limit identified | Both |
-| Follows up on a ticket near its limit | Ticket | Ticket near its limit | Ticket moved forward | Both |
-
-## Control Tower
-
-*Job: Watch live deliveries independently of Logistics Ops, and call out operational failures so none are hidden.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Watches live deliveries | Shipment | Continuous | Operational failures spotted | Both |
-| Calls out an operational failure | Shipment, Ticket | Failure spotted | Failure raised to its owner and recorded | Both |
-
-## Customer
-
-*Job: Know when the order will arrive, track it, and be told about changes.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Views the expected arrival and status of the order | Order, Shipment | Order placed | Customer sees status | Forward |
-| Receives notices about changes | Order | Order changes | Customer informed | Both |
-
-*Job: Receive the order securely and confirm it.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Receives the order from the driver | Shipment | Driver arrives | Order handed over | Forward |
-| Confirms receipt | Shipment | Order handed over | Delivery confirmed | Forward |
-
-*Job: Reschedule, cancel or reject a delivery easily.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Reschedules a delivery | Shipment | Customer unavailable | New delivery time set | Forward |
-| Cancels an order | Order | Customer no longer wants the order | Order cancelled | Forward |
-| Rejects a delivery at the door | Shipment | Driver arrives | Delivery marked failed with the reason | Forward |
-
-*Job: Correct an address or phone number before delivery.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Updates the delivery address or phone number | Order, Serviced Location | Details are wrong | Details updated and the driver informed | Forward |
-
-*Job: Reach the Driver, and be reached, without sharing personal numbers.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Calls the driver through the app | People | Customer needs to reach the driver | Call connects with both numbers masked | Both |
-
-*Job: Pay easily.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Pays for the order | Money, Order | Payment due | Payment recorded against the order | Forward |
-
-*Job: Return an order easily and know when it will be collected.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Requests a return | Order, Shipment | Customer wants to return an order | Return pickup requested | Reverse |
-| Views the pickup time | Shipment | Pickup scheduled | Pickup time shown | Reverse |
-| Hands the return to the driver | Shipment | Driver arrives | Return handed over | Reverse |
-
-*Job: Get help when something goes wrong and raise a ticket.*
-
-| Action | Entity | Trigger | Output | Vertical |
-|---|---|---|---|---|
-| Raises a ticket | Ticket | Something goes wrong | Ticket created | Both |
 
 ## System
 
@@ -746,3 +700,49 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 |---|---|---|---|---|
 | Switches a location between Shipsy and the new system | Serving Location | Go decision for a location | Location runs on the new system | Both |
 | Rolls a location back to Shipsy | Serving Location | Rollback decision | Location runs on Shipsy again | Both |
+
+## Control Tower
+
+*Job: Watch live deliveries independently of Logistics Ops, and call out operational failures so none are hidden.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Watches live deliveries | Shipment | Continuous | Operational failures spotted | Both |
+| Calls out an operational failure | Shipment, Ticket | Failure spotted | Failure raised to its owner and recorded | Both |
+
+## Grievance & Escalation Management Team
+
+*Job: Resolve every Customer ticket quickly and fairly, escalating when needed.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews a Customer ticket | Ticket | Customer raises a ticket | Issue understood | Both |
+| Resolves the ticket and informs the Customer | Ticket | Review complete | Ticket closed with an outcome | Both |
+| Escalates a ticket | Ticket | Ticket cannot be resolved | Ticket passed on | Both |
+
+*Job: Resolve driver tickets, such as penalties, app problems and incidents.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews a driver ticket | Ticket, People | Driver raises a ticket | Issue understood | Both |
+| Resolves the ticket and informs the driver | Ticket | Review complete | Ticket closed with an outcome | Both |
+
+*Job: Investigate incidents such as loss, damage, fraud and accidents, with the Team Lead.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Investigates an incident with the Team Lead | Ticket, Shipment, Consignment | Incident reported | Findings recorded | Both |
+
+*Job: Spot patterns in tickets so recurring problems get fixed at the root.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Reviews tickets for recurring problems | Ticket | Periodic review | Patterns identified | Both |
+| Raises a root-cause fix with the owning team | Ticket | Pattern identified | Fix requested | Both |
+
+*Job: Keep tickets within their time limits.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Tracks tickets against their time limits | Ticket | Ticket open | Tickets near or past the limit identified | Both |
+| Follows up on a ticket near its limit | Ticket | Ticket near its limit | Ticket moved forward | Both |
