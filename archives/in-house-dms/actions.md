@@ -288,13 +288,14 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Calls the Customer through the app | People | Driver needs to reach the Customer | Call connects with both numbers masked | Both |
 
-*Job: Deliver each shipment on time, by an efficient route, with proof of delivery.*
+*Job: Deliver each shipment on time, by an efficient route, with a scan and proof of delivery.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Views the route for the batch | Shipment, Serviced Location | Batch collected | Stops shown in route order | Forward |
 | Navigates to the Customer's location | Serviced Location | Next stop begins | Driver reaches the Customer | Forward |
-| Collects proof of delivery | Shipment | Shipment handed to the Customer | Proof recorded; shipment marked delivered | Forward |
+| Scans the shipment at handover to the Customer | Shipment, Barcode | Shipment handed to the Customer | Handover recorded | Forward |
+| Collects proof of delivery | Shipment | Handover scanned | Proof recorded; shipment marked delivered | Forward |
 
 *Job: Collect payment accurately and hand cash in with a clear record.*
 
