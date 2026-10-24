@@ -1,15 +1,38 @@
 # Scope
 
-## Boundaries (PM, 2026-10-24)
-- The system stops at delivering returned orders back to the warehouse (failed-delivery returns and customer returns). Nothing after the warehouse receive is in scope.
-- Refunds are out of scope.
-- Central Logistics Ops (whole country) owns geography setup (cities and locations). A Team Lead handles one city.
+## In scope
+- Hyperlocal Forward and Reverse, from "ready for dispatch" (after AWB print) until a returned order is delivered back to the warehouse.
+- Two dispatch flows: via a DC, and directly from the warehouse to the Customer.
 
-## Phasing (PM, 2026-10-24)
-Scoped in later, not in the first release:
-- Grievance & Escalation Management (its jobs, and the ticket handling that goes with them).
-- Mid-mile vehicle tracking (the IoT devices and portal).
+## Out of scope
+- Picking, packing, AWB generation and AWB print.
+- Anything after the warehouse receives a returned parcel.
+- Refunds.
+- Tamper-proof custody.
 
-## Decisions applied to the jobs
+## Scoped in later
+- Grievance & Escalation Management, and ticket handling.
+- Mid-mile vehicle tracking through IoT devices and a portal. Today, vehicles are tracked through WhatsApp live location.
 
-Decisions applied in v3: the system starts at "ready for dispatch", which is after AWB print (so AWB generation, AWB print and picking and packing are outside it); the Control Tower is folded into Central Logistics Ops and the Team Lead; tamper-proof custody is out of scope; Mid-Mile Drivers get no app and only show up and drive (loading, unloading, handover, tracking, attendance, trip start and end do not fall on them); the Mid-Mile Driver and his vendor are accountable for loss, damage and delay in transit, and the Dispatcher and DC Executive flag it; mid-mile vendors are onboarded, not drivers, and each consignment is tagged to a vehicle registered at run-time; mid-mile vehicles are tracked operationally today by WhatsApp live location, with IoT devices and a portal to follow; drivers are supplied by fleet partners today but the jobs are unchanged.
+## Decisions
+**Roles**
+- Central Logistics Ops manages the whole country, including geography. A Team Lead manages one city.
+- The Control Tower role is folded into Central Logistics Ops and the Team Lead.
+- The DC Executive onboards Last Mile Drivers who deliver from the DC. The Dispatcher onboards those who deliver from the warehouse.
+- The Dispatcher and the Team Lead plan mid-mile trips together.
+- WH Ops only gives and receives parcels.
+
+**Mid-mile**
+- Mid-Mile Drivers have no app. They only drive.
+- Vendors are onboarded, not drivers. The Team Lead onboards and manages vendors.
+- At loading, the Dispatcher records the vendor, vehicle number, and the driver's name and phone against each consignment. No driver profile is kept.
+- The Dispatcher loads and scans at the origin. The DC Executive unloads and scans at the DC.
+- The driver and the vendor are accountable for loss, damage and delay in transit. The Dispatcher and DC Executive flag it.
+- Finance pays mid-mile vendors.
+
+**Medicines**
+- Cold-chain proofing means the Dispatcher adds gel packs to orders that need them.
+- Medicine details are shown to the Last Mile Driver only in the returns flow, for doorstep quality checks.
+
+**Other**
+- Drivers are supplied by fleet partners today. The jobs do not change.

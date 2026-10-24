@@ -1,8 +1,10 @@
-# Entities (as finalised by the PM, 2026-10-24)
+# Entities
+
+The things actors act on.
 
 1. Order
-2. Shipment
-3. Barcode (renamed from Scanning Barcode)
+2. Shipment (carries the AWB)
+3. Barcode (Shipments and Consignments can carry different barcodes)
 4. Sorting Bin
 5. Manifest
 6. Consignment
@@ -12,8 +14,5 @@
 10. Device
 11. People
 12. Money
-13. Ticket (added 2026-10-24; stays a real entity, scoped out through milestones; ticket handling comes later)
-14. Vendor (added 2026-10-24; mid-mile fleet partner, onboarded and managed by the Team Lead)
-
-Note: AWB was dropped on purpose; Shipment carries the AWB.
-Open: whether Barcode stays a separate entity (Shipment and Consignment ideally carry different barcodes).
+13. Ticket (scoped in later)
+14. Vendor (mid-mile fleet partner)

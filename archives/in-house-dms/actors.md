@@ -1,21 +1,17 @@
-# Actors (step 1, updated by the PM, 2026-10-24)
+# Actors
 
-Actors that exist today, irrespective of location:
-1. Last Mile Driver
-2. Mid-Mile Driver
-3. DC Executive
-4. Dispatcher
-5. Team Lead
-6. Finance
-7. Central Logistics Ops
-8. Grievance & Escalation Management Team
-9. Customer
-10. System (automated actor: acts without a human triggering it; added 2026-10-24)
-11. WH Ops (added 2026-10-24; appeared in the PM's flow board legend; likely owns Pick & Pack and AWB Print)
+The same actors apply in every location and in both Hyperlocal Forward and Reverse.
 
-Clarifications:
-- Hyperlocal Reverse uses the same actors as Forward.
-- Driver onboarding and lifecycle is handled by the Dispatcher and the DC Executive.
-- Admin (system configuration) is handled by Central Logistics Ops and the Team Lead.
-
-Actions per actor: see the actions document once it exists (planned columns: Actor, Action, Entity, Trigger, Output, Vertical).
+| Actor | Role |
+|---|---|
+| Last Mile Driver | Delivers orders to Customers and collects returns |
+| Mid-Mile Driver | Drives consignments between locations. Has no app |
+| DC Executive | Runs the DC: receives, sorts and hands out shipments, handles cash, and onboards the DC's Last Mile Drivers |
+| Dispatcher | Sends shipments out of the warehouse, either via a DC or directly to the Customer, and onboards the warehouse's Last Mile Drivers |
+| WH Ops | Hands shipments to the Dispatcher and receives returns |
+| Team Lead | Manages one city: drivers, users, vendors and daily operations |
+| Central Logistics Ops | Manages the whole country: geography, rules, access and performance |
+| Finance | Reconciles cash and pays drivers and vendors |
+| Grievance & Escalation Management Team | Resolves tickets (scoped in later) |
+| Customer | Receives and returns orders |
+| System | Acts automatically, without a person triggering it |
