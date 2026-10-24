@@ -6,22 +6,6 @@ The system starts at AWB generation.
 
 The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, and sending orders directly from the warehouse to the Customer. "Cutover" jobs apply while locations move from Shipsy to the new system.
 
-## Last Mile Driver
-- Start each shift ready, with attendance marked and a working device and vehicle.
-- Know what to pick up and from where (warehouse or DC), and collect it with a scanned handover.
-- Deliver each shipment on time, by an efficient route, with proof of delivery.
-- Reach the Customer, and be reachable, without exposing personal numbers.
-- Collect payment accurately and hand cash in with a clear record.
-- When a delivery fails or is cancelled, record why and bring the parcel back safely to the DC or warehouse.
-- Collect returns from Customers safely, checking the medicine against the order details at the doorstep before taking it back.
-- Keep working with poor or no network.
-- Raise a payout dispute when pay looks wrong.
-- Get help fast in an accident, breakdown or emergency.
-- Cutover: move to the new app with minimal disruption.
-
-## Mid-Mile Driver
-- Show up and drive consignments between locations, safely and on time.
-
 ## WH Ops
 - Hand every shipment that is ready for dispatch to the Dispatcher with a scanned handover.
 - Receive every returned parcel back into the warehouse, and report damage or mismatch on arrival.
@@ -72,31 +56,21 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Investigate loss, fraud and cash anomalies in the city.
 - Cutover: train drivers, run the new system alongside Shipsy, and roll back if needed.
 
-## Central Logistics Ops (whole country)
-- See country-wide performance and step in where it drops.
-- Set up cities, locations, serviceable areas and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.
-- Define the rules the system runs on: SLAs, batching, allocation, delivery attempts, cut-offs, and pay, incentives and penalties.
-- Manage roles and access across the system.
-- Forecast demand and plan drivers and DC capacity for growth from 39 to 150 locations.
-- Detect and act on fraud and leakage patterns.
-- Settle payout disputes that the Dispatcher, DC Executive and Team Lead cannot.
-- Give leadership and analytics the reports and data they need.
-- Cutover: own the location-by-location plan, including readiness criteria, go or no-go, and rollback.
+## Mid-Mile Driver
+- Show up and drive consignments between locations, safely and on time.
 
-## Finance
-- Make sure every rupee collected matches what was owed and is banked, approve cash deposits and close discrepancies.
-- Pay vendors accurately and on time, every month, under the pay rules.
-- Keep a trustworthy record of every money movement.
-
-## Grievance & Escalation Management Team
-- Resolve every Customer ticket quickly and fairly, escalating when needed.
-- Resolve driver tickets, such as penalties, app problems and incidents.
-- Investigate incidents such as loss, damage, fraud and accidents, with the Team Lead.
-- Spot patterns in tickets so recurring problems get fixed at the root.
-- Keep tickets within their time limits.
-
-## Control Tower
-- Watch live deliveries independently of Logistics Ops, and call out operational failures so none are hidden.
+## Last Mile Driver
+- Start each shift ready, with attendance marked and a working device and vehicle.
+- Know what to pick up and from where (warehouse or DC), and collect it with a scanned handover.
+- Deliver each shipment on time, by an efficient route, with proof of delivery.
+- Reach the Customer, and be reachable, without exposing personal numbers.
+- Collect payment accurately and hand cash in with a clear record.
+- When a delivery fails or is cancelled, record why and bring the parcel back safely to the DC or warehouse.
+- Collect returns from Customers safely, checking the medicine against the order details at the doorstep before taking it back.
+- Keep working with poor or no network.
+- Raise a payout dispute when pay looks wrong.
+- Get help fast in an accident, breakdown or emergency.
+- Cutover: move to the new app with minimal disruption.
 
 ## Customer
 - Know when the order will arrive, track it, and be told about changes.
@@ -107,6 +81,22 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Pay easily.
 - Return an order easily and know when it will be collected.
 - Get help when something goes wrong and raise a ticket.
+
+## Finance
+- Make sure every rupee collected matches what was owed and is banked, approve cash deposits and close discrepancies.
+- Pay vendors accurately and on time, every month, under the pay rules.
+- Keep a trustworthy record of every money movement.
+
+## Central Logistics Ops (whole country)
+- See country-wide performance and step in where it drops.
+- Set up cities, locations, serviceable areas and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.
+- Define the rules the system runs on: SLAs, batching, allocation, delivery attempts, cut-offs, and pay, incentives and penalties.
+- Manage roles and access across the system.
+- Forecast demand and plan drivers and DC capacity for growth from 39 to 150 locations.
+- Detect and act on fraud and leakage patterns.
+- Settle payout disputes that the Dispatcher, DC Executive and Team Lead cannot.
+- Give leadership and analytics the reports and data they need.
+- Cutover: own the location-by-location plan, including readiness criteria, go or no-go, and rollback.
 
 ## System
 Responsibilities, not jobs. Grouped by the entities the System manages.
@@ -163,3 +153,13 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 - Hold and apply the rules.
 - Provide reports and a data feed.
 - Switch a location between Shipsy and the new system, and roll back, during cutover.
+
+## Control Tower
+- Watch live deliveries independently of Logistics Ops, and call out operational failures so none are hidden.
+
+## Grievance & Escalation Management Team
+- Resolve every Customer ticket quickly and fairly, escalating when needed.
+- Resolve driver tickets, such as penalties, app problems and incidents.
+- Investigate incidents such as loss, damage, fraud and accidents, with the Team Lead.
+- Spot patterns in tickets so recurring problems get fixed at the root.
+- Keep tickets within their time limits.
