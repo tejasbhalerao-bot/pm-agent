@@ -53,7 +53,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 - Settle payout disputes raised by the city's drivers.
 - Investigate loss, fraud and cash anomalies in the city.
 - Plan the city's capacity as new locations open.
-- Cutover: train drivers and run the new system alongside Shipsy.
+- Cutover: train drivers on the new app.
 
 ## Mid-Mile Driver
 - Show up and drive consignments between locations, safely and on time.
@@ -91,7 +91,6 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 - Define the rules the system runs on: SLAs, batching, allocation, delivery attempts, cut-offs, and pay, incentives and penalties.
 - Manage roles and access across the system.
 - Forecast demand and plan drivers and DC capacity for growth from 39 to 150 locations.
-- Cutover: own the location-by-location plan, including readiness criteria, go or no-go, and rollback.
 - See country-wide performance and step in where it drops.
 - Detect and act on fraud and leakage patterns.
 - Settle payout disputes that the Dispatcher, DC Executive and Team Lead cannot.
