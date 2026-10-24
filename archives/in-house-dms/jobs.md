@@ -138,8 +138,8 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 - Keep driver apps working offline, and sync when the network returns.
 
 **Locations**
-- Hold serving locations, the links between warehouses and DCs, and which flow each location uses.
-- Hold the serviced locations and map them to serving locations.
+- Hold serving locations and serviced locations. In Forward, serving locations are warehouses and DCs, and serviced locations are Customers' locations. In Reverse, they flip.
+- Hold the links between warehouses and DCs, and which flow each location uses.
 
 **People, devices and access**
 - Hold users, drivers, Customers and their details, and enforce who can do what.
