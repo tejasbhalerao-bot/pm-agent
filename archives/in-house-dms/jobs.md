@@ -62,7 +62,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 - Cutover: move to the new app with minimal disruption.
 - Start each shift ready, with attendance marked and a working device and vehicle.
 - Know what to pick up and from where (warehouse or DC), pick the assigned orders from the bin, and take them to the DC Executive to scan.
-- Reach the Customer, and be reachable, without exposing personal numbers.
+- Call the Customer, and be reachable by them, without exposing personal numbers.
 - Deliver each shipment on time, by an efficient route, with proof of delivery.
 - Collect payment accurately and hand cash in with a clear record.
 - When a delivery fails or is cancelled, record why and bring the parcel back safely to the DC or warehouse.
@@ -75,7 +75,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 - Know when the order will arrive, track it, and be told about changes.
 - Correct an address or phone number before delivery.
 - Reschedule, cancel or reject a delivery easily.
-- Reach the Driver, and be reached, without sharing personal numbers.
+- Call the Driver, and be reachable by them, without sharing personal numbers.
 - Receive the order securely and confirm it.
 - Pay easily.
 - Return an order easily and know when it will be collected.

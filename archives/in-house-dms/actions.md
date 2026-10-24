@@ -282,7 +282,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Picks the assigned orders from the bin | Shipment, Sorting Bin | Driver reaches the bin | Driver holds the orders assigned to them | Both |
 | Takes the orders to the DC Executive | Shipment | Orders picked | Orders ready to be scanned | Both |
 
-*Job: Reach the Customer, and be reachable, without exposing personal numbers.*
+*Job: Call the Customer, and be reachable by them, without exposing personal numbers.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
@@ -360,7 +360,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Cancels an order | Order | Customer no longer wants the order | Order cancelled | Forward |
 | Rejects a delivery at the door | Shipment | Driver arrives | Delivery marked failed with the reason | Forward |
 
-*Job: Reach the Driver, and be reached, without sharing personal numbers.*
+*Job: Call the Driver, and be reachable by them, without sharing personal numbers.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
