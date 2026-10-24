@@ -39,7 +39,7 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Keep the DC's Last Mile Drivers ready and accounted for each day.
 - Trigger a replan for the DC's drivers when a driver can't complete their batch, or an order is cancelled or changed after dispatch, and accept the new plan or rearrange it as the situation on the ground needs.
 - Trigger a replan for the next day when one of the DC's failed deliveries needs to be reattempted, and accept the new plan or rearrange it as the situation on the ground needs.
-- Receive returns and failed deliveries from drivers, and release them back towards the warehouse.
+- Receive returns and failed deliveries from drivers, and release them towards the warehouse as consignments.
 - Collect, record and bank the cash handed in, and escalate any mismatch.
 - Onboard the DC's Last Mile Drivers and keep their details current.
 - Settle payout disputes raised by the DC's drivers.
@@ -120,7 +120,7 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 - Generate a manifest for every handover, record the scans against it, and flag anything missing or mismatched.
 
 **Consignments and mid-mile**
-- Create consignments by grouping shipments by destination DC.
+- Create consignments by grouping shipments by destination.
 - Record the vendor, vehicle number, and the driver's name and phone against each consignment. No driver profile is kept.
 - Show live mid-mile vehicle location from IoT devices.
 

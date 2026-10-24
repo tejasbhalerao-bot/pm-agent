@@ -170,12 +170,12 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 | Triggers a replan for the next day | Shipment | Reattempt initiated | System replans the delivery for the next day | Forward |
 | Accepts the new plan or rearranges it | Shipment, People | New plan shown | Plan confirmed and batches updated | Forward |
 
-*Job: Receive returns and failed deliveries from drivers, and release them back towards the warehouse.*
+*Job: Receive returns and failed deliveries from drivers, and release them towards the warehouse as consignments.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Receives returned parcels from drivers and scans them | Shipment, Barcode, Manifest | Driver brings a parcel back | Receipt recorded | Reverse |
-| Releases returned parcels towards the warehouse | Shipment | Returned parcels held at the DC | Parcels sent back | Reverse |
+| Scans returned shipments into a consignment and releases it towards the warehouse | Consignment, Shipment, Barcode, Manifest | Returned shipments held at the DC | Consignment created with its manifest and sent back | Reverse |
 
 *Job: Collect, record and bank the cash handed in, and escalate any mismatch.*
 
@@ -588,11 +588,11 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 | Records scans against the manifest | Manifest, Barcode | Scan during handover | Scan recorded | Both |
 | Flags missing or mismatched items | Manifest | Handover ends with differences | Differences flagged to the people involved | Both |
 
-*Responsibility: Create consignments by grouping shipments by destination DC.*
+*Responsibility: Create consignments by grouping shipments by destination.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Creates a consignment | Consignment, Shipment | Shipments scanned into a consignment | Consignment created with its manifest | Forward |
+| Creates a consignment | Consignment, Shipment | Shipments scanned into a consignment | Consignment created with its manifest | Both |
 
 *Responsibility: Record the vendor, vehicle number, and the driver's name and phone against each consignment. No driver profile is kept.*
 
