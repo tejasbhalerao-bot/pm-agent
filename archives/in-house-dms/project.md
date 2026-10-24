@@ -78,6 +78,11 @@ Open: whether Barcode stays a separate entity (Shipment and Consignment ideally 
 - Refunds are out of scope.
 - Central Logistics Ops (whole country) owns geography setup (cities and locations). A Team Lead handles one city.
 
+## Scope phasing (PM, 2026-10-24)
+Scoped in later, not in the first release:
+- Grievance & Escalation Management (its jobs, and the ticket handling that goes with them).
+- Mid-mile vehicle tracking (the IoT devices and portal).
+
 ## Jobs to be done per actor (step 2, draft v8, 2026-10-24)
 
 Dispatcher has two flows: (1) send orders to a DC for last-mile delivery (warehouse to DC via Mid-Mile, then DC to Customer); (2) send orders directly from the warehouse to the Customer. Items marked † are assumptions to confirm.
@@ -169,6 +174,7 @@ Both flows:
 - Refunds are out of scope.
 
 ### Grievance & Escalation Management Team
+(Scoped in later, not in the first release. Jobs kept here for completeness.)
 - Resolve every Customer ticket quickly and fairly, with clear escalation when needed.
 - Resolve driver tickets too, such as payout disputes, penalties, app problems and incidents. (Not done today; will come later and stays in scope.)
 - Investigate incidents such as loss, damage, fraud and accidents, with the Team Lead.
