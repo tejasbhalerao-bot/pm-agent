@@ -50,4 +50,22 @@ Clarifications:
 - Admin (system configuration) is handled by Central Logistics Ops and the Team Lead.
 
 Actions per actor: pending (PM drafting, five columns: Actor, Action, Trigger, Output, Vertical).
-Entities (physical things such as barcode, bins, AWB, order): PM is brainstorming; not captured yet.
+
+## Entities (as finalised by the PM, 2026-10-24)
+
+1. Order
+2. Shipment
+3. Barcode (renamed from Scanning Barcode)
+4. Sorting Bin
+5. Manifest
+6. Consignment
+7. Serving Location
+8. Serviced Location
+9. Vehicle
+10. Device
+11. People
+12. Money
+13. Ticket (added 2026-10-24)
+
+Note: AWB was dropped on purpose; Shipment carries the AWB.
+Open: whether Barcode stays a separate entity (Shipment and Consignment ideally carry different barcodes).
