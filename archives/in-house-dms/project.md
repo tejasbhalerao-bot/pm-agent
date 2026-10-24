@@ -119,7 +119,7 @@ Both flows:
 - Make sure each shipment takes the right path (via DC or direct).
 - Add gel packs to every order that needs them so medicines do not spoil (this is the cold-chain proofing).
 - Schedule return pickups and failed-delivery returns without delay.
-- Re-plan quickly when a driver drops off, a shipment fails, or an order is cancelled or changed after dispatch.
+- Reassign shipments quickly when a driver can't complete their batch, a delivery fails, or an order is cancelled or changed after dispatch. († PM to challenge this job when actions are drafted.)
 - Keep a healthy pool of drivers available at the warehouse.
 - Onboard the Last Mile Drivers who deliver from the warehouse, and keep their details current.
 - Be the first point of contact for drivers on the road in the direct flow.
