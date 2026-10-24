@@ -16,4 +16,5 @@ Index of the project's documents. Content lives in the files below; this file on
 | [entities.md](entities.md) | The things actors act on |
 | [jobs.md](jobs.md) | The jobs each actor needs done, and the System's responsibilities. The source for actions |
 | [actions.md](actions.md) | The actions each actor performs, each tied to the job it serves. The source for events and flows |
+| [flows.md](flows.md) | The flows of the system as activities and events, with exceptions. The source for modules |
 | [open-questions.md](open-questions.md) | Questions waiting for a decision |
