@@ -12,7 +12,7 @@
 10. Device
 11. People
 12. Money
-13. Ticket (added 2026-10-24)
+13. Ticket (added 2026-10-24; stays a real entity, scoped out through milestones; ticket handling comes later)
 14. Vendor (added 2026-10-24; mid-mile fleet partner, onboarded and managed by the Team Lead)
 
 Note: AWB was dropped on purpose; Shipment carries the AWB.

@@ -102,7 +102,7 @@ Both flows:
 - Reach the Driver, and be reached, without sharing personal numbers.
 - Pay easily.
 - Return an order easily and know when it will be collected.
-- Get quick help when something goes wrong, and raise a ticket.
+- (Later) Get quick help when something goes wrong, and raise a ticket. Nothing on tickets in the first release.
 
 ### System (responsibilities, not jobs)
 - Decide each shipment's path (via DC or direct) from the rules, and create consignments and manifests.
