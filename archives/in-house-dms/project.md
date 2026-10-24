@@ -68,6 +68,7 @@ Actions per actor: pending (PM drafting, five columns: Actor, Action, Trigger, O
 11. People
 12. Money
 13. Ticket (added 2026-10-24)
+14. Vendor (added 2026-10-24; mid-mile fleet partner, onboarded and managed by the Team Lead)
 
 Note: AWB was dropped on purpose; Shipment carries the AWB.
 Open: whether Barcode stays a separate entity (Shipment and Consignment ideally carry different barcodes).
@@ -77,11 +78,11 @@ Open: whether Barcode stays a separate entity (Shipment and Consignment ideally 
 - Refunds are out of scope.
 - Central Logistics Ops (whole country) owns geography setup (cities and locations). A Team Lead handles one city.
 
-## Jobs to be done per actor (step 2, draft v5, 2026-10-24)
+## Jobs to be done per actor (step 2, draft v8, 2026-10-24)
 
 Dispatcher has two flows: (1) send orders to a DC for last-mile delivery (warehouse to DC via Mid-Mile, then DC to Customer); (2) send orders directly from the warehouse to the Customer. Items marked † are assumptions to confirm.
 
-Decisions applied in v3: the system starts at "ready for dispatch", which is after AWB print (so AWB generation, AWB print and picking and packing are outside it); the Control Tower is folded into Central Logistics Ops and the Team Lead; tamper-proof custody is out of scope; drivers are supplied by fleet partners today but the jobs are unchanged.
+Decisions applied in v3: the system starts at "ready for dispatch", which is after AWB print (so AWB generation, AWB print and picking and packing are outside it); the Control Tower is folded into Central Logistics Ops and the Team Lead; tamper-proof custody is out of scope; Mid-Mile Drivers get no app and only show up and drive (loading, unloading, handover, tracking, attendance, trip start and end do not fall on them); the Mid-Mile Driver and his vendor are accountable for loss, damage and delay in transit, and the Dispatcher and DC Executive flag it; mid-mile vendors are onboarded, not drivers, and each consignment is tagged to a vehicle registered at run-time; mid-mile vehicles are tracked operationally today by WhatsApp live location, with IoT devices and a portal to follow; drivers are supplied by fleet partners today but the jobs are unchanged.
 
 ### Last Mile Driver
 - Start every shift ready: attendance marked, working device and vehicle in hand.
@@ -97,14 +98,7 @@ Decisions applied in v3: the system starts at "ready for dispatch", which is aft
 - (Cutover) Move to the new app with minimal disruption.
 
 ### Mid-Mile Driver
-- Start every shift ready: attendance marked, working device and vehicle in hand.
-- Know the trip: what to carry, from where to where, by when.
-- Show clearly what was handed over and received at each point, with scans.
-- Move consignments safely and on time; when delayed, broken down or damaged in transit, report it and get help.
-- Move returned parcels back to the warehouse with the same handover tracking as Forward.
-- Get help fast in an accident or emergency.
-- Get paid correctly, see how pay was worked out, and raise a dispute if it is wrong.
-- (Cutover) Move to the new app with minimal disruption.
+- Show up and drive consignments from one location to another, safely and on time. That is the whole job. No app, no scans, no attendance, no trip start or end, no loading or unloading.
 
 ### WH Ops
 - Hand every shipment that is ready for dispatch to the Dispatcher with a scanned handover. (The system starts here; picking and packing are outside it.)
@@ -113,7 +107,9 @@ Decisions applied in v3: the system starts at "ready for dispatch", which is aft
 
 ### Dispatcher
 Flow 1, via DC:
-- Collate and sort ready shipments by destination DC, create consignments, and hand them to the Mid-Mile Driver on time.
+- Collate and sort ready shipments by destination DC, create consignments, and send them out on the mid-mile vehicle on time: tag each consignment to a vendor and to the vehicle registered at that moment (vehicle number, driver's name and phone), load it, and scan the handover.
+- Flag any loss, damage or delay of a consignment in transit.
+- (Later) See the live location of mid-mile vehicles on a portal, once IoT devices are fitted.
 - Plan mid-mile trips, together with the Team Lead, so consignments leave on time.
 
 Flow 2, direct from the warehouse:
@@ -125,11 +121,13 @@ Both flows:
 - Schedule return pickups and failed-delivery returns without delay.
 - Re-plan quickly when a driver drops off, a shipment fails, or an order is cancelled or changed after dispatch.
 - Keep a healthy pool of drivers available at the warehouse.
-- Onboard the Last Mile Drivers who deliver from the warehouse, and all Mid-Mile Drivers, and keep their details current.
+- Onboard the Last Mile Drivers who deliver from the warehouse, and keep their details current.
 - Be the first point of contact for drivers on the road in the direct flow.
 
 ### DC Executive
-- Receive consignments from the Mid-Mile Driver with a scanned handover, and catch anything missing, damaged or mismatched.
+- Receive consignments arriving on the mid-mile vehicle with a scan, unload it, and catch anything missing, damaged or mismatched.
+- Flag any loss, damage or delay of a consignment in transit.
+- (Later) See the live location of mid-mile vehicles on a portal, once IoT devices are fitted.
 - Sort every shipment into the right bin, and hand sorted batches to Last Mile Drivers with a scanned handover.
 - Keep the DC's Last Mile Drivers ready and accounted for each day.
 - Receive returns and failed deliveries from drivers, and release them back towards the warehouse.
@@ -144,6 +142,7 @@ Both flows:
 - Plan mid-mile trips together with the Dispatcher.
 - Manage the city's drivers: document checks and renewals, suspension and exit, performance, and first-line dispute handling.
 - Manage the city's users and their access.
+- Onboard and manage mid-mile vendors.
 - Keep the city's vehicles and devices accounted for.
 - Plan the city's capacity as new locations open.
 - Investigate loss, fraud and cash anomalies in the city.
@@ -164,6 +163,7 @@ Both flows:
 - Make sure every rupee collected matches what was owed and is banked, and approve cash deposits.
 - Close cash discrepancies.
 - Pay drivers accurately and on time under the pay rules, including incentives and penalties.
+- Pay mid-mile vendors accurately and on time.
 - Resolve payout disputes with the Grievance team.
 - Keep a trustworthy record of every money movement.
 - Refunds are out of scope.
@@ -193,6 +193,8 @@ Both flows:
 - Detect failures and fraud signals: missed scans, delays, mismatches, cash anomalies, and delivery marked from the wrong place.
 - Keep the Driver apps working offline, and sync when the network returns.
 - Mask phone numbers between Customers and Drivers.
+- Hold the mid-mile vendors, and let a vehicle be registered at run-time against each consignment, with the vehicle number and the driver's name and phone. No driver profile is kept.
+- (Later) Show live mid-mile vehicle location from IoT devices.
 - Show medicine details to the Last Mile Driver only in the returns flow, to enable doorstep QC.
 - Enforce who can do what.
 - Hold and apply the rules (SLAs, attempts, batching, pay).
