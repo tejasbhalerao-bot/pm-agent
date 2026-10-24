@@ -31,21 +31,23 @@ created: 2026-10-24
 
 **Migration approach:** Build a parity version, then cut over location by location.
 
-## Actors (step 1, as listed by the PM, 2026-10-24)
+## Actors (step 1, updated by the PM, 2026-10-24)
 
 Actors that exist today, irrespective of location:
-1. Driver
-2. DC Executive
-3. Dispatcher
-4. Team Lead
-5. Central Logistics Ops
+1. Last Mile Driver
+2. Mid-Mile Driver
+3. DC Executive
+4. Dispatcher
+5. Team Lead
 6. Finance
-7. Grievance & Escalation Management Team
-8. Customer (added by the PM; must be present as an actor)
+7. Central Logistics Ops
+8. Grievance & Escalation Management Team
+9. Customer
 
 Clarifications:
 - Hyperlocal Reverse uses the same actors as Forward.
 - Driver onboarding and lifecycle is handled by the Dispatcher and the DC Executive.
 - Admin (system configuration) is handled by Central Logistics Ops and the Team Lead.
 
-Actions per actor: pending (PM drafting).
+Actions per actor: pending (PM drafting, five columns: Actor, Action, Trigger, Output, Vertical).
+Entities (physical things such as barcode, bins, AWB, order): PM is brainstorming; not captured yet.
