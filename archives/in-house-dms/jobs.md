@@ -13,6 +13,7 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - When a delivery fails or is cancelled, record why and bring the parcel back safely to the DC or warehouse.
 - Collect returns from Customers safely, checking the medicine against the order details at the doorstep before taking it back.
 - Keep working with poor or no network.
+- Raise a payout dispute when pay looks wrong.
 - Get help fast in an accident, breakdown or emergency.
 - Cutover: move to the new app with minimal disruption.
 
