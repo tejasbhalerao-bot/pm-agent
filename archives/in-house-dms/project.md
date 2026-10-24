@@ -77,16 +77,16 @@ Open: whether Barcode stays a separate entity (Shipment and Consignment ideally 
 - Refunds are out of scope.
 - Central Logistics Ops (whole country) owns geography setup (cities and locations). A Team Lead handles one city.
 
-## Jobs to be done per actor (step 2, draft v3, 2026-10-24)
+## Jobs to be done per actor (step 2, draft v4, 2026-10-24)
 
 Dispatcher has two flows: (1) send orders to a DC for last-mile delivery (warehouse to DC via Mid-Mile, then DC to Customer); (2) send orders directly from the warehouse to the Customer. Items marked † are assumptions to confirm.
 
-Decisions applied in v3: the system starts at "ready for dispatch"; the Control Tower is folded into Central Logistics Ops and the Team Lead; tamper-proof custody is out of scope; drivers are supplied by fleet partners today but the jobs are unchanged.
+Decisions applied in v3: the system starts at "ready for dispatch", which is after AWB print (so AWB generation, AWB print and picking and packing are outside it); the Control Tower is folded into Central Logistics Ops and the Team Lead; tamper-proof custody is out of scope; drivers are supplied by fleet partners today but the jobs are unchanged.
 
 ### Last Mile Driver
 - Start every shift ready: attendance marked, working device and vehicle in hand.
 - Know exactly what to pick up and from where (warehouse or DC), and collect it with a scanned handover.
-- Deliver each shipment to the Customer on time, by an efficient route, with proof of delivery and proof that the cold chain was maintained.
+- Deliver each shipment to the Customer on time, by an efficient route, with proof of delivery.
 - Reach the Customer easily, and be reachable by them, without exposing personal numbers.
 - Collect payment accurately and hand cash in with a clear record.
 - When a delivery fails or is cancelled, record why and bring the parcel back safely to the DC or warehouse.
@@ -100,7 +100,7 @@ Decisions applied in v3: the system starts at "ready for dispatch"; the Control 
 - Start every shift ready: attendance marked, working device and vehicle in hand.
 - Know the trip: what to carry, from where to where, by when.
 - Show clearly what was handed over and received at each point, with scans.
-- Move consignments safely and on time, with proof that the cold chain was maintained; when delayed, broken down or damaged in transit, report it and get help.
+- Move consignments safely and on time; when delayed, broken down or damaged in transit, report it and get help.
 - Move returned parcels back to the warehouse with the same handover tracking as Forward.
 - Get help fast in an accident or emergency.
 - Get paid correctly, see how pay was worked out, and raise a dispute if it is wrong.
@@ -121,10 +121,11 @@ Flow 2, direct from the warehouse:
 
 Both flows:
 - Make sure each shipment takes the right path (via DC or direct).
+- Add gel packs to every order that needs them so medicines do not spoil (this is the cold-chain proofing).
 - Schedule return pickups and failed-delivery returns without delay.
 - Re-plan quickly when a driver drops off, a shipment fails, or an order is cancelled or changed after dispatch.
 - Keep a healthy pool of drivers available at the warehouse.
-- Onboard the Last Mile Drivers who deliver from the warehouse, and keep their details current.
+- Onboard the Last Mile Drivers who deliver from the warehouse, and all Mid-Mile Drivers, and keep their details current.
 - Be the first point of contact for drivers on the road in the direct flow.
 
 ### DC Executive
@@ -192,7 +193,6 @@ Both flows:
 - Detect failures and fraud signals: missed scans, delays, mismatches, cash anomalies, and delivery marked from the wrong place.
 - Keep the Driver apps working offline, and sync when the network returns.
 - Mask phone numbers between Customers and Drivers.
-- Capture and keep the cold-chain proof for every delivery.
 - Show medicine details to the Last Mile Driver only in the returns flow, to enable doorstep QC.
 - Enforce who can do what.
 - Hold and apply the rules (SLAs, attempts, batching, pay).
@@ -200,6 +200,4 @@ Both flows:
 - Switch a location between Shipsy and the new system, and roll back, during cutover.
 
 ### Open questions
-1. Which side of the "ready for dispatch" boundary do AWB generation, AWB print and Shipment creation fall on?
-2. Who onboards Mid-Mile Drivers: the Dispatcher, the DC Executive, or someone else?
-3. What counts as acceptable cold-chain proof (what is captured, and by whom)?
+1. † WH Ops: is catching a wrong or missing item at the point of handover a real job now that picking and packing are outside the system?
