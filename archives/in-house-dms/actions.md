@@ -88,12 +88,13 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 ## DC Executive
 
-*Job: Onboard the DC's Last Mile Drivers with their vehicles, tag each to a vendor, and keep their details current.*
+*Job: Onboard the DC's Last Mile Drivers with their vehicles and devices, tag each to a vendor, and keep their details current.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Onboards a Last Mile Driver | People | New driver joins | Driver record created and activated | Both |
 | Registers the driver's vehicle | Vehicle, People | Driver is onboarded | Vehicle recorded against the driver | Both |
+| Assigns a device to the driver | Device, People | Driver is onboarded | Device recorded against the driver | Both |
 | Tags the driver to a vendor | People, Vendor | Driver and vehicle recorded | Driver linked to the vendor | Both |
 | Updates a driver's details | People | Driver's details change | Record updated | Both |
 
@@ -110,11 +111,10 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Assigns a pay structure to a driver | People, Payout | Driver is onboarded | Pay structure proposed for confirmation by the Team Lead and Central Logistics Ops | Both |
 
-*Job: Assign and recover devices and vehicles, and handle a lost or broken device.*
+*Job: Recover devices and vehicles, and handle a lost or broken device.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Assigns a device and a vehicle to a driver | Device, Vehicle, People | Driver joins or starts duty | Recorded against the driver | Both |
 | Recovers the device and vehicle | Device, Vehicle, People | Driver leaves or returns the equipment | Recorded as returned | Both |
 | Handles a lost or broken device | Device | Device is lost or broken | Device marked and a replacement assigned | Both |
 
@@ -233,11 +233,11 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Reviews the city's vehicles and devices | Vehicle, Device | Periodic review | Anything missing identified | Both |
 
-*Job: Keep enough drivers on shift for the city's orders, with cover for leave and absences.*
+*Job: Keep enough drivers on shift for each location's expected orders, with cover for leave and absences.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Reviews drivers on shift against the city's expected orders | People, Order | Before each shift | Gaps identified | Both |
+| Reviews drivers on shift against each location's expected orders | People, Order, Serving Location | Before each shift | Gaps identified | Both |
 | Arranges cover for leave and absences | People | Driver on leave or absent | Cover arranged | Both |
 
 *Job: Plan mid-mile trips with the Dispatcher.*
@@ -554,13 +554,19 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Holds users, drivers and Customers | People | Record created or updated | Details held | Both |
 | Enforces who can do what | People | Any access attempt | Allowed or blocked by role | Both |
 
+*Responsibility: Hold each driver's documents.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Holds a driver's documents | People | Driver's documents uploaded or renewed | Documents held against the driver | Both |
+
 *Responsibility: Hold each driver's serviceability: the zones and pincodes they serve and the pincodes within them that they do not.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Holds a driver's serviceability | People, Zone, Serviced Location | Driver's coverage assigned or changed | Coverage and exclusions held against the driver | Both |
 
-*Responsibility: Hold each driver's status (active, suspended or exited) and the result of their document checks.*
+*Responsibility: Hold each driver's status (active, suspended, exited, on duty or off duty) and the result of their document checks.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|

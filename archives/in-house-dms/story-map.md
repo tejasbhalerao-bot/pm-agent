@@ -80,16 +80,19 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 
 ##### Onboards a driver
 
-**Actors:** DC Executive / Dispatcher · **Flows:** Driver Management
+**Actors:** DC Executive / Dispatcher · **Flows:** Driver Management; Asset Management
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | DC Executive / Dispatcher | Onboards a Last Mile Driver | DC Executive: Onboards a Last Mile Driver |
 | Story | DC Executive / Dispatcher | Registers the driver's vehicle | DC Executive: Registers the driver's vehicle |
+| Story | DC Executive / Dispatcher | Assigns a device to the driver | DC Executive: Assigns a device to the driver |
 | Story | DC Executive / Dispatcher | Tags the driver to a vendor | DC Executive: Tags the driver to a vendor |
 | Story | Team Lead | Checks a driver's documents | Team Lead: Checks a driver's documents |
 | Story | System | Holds users, drivers and Customers | System: Holds users, drivers and Customers |
+| Story | System | Holds a driver's documents | System: Holds a driver's documents |
 | Story | System | Holds vendors, their vehicles and their drivers | System: Holds vendors, their vehicles and their drivers |
+| Story | System | Registers a device and records its holder | System: Registers a device and records its holder |
 
 ##### Sets the driver's serviceability
 
@@ -124,13 +127,12 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Team Lead | Exits a driver | Team Lead: Exits a driver |
 | Story | System | Holds a driver's status and document check results | System: Holds a driver's status and document check results |
 
-##### Gives the driver a device and a vehicle
+##### Keeps devices and vehicles accounted for
 
 **Actors:** DC Executive / Dispatcher · **Flows:** Asset Management
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
-| Story | DC Executive / Dispatcher | Assigns a device and a vehicle to a driver | DC Executive: Assigns a device and a vehicle to a driver |
 | Story | System | Registers a device and records its holder | System: Registers a device and records its holder |
 | Story | DC Executive / Dispatcher | Recovers the device and vehicle | DC Executive: Recovers the device and vehicle |
 | Story | Team Lead | Reviews the city's vehicles and devices | Team Lead: Reviews the city's vehicles and devices |
@@ -153,7 +155,7 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
-| Story | Team Lead | Reviews drivers on shift against the city's expected orders | Team Lead: Reviews drivers on shift against the city's expected orders |
+| Story | Team Lead | Reviews drivers on shift against each location's expected orders | Team Lead: Reviews drivers on shift against each location's expected orders |
 | Story | DC Executive / Dispatcher | Checks the drivers on duty | DC Executive: Checks the drivers on duty |
 | Exception | Team Lead | Arranges cover for leave and absences | Team Lead: Arranges cover for leave and absences |
 | Story | System | Records attendance and duty status | System: Records attendance and duty status |

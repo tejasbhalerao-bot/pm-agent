@@ -29,10 +29,10 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 - Receive returned consignments from the mid-mile vehicle, scan and unload them, catch anything missing, damaged or mismatched, and hand the parcels to WH Ops.
 
 ## DC Executive
-- Onboard the DC's Last Mile Drivers with their vehicles, tag each to a vendor, and keep their details current.
+- Onboard the DC's Last Mile Drivers with their vehicles and devices, tag each to a vendor, and keep their details current.
 - Set each driver's serviceability: the zones and pincodes they serve, and the pincodes within them that they do not.
 - Assign each driver a pay structure, with the Team Lead and Central Logistics Ops.
-- Assign and recover devices and vehicles, and handle a lost or broken device.
+- Recover devices and vehicles, and handle a lost or broken device.
 - Keep the DC's Last Mile Drivers ready and accounted for each day.
 - See the live location of mid-mile vehicles on a portal.
 - Receive consignments arriving on the mid-mile vehicle, scan and unload them, and catch anything missing, damaged or mismatched.
@@ -51,7 +51,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 - Manage the city's drivers: document checks and renewals, suspension and exit, and performance.
 - Confirm each driver's pay structure with the DC Executive, Dispatcher and Central Logistics Ops.
 - Keep the city's vehicles and devices accounted for.
-- Keep enough drivers on shift for the city's orders, with cover for leave and absences.
+- Keep enough drivers on shift for each location's expected orders, with cover for leave and absences.
 - Plan mid-mile trips with the Dispatcher.
 - Spot and fix delivery problems in the city before they become complaints.
 - Give drivers their incentives under the schemes set by Central Logistics Ops, including ad-hoc incentives.
@@ -114,8 +114,9 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 
 **People, devices and access**
 - Hold users, drivers, Customers and their details, and enforce who can do what.
+- Hold each driver's documents.
 - Hold each driver's serviceability: the zones and pincodes they serve and the pincodes within them that they do not.
-- Hold each driver's status (active, suspended or exited) and the result of their document checks.
+- Hold each driver's status (active, suspended, exited, on duty or off duty) and the result of their document checks.
 - Record each driver's attendance and duty status, and show who is on duty.
 - Register devices and record which driver holds each one.
 - Mask phone numbers between Customers and Drivers.
