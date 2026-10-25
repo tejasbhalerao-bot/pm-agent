@@ -554,6 +554,24 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Holds users, drivers and Customers | People | Record created or updated | Details held | Both |
 | Enforces who can do what | People | Any access attempt | Allowed or blocked by role | Both |
 
+*Responsibility: Hold each driver's serviceability: the zones and pincodes they serve and the pincodes within them that they do not.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Holds a driver's serviceability | People, Zone, Serviced Location | Driver's coverage assigned or changed | Coverage and exclusions held against the driver | Both |
+
+*Responsibility: Hold each driver's status (active, suspended or exited) and the result of their document checks.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Holds a driver's status and document check results | People | Documents checked, or a driver suspended or exited | Status and check result held against the driver | Both |
+
+*Responsibility: Record each driver's attendance and duty status, and show who is on duty.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Records attendance and duty status | People | Driver marks duty start or end | Attendance recorded, and who is on duty shown to the Team Lead and DC Executive | Both |
+
 *Responsibility: Register devices and record which driver holds each one.*
 
 | Action | Entity | Trigger | Output | Vertical |
@@ -585,6 +603,12 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Creates a shipment | Shipment | Order received | Shipment created | Forward |
 
+*Responsibility: Flag the orders that need cold-chain protection.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Flags orders that need gel packs | Order, Shipment | Order received | Order marked for the Dispatcher to add gel packs | Forward |
+
 *Responsibility: Generate the AWB for each shipment and make it available to print.*
 
 | Action | Entity | Trigger | Output | Vertical |
@@ -602,6 +626,18 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Updates status and location | Shipment | Every scan or event | Status and location current | Both |
+
+*Responsibility: Keep the proof of delivery against each shipment.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Keeps the proof of delivery | Shipment | Driver collects proof of delivery | Proof held against the shipment | Forward |
+
+*Responsibility: Receive a Customer's return request and create the return pickup.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Creates the return pickup | Order, Shipment | Customer requests a return | Return pickup created | Reverse |
 
 *Responsibility: Generate barcodes for shipments and consignments.*
 
@@ -630,6 +666,12 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Creates a consignment | Consignment, Shipment | Shipments scanned into a consignment | Consignment created with its manifest | Both |
 
+*Responsibility: Show the consignments ready to move, by destination.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Shows the consignments ready to move | Consignment | Consignments created | Consignments waiting to move shown to the Dispatcher and Team Lead | Both |
+
 *Responsibility: Record the vendor, vehicle number, and the driver's name and phone against each consignment. No driver profile is kept.*
 
 | Action | Entity | Trigger | Output | Vertical |
@@ -642,11 +684,11 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Shows the live location of a vehicle | Vehicle | Consignment in transit | Location visible to the Dispatcher and DC Executive | Both |
 
-*Responsibility: Tell the DC Executive which bin each shipment belongs in, and keep track of what each bin holds.*
+*Responsibility: Tell the Dispatcher or DC Executive which bin each shipment belongs in, and keep track of what each bin holds.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Shows which bin a shipment belongs in | Sorting Bin, Shipment | Shipment scanned at the DC | Bin shown | Forward |
+| Shows which bin a shipment belongs in | Sorting Bin, Shipment | Shipment scanned at the warehouse or DC | Bin shown | Forward |
 | Tracks bin contents | Sorting Bin | Shipment placed in or taken from a bin | Bin contents current | Forward |
 
 *Responsibility: Create delivery batches and routes that combine forward deliveries and return pickups, allocate Last Mile Drivers whose serviceability covers each pincode, and send the orders and pickups to the Driver's app.*

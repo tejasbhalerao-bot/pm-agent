@@ -114,6 +114,9 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 
 **People, devices and access**
 - Hold users, drivers, Customers and their details, and enforce who can do what.
+- Hold each driver's serviceability: the zones and pincodes they serve and the pincodes within them that they do not.
+- Hold each driver's status (active, suspended or exited) and the result of their document checks.
+- Record each driver's attendance and duty status, and show who is on duty.
 - Register devices and record which driver holds each one.
 - Mask phone numbers between Customers and Drivers.
 
@@ -123,9 +126,12 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 **Orders and shipments**
 - Receive each order with its details, and apply cancellations and changes, including after dispatch.
 - Create a shipment for each order.
+- Flag the orders that need cold-chain protection.
 - Generate the AWB for each shipment and make it available to print.
 - Decide each shipment's path (via DC or direct) from the rules.
 - Keep every shipment's status and location current.
+- Keep the proof of delivery against each shipment.
+- Receive a Customer's return request and create the return pickup.
 
 **Barcodes and scanning**
 - Generate barcodes for shipments and consignments.
@@ -136,11 +142,12 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 
 **Consignments and mid-mile**
 - Create consignments by grouping shipments by destination.
+- Show the consignments ready to move, by destination.
 - Record the vendor, vehicle number, and the driver's name and phone against each consignment. No driver profile is kept.
 - Show live mid-mile vehicle location from IoT devices.
 
 **Sorting**
-- Tell the DC Executive which bin each shipment belongs in, and keep track of what each bin holds.
+- Tell the Dispatcher or DC Executive which bin each shipment belongs in, and keep track of what each bin holds.
 
 **Allocation and delivery**
 - Create delivery batches and routes that combine forward deliveries and return pickups, allocate Last Mile Drivers whose serviceability covers each pincode, and send the orders and pickups to the Driver's app.
