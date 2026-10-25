@@ -186,14 +186,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 |---|---|---|---|
 | Story | WH Ops | Prints the AWB | WH Ops: Prints the AWB |
 
-##### Adds gel packs where needed
-
-**Actors:** Dispatcher · **Flows:** Forward via DC; Forward Direct
-
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Dispatcher | Adds gel packs to orders that need them | Dispatcher: Adds gel packs to orders that need them |
-
 ##### Hands the shipments to the Dispatcher
 
 **Actors:** WH Ops · **Flows:** Forward via DC; Forward Direct
@@ -206,6 +198,14 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | System | Records scans against the manifest | System: Records scans against the manifest |
 | Exception | System | Rejects an invalid or duplicate scan | System: Rejects an invalid or duplicate scan |
 | Exception | System | Flags missing or mismatched items | System: Flags missing or mismatched items |
+
+##### Adds gel packs where needed
+
+**Actors:** Dispatcher · **Flows:** Forward via DC; Forward Direct
+
+| Type | Actor | Story | Actions |
+|---|---|---|---|
+| Story | Dispatcher | Adds gel packs to orders that need them | Dispatcher: Adds gel packs to orders that need them |
 
 #### Activity 4. Dispatch via a DC
 

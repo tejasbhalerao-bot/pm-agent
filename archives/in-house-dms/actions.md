@@ -33,7 +33,7 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Adds gel packs to orders that need them | Order, Shipment | Order needing cold-chain protection is ready | Gel packs added | Forward |
+| Adds gel packs to orders that need them | Order, Shipment | Shipments handed over by WH Ops, including orders that need cold-chain protection | Gel packs added | Forward |
 
 **Flow 1: via DC**
 
