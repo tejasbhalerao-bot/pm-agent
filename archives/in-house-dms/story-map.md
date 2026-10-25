@@ -394,9 +394,18 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Customer | Pays for the order | Customer: Pays for the order |
 | Story | Last Mile Driver | Collects payment from the Customer | Last Mile Driver: Collects payment from the Customer |
 
+##### Ends the shift
+
+**Actors:** Last Mile Driver · **Flows:** Daily Shift
+
+| Type | Actor | Story | Actions |
+|---|---|---|---|
+| Story | Last Mile Driver | Marks duty end | Last Mile Driver: Marks duty end |
+| Story | DC Executive / Dispatcher | Confirms each driver is accounted for | DC Executive: Confirms each driver is accounted for |
+
 #### Activity 10. Reconcile the cash
 
-*Cash collected at the door is handed in, banked and matched.*
+*Cash collected at the door is handed in, banked and matched. Reconciliation usually happens the next day.*
 
 ##### Hands cash in
 
@@ -429,15 +438,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Finance | Reviews the record of money movements | Finance: Reviews the record of money movements |
 | Exception | DC Executive / Dispatcher | Escalates a mismatch | DC Executive: Escalates a mismatch |
 | Exception | Finance | Closes a discrepancy | Finance: Closes a discrepancy |
-
-##### Ends the shift
-
-**Actors:** Last Mile Driver · **Flows:** Daily Shift
-
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Last Mile Driver | Marks duty end | Last Mile Driver: Marks duty end |
-| Story | DC Executive / Dispatcher | Confirms each driver is accounted for | DC Executive: Confirms each driver is accounted for |
 
 ## Chapter 3. When it does not go to plan
 
