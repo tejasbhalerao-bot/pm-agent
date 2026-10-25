@@ -15,6 +15,6 @@ Index of the project's documents. Content lives in the files below; this file on
 | [actors.md](actors.md) | The people and systems that take part in the flow, and what each does |
 | [entities.md](entities.md) | The things actors act on |
 | [jobs.md](jobs.md) | The jobs each actor needs done, and the System's responsibilities. The source for actions |
-| [actions.md](actions.md) | The actions each actor performs, each tied to the job it serves. The source for events and flows |
-| [story-map.md](story-map.md) | The end-to-end story of the system as a story map: chapters, activities, tasks and the stories under them, tagged with flows. The source for modules and milestones |
+| [actions.md](actions.md) | The actions each actor performs, each tied to the job it serves |
+| [story-map.md](story-map.md) | The end-to-end story of the system: chapters, activities, tasks and stories, tagged with flows |
 | [open-questions.md](open-questions.md) | Questions waiting for a decision |

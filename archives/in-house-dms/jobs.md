@@ -22,7 +22,7 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Flag any loss, damage or delay of a consignment in transit.
 
 **Flow 2: direct from the warehouse**
-In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers scanning the orders each driver brings, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding, serviceability and pay structures, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving forward consignments or releasing returns as consignments, since the warehouse is where returns end.
+In the direct flow, the Dispatcher does the same jobs as the DC Executive, for the warehouse's drivers. The exceptions are receiving forward consignments and releasing returns as consignments, since the warehouse is where returns end.
 
 **Both flows, returns**
 - Schedule return pickups and failed-delivery returns without delay.
@@ -74,7 +74,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 - Collect returns from Customers safely, checking the medicine against the order details at the doorstep before taking it back.
 - Keep working with poor or no network.
 - Get help fast in an accident, breakdown or emergency.
-- Know what I have earned and how close I am to my incentives.
+- See earnings and progress towards incentives.
 - Raise a payout dispute when pay looks wrong.
 
 ## Customer
@@ -107,9 +107,8 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 ## System
 Responsibilities, not jobs. Grouped by the entities the System manages.
 
-
 **Locations**
-- Hold serving locations, the zones mapped to each hub, and the serviced locations (pincodes) in each zone. In Forward, serving locations are warehouses and DCs, and serviced locations are Customers' locations. In Reverse, they flip.
+- Hold serving locations, the zones mapped to each hub, and the serviced locations (pincodes) in each zone. In Forward, serving locations are warehouses and DCs, and serviced locations are Customers' pincodes. In Reverse, they flip.
 - Hold the links between warehouses and DCs, and which flow each location uses.
 
 **People, devices and access**

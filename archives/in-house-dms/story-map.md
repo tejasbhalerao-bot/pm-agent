@@ -1,6 +1,6 @@
 # Story map
 
-The end-to-end story of the system, in the style of Jeff Patton's user story mapping. Chapters tell the story in order. Under each chapter, activities run left to right in the order they happen. Each activity holds tasks, and each task holds the stories (actions) beneath it. Exceptions are marked. Tasks carry the flows they belong to. Stories point to their actions as Actor: Action.
+The end-to-end story of the system, in the style of Jeff Patton's story mapping. Chapters run in order. Within a chapter, activities run left to right in the order they happen. Each activity holds tasks, and each task holds its stories, which point to their actions as Actor: Action. Exceptions are marked, and tasks carry the flows they belong to.
 
 ## Chapter 1. Get ready
 
@@ -550,7 +550,7 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | DC Executive | Receives returned parcels from drivers and scans them | DC Executive: Receives returned parcels from drivers and scans them |
-| Story | DC Executive | Scans returned shipments into a consignment and releases it towards the warehouse | DC Executive: Scans returned shipments into a consignment and releases it towards the warehouse |
+| Story | DC Executive | Sends returned shipments back as a consignment | DC Executive: Sends returned shipments back as a consignment |
 
 ##### Drives the consignment to the warehouse
 

@@ -66,7 +66,7 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 
 **Flow 2: direct from the warehouse**
 
-In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers scanning the orders each driver brings, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding, serviceability and pay structures, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving forward consignments or releasing returns as consignments, since the warehouse is where returns end.
+In the direct flow, the Dispatcher does the same jobs as the DC Executive, for the warehouse's drivers. The exceptions are receiving forward consignments and releasing returns as consignments, since the warehouse is where returns end.
 
 **Both flows, returns**
 
@@ -170,7 +170,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Receives returned parcels from drivers and scans them | Shipment, Barcode, Manifest | Driver brings a parcel back | Receipt recorded | Reverse |
-| Scans returned shipments into a consignment and releases it towards the warehouse | Consignment, Shipment, Barcode, Manifest | Returned shipments held at the DC | Consignment created with its manifest and sent back | Reverse |
+| Sends returned shipments back as a consignment | Consignment, Shipment, Barcode, Manifest | Returned shipments held at the DC | Consignment created with its manifest and sent back | Reverse |
 
 *Job: Trigger a replan for the next day when one of the DC's failed deliveries needs to be reattempted, and accept the new plan or rearrange it as the situation on the ground needs.*
 
@@ -366,7 +366,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Raises a help request | Ticket | Accident, breakdown or emergency | Request reaches the first point of contact (Dispatcher or DC Executive) | Both |
 
-*Job: Know what I have earned and how close I am to my incentives.*
+*Job: See earnings and progress towards incentives.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
@@ -376,7 +376,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Raises a payout dispute | Ticket, Payout | Pay looks wrong | Dispute sent to the Dispatcher or DC Executive | Both |
+| Raises a payout dispute | Ticket, Payout | Pay looks wrong | Dispute sent for settlement by the Dispatcher, DC Executive or Team Lead | Both |
 
 ## Customer
 
@@ -535,7 +535,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 ## System
 
-*Responsibility: Hold serving locations, the zones mapped to each hub, and the serviced locations (pincodes) in each zone. In Forward, serving locations are warehouses and DCs, and serviced locations are Customers' locations. In Reverse, they flip.*
+*Responsibility: Hold serving locations, the zones mapped to each hub, and the serviced locations (pincodes) in each zone. In Forward, serving locations are warehouses and DCs, and serviced locations are Customers' pincodes. In Reverse, they flip.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
