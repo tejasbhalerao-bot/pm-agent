@@ -249,6 +249,16 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Dispatcher | Scans shipments into a consignment | Dispatcher: Scans shipments into a consignment |
 | Story | System | Creates a consignment | System: Creates a consignment |
 
+##### Plan the trip together
+
+**Actors:** Dispatcher / Team Lead · **Flows:** Mid-Mile Movement
+
+| Type | Actor | Story | Actions |
+|---|---|---|---|
+| Story | Dispatcher | Plans mid-mile departures with the Team Lead | Dispatcher: Plans mid-mile departures with the Team Lead |
+| Story | Team Lead | Plans mid-mile departures with the Dispatcher | Team Lead: Plans mid-mile departures with the Dispatcher |
+| Story | System | Shows the consignments ready to move | System: Shows the consignments ready to move |
+
 ##### Records the vendor, vehicle and driver
 
 **Actors:** Dispatcher · **Flows:** Forward via DC
@@ -273,16 +283,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 #### Activity 5. Move it
 
 *The consignment travels to the DC.*
-
-##### Plan the trip together
-
-**Actors:** Dispatcher / Team Lead · **Flows:** Mid-Mile Movement
-
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Dispatcher | Plans mid-mile departures with the Team Lead | Dispatcher: Plans mid-mile departures with the Team Lead |
-| Story | Team Lead | Plans mid-mile departures with the Dispatcher | Team Lead: Plans mid-mile departures with the Dispatcher |
-| Story | System | Shows the consignments ready to move | System: Shows the consignments ready to move |
 
 ##### Drives the consignment to the DC
 
