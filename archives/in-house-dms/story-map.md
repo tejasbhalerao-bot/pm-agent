@@ -89,9 +89,7 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | DC Executive / Dispatcher | Assigns a device to the driver | DC Executive: Assigns a device to the driver |
 | Story | DC Executive / Dispatcher | Tags the driver to a vendor | DC Executive: Tags the driver to a vendor |
 | Story | Team Lead | Checks a driver's documents | Team Lead: Checks a driver's documents |
-| Story | System | Holds users, drivers and Customers | System: Holds users, drivers and Customers |
 | Story | System | Holds a driver's documents | System: Holds a driver's documents |
-| Story | System | Holds vendors, their vehicles and their drivers | System: Holds vendors, their vehicles and their drivers |
 | Story | System | Registers a device and records its holder | System: Registers a device and records its holder |
 
 ##### Sets the driver's serviceability
@@ -113,7 +111,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | DC Executive / Dispatcher | Assigns a pay structure to a driver | DC Executive: Assigns a pay structure to a driver |
 | Story | Team Lead | Confirms a driver's pay structure | Team Lead: Confirms a driver's pay structure |
 | Story | Central Logistics Ops | Confirms a driver's pay structure | Central Logistics Ops: Confirms a driver's pay structure |
-| Story | System | Holds driver pay structures and incentive schemes | System: Holds driver pay structures and incentive schemes |
 
 ##### Looks after the driver
 
@@ -139,7 +136,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Central Logistics Ops | Forecasts demand by location | Central Logistics Ops: Forecasts demand by location |
 | Story | Central Logistics Ops | Plans drivers and DC capacity | Central Logistics Ops: Plans drivers and DC capacity |
 | Story | Team Lead | Plans drivers and DC capacity for a new location | Team Lead: Plans drivers and DC capacity for a new location |
-| Story | System | Provides reports and a data feed | System: Provides reports and a data feed |
 
 ##### Keeps enough drivers on shift
 
@@ -150,7 +146,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Team Lead | Reviews drivers on shift against each location's expected orders | Team Lead: Reviews drivers on shift against each location's expected orders |
 | Story | DC Executive / Dispatcher | Checks the drivers on duty | DC Executive: Checks the drivers on duty |
 | Exception | Team Lead | Arranges cover for leave and absences | Team Lead: Arranges cover for leave and absences |
-| Story | System | Records attendance and duty status | System: Records attendance and duty status |
 
 ##### Starts the shift
 
@@ -201,7 +196,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | WH Ops | Prints the AWB | WH Ops: Prints the AWB |
-| Story | System | Generates the AWB | System: Generates the AWB |
 
 ##### Hands the shipments to the Dispatcher
 
@@ -213,8 +207,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | WH Ops | Scans each shipment at handover | WH Ops: Scans each shipment at handover |
 | Story | System | Generates a manifest | System: Generates a manifest |
 | Story | System | Records scans against the manifest | System: Records scans against the manifest |
-| Exception | System | Rejects an invalid or duplicate scan | System: Rejects an invalid or duplicate scan |
-| Exception | System | Flags missing or mismatched items | System: Flags missing or mismatched items |
 
 ##### Adds gel packs where needed
 
@@ -238,7 +230,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Dispatcher | Sorts shipments into bins by destination | Dispatcher: Sorts shipments into bins by destination |
-| Story | System | Shows which bin a shipment belongs in | System: Shows which bin a shipment belongs in |
 
 ##### Builds the consignment
 
@@ -275,8 +266,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Dispatcher | Loads the consignment and scans the handover | Dispatcher: Loads the consignment and scans the handover |
-| Story | System | Generates a manifest | System: Generates a manifest |
-| Story | System | Records scans against the manifest | System: Records scans against the manifest |
 
 ### Row 2
 
@@ -308,7 +297,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | DC Executive | Receives the consignment from the vehicle | DC Executive: Receives the consignment from the vehicle |
 | Story | DC Executive | Scans and unloads the consignment | DC Executive: Scans and unloads the consignment |
 | Exception | DC Executive | Flags anything missing, damaged or mismatched | DC Executive: Flags anything missing, damaged or mismatched |
-| Story | System | Records scans against the manifest | System: Records scans against the manifest |
 | Exception | System | Flags missing or mismatched items | System: Flags missing or mismatched items |
 
 ##### Sorts each shipment into its bin
@@ -352,7 +340,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Last Mile Driver | Views the assigned batch and the pickup point | Last Mile Driver: Views the assigned batch and the pickup point |
 | Story | Last Mile Driver | Picks the assigned orders from the bin | Last Mile Driver: Picks the assigned orders from the bin |
 | Story | Last Mile Driver | Takes the orders to the DC Executive | Last Mile Driver: Takes the orders to the DC Executive |
-| Story | System | Sends the orders and pickups to the driver's app | System: Sends the orders and pickups to the driver's app |
 
 ##### Scans the orders the driver brings
 
@@ -362,7 +349,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 |---|---|---|---|
 | Story | DC Executive / Dispatcher | Scans the orders the driver brings | DC Executive: Scans the orders the driver brings |
 | Story | System | Resolves a scan to its entity | System: Resolves a scan to its entity |
-| Story | System | Records scans against the manifest | System: Records scans against the manifest |
 | Exception | System | Rejects an invalid or duplicate scan | System: Rejects an invalid or duplicate scan |
 
 ### Row 3
@@ -406,7 +392,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Customer | Confirms receipt | Customer: Confirms receipt |
 | Exception | Customer | Reschedules a delivery | Customer: Reschedules a delivery |
 | Exception | Customer | Rejects a delivery at the door | Customer: Rejects a delivery at the door |
-| Story | System | Updates status and location | System: Updates status and location |
 
 ##### Collects proof of delivery
 
@@ -435,7 +420,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 |---|---|---|---|
 | Story | Last Mile Driver | Marks duty end | Last Mile Driver: Marks duty end |
 | Story | DC Executive / Dispatcher | Confirms each driver is accounted for | DC Executive: Confirms each driver is accounted for |
-| Story | System | Records attendance and duty status | System: Records attendance and duty status |
 
 #### Activity 10. Reconcile the cash
 
@@ -449,7 +433,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 |---|---|---|---|
 | Story | Last Mile Driver | Hands cash in | Last Mile Driver: Hands cash in |
 | Story | DC Executive / Dispatcher | Receives cash from drivers | DC Executive: Receives cash from drivers |
-| Story | System | Records payments, cash handovers and deposits | System: Records payments, cash handovers and deposits |
 
 ##### Records and banks the cash
 
@@ -459,7 +442,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 |---|---|---|---|
 | Story | DC Executive / Dispatcher | Records the cash collected | DC Executive: Records the cash collected |
 | Story | DC Executive / Dispatcher | Deposits the cash in the bank | DC Executive: Deposits the cash in the bank |
-| Story | System | Records payments, cash handovers and deposits | System: Records payments, cash handovers and deposits |
 
 ##### Matches and approves the cash
 
@@ -492,8 +474,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 |---|---|---|---|
 | Story | Last Mile Driver | Marks the delivery as failed, with a reason | Last Mile Driver: Marks the delivery as failed, with a reason |
 | Story | Last Mile Driver | Brings the parcel back to the DC or warehouse | Last Mile Driver: Brings the parcel back to the DC or warehouse |
-| Story | System | Updates status and location | System: Updates status and location |
-| Story | System | Sends a notice | System: Sends a notice |
 
 ##### Decides between a reattempt and an RTO
 
@@ -520,7 +500,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Dispatcher | Schedules the return of a failed delivery | Dispatcher: Schedules the return of a failed delivery |
-| Story | System | Updates status and location | System: Updates status and location |
 
 #### Activity 12. A Customer returns an order
 
@@ -543,7 +522,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 |---|---|---|---|
 | Story | Dispatcher | Schedules a return pickup from the Customer | Dispatcher: Schedules a return pickup from the Customer |
 | Story | Customer | Views the pickup time | Customer: Views the pickup time |
-| Story | System | Sends a notice | System: Sends a notice |
 
 ##### Collects the return
 
@@ -569,7 +547,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 |---|---|---|---|
 | Story | DC Executive | Receives returned parcels from drivers and scans them | DC Executive: Receives returned parcels from drivers and scans them |
 | Story | DC Executive | Scans returned shipments into a consignment and releases it towards the warehouse | DC Executive: Scans returned shipments into a consignment and releases it towards the warehouse |
-| Story | System | Creates a consignment | System: Creates a consignment |
 
 ##### Drives the consignment to the warehouse
 
@@ -585,8 +562,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Dispatcher | Scans and unloads the returned consignment | Dispatcher: Scans and unloads the returned consignment |
 | Story | Dispatcher | Hands the returned parcels to WH Ops and scans the handover | Dispatcher: Hands the returned parcels to WH Ops and scans the handover |
 | Exception | Dispatcher | Flags anything missing, damaged or mismatched on receipt | Dispatcher: Flags anything missing, damaged or mismatched on receipt |
-| Story | System | Records scans against the manifest | System: Records scans against the manifest |
-| Exception | System | Flags missing or mismatched items | System: Flags missing or mismatched items |
 
 ##### Receives the returned parcel
 
@@ -597,8 +572,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | WH Ops | Receives the returned parcel | WH Ops: Receives the returned parcel |
 | Story | WH Ops | Scans the parcel on receipt | WH Ops: Scans the parcel on receipt |
 | Exception | WH Ops | Reports damage or mismatch | WH Ops: Reports damage or mismatch |
-| Story | System | Records scans against the manifest | System: Records scans against the manifest |
-| Story | System | Updates status and location | System: Updates status and location |
 
 ## Chapter 4. Keep it running
 
@@ -654,7 +627,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Finance | Calculates the amount owed to each vendor | Finance: Calculates the amount owed to each vendor |
-| Story | System | Rolls driver earnings up per vendor | System: Rolls driver earnings up per vendor |
 
 ##### Pays the vendor
 
@@ -679,7 +651,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 |---|---|---|---|
 | Story | Last Mile Driver | Raises a help request | Last Mile Driver: Raises a help request |
 | Story | DC Executive / Dispatcher | Responds to a driver's help request | DC Executive: Responds to a driver's help request |
-| Story | System | Raises and routes a ticket | System: Raises and routes a ticket |
 
 ##### Raises a payout dispute
 
@@ -688,7 +659,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Last Mile Driver | Raises a payout dispute | Last Mile Driver: Raises a payout dispute |
-| Story | System | Raises and routes a ticket | System: Raises and routes a ticket |
 
 ##### Settles the dispute
 
@@ -723,7 +693,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Grievance & Escalation Management Team | Resolves the ticket and informs the driver | Grievance & Escalation Management Team: Resolves the ticket and informs the driver |
 | Exception | Grievance & Escalation Management Team | Escalates a ticket | Grievance & Escalation Management Team: Escalates a ticket |
 | Exception | Grievance & Escalation Management Team | Investigates an incident with the Team Lead | Grievance & Escalation Management Team: Investigates an incident with the Team Lead |
-| Story | System | Tracks a ticket to resolution | System: Tracks a ticket to resolution |
 
 ##### Keeps tickets within their time limits
 
@@ -743,7 +712,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 |---|---|---|---|
 | Story | Grievance & Escalation Management Team | Reviews tickets for recurring problems | Grievance & Escalation Management Team: Reviews tickets for recurring problems |
 | Story | Grievance & Escalation Management Team | Raises a root-cause fix with the owning team | Grievance & Escalation Management Team: Raises a root-cause fix with the owning team |
-| Story | System | Provides reports and a data feed | System: Provides reports and a data feed |
 
 ### Row 3
 
@@ -760,7 +728,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Control Tower | Watches live deliveries | Control Tower: Watches live deliveries |
 | Story | Control Tower | Calls out an operational failure | Control Tower: Calls out an operational failure |
 | Story | System | Detects a failure or fraud signal | System: Detects a failure or fraud signal |
-| Story | System | Updates status and location | System: Updates status and location |
 
 ##### Reviews performance and fixes problems
 
@@ -772,7 +739,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Team Lead | Takes action on a delivery problem | Team Lead: Takes action on a delivery problem |
 | Story | Central Logistics Ops | Views performance across the country | Central Logistics Ops: Views performance across the country |
 | Story | Central Logistics Ops | Steps in where performance drops | Central Logistics Ops: Steps in where performance drops |
-| Story | System | Provides reports and a data feed | System: Provides reports and a data feed |
 
 ##### Investigates loss, fraud and anomalies
 
@@ -783,7 +749,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Team Lead | Investigates a loss, fraud or cash anomaly | Team Lead: Investigates a loss, fraud or cash anomaly |
 | Story | Central Logistics Ops | Reviews fraud and leakage patterns | Central Logistics Ops: Reviews fraud and leakage patterns |
 | Story | Central Logistics Ops | Acts on a pattern | Central Logistics Ops: Acts on a pattern |
-| Story | System | Detects a failure or fraud signal | System: Detects a failure or fraud signal |
 | Story | System | Records every scan and change | System: Records every scan and change |
 
 ##### Shares reports and data
