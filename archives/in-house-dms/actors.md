@@ -7,7 +7,7 @@ The same actors apply in every location and in both Hyperlocal Forward and Rever
 | WH Ops | Prints AWBs, hands shipments to the Dispatcher and receives returns |
 | Dispatcher | Sends shipments out of the warehouse, either via a DC or directly to the Customer, and onboards the warehouse's Last Mile Drivers |
 | DC Executive | Runs the DC: receives consignments, sorts shipments, scans the orders drivers pick up, handles cash, and onboards the DC's Last Mile Drivers |
-| Team Lead | Manages one city: drivers, users, vendors and daily operations |
+| Team Lead | Manages one city: drivers, pay structures, incentives, users, vendors and daily operations |
 | Mid-Mile Driver | Drives consignments between locations |
 | Last Mile Driver | Delivers orders to Customers and collects returns |
 | Customer | Receives and returns orders |
