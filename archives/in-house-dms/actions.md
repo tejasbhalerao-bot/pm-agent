@@ -21,7 +21,7 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Receives the returned parcel | Shipment | Parcel arrives at the warehouse | Parcel received | Reverse |
+| Receives the returned parcel | Shipment | Parcel handed over by the Dispatcher | Parcel received | Reverse |
 | Scans the parcel on receipt | Shipment, Barcode, Manifest | Parcel received | Receipt recorded against the manifest | Reverse |
 | Reports damage or mismatch | Shipment, Manifest | Damage or mismatch found on arrival | Reported against the shipment | Reverse |
 
@@ -66,7 +66,7 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 
 **Flow 2: direct from the warehouse**
 
-In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers scanning the orders each driver brings, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding and pay structures, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving consignments or releasing returns, since WH Ops receives returns at the warehouse.
+In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers scanning the orders each driver brings, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding and pay structures, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving forward consignments or releasing returns as consignments, since the warehouse is where returns end.
 
 **Both flows, returns**
 
@@ -76,6 +76,15 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Schedules a return pickup from the Customer | Shipment, Order | Customer return requested | Pickup scheduled and ready to be batched with forward deliveries | Reverse |
 | Schedules the return of a failed delivery | Shipment | RTO initiated | Return scheduled | Reverse |
+
+*Job: Receive returned consignments from the mid-mile vehicle, scan and unload them, catch anything missing, damaged or mismatched, and hand the parcels to WH Ops.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Receives the returned consignment from the vehicle | Consignment, Vehicle | Mid-mile vehicle arrives at the warehouse with returns | Consignment received | Reverse |
+| Scans and unloads the returned consignment | Consignment, Shipment, Barcode, Manifest | Consignment received | Receipt recorded against the manifest | Reverse |
+| Flags anything missing, damaged or mismatched on receipt | Shipment, Consignment, Manifest | Scan does not match the manifest, or damage is seen | Discrepancy recorded | Reverse |
+| Hands the returned parcels to WH Ops and scans the handover | Shipment, Barcode, Manifest | Returned consignment unloaded | Handover recorded against the manifest | Reverse |
 
 ## DC Executive
 

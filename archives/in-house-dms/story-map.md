@@ -535,6 +535,17 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 
 **Actors:** Mid-Mile Driver · **Flows:** RTO Return; Mid-Mile Movement · **Same as:** Drives the consignment to the DC
 
+##### Receives the returned consignment and hands it over
+
+**Actors:** Dispatcher · **Flows:** RTO Return
+
+| Type | Actor | Story | Actions |
+|---|---|---|---|
+| Story | Dispatcher | Receives the returned consignment from the vehicle | Dispatcher: Receives the returned consignment from the vehicle |
+| Story | Dispatcher | Scans and unloads the returned consignment | Dispatcher: Scans and unloads the returned consignment |
+| Story | Dispatcher | Hands the returned parcels to WH Ops and scans the handover | Dispatcher: Hands the returned parcels to WH Ops and scans the handover |
+| Exception | Dispatcher | Flags anything missing, damaged or mismatched on receipt | Dispatcher: Flags anything missing, damaged or mismatched on receipt |
+
 ##### Receives the returned parcel
 
 **Actors:** WH Ops · **Flows:** RTO Return

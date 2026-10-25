@@ -22,10 +22,11 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Flag any loss, damage or delay of a consignment in transit.
 
 **Flow 2: direct from the warehouse**
-In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers scanning the orders each driver brings, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding and pay structures, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving consignments or releasing returns, since WH Ops receives returns at the warehouse.
+In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers scanning the orders each driver brings, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding and pay structures, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving forward consignments or releasing returns as consignments, since the warehouse is where returns end.
 
 **Both flows, returns**
 - Schedule return pickups and failed-delivery returns without delay.
+- Receive returned consignments from the mid-mile vehicle, scan and unload them, catch anything missing, damaged or mismatched, and hand the parcels to WH Ops.
 
 ## DC Executive
 - Onboard the DC's Last Mile Drivers and keep their details current.
