@@ -12,13 +12,13 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 
 *Central Logistics Ops builds the map the system runs on.*
 
-##### Creates the city and its locations
+##### Creates the locations
 
 **Actors:** Central Logistics Ops · **Flows:** Geography and Rules Setup
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
-| Story | Central Logistics Ops | Creates a city and its serving locations | Central Logistics Ops: Creates a city and its serving locations |
+| Story | Central Logistics Ops | Creates the serving locations | Central Logistics Ops: Creates the serving locations |
 | Story | Central Logistics Ops | Defines the serviced locations each serving location covers | Central Logistics Ops: Defines the serviced locations each serving location covers |
 | Story | Central Logistics Ops | Links warehouses and DCs | Central Logistics Ops: Links warehouses and DCs |
 | Story | Central Logistics Ops | Sets whether a location uses the direct flow or the DC flow | Central Logistics Ops: Sets whether a location uses the direct flow or the DC flow |

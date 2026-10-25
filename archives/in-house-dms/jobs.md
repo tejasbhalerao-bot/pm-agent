@@ -91,7 +91,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 - Keep a trustworthy record of every money movement.
 
 ## Central Logistics Ops (whole country)
-- Set up cities, locations, serviceable areas and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.
+- Set up locations, serviceable areas and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.
 - Define the rules the system runs on: SLAs, batching, allocation, delivery attempts, cut-offs, and penalties.
 - Define the salary structures and incentive schemes drivers can be on.
 - Manage roles and access across the system.

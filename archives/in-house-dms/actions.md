@@ -441,11 +441,11 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 ## Central Logistics Ops
 
-*Job: Set up cities, locations, serviceable areas and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.*
+*Job: Set up locations, serviceable areas and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Creates a city and its serving locations | Serving Location | Expansion to a new city | City and locations set up | Both |
+| Creates the serving locations | Serving Location | A new location is opened in an existing city | Serving locations set up | Both |
 | Defines the serviced locations each serving location covers | Serviced Location, Serving Location | Location set up or coverage changes | Coverage recorded | Both |
 | Links warehouses and DCs | Serving Location | Locations set up | Links recorded | Both |
 | Sets whether a location uses the direct flow or the DC flow | Serving Location | Location set up | Flow recorded for the location | Forward |
