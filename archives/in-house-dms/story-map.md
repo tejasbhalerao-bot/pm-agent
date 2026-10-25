@@ -117,7 +117,7 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 
 ##### Looks after the driver
 
-**Actors:** Team Lead · **Flows:** Driver Management
+**Actors:** Team Lead · **Flows:** Driver Management; Asset Management
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -125,18 +125,10 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Team Lead | Reviews a driver's performance | Team Lead: Reviews a driver's performance |
 | Story | Team Lead | Suspends a driver | Team Lead: Suspends a driver |
 | Story | Team Lead | Exits a driver | Team Lead: Exits a driver |
-| Story | System | Holds a driver's status and document check results | System: Holds a driver's status and document check results |
-
-##### Keeps devices and vehicles accounted for
-
-**Actors:** DC Executive / Dispatcher · **Flows:** Asset Management
-
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | System | Registers a device and records its holder | System: Registers a device and records its holder |
 | Story | DC Executive / Dispatcher | Recovers the device and vehicle | DC Executive: Recovers the device and vehicle |
 | Story | Team Lead | Reviews the city's vehicles and devices | Team Lead: Reviews the city's vehicles and devices |
 | Exception | DC Executive / Dispatcher | Handles a lost or broken device | DC Executive: Handles a lost or broken device |
+| Story | System | Holds a driver's status and document check results | System: Holds a driver's status and document check results |
 
 ##### Plans the capacity
 
