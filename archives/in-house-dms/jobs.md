@@ -117,7 +117,8 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 - Hold each driver's documents.
 - Hold each driver's serviceability: the zones and pincodes they serve and the pincodes within them that they do not.
 - Hold each driver's status (active, suspended, exited, on duty or off duty) and the result of their document checks.
-- Record each driver's attendance and duty status, and show who is on duty.
+- Record each driver's attendance and duty status.
+- Show who is on duty, on leave or absent for each location.
 - Register devices and record which driver holds each one.
 - Mask phone numbers between Customers and Drivers.
 
@@ -132,6 +133,7 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 - Decide each shipment's path (via DC or direct) from the rules.
 - Keep every shipment's status and location current.
 - Keep the proof of delivery against each shipment.
+- Record a failed delivery with its reason, and tell the Dispatcher.
 - Receive a Customer's return request and create the return pickup.
 
 **Barcodes and scanning**

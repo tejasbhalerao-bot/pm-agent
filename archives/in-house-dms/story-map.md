@@ -146,6 +146,7 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Team Lead | Reviews drivers on shift against each location's expected orders | Team Lead: Reviews drivers on shift against each location's expected orders |
 | Story | DC Executive / Dispatcher | Checks the drivers on duty | DC Executive: Checks the drivers on duty |
 | Exception | Team Lead | Arranges cover for leave and absences | Team Lead: Arranges cover for leave and absences |
+| Story | System | Shows who is on duty | System: Shows who is on duty |
 
 ##### Starts the shift
 
@@ -410,7 +411,7 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 |---|---|---|---|
 | Story | Customer | Pays for the order | Customer: Pays for the order |
 | Story | Last Mile Driver | Collects payment from the Customer | Last Mile Driver: Collects payment from the Customer |
-| Story | System | Records payments, cash handovers and deposits | System: Records payments, cash handovers and deposits |
+| Story | System | Records a payment | System: Records a payment |
 
 ##### Ends the shift
 
@@ -433,6 +434,7 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 |---|---|---|---|
 | Story | Last Mile Driver | Hands cash in | Last Mile Driver: Hands cash in |
 | Story | DC Executive / Dispatcher | Receives cash from drivers | DC Executive: Receives cash from drivers |
+| Story | System | Records a cash handover | System: Records a cash handover |
 
 ##### Records and banks the cash
 
@@ -442,6 +444,7 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 |---|---|---|---|
 | Story | DC Executive / Dispatcher | Records the cash collected | DC Executive: Records the cash collected |
 | Story | DC Executive / Dispatcher | Deposits the cash in the bank | DC Executive: Deposits the cash in the bank |
+| Story | System | Records a deposit | System: Records a deposit |
 
 ##### Matches and approves the cash
 
@@ -474,6 +477,7 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 |---|---|---|---|
 | Story | Last Mile Driver | Marks the delivery as failed, with a reason | Last Mile Driver: Marks the delivery as failed, with a reason |
 | Story | Last Mile Driver | Brings the parcel back to the DC or warehouse | Last Mile Driver: Brings the parcel back to the DC or warehouse |
+| Story | System | Records a failed delivery and informs the Dispatcher | System: Records a failed delivery and informs the Dispatcher |
 
 ##### Decides between a reattempt and an RTO
 

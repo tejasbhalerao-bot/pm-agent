@@ -572,11 +572,17 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Holds a driver's status and document check results | People | Documents checked, or a driver suspended or exited | Status and check result held against the driver | Both |
 
-*Responsibility: Record each driver's attendance and duty status, and show who is on duty.*
+*Responsibility: Record each driver's attendance and duty status.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Records attendance and duty status | People | Driver marks duty start or end | Attendance recorded, and who is on duty shown to the Team Lead and DC Executive | Both |
+| Records attendance and duty status | People | Driver marks duty start or end | Attendance recorded | Both |
+
+*Responsibility: Show who is on duty, on leave or absent for each location.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Shows who is on duty | People, Serving Location | Team Lead or DC Executive checks staffing | Drivers on duty, on leave and absent shown for the location | Both |
 
 *Responsibility: Register devices and record which driver holds each one.*
 
@@ -638,6 +644,12 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Keeps the proof of delivery | Shipment | Driver collects proof of delivery | Proof held against the shipment | Forward |
+
+*Responsibility: Record a failed delivery with its reason, and tell the Dispatcher.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Records a failed delivery and informs the Dispatcher | Shipment | Driver marks the delivery as failed | Shipment marked failed with its reason, and the Dispatcher informed | Forward |
 
 *Responsibility: Receive a Customer's return request and create the return pickup.*
 
@@ -765,7 +777,9 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Records payments, cash handovers and deposits | Money | Each money movement | Movement recorded | Forward |
+| Records a payment | Money, Shipment | Driver collects payment from the Customer | Payment recorded against the shipment | Forward |
+| Records a cash handover | Money | Driver hands cash in | Cash handover recorded | Forward |
+| Records a deposit | Money | Cash is deposited in the bank | Deposit recorded | Forward |
 | Matches them against what was owed | Money, Shipment | Deposit recorded | Match or discrepancy shown | Forward |
 
 *Responsibility: Record vendor payments.*
