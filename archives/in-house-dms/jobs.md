@@ -53,7 +53,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 - Keep enough drivers on shift for the city's orders, with cover for leave and absences.
 - Plan mid-mile trips with the Dispatcher.
 - Spot and fix delivery problems in the city before they become complaints.
-- Grant ad-hoc incentives to drivers.
+- Give drivers their incentives under the schemes set by Central Logistics Ops, including ad-hoc incentives.
 - Settle payout disputes raised by the city's drivers.
 - Investigate loss, fraud and cash anomalies in the city.
 - Plan the city's capacity as new locations open.
@@ -151,7 +151,7 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 **Driver pay**
 - Hold each driver's salary structure (per order delivered, or fixed with fuel expenses) and the incentive schemes that apply to them.
 - Compute each driver's earnings from their salary structure and incentives.
-- Track each driver's progress against incentive schemes (attendance-based, order-based, ad-hoc and others), and award incentives when earned.
+- Track each driver's progress against incentive schemes (attendance-based, order-based, ad-hoc and others), and show the Team Lead what each driver has earned.
 - Adjust a driver's earnings, and the amount payable to their vendor, when a payout dispute is settled.
 - Roll driver earnings up into the amount payable to each vendor.
 

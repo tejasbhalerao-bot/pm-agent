@@ -575,21 +575,21 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | System | Holds driver pay structures and incentive schemes | System: Holds driver pay structures and incentive schemes |
 | Story | System | Computes a driver's earnings | System: Computes a driver's earnings |
 
-##### Tracks incentive progress and awards incentives
+##### Tracks incentive progress
 
 **Actors:** System · **Flows:** Driver Pay and Incentives
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
-| Story | System | Tracks incentive progress and awards incentives | System: Tracks incentive progress and awards incentives |
+| Story | System | Tracks incentive progress | System: Tracks incentive progress |
 
-##### Grants an ad-hoc incentive
+##### Grants incentives to drivers
 
 **Actors:** Team Lead · **Flows:** Driver Pay and Incentives
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
-| Story | Team Lead | Grants an ad-hoc incentive to a driver | Team Lead: Grants an ad-hoc incentive to a driver |
+| Story | Team Lead | Grants an incentive to a driver | Team Lead: Grants an incentive to a driver |
 
 ##### Sees earnings and incentive progress
 

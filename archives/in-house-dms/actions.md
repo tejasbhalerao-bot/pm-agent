@@ -244,11 +244,11 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Reviews delivery problems in the city | Shipment | Delays or failures arise | Problems identified | Both |
 | Takes action on a delivery problem | Shipment | Problem identified | Problem resolved | Both |
 
-*Job: Grant ad-hoc incentives to drivers.*
+*Job: Give drivers their incentives under the schemes set by Central Logistics Ops, including ad-hoc incentives.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Grants an ad-hoc incentive to a driver | People, Incentive | Reason to reward a driver | Incentive added to the driver's earnings | Both |
+| Grants an incentive to a driver | People, Incentive | Driver meets a scheme's conditions, or there is a reason to reward | Incentive added to the driver's earnings | Both |
 
 *Job: Settle payout disputes raised by the city's drivers.*
 
@@ -684,11 +684,11 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Computes a driver's earnings | Payout, Incentive, People | Delivery completed, attendance marked or incentive granted | Driver's earnings updated | Both |
 
-*Responsibility: Track each driver's progress against incentive schemes (attendance-based, order-based, ad-hoc and others), and award incentives when earned.*
+*Responsibility: Track each driver's progress against incentive schemes (attendance-based, order-based, ad-hoc and others), and show the Team Lead what each driver has earned.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Tracks incentive progress and awards incentives | Incentive, People | Driver activity that counts towards a scheme | Progress updated; incentive awarded when earned | Both |
+| Tracks incentive progress | Incentive, People | Driver activity that counts towards a scheme | Progress updated, and shown to the Team Lead | Both |
 
 *Responsibility: Adjust a driver's earnings, and the amount payable to their vendor, when a payout dispute is settled.*
 
