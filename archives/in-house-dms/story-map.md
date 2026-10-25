@@ -2,6 +2,15 @@
 
 The end-to-end story of the system, in the style of Jeff Patton's story mapping. Chapters run in order. Within a chapter, activities run left to right in the order they happen. Each activity holds tasks, and each task holds its stories, which point to their actions as Actor: Action. Exceptions are marked, and tasks carry the flows they belong to.
 
+## Milestones
+
+Draft milestones. Each card carries its handling in every milestone: Built, System-assisted, Manual or Not needed.
+
+- **M1 · Pilot.** One DC and its warehouse run Forward orders end to end, with workarounds where the build is not ready.
+- **M2 · Complete the loop.** Returns, cash reconciliation, serviceability and driver management move into the system.
+- **M3 · Pay and support.** Driver pay, incentives, vendor payouts, tickets and Customer tracking move into the system.
+- **M4 · Scale.** Capacity planning, monitoring, reporting and vehicle tracking.
+
 ## Chapter 1. Get ready
 
 *Before the first order, Central Logistics Ops sets up the network, the Team Lead and the DC Executives ready the people, and every driver starts the day equipped.*
@@ -15,6 +24,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Creates the locations
 
 **Actors:** Central Logistics Ops · **Flows:** Geography and Rules Setup
+
+**Milestones:** M1 System-assisted · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -31,6 +42,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Central Logistics Ops · **Flows:** Geography and Rules Setup
 
+**Milestones:** M1 System-assisted · M2 System-assisted · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Central Logistics Ops | Defines SLAs | Central Logistics Ops: Defines SLAs |
@@ -43,6 +56,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Central Logistics Ops · **Flows:** Driver Pay and Incentives
 
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Central Logistics Ops | Defines salary structures | Central Logistics Ops: Defines salary structures |
@@ -52,6 +67,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Sets up users and their access
 
 **Actors:** Central Logistics Ops / Team Lead · **Flows:** User Management
+
+**Milestones:** M1 System-assisted · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -65,6 +82,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Onboards vendors
 
 **Actors:** Team Lead · **Flows:** Vendor Management
+
+**Milestones:** M1 System-assisted · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -82,6 +101,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** DC Executive / Dispatcher · **Flows:** Driver Management; Asset Management
 
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | DC Executive / Dispatcher | Onboards a Last Mile Driver | DC Executive: Onboards a Last Mile Driver |
@@ -96,6 +117,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** DC Executive / Dispatcher · **Flows:** Driver Management
 
+**Milestones:** M1 System-assisted · M2 Built · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | DC Executive / Dispatcher | Assigns the zones and pincodes a driver serves | DC Executive: Assigns the zones and pincodes a driver serves |
@@ -106,6 +129,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** DC Executive / Dispatcher / Team Lead / Central Logistics Ops · **Flows:** Driver Pay and Incentives
 
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | DC Executive / Dispatcher | Assigns a pay structure to a driver | DC Executive: Assigns a pay structure to a driver |
@@ -115,6 +140,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Looks after the driver
 
 **Actors:** Team Lead · **Flows:** Driver Management; Asset Management
+
+**Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -131,6 +158,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Central Logistics Ops / Team Lead · **Flows:** Capacity Planning
 
+**Milestones:** M1 Not needed · M2 Not needed · M3 Not needed · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Central Logistics Ops | Forecasts demand by location | Central Logistics Ops: Forecasts demand by location |
@@ -140,6 +169,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Keeps enough drivers on shift
 
 **Actors:** Team Lead · **Flows:** Daily Shift
+
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -151,6 +182,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Starts the shift
 
 **Actors:** Last Mile Driver · **Flows:** Daily Shift
+
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -172,6 +205,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** System · **Flows:** Forward via DC; Forward Direct
 
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | System | Receives an order with its details | System: Receives an order with its details |
@@ -184,6 +219,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** System · **Flows:** Forward via DC; Forward Direct
 
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | System | Generates a barcode | System: Generates a barcode |
@@ -194,6 +231,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** WH Ops · **Flows:** Forward via DC; Forward Direct
 
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | WH Ops | Prints the AWB | WH Ops: Prints the AWB |
@@ -201,6 +240,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Hands the shipments to the Dispatcher
 
 **Actors:** WH Ops · **Flows:** Forward via DC; Forward Direct
+
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -212,6 +253,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Adds gel packs where needed
 
 **Actors:** Dispatcher · **Flows:** Forward via DC; Forward Direct
+
+**Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -228,6 +271,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Dispatcher · **Flows:** Forward via DC
 
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Dispatcher | Sorts shipments into bins by destination | Dispatcher: Sorts shipments into bins by destination |
@@ -235,6 +280,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Builds the consignment
 
 **Actors:** Dispatcher · **Flows:** Forward via DC
+
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -244,6 +291,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Plan the trip together
 
 **Actors:** Dispatcher / Team Lead · **Flows:** Mid-Mile Movement
+
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -255,6 +304,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Dispatcher · **Flows:** Forward via DC
 
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Dispatcher | Records the vendor, vehicle number, and the driver's name and phone | Dispatcher: Records the vendor, vehicle number, and the driver's name and phone |
@@ -263,6 +314,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Loads the consignment and scans the handover
 
 **Actors:** Dispatcher · **Flows:** Forward via DC
+
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -277,6 +330,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Drives the consignment to the DC
 
 **Actors:** Mid-Mile Driver · **Flows:** Mid-Mile Movement; Forward via DC
+
+**Milestones:** M1 Manual · M2 Manual · M3 Manual · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -293,6 +348,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** DC Executive · **Flows:** Forward via DC
 
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | DC Executive | Receives the consignment from the vehicle | DC Executive: Receives the consignment from the vehicle |
@@ -303,6 +360,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Sorts each shipment into its bin
 
 **Actors:** DC Executive · **Flows:** Forward via DC
+
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -317,6 +376,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Creates batches and routes and allocates drivers
 
 **Actors:** System · **Flows:** Forward via DC; Forward Direct; Customer Return; Replanning
+
+**Milestones:** M1 System-assisted · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -336,6 +397,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Last Mile Driver · **Flows:** Forward via DC; Forward Direct
 
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Last Mile Driver | Views the assigned batch and the pickup point | Last Mile Driver: Views the assigned batch and the pickup point |
@@ -345,6 +408,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Scans the orders the driver brings
 
 **Actors:** DC Executive / Dispatcher · **Flows:** Forward via DC; Forward Direct
+
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -362,6 +427,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Last Mile Driver · **Flows:** Forward via DC; Forward Direct
 
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Last Mile Driver | Views the route for the batch | Last Mile Driver: Views the route for the batch |
@@ -376,6 +443,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Customer · **Flows:** Forward via DC; Forward Direct
 
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Customer | Views the expected arrival and status of the order | Customer: Views the expected arrival and status of the order |
@@ -386,6 +455,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Receives the order and confirms
 
 **Actors:** Customer · **Flows:** Forward via DC; Forward Direct
+
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -398,6 +469,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Last Mile Driver · **Flows:** Forward via DC; Forward Direct
 
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Last Mile Driver | Collects proof of delivery | Last Mile Driver: Collects proof of delivery |
@@ -406,6 +479,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Pays for the order
 
 **Actors:** Customer / Last Mile Driver · **Flows:** Forward via DC; Forward Direct
+
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -416,6 +491,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Ends the shift
 
 **Actors:** Last Mile Driver · **Flows:** Daily Shift
+
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -430,6 +507,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Last Mile Driver · **Flows:** Cash Handling and Reconciliation
 
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Last Mile Driver | Hands cash in | Last Mile Driver: Hands cash in |
@@ -440,6 +519,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** DC Executive / Dispatcher · **Flows:** Cash Handling and Reconciliation
 
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | DC Executive / Dispatcher | Records the cash collected | DC Executive: Records the cash collected |
@@ -449,6 +530,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Matches and approves the cash
 
 **Actors:** Finance · **Flows:** Cash Handling and Reconciliation
+
+**Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -473,6 +556,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Last Mile Driver · **Flows:** Failed Delivery
 
+**Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Last Mile Driver | Marks the delivery as failed, with a reason | Last Mile Driver: Marks the delivery as failed, with a reason |
@@ -483,6 +568,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** System · **Flows:** Failed Delivery
 
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | System | Decides between a reattempt and an RTO | System: Decides between a reattempt and an RTO |
@@ -490,6 +577,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Replans the delivery for the next day
 
 **Actors:** DC Executive / Dispatcher · **Flows:** Failed Delivery
+
+**Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -500,6 +589,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Schedules the return
 
 **Actors:** Dispatcher · **Flows:** Failed Delivery; RTO Return
+
+**Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -513,6 +604,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Customer · **Flows:** Customer Return
 
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Customer | Requests a return | Customer: Requests a return |
@@ -522,6 +615,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Dispatcher · **Flows:** Customer Return
 
+**Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Dispatcher | Schedules a return pickup from the Customer | Dispatcher: Schedules a return pickup from the Customer |
@@ -530,6 +625,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Collects the return
 
 **Actors:** Last Mile Driver · **Flows:** Customer Return
+
+**Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -547,6 +644,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** DC Executive · **Flows:** RTO Return
 
+**Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | DC Executive | Receives returned parcels from drivers and scans them | DC Executive: Receives returned parcels from drivers and scans them |
@@ -556,9 +655,13 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Mid-Mile Driver · **Flows:** RTO Return; Mid-Mile Movement · **Same as:** Drives the consignment to the DC
 
+**Milestones:** M1 Manual · M2 Manual · M3 Manual · M4 Built
+
 ##### Receives the returned consignment and hands it over
 
 **Actors:** Dispatcher · **Flows:** RTO Return
+
+**Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -570,6 +673,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Receives the returned parcel
 
 **Actors:** WH Ops · **Flows:** RTO Return
+
+**Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -591,6 +696,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** System · **Flows:** Driver Pay and Incentives
 
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | System | Computes a driver's earnings | System: Computes a driver's earnings |
@@ -600,6 +707,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Team Lead · **Flows:** Driver Pay and Incentives
 
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Team Lead | Grants an incentive to a driver | Team Lead: Grants an incentive to a driver |
@@ -607,6 +716,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Sees earnings and incentive progress
 
 **Actors:** Last Mile Driver · **Flows:** Driver Pay and Incentives
+
+**Milestones:** M1 Not needed · M2 Not needed · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -620,6 +731,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** System · **Flows:** Vendor Payouts; Driver Pay and Incentives
 
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | System | Rolls driver earnings up per vendor | System: Rolls driver earnings up per vendor |
@@ -628,6 +741,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Finance · **Flows:** Vendor Payouts
 
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Finance | Calculates the amount owed to each vendor | Finance: Calculates the amount owed to each vendor |
@@ -635,6 +750,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Pays the vendor
 
 **Actors:** Finance · **Flows:** Vendor Payouts
+
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -651,6 +768,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Last Mile Driver · **Flows:** Driver Support and Payout Disputes
 
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Last Mile Driver | Raises a help request | Last Mile Driver: Raises a help request |
@@ -660,6 +779,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Last Mile Driver · **Flows:** Driver Support and Payout Disputes
 
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Last Mile Driver | Raises a payout dispute | Last Mile Driver: Raises a payout dispute |
@@ -667,6 +788,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Settles the dispute
 
 **Actors:** DC Executive / Dispatcher / Team Lead · **Flows:** Driver Support and Payout Disputes; Driver Pay and Incentives
+
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -680,6 +803,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Customer · **Flows:** Grievance Addressal
 
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Customer | Raises a ticket | Customer: Raises a ticket |
@@ -688,6 +813,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Resolves the ticket
 
 **Actors:** Grievance & Escalation Management Team · **Flows:** Grievance Addressal
+
+**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -702,6 +829,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Grievance & Escalation Management Team · **Flows:** Grievance Addressal
 
+**Milestones:** M1 Not needed · M2 Not needed · M3 Built · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | System | Tracks a ticket to resolution | System: Tracks a ticket to resolution |
@@ -711,6 +840,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Fixes the root cause
 
 **Actors:** Grievance & Escalation Management Team · **Flows:** Grievance Addressal
+
+**Milestones:** M1 Not needed · M2 Not needed · M3 Not needed · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -727,6 +858,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Control Tower · **Flows:** Monitoring and Investigation
 
+**Milestones:** M1 System-assisted · M2 System-assisted · M3 System-assisted · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Control Tower | Watches live deliveries | Control Tower: Watches live deliveries |
@@ -736,6 +869,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Reviews performance and fixes problems
 
 **Actors:** Team Lead / Central Logistics Ops · **Flows:** Monitoring and Investigation
+
+**Milestones:** M1 System-assisted · M2 System-assisted · M3 System-assisted · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -748,6 +883,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Actors:** Team Lead / Central Logistics Ops · **Flows:** Monitoring and Investigation
 
+**Milestones:** M1 Manual · M2 Manual · M3 Manual · M4 Built
+
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Team Lead | Investigates a loss, fraud or cash anomaly | Team Lead: Investigates a loss, fraud or cash anomaly |
@@ -758,6 +895,8 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 ##### Shares reports and data
 
 **Actors:** Central Logistics Ops · **Flows:** Monitoring and Investigation
+
+**Milestones:** M1 System-assisted · M2 System-assisted · M3 System-assisted · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
