@@ -66,7 +66,7 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 
 **Flow 2: direct from the warehouse**
 
-In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers scanning the orders each driver brings, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving consignments or releasing returns, since WH Ops receives returns at the warehouse.
+In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers scanning the orders each driver brings, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding and pay structures, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving consignments or releasing returns, since WH Ops receives returns at the warehouse.
 
 **Both flows, returns**
 
@@ -85,6 +85,12 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Onboards a Last Mile Driver | People | New driver joins | Driver record created and activated | Both |
 | Updates a driver's details | People | Driver's details change | Record updated | Both |
+
+*Job: Assign each driver a pay structure, with the Team Lead and Central Logistics Ops.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Assigns a pay structure to a driver | People, Money | Driver is onboarded | Pay structure proposed for confirmation by the Team Lead and Central Logistics Ops | Both |
 
 *Job: Assign and recover devices and vehicles, and handle a lost or broken device.*
 
@@ -197,6 +203,12 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Exits a driver | People | Driver leaves | Record closed | Both |
 | Reviews a driver's performance | People, Shipment | Periodic review | Performance known | Both |
 
+*Job: Confirm each driver's pay structure with the DC Executive, Dispatcher and Central Logistics Ops.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Confirms a driver's pay structure | People, Money | Pay structure proposed for a driver | Pay structure confirmed | Both |
+
 *Job: Keep the city's vehicles and devices accounted for.*
 
 | Action | Entity | Trigger | Output | Vertical |
@@ -222,6 +234,12 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Reviews delivery problems in the city | Shipment | Delays or failures arise | Problems identified | Both |
 | Takes action on a delivery problem | Shipment | Problem identified | Problem resolved | Both |
+
+*Job: Grant ad-hoc incentives to drivers.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Grants an ad-hoc incentive to a driver | People, Money | Reason to reward a driver | Incentive added to the driver's earnings | Both |
 
 *Job: Settle payout disputes raised by the city's drivers.*
 
@@ -330,6 +348,12 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Raises a help request | Ticket | Accident, breakdown or emergency | Request reaches the first point of contact (Dispatcher or DC Executive) | Both |
 
+*Job: Know what I have earned and how close I am to my incentives.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Views earnings and incentive progress | Money, People | Driver wants to see their earnings | Earnings and progress towards incentives shown | Both |
+
 *Job: Raise a payout dispute when pay looks wrong.*
 
 | Action | Entity | Trigger | Output | Vertical |
@@ -402,11 +426,11 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Approves a cash deposit | Money | Deposit matches what was owed | Deposit approved | Forward |
 | Closes a discrepancy | Money | Discrepancy explained or resolved | Discrepancy closed | Forward |
 
-*Job: Pay vendors accurately and on time, every month, under the pay rules.*
+*Job: Pay vendors accurately and on time, every month, from the earnings of the drivers they supply.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Calculates the amount owed to each vendor | Money, Vendor | Month end | Monthly amount per vendor | Both |
+| Calculates the amount owed to each vendor | Money, Vendor | Month end | Monthly amount per vendor, from the roll-up of driver earnings | Both |
 | Pays the vendor | Money, Vendor | Amount ready | Payment made | Both |
 
 *Job: Keep a trustworthy record of every money movement.*
@@ -426,14 +450,21 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Links warehouses and DCs | Serving Location | Locations set up | Links recorded | Both |
 | Sets whether a location uses the direct flow or the DC flow | Serving Location | Location set up | Flow recorded for the location | Forward |
 
-*Job: Define the rules the system runs on: SLAs, batching, allocation, delivery attempts, cut-offs, and pay, incentives and penalties.*
+*Job: Define the rules the system runs on: SLAs, batching, allocation, delivery attempts, cut-offs, and penalties.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Defines SLAs | Shipment | New or changed SLA | SLAs applied by the system | Both |
 | Defines batching and allocation rules | Shipment, People | New or changed rule | Rules applied by the system | Forward |
 | Defines delivery attempts and cut-offs | Shipment | New or changed rule | Rules applied by the system | Both |
-| Defines pay, incentives and penalties | Money | New or changed rule | Rules applied by the system | Both |
+| Defines penalties | Money | New or changed rule | Rules applied by the system | Both |
+
+*Job: Define the salary structures and incentive schemes drivers can be on.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Defines salary structures | Money | New or changed pay design | Salary structures available to assign: per order delivered, or fixed with fuel expenses | Both |
+| Defines incentive schemes | Money | New or changed incentive design | Incentive schemes available to apply: attendance-based, order-based, ad-hoc and others | Both |
 
 *Job: Manage roles and access across the system.*
 
@@ -441,6 +472,12 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Defines roles and what each can do | People | New role needed | Role available | Both |
 | Assigns roles to users | People | New user or role change | Access updated | Both |
+
+*Job: Confirm each driver's pay structure with the DC Executive, Dispatcher and Team Lead.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Confirms a driver's pay structure | People, Money | Pay structure proposed for a driver | Pay structure confirmed | Both |
 
 *Job: Forecast demand and plan drivers and DC capacity for growth from 39 to 150 locations.*
 
@@ -625,6 +662,30 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Holds actions taken offline and syncs them | Device, Shipment | Network lost, then restored | Actions sent and statuses updated | Both |
+
+*Responsibility: Hold each driver's salary structure (per order delivered, or fixed with fuel expenses) and the incentive schemes that apply to them.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Holds driver pay structures and incentive schemes | Money, People | Pay structure assigned or incentive scheme defined | Structures and schemes held against each driver | Both |
+
+*Responsibility: Compute each driver's earnings from their salary structure and incentives.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Computes a driver's earnings | Money, People | Delivery completed, attendance marked or incentive granted | Driver's earnings updated | Both |
+
+*Responsibility: Track each driver's progress against incentive schemes (attendance-based, order-based, ad-hoc and others), and award incentives when earned.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Tracks incentive progress and awards incentives | Money, People | Driver activity that counts towards a scheme | Progress updated; incentive awarded when earned | Both |
+
+*Responsibility: Roll driver earnings up into the amount payable to each vendor.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Rolls driver earnings up per vendor | Money, Vendor | Month end | Amount payable per vendor | Both |
 
 *Responsibility: Record every payment collected, every cash handover and every deposit, and match them against what was owed.*
 

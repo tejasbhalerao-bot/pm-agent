@@ -34,8 +34,17 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Central Logistics Ops | Defines SLAs | Central Logistics Ops: Defines SLAs |
 | Story | Central Logistics Ops | Defines batching and allocation rules | Central Logistics Ops: Defines batching and allocation rules |
 | Story | Central Logistics Ops | Defines delivery attempts and cut-offs | Central Logistics Ops: Defines delivery attempts and cut-offs |
-| Story | Central Logistics Ops | Defines pay, incentives and penalties | Central Logistics Ops: Defines pay, incentives and penalties |
+| Story | Central Logistics Ops | Defines penalties | Central Logistics Ops: Defines penalties |
 | Story | System | Applies the rules | System: Applies the rules |
+
+##### Defines driver pay and incentives
+
+**Actors:** Central Logistics Ops · **Flows:** Driver Pay and Incentives
+
+| Type | Actor | Story | Actions |
+|---|---|---|---|
+| Story | Central Logistics Ops | Defines salary structures | Central Logistics Ops: Defines salary structures |
+| Story | Central Logistics Ops | Defines incentive schemes | Central Logistics Ops: Defines incentive schemes |
 
 ##### Sets up users and their access
 
@@ -60,6 +69,8 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Team Lead | Updates or deactivates a vendor | Team Lead: Updates or deactivates a vendor |
 | Story | System | Holds vendors and their vehicles | System: Holds vendors and their vehicles |
 
+### Row 2
+
 #### Activity 2. Ready the drivers
 
 *Drivers are onboarded, equipped and planned for.*
@@ -72,6 +83,16 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 |---|---|---|---|
 | Story | DC Executive / Dispatcher | Onboards a Last Mile Driver | DC Executive: Onboards a Last Mile Driver |
 | Story | Team Lead | Checks a driver's documents | Team Lead: Checks a driver's documents |
+
+##### Agrees the driver's pay structure
+
+**Actors:** DC Executive / Dispatcher / Team Lead / Central Logistics Ops · **Flows:** Driver Pay and Incentives
+
+| Type | Actor | Story | Actions |
+|---|---|---|---|
+| Story | DC Executive / Dispatcher | Assigns a pay structure to a driver | DC Executive: Assigns a pay structure to a driver |
+| Story | Team Lead | Confirms a driver's pay structure | Team Lead: Confirms a driver's pay structure |
+| Story | Central Logistics Ops | Confirms a driver's pay structure | Central Logistics Ops: Confirms a driver's pay structure |
 
 ##### Looks after the driver
 
@@ -530,9 +551,54 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 
 ### Row 1
 
-#### Activity 14. Pay the vendors
+#### Activity 14. Track driver earnings
 
-*Vendors are paid every month.*
+*Every driver earns a salary and incentives, and the System keeps count.*
+
+##### Holds pay structures and computes earnings
+
+**Actors:** System · **Flows:** Driver Pay and Incentives
+
+| Type | Actor | Story | Actions |
+|---|---|---|---|
+| Story | System | Holds driver pay structures and incentive schemes | System: Holds driver pay structures and incentive schemes |
+| Story | System | Computes a driver's earnings | System: Computes a driver's earnings |
+
+##### Tracks incentive progress and awards incentives
+
+**Actors:** System · **Flows:** Driver Pay and Incentives
+
+| Type | Actor | Story | Actions |
+|---|---|---|---|
+| Story | System | Tracks incentive progress and awards incentives | System: Tracks incentive progress and awards incentives |
+
+##### Grants an ad-hoc incentive
+
+**Actors:** Team Lead · **Flows:** Driver Pay and Incentives
+
+| Type | Actor | Story | Actions |
+|---|---|---|---|
+| Story | Team Lead | Grants an ad-hoc incentive to a driver | Team Lead: Grants an ad-hoc incentive to a driver |
+
+##### Sees earnings and incentive progress
+
+**Actors:** Last Mile Driver · **Flows:** Driver Pay and Incentives
+
+| Type | Actor | Story | Actions |
+|---|---|---|---|
+| Story | Last Mile Driver | Views earnings and incentive progress | Last Mile Driver: Views earnings and incentive progress |
+
+#### Activity 15. Pay the vendors
+
+*Vendors are paid every month for the drivers they supply.*
+
+##### Rolls driver earnings up per vendor
+
+**Actors:** System · **Flows:** Vendor Payouts; Driver Pay and Incentives
+
+| Type | Actor | Story | Actions |
+|---|---|---|---|
+| Story | System | Rolls driver earnings up per vendor | System: Rolls driver earnings up per vendor |
 
 ##### Calculates what each vendor is owed
 
@@ -551,7 +617,9 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Finance | Pays the vendor | Finance: Pays the vendor |
 | Story | System | Records a vendor payment | System: Records a vendor payment |
 
-#### Activity 15. Support drivers and Customers
+### Row 2
+
+#### Activity 16. Support drivers and Customers
 
 *Drivers and Customers get help, and disputes are settled.*
 
@@ -624,9 +692,9 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Grievance & Escalation Management Team | Reviews tickets for recurring problems | Grievance & Escalation Management Team: Reviews tickets for recurring problems |
 | Story | Grievance & Escalation Management Team | Raises a root-cause fix with the owning team | Grievance & Escalation Management Team: Raises a root-cause fix with the owning team |
 
-### Row 2
+### Row 3
 
-#### Activity 16. Watch and improve
+#### Activity 17. Watch and improve
 
 *The people who watch the operation call out failures, fix problems and report.*
 

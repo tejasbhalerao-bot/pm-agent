@@ -22,13 +22,14 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Flag any loss, damage or delay of a consignment in transit.
 
 **Flow 2: direct from the warehouse**
-In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers scanning the orders each driver brings, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving consignments or releasing returns, since WH Ops receives returns at the warehouse.
+In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers scanning the orders each driver brings, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding and pay structures, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving consignments or releasing returns, since WH Ops receives returns at the warehouse.
 
 **Both flows, returns**
 - Schedule return pickups and failed-delivery returns without delay.
 
 ## DC Executive
 - Onboard the DC's Last Mile Drivers and keep their details current.
+- Assign each driver a pay structure, with the Team Lead and Central Logistics Ops.
 - Assign and recover devices and vehicles, and handle a lost or broken device.
 - Keep the DC's Last Mile Drivers ready and accounted for each day.
 - See the live location of mid-mile vehicles on a portal.
@@ -46,10 +47,12 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 - Manage the city's users and their access.
 - Onboard and manage vendors.
 - Manage the city's drivers: document checks and renewals, suspension and exit, and performance.
+- Confirm each driver's pay structure with the DC Executive, Dispatcher and Central Logistics Ops.
 - Keep the city's vehicles and devices accounted for.
 - Keep enough drivers on shift for the city's orders, with cover for leave and absences.
 - Plan mid-mile trips with the Dispatcher.
 - Spot and fix delivery problems in the city before they become complaints.
+- Grant ad-hoc incentives to drivers.
 - Settle payout disputes raised by the city's drivers.
 - Investigate loss, fraud and cash anomalies in the city.
 - Plan the city's capacity as new locations open.
@@ -69,6 +72,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 - Collect returns from Customers safely, checking the medicine against the order details at the doorstep before taking it back.
 - Keep working with poor or no network.
 - Get help fast in an accident, breakdown or emergency.
+- Know what I have earned and how close I am to my incentives.
 - Raise a payout dispute when pay looks wrong.
 
 ## Customer
@@ -83,13 +87,15 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 ## Finance
 - Make sure every rupee collected matches what was owed and is banked, approve cash deposits and close discrepancies.
-- Pay vendors accurately and on time, every month, under the pay rules.
+- Pay vendors accurately and on time, every month, from the earnings of the drivers they supply.
 - Keep a trustworthy record of every money movement.
 
 ## Central Logistics Ops (whole country)
 - Set up cities, locations, serviceable areas and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.
-- Define the rules the system runs on: SLAs, batching, allocation, delivery attempts, cut-offs, and pay, incentives and penalties.
+- Define the rules the system runs on: SLAs, batching, allocation, delivery attempts, cut-offs, and penalties.
+- Define the salary structures and incentive schemes drivers can be on.
 - Manage roles and access across the system.
+- Confirm each driver's pay structure with the DC Executive, Dispatcher and Team Lead.
 - Forecast demand and plan drivers and DC capacity for growth from 39 to 150 locations.
 - See country-wide performance and step in where it drops.
 - Detect and act on fraud and leakage patterns.
@@ -140,6 +146,12 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 - After a failed delivery, decide from the rules whether to reattempt it or initiate an RTO.
 - Show medicine details to the Last Mile Driver only in the returns flow.
 - Keep driver apps working offline, and sync when the network returns.
+
+**Driver pay**
+- Hold each driver's salary structure (per order delivered, or fixed with fuel expenses) and the incentive schemes that apply to them.
+- Compute each driver's earnings from their salary structure and incentives.
+- Track each driver's progress against incentive schemes (attendance-based, order-based, ad-hoc and others), and award incentives when earned.
+- Roll driver earnings up into the amount payable to each vendor.
 
 **Money**
 - Record every payment collected, every cash handover and every deposit, and match them against what was owed.

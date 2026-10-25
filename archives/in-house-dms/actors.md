@@ -12,7 +12,7 @@ The same actors apply in every location and in both Hyperlocal Forward and Rever
 | Last Mile Driver | Delivers orders to Customers and collects returns |
 | Customer | Receives and returns orders |
 | Finance | Reconciles cash and pays vendors |
-| Central Logistics Ops | Manages the whole country: geography, rules, access and performance |
+| Central Logistics Ops | Manages the whole country: geography, rules, pay design, access and performance |
 | System | Acts automatically, without a person triggering it |
 | Control Tower | Independent of Logistics Ops. Monitors live deliveries and calls out operational failures so they are not hidden |
 | Grievance & Escalation Management Team | Owns Customer and driver complaints and escalations, investigates incidents, and drives root-cause fixes for recurring problems |
