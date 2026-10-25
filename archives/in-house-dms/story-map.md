@@ -67,7 +67,7 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 |---|---|---|---|
 | Story | Team Lead | Onboards a vendor | Team Lead: Onboards a vendor |
 | Story | Team Lead | Updates or deactivates a vendor | Team Lead: Updates or deactivates a vendor |
-| Story | System | Holds vendors and their vehicles | System: Holds vendors and their vehicles |
+| Story | System | Holds vendors, their vehicles and their drivers | System: Holds vendors, their vehicles and their drivers |
 
 ### Row 2
 
@@ -82,6 +82,8 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | DC Executive / Dispatcher | Onboards a Last Mile Driver | DC Executive: Onboards a Last Mile Driver |
+| Story | DC Executive / Dispatcher | Registers the driver's vehicle | DC Executive: Registers the driver's vehicle |
+| Story | DC Executive / Dispatcher | Tags the driver to a vendor | DC Executive: Tags the driver to a vendor |
 | Story | Team Lead | Checks a driver's documents | Team Lead: Checks a driver's documents |
 
 ##### Agrees the driver's pay structure

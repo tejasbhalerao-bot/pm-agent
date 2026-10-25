@@ -88,11 +88,13 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 ## DC Executive
 
-*Job: Onboard the DC's Last Mile Drivers and keep their details current.*
+*Job: Onboard the DC's Last Mile Drivers with their vehicles, tag each to a vendor, and keep their details current.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Onboards a Last Mile Driver | People | New driver joins | Driver record created and activated | Both |
+| Registers the driver's vehicle | Vehicle, People | Driver is onboarded | Vehicle recorded against the driver | Both |
+| Tags the driver to a vendor | People, Vendor | Driver and vehicle recorded | Driver linked to the vendor | Both |
 | Updates a driver's details | People | Driver's details change | Record updated | Both |
 
 *Job: Assign each driver a pay structure, with the Team Lead and Central Logistics Ops.*
@@ -555,11 +557,11 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 |---|---|---|---|---|
 | Masks phone numbers on a call | People | Call between a Customer and a driver | Call connects without exposing numbers | Both |
 
-*Responsibility: Hold vendors and their vehicles.*
+*Responsibility: Hold vendors, their vehicles and their drivers.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Holds vendors and their vehicles | Vendor, Vehicle | Vendor onboarded or vehicle recorded | Records held | Both |
+| Holds vendors, their vehicles and their drivers | Vendor, Vehicle, People | Vendor onboarded, or a driver and vehicle tagged to it | Records held | Both |
 
 *Responsibility: Receive each order with its details, and apply cancellations and changes, including after dispatch.*
 

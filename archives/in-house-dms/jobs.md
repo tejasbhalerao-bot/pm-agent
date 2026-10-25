@@ -29,7 +29,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 - Receive returned consignments from the mid-mile vehicle, scan and unload them, catch anything missing, damaged or mismatched, and hand the parcels to WH Ops.
 
 ## DC Executive
-- Onboard the DC's Last Mile Drivers and keep their details current.
+- Onboard the DC's Last Mile Drivers with their vehicles, tag each to a vendor, and keep their details current.
 - Assign each driver a pay structure, with the Team Lead and Central Logistics Ops.
 - Assign and recover devices and vehicles, and handle a lost or broken device.
 - Keep the DC's Last Mile Drivers ready and accounted for each day.
@@ -117,7 +117,7 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 - Mask phone numbers between Customers and Drivers.
 
 **Vendors**
-- Hold vendors and their vehicles.
+- Hold vendors, their vehicles and their drivers.
 
 **Orders and shipments**
 - Receive each order with its details, and apply cancellations and changes, including after dispatch.
