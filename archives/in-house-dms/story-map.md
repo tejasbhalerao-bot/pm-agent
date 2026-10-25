@@ -381,9 +381,9 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | Last Mile Driver | Navigates to the Customer's location | Last Mile Driver: Navigates to the Customer's location |
 | Story | Last Mile Driver / Customer | Calls the Customer through the app | Last Mile Driver: Calls the Customer through the app; Customer: Calls the driver through the app |
 | Story | System | Masks phone numbers on a call | System: Masks phone numbers on a call |
-| Exception | Last Mile Driver | Continues working in the app without a network | Last Mile Driver: Continues working in the app without a network |
-| Exception | Last Mile Driver | Syncs held actions | Last Mile Driver: Syncs held actions |
-| Exception | System | Holds actions taken offline and syncs them | System: Holds actions taken offline and syncs them |
+| Exception | Last Mile Driver | Works offline | Last Mile Driver: Works offline |
+| Exception | Last Mile Driver | Syncs offline work | Last Mile Driver: Syncs offline work |
+| Exception | System | Saves and syncs offline work | System: Saves and syncs offline work |
 
 ##### Tracks the order
 

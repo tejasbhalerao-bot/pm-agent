@@ -357,8 +357,8 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Continues working in the app without a network | Device | Network is lost | Actions held on the device | Both |
-| Syncs held actions | Device, Shipment | Network returns | Held actions sent; statuses updated | Both |
+| Works offline | Device | Network is lost | Work saved on the device | Both |
+| Syncs offline work | Device, Shipment | Network returns | Offline work sent; statuses updated | Both |
 
 *Job: Get help fast in an accident, breakdown or emergency.*
 
@@ -729,7 +729,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Holds actions taken offline and syncs them | Device, Shipment | Network lost, then restored | Actions sent and statuses updated | Both |
+| Saves and syncs offline work | Device, Shipment | Network lost, then restored | Work saved offline, then sent and statuses updated | Both |
 
 *Responsibility: Hold each driver's salary structure (per order delivered, or fixed with fuel expenses) and the incentive schemes that apply to them.*
 
