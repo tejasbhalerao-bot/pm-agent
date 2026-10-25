@@ -16,5 +16,9 @@ The things actors act on.
 12. Money
 13. Ticket
 14. Vendor
+15. Payout
+16. Incentive
 
 Serving Location is where an order is served from, and Serviced Location is where it is served to. In Forward, these are warehouses and DCs, and the Customer's location. In Reverse, they flip.
+
+Money covers the reconciliation of cash and payments. Payout is the pay a driver earns and what is paid out for it. Incentive is what a driver earns on top of salary.
