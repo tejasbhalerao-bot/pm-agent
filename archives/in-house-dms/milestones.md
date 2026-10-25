@@ -1,6 +1,6 @@
 # Milestones
 
-Each milestone is a complete slice that can run in production. A card that is not built in a milestone is either handled manually, handled with a system-assisted workaround, or not needed yet, and every manual or assisted card has an owner. How each card is handled in each milestone is recorded on the card in [story-map.md](story-map.md).
+Each milestone is a complete slice that can run in production. A card that is not built in a milestone is either handled manually, handled with a system-assisted workaround, or not needed yet, and every manual or assisted card has an owner. A story follows its card unless it is listed under the stories that differ. How each card is handled in each milestone is recorded on the card in [story-map.md](story-map.md).
 
 ## Overview
 
@@ -13,7 +13,9 @@ Each milestone is a complete slice that can run in production. A card that is no
 
 One DC and its warehouse run Forward orders end to end, via a DC and directly from the warehouse, including failed deliveries and cash. Workarounds cover what is not built yet.
 
-Built 22 · System-assisted 11 · Manual 28 · Not needed 4
+Cards: Built 22 · System-assisted 11 · Manual 28 · Not needed 4
+
+Stories: Built 70 · System-assisted 48 · Manual 80 · Not needed 9
 
 **Built**
 
@@ -78,7 +80,9 @@ Built 22 · System-assisted 11 · Manual 28 · Not needed 4
 
 Returns, cash reconciliation, serviceability and driver management move into the system.
 
-Built 37 · System-assisted 5 · Manual 19 · Not needed 4
+Cards: Built 37 · System-assisted 5 · Manual 19 · Not needed 4
+
+Stories: Built 129 · System-assisted 18 · Manual 51 · Not needed 9
 
 **Built in this milestone**
 
@@ -128,7 +132,9 @@ Built 37 · System-assisted 5 · Manual 19 · Not needed 4
 
 Driver pay, incentives, vendor payouts, tickets and Customer tracking move into the system.
 
-Built 57 · System-assisted 3 · Manual 3 · Not needed 2
+Cards: Built 57 · System-assisted 3 · Manual 3 · Not needed 2
+
+Stories: Built 184 · System-assisted 10 · Manual 8 · Not needed 5
 
 **Built in this milestone**
 
@@ -161,7 +167,9 @@ Built 57 · System-assisted 3 · Manual 3 · Not needed 2
 
 Capacity planning, monitoring, reporting and vehicle tracking.
 
-Built 65 · System-assisted 0 · Manual 0 · Not needed 0
+Cards: Built 65 · System-assisted 0 · Manual 0 · Not needed 0
+
+Stories: Built 207 · System-assisted 0 · Manual 0 · Not needed 0
 
 **Built in this milestone**
 
@@ -178,3 +186,18 @@ Built 65 · System-assisted 0 · Manual 0 · Not needed 0
 **Not needed yet**
 
 - None
+
+## Stories that differ from their card
+
+| Card | Story | M1 | M2 | M3 | M4 |
+|---|---|---|---|---|---|
+| Onboards a driver | Checks a driver's documents | Manual | Built | Built | Built |
+| Onboards a driver | Holds a driver's documents | System-assisted | Built | Built | Built |
+| Looks after the driver | Updates a driver's details | Built | Built | Built | Built |
+| Looks after the driver | Holds a driver's status and document check results | Built | Built | Built | Built |
+| Creates batches and routes and allocates drivers | Sends the orders and pickups to the driver's app | Built | Built | Built | Built |
+| Creates batches and routes and allocates drivers | Triggers a replan | Manual | Manual | Built | Built |
+| Creates batches and routes and allocates drivers | Replans the affected batches and routes | Manual | Manual | Built | Built |
+| Creates batches and routes and allocates drivers | Accepts the new plan or rearranges it | Manual | Manual | Built | Built |
+| Tracks the order | Updates status and location | Built | Built | Built | Built |
+| Receives the order and confirms | Reschedules a delivery | Manual | Manual | Built | Built |

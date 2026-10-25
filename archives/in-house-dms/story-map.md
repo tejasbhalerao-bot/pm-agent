@@ -1,6 +1,6 @@
 # Story map
 
-The end-to-end story of the system, in the style of Jeff Patton's story mapping. Chapters run in order. Within a chapter, activities run left to right in the order they happen. Each activity holds tasks, and each task holds its stories, which point to their actions as Actor: Action. Exceptions are marked, and tasks carry the flows they belong to and how they are handled in each milestone.
+The end-to-end story of the system, in the style of Jeff Patton's story mapping. Chapters run in order. Within a chapter, activities run left to right in the order they happen. Each activity holds tasks, and each task holds its stories, which point to their actions as Actor: Action. Exceptions are marked, and tasks carry the flows they belong to and how they are handled in each milestone. A story follows its task's handling unless its own Milestones column says otherwise.
 
 ## Chapter 1. Get ready
 
@@ -18,16 +18,16 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 System-assisted · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Central Logistics Ops | Creates the serving locations | Central Logistics Ops: Creates the serving locations |
-| Story | Central Logistics Ops | Creates the zones of a serving location | Central Logistics Ops: Creates the zones of a serving location |
-| Story | Central Logistics Ops | Maps each zone to a hub | Central Logistics Ops: Maps each zone to a hub |
-| Story | Central Logistics Ops | Maps pincodes to zones | Central Logistics Ops: Maps pincodes to zones |
-| Story | Central Logistics Ops | Links warehouses and DCs | Central Logistics Ops: Links warehouses and DCs |
-| Story | Central Logistics Ops | Sets whether a location uses the direct flow or the DC flow | Central Logistics Ops: Sets whether a location uses the direct flow or the DC flow |
-| Story | System | Holds serving locations, zones and serviced locations | System: Holds serving locations, zones and serviced locations |
-| Story | System | Holds the links and the flow per location | System: Holds the links and the flow per location |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Central Logistics Ops | Creates the serving locations | Central Logistics Ops: Creates the serving locations |  |
+| Story | Central Logistics Ops | Creates the zones of a serving location | Central Logistics Ops: Creates the zones of a serving location |  |
+| Story | Central Logistics Ops | Maps each zone to a hub | Central Logistics Ops: Maps each zone to a hub |  |
+| Story | Central Logistics Ops | Maps pincodes to zones | Central Logistics Ops: Maps pincodes to zones |  |
+| Story | Central Logistics Ops | Links warehouses and DCs | Central Logistics Ops: Links warehouses and DCs |  |
+| Story | Central Logistics Ops | Sets whether a location uses the direct flow or the DC flow | Central Logistics Ops: Sets whether a location uses the direct flow or the DC flow |  |
+| Story | System | Holds serving locations, zones and serviced locations | System: Holds serving locations, zones and serviced locations |  |
+| Story | System | Holds the links and the flow per location | System: Holds the links and the flow per location |  |
 
 ##### Defines the rules the system runs on
 
@@ -35,13 +35,13 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 System-assisted · M2 System-assisted · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Central Logistics Ops | Defines SLAs | Central Logistics Ops: Defines SLAs |
-| Story | Central Logistics Ops | Defines batching and allocation rules | Central Logistics Ops: Defines batching and allocation rules |
-| Story | Central Logistics Ops | Defines delivery attempts and cut-offs | Central Logistics Ops: Defines delivery attempts and cut-offs |
-| Story | Central Logistics Ops | Defines penalties | Central Logistics Ops: Defines penalties |
-| Story | System | Applies the rules | System: Applies the rules |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Central Logistics Ops | Defines SLAs | Central Logistics Ops: Defines SLAs |  |
+| Story | Central Logistics Ops | Defines batching and allocation rules | Central Logistics Ops: Defines batching and allocation rules |  |
+| Story | Central Logistics Ops | Defines delivery attempts and cut-offs | Central Logistics Ops: Defines delivery attempts and cut-offs |  |
+| Story | Central Logistics Ops | Defines penalties | Central Logistics Ops: Defines penalties |  |
+| Story | System | Applies the rules | System: Applies the rules |  |
 
 ##### Defines driver pay and incentives
 
@@ -49,11 +49,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Central Logistics Ops | Defines salary structures | Central Logistics Ops: Defines salary structures |
-| Story | Central Logistics Ops | Defines incentive schemes | Central Logistics Ops: Defines incentive schemes |
-| Story | System | Holds driver pay structures and incentive schemes | System: Holds driver pay structures and incentive schemes |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Central Logistics Ops | Defines salary structures | Central Logistics Ops: Defines salary structures |  |
+| Story | Central Logistics Ops | Defines incentive schemes | Central Logistics Ops: Defines incentive schemes |  |
+| Story | System | Holds driver pay structures and incentive schemes | System: Holds driver pay structures and incentive schemes |  |
 
 ##### Sets up users and their access
 
@@ -61,14 +61,14 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 System-assisted · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Central Logistics Ops | Defines roles and what each can do | Central Logistics Ops: Defines roles and what each can do |
-| Story | Central Logistics Ops | Assigns roles to users | Central Logistics Ops: Assigns roles to users |
-| Story | Team Lead | Creates a user and assigns a role | Team Lead: Creates a user and assigns a role |
-| Story | Team Lead | Changes or removes a user's access | Team Lead: Changes or removes a user's access |
-| Story | System | Holds users, drivers and Customers | System: Holds users, drivers and Customers |
-| Story | System | Enforces who can do what | System: Enforces who can do what |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Central Logistics Ops | Defines roles and what each can do | Central Logistics Ops: Defines roles and what each can do |  |
+| Story | Central Logistics Ops | Assigns roles to users | Central Logistics Ops: Assigns roles to users |  |
+| Story | Team Lead | Creates a user and assigns a role | Team Lead: Creates a user and assigns a role |  |
+| Story | Team Lead | Changes or removes a user's access | Team Lead: Changes or removes a user's access |  |
+| Story | System | Holds users, drivers and Customers | System: Holds users, drivers and Customers |  |
+| Story | System | Enforces who can do what | System: Enforces who can do what |  |
 
 ##### Onboards vendors
 
@@ -76,11 +76,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 System-assisted · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Team Lead | Onboards a vendor | Team Lead: Onboards a vendor |
-| Story | Team Lead | Updates or deactivates a vendor | Team Lead: Updates or deactivates a vendor |
-| Story | System | Holds vendors, their vehicles and their drivers | System: Holds vendors, their vehicles and their drivers |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Team Lead | Onboards a vendor | Team Lead: Onboards a vendor |  |
+| Story | Team Lead | Updates or deactivates a vendor | Team Lead: Updates or deactivates a vendor |  |
+| Story | System | Holds vendors, their vehicles and their drivers | System: Holds vendors, their vehicles and their drivers |  |
 
 ### Row 2
 
@@ -94,15 +94,15 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | DC Executive / Dispatcher | Onboards a Last Mile Driver | DC Executive: Onboards a Last Mile Driver |
-| Story | DC Executive / Dispatcher | Registers the driver's vehicle | DC Executive: Registers the driver's vehicle |
-| Story | DC Executive / Dispatcher | Assigns a device to the driver | DC Executive: Assigns a device to the driver |
-| Story | DC Executive / Dispatcher | Tags the driver to a vendor | DC Executive: Tags the driver to a vendor |
-| Story | Team Lead | Checks a driver's documents | Team Lead: Checks a driver's documents |
-| Story | System | Holds a driver's documents | System: Holds a driver's documents |
-| Story | System | Registers a device and records its holder | System: Registers a device and records its holder |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | DC Executive / Dispatcher | Onboards a Last Mile Driver | DC Executive: Onboards a Last Mile Driver |  |
+| Story | DC Executive / Dispatcher | Registers the driver's vehicle | DC Executive: Registers the driver's vehicle |  |
+| Story | DC Executive / Dispatcher | Assigns a device to the driver | DC Executive: Assigns a device to the driver |  |
+| Story | DC Executive / Dispatcher | Tags the driver to a vendor | DC Executive: Tags the driver to a vendor |  |
+| Story | Team Lead | Checks a driver's documents | Team Lead: Checks a driver's documents | M1 Manual · M2 Built · M3 Built · M4 Built |
+| Story | System | Holds a driver's documents | System: Holds a driver's documents | M1 System-assisted · M2 Built · M3 Built · M4 Built |
+| Story | System | Registers a device and records its holder | System: Registers a device and records its holder |  |
 
 ##### Sets the driver's serviceability
 
@@ -110,11 +110,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 System-assisted · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | DC Executive / Dispatcher | Assigns the zones and pincodes a driver serves | DC Executive: Assigns the zones and pincodes a driver serves |
-| Story | DC Executive / Dispatcher | Excludes pincodes a driver does not serve | DC Executive: Excludes pincodes a driver does not serve |
-| Story | System | Holds a driver's serviceability | System: Holds a driver's serviceability |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | DC Executive / Dispatcher | Assigns the zones and pincodes a driver serves | DC Executive: Assigns the zones and pincodes a driver serves |  |
+| Story | DC Executive / Dispatcher | Excludes pincodes a driver does not serve | DC Executive: Excludes pincodes a driver does not serve |  |
+| Story | System | Holds a driver's serviceability | System: Holds a driver's serviceability |  |
 
 ##### Agrees the driver's pay structure
 
@@ -122,11 +122,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | DC Executive / Dispatcher | Assigns a pay structure to a driver | DC Executive: Assigns a pay structure to a driver |
-| Story | Team Lead | Confirms a driver's pay structure | Team Lead: Confirms a driver's pay structure |
-| Story | Central Logistics Ops | Confirms a driver's pay structure | Central Logistics Ops: Confirms a driver's pay structure |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | DC Executive / Dispatcher | Assigns a pay structure to a driver | DC Executive: Assigns a pay structure to a driver |  |
+| Story | Team Lead | Confirms a driver's pay structure | Team Lead: Confirms a driver's pay structure |  |
+| Story | Central Logistics Ops | Confirms a driver's pay structure | Central Logistics Ops: Confirms a driver's pay structure |  |
 
 ##### Looks after the driver
 
@@ -134,16 +134,16 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | DC Executive / Dispatcher | Updates a driver's details | DC Executive: Updates a driver's details |
-| Story | Team Lead | Reviews a driver's performance | Team Lead: Reviews a driver's performance |
-| Story | Team Lead | Suspends a driver | Team Lead: Suspends a driver |
-| Story | Team Lead | Exits a driver | Team Lead: Exits a driver |
-| Story | DC Executive / Dispatcher | Recovers the device and vehicle | DC Executive: Recovers the device and vehicle |
-| Story | Team Lead | Reviews the city's vehicles and devices | Team Lead: Reviews the city's vehicles and devices |
-| Exception | DC Executive / Dispatcher | Handles a lost or broken device | DC Executive: Handles a lost or broken device |
-| Story | System | Holds a driver's status and document check results | System: Holds a driver's status and document check results |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | DC Executive / Dispatcher | Updates a driver's details | DC Executive: Updates a driver's details | M1 Built · M2 Built · M3 Built · M4 Built |
+| Story | Team Lead | Reviews a driver's performance | Team Lead: Reviews a driver's performance |  |
+| Story | Team Lead | Suspends a driver | Team Lead: Suspends a driver |  |
+| Story | Team Lead | Exits a driver | Team Lead: Exits a driver |  |
+| Story | DC Executive / Dispatcher | Recovers the device and vehicle | DC Executive: Recovers the device and vehicle |  |
+| Story | Team Lead | Reviews the city's vehicles and devices | Team Lead: Reviews the city's vehicles and devices |  |
+| Exception | DC Executive / Dispatcher | Handles a lost or broken device | DC Executive: Handles a lost or broken device |  |
+| Story | System | Holds a driver's status and document check results | System: Holds a driver's status and document check results | M1 Built · M2 Built · M3 Built · M4 Built |
 
 ##### Plans the capacity
 
@@ -151,11 +151,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Not needed · M2 Not needed · M3 Not needed · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Central Logistics Ops | Forecasts demand by location | Central Logistics Ops: Forecasts demand by location |
-| Story | Central Logistics Ops | Plans drivers and DC capacity | Central Logistics Ops: Plans drivers and DC capacity |
-| Story | Team Lead | Plans drivers and DC capacity for a new location | Team Lead: Plans drivers and DC capacity for a new location |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Central Logistics Ops | Forecasts demand by location | Central Logistics Ops: Forecasts demand by location |  |
+| Story | Central Logistics Ops | Plans drivers and DC capacity | Central Logistics Ops: Plans drivers and DC capacity |  |
+| Story | Team Lead | Plans drivers and DC capacity for a new location | Team Lead: Plans drivers and DC capacity for a new location |  |
 
 ##### Keeps enough drivers on shift
 
@@ -163,12 +163,12 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Team Lead | Reviews drivers on shift against each location's expected orders | Team Lead: Reviews drivers on shift against each location's expected orders |
-| Story | DC Executive / Dispatcher | Checks the drivers on duty | DC Executive: Checks the drivers on duty |
-| Exception | Team Lead | Arranges cover for leave and absences | Team Lead: Arranges cover for leave and absences |
-| Story | System | Shows who is on duty | System: Shows who is on duty |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Team Lead | Reviews drivers on shift against each location's expected orders | Team Lead: Reviews drivers on shift against each location's expected orders |  |
+| Story | DC Executive / Dispatcher | Checks the drivers on duty | DC Executive: Checks the drivers on duty |  |
+| Exception | Team Lead | Arranges cover for leave and absences | Team Lead: Arranges cover for leave and absences |  |
+| Story | System | Shows who is on duty | System: Shows who is on duty |  |
 
 ##### Starts the shift
 
@@ -176,11 +176,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Last Mile Driver | Marks duty start | Last Mile Driver: Marks duty start |
-| Story | Last Mile Driver | Confirms the device and vehicle in use | Last Mile Driver: Confirms the device and vehicle in use |
-| Story | System | Records attendance and duty status | System: Records attendance and duty status |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Last Mile Driver | Marks duty start | Last Mile Driver: Marks duty start |  |
+| Story | Last Mile Driver | Confirms the device and vehicle in use | Last Mile Driver: Confirms the device and vehicle in use |  |
+| Story | System | Records attendance and duty status | System: Records attendance and duty status |  |
 
 ## Chapter 2. From order to doorstep
 
@@ -198,13 +198,13 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | System | Receives an order with its details | System: Receives an order with its details |
-| Story | System | Creates a shipment | System: Creates a shipment |
-| Exception | Customer | Updates the delivery address or phone number | Customer: Updates the delivery address or phone number |
-| Exception | Customer | Cancels an order | Customer: Cancels an order |
-| Exception | System | Applies a cancellation or change | System: Applies a cancellation or change |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | System | Receives an order with its details | System: Receives an order with its details |  |
+| Story | System | Creates a shipment | System: Creates a shipment |  |
+| Exception | Customer | Updates the delivery address or phone number | Customer: Updates the delivery address or phone number |  |
+| Exception | Customer | Cancels an order | Customer: Cancels an order |  |
+| Exception | System | Applies a cancellation or change | System: Applies a cancellation or change |  |
 
 ##### Generates the AWB and decides the path
 
@@ -212,11 +212,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | System | Generates a barcode | System: Generates a barcode |
-| Story | System | Generates the AWB | System: Generates the AWB |
-| Story | System | Decides the path | System: Decides the path |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | System | Generates a barcode | System: Generates a barcode |  |
+| Story | System | Generates the AWB | System: Generates the AWB |  |
+| Story | System | Decides the path | System: Decides the path |  |
 
 ##### Prints the AWB
 
@@ -224,9 +224,9 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | WH Ops | Prints the AWB | WH Ops: Prints the AWB |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | WH Ops | Prints the AWB | WH Ops: Prints the AWB |  |
 
 ##### Hands the shipments to the Dispatcher
 
@@ -234,12 +234,12 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | WH Ops | Hands ready shipments to the Dispatcher | WH Ops: Hands ready shipments to the Dispatcher |
-| Story | WH Ops | Scans each shipment at handover | WH Ops: Scans each shipment at handover |
-| Story | System | Generates a manifest | System: Generates a manifest |
-| Story | System | Records scans against the manifest | System: Records scans against the manifest |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | WH Ops | Hands ready shipments to the Dispatcher | WH Ops: Hands ready shipments to the Dispatcher |  |
+| Story | WH Ops | Scans each shipment at handover | WH Ops: Scans each shipment at handover |  |
+| Story | System | Generates a manifest | System: Generates a manifest |  |
+| Story | System | Records scans against the manifest | System: Records scans against the manifest |  |
 
 ##### Adds gel packs where needed
 
@@ -247,10 +247,10 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Dispatcher | Adds gel packs to orders that need them | Dispatcher: Adds gel packs to orders that need them |
-| Story | System | Flags orders that need gel packs | System: Flags orders that need gel packs |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Dispatcher | Adds gel packs to orders that need them | Dispatcher: Adds gel packs to orders that need them |  |
+| Story | System | Flags orders that need gel packs | System: Flags orders that need gel packs |  |
 
 #### Activity 4. Dispatch via a DC
 
@@ -264,9 +264,9 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Dispatcher | Sorts shipments into bins by destination | Dispatcher: Sorts shipments into bins by destination |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Dispatcher | Sorts shipments into bins by destination | Dispatcher: Sorts shipments into bins by destination |  |
 
 ##### Builds the consignment
 
@@ -274,10 +274,10 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Dispatcher | Scans shipments into a consignment | Dispatcher: Scans shipments into a consignment |
-| Story | System | Creates a consignment | System: Creates a consignment |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Dispatcher | Scans shipments into a consignment | Dispatcher: Scans shipments into a consignment |  |
+| Story | System | Creates a consignment | System: Creates a consignment |  |
 
 ##### Plan the trip together
 
@@ -285,11 +285,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Dispatcher | Plans mid-mile departures with the Team Lead | Dispatcher: Plans mid-mile departures with the Team Lead |
-| Story | Team Lead | Plans mid-mile departures with the Dispatcher | Team Lead: Plans mid-mile departures with the Dispatcher |
-| Story | System | Shows the consignments ready to move | System: Shows the consignments ready to move |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Dispatcher | Plans mid-mile departures with the Team Lead | Dispatcher: Plans mid-mile departures with the Team Lead |  |
+| Story | Team Lead | Plans mid-mile departures with the Dispatcher | Team Lead: Plans mid-mile departures with the Dispatcher |  |
+| Story | System | Shows the consignments ready to move | System: Shows the consignments ready to move |  |
 
 ##### Records the vendor, vehicle and driver
 
@@ -297,10 +297,10 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Dispatcher | Records the vendor, vehicle number, and the driver's name and phone | Dispatcher: Records the vendor, vehicle number, and the driver's name and phone |
-| Story | System | Records the vendor, vehicle and driver details | System: Records the vendor, vehicle and driver details |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Dispatcher | Records the vendor, vehicle number, and the driver's name and phone | Dispatcher: Records the vendor, vehicle number, and the driver's name and phone |  |
+| Story | System | Records the vendor, vehicle and driver details | System: Records the vendor, vehicle and driver details |  |
 
 ##### Loads the consignment and scans the handover
 
@@ -308,9 +308,9 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Dispatcher | Loads the consignment and scans the handover | Dispatcher: Loads the consignment and scans the handover |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Dispatcher | Loads the consignment and scans the handover | Dispatcher: Loads the consignment and scans the handover |  |
 
 ### Row 2
 
@@ -324,12 +324,12 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Manual · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Mid-Mile Driver | Drives the consignment from the origin to the destination | Mid-Mile Driver: Drives the consignment from the origin to the destination |
-| Story | System | Shows the live location of a vehicle | System: Shows the live location of a vehicle |
-| Story | Dispatcher / DC Executive | Views the live location of a mid-mile vehicle | Dispatcher: Views the live location of a mid-mile vehicle; DC Executive: Views the live location of a mid-mile vehicle |
-| Exception | Dispatcher / DC Executive | Flags a consignment as lost, damaged or delayed | Dispatcher: Flags a consignment as lost, damaged or delayed; DC Executive: Flags a consignment as lost, damaged or delayed |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Mid-Mile Driver | Drives the consignment from the origin to the destination | Mid-Mile Driver: Drives the consignment from the origin to the destination |  |
+| Story | System | Shows the live location of a vehicle | System: Shows the live location of a vehicle |  |
+| Story | Dispatcher / DC Executive | Views the live location of a mid-mile vehicle | Dispatcher: Views the live location of a mid-mile vehicle; DC Executive: Views the live location of a mid-mile vehicle |  |
+| Exception | Dispatcher / DC Executive | Flags a consignment as lost, damaged or delayed | Dispatcher: Flags a consignment as lost, damaged or delayed; DC Executive: Flags a consignment as lost, damaged or delayed |  |
 
 #### Activity 6. Receive and sort at the DC
 
@@ -341,12 +341,12 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | DC Executive | Receives the consignment from the vehicle | DC Executive: Receives the consignment from the vehicle |
-| Story | DC Executive | Scans and unloads the consignment | DC Executive: Scans and unloads the consignment |
-| Exception | DC Executive | Flags anything missing, damaged or mismatched | DC Executive: Flags anything missing, damaged or mismatched |
-| Exception | System | Flags missing or mismatched items | System: Flags missing or mismatched items |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | DC Executive | Receives the consignment from the vehicle | DC Executive: Receives the consignment from the vehicle |  |
+| Story | DC Executive | Scans and unloads the consignment | DC Executive: Scans and unloads the consignment |  |
+| Exception | DC Executive | Flags anything missing, damaged or mismatched | DC Executive: Flags anything missing, damaged or mismatched |  |
+| Exception | System | Flags missing or mismatched items | System: Flags missing or mismatched items |  |
 
 ##### Sorts each shipment into its bin
 
@@ -354,11 +354,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | DC Executive | Sorts each shipment into its bin | DC Executive: Sorts each shipment into its bin |
-| Story | System | Shows which bin a shipment belongs in | System: Shows which bin a shipment belongs in |
-| Story | System | Tracks bin contents | System: Tracks bin contents |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | DC Executive | Sorts each shipment into its bin | DC Executive: Sorts each shipment into its bin |  |
+| Story | System | Shows which bin a shipment belongs in | System: Shows which bin a shipment belongs in |  |
+| Story | System | Tracks bin contents | System: Tracks bin contents |  |
 
 #### Activity 7. Plan the deliveries
 
@@ -370,15 +370,15 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 System-assisted · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | System | Creates delivery batches | System: Creates delivery batches |
-| Story | System | Creates routes | System: Creates routes |
-| Story | System | Allocates Last Mile Drivers | System: Allocates Last Mile Drivers |
-| Story | System | Sends the orders and pickups to the driver's app | System: Sends the orders and pickups to the driver's app |
-| Exception | DC Executive / Dispatcher | Triggers a replan | DC Executive: Triggers a replan |
-| Exception | System | Replans the affected batches and routes | System: Replans the affected batches and routes |
-| Exception | DC Executive / Dispatcher | Accepts the new plan or rearranges it | DC Executive: Accepts the new plan or rearranges it |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | System | Creates delivery batches | System: Creates delivery batches |  |
+| Story | System | Creates routes | System: Creates routes |  |
+| Story | System | Allocates Last Mile Drivers | System: Allocates Last Mile Drivers |  |
+| Story | System | Sends the orders and pickups to the driver's app | System: Sends the orders and pickups to the driver's app | M1 Built · M2 Built · M3 Built · M4 Built |
+| Exception | DC Executive / Dispatcher | Triggers a replan | DC Executive: Triggers a replan | M1 Manual · M2 Manual · M3 Built · M4 Built |
+| Exception | System | Replans the affected batches and routes | System: Replans the affected batches and routes | M1 Manual · M2 Manual · M3 Built · M4 Built |
+| Exception | DC Executive / Dispatcher | Accepts the new plan or rearranges it | DC Executive: Accepts the new plan or rearranges it | M1 Manual · M2 Manual · M3 Built · M4 Built |
 
 #### Activity 8. Pick up the batch
 
@@ -390,11 +390,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Last Mile Driver | Views the assigned batch and the pickup point | Last Mile Driver: Views the assigned batch and the pickup point |
-| Story | Last Mile Driver | Picks the assigned orders from the bin | Last Mile Driver: Picks the assigned orders from the bin |
-| Story | Last Mile Driver | Takes the orders to the DC Executive | Last Mile Driver: Takes the orders to the DC Executive |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Last Mile Driver | Views the assigned batch and the pickup point | Last Mile Driver: Views the assigned batch and the pickup point |  |
+| Story | Last Mile Driver | Picks the assigned orders from the bin | Last Mile Driver: Picks the assigned orders from the bin |  |
+| Story | Last Mile Driver | Takes the orders to the DC Executive | Last Mile Driver: Takes the orders to the DC Executive |  |
 
 ##### Scans the orders the driver brings
 
@@ -402,11 +402,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | DC Executive / Dispatcher | Scans the orders the driver brings | DC Executive: Scans the orders the driver brings |
-| Story | System | Resolves a scan to its entity | System: Resolves a scan to its entity |
-| Exception | System | Rejects an invalid or duplicate scan | System: Rejects an invalid or duplicate scan |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | DC Executive / Dispatcher | Scans the orders the driver brings | DC Executive: Scans the orders the driver brings |  |
+| Story | System | Resolves a scan to its entity | System: Resolves a scan to its entity |  |
+| Exception | System | Rejects an invalid or duplicate scan | System: Rejects an invalid or duplicate scan |  |
 
 ### Row 3
 
@@ -420,15 +420,15 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Last Mile Driver | Views the route for the batch | Last Mile Driver: Views the route for the batch |
-| Story | Last Mile Driver | Navigates to the Customer's location | Last Mile Driver: Navigates to the Customer's location |
-| Story | Last Mile Driver / Customer | Calls the Customer through the app | Last Mile Driver: Calls the Customer through the app; Customer: Calls the driver through the app |
-| Story | System | Masks phone numbers on a call | System: Masks phone numbers on a call |
-| Exception | Last Mile Driver | Works offline | Last Mile Driver: Works offline |
-| Exception | Last Mile Driver | Syncs offline work | Last Mile Driver: Syncs offline work |
-| Exception | System | Saves and syncs offline work | System: Saves and syncs offline work |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Last Mile Driver | Views the route for the batch | Last Mile Driver: Views the route for the batch |  |
+| Story | Last Mile Driver | Navigates to the Customer's location | Last Mile Driver: Navigates to the Customer's location |  |
+| Story | Last Mile Driver / Customer | Calls the Customer through the app | Last Mile Driver: Calls the Customer through the app; Customer: Calls the driver through the app |  |
+| Story | System | Masks phone numbers on a call | System: Masks phone numbers on a call |  |
+| Exception | Last Mile Driver | Works offline | Last Mile Driver: Works offline |  |
+| Exception | Last Mile Driver | Syncs offline work | Last Mile Driver: Syncs offline work |  |
+| Exception | System | Saves and syncs offline work | System: Saves and syncs offline work |  |
 
 ##### Tracks the order
 
@@ -436,12 +436,12 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 System-assisted · M2 System-assisted · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Customer | Views the expected arrival and status of the order | Customer: Views the expected arrival and status of the order |
-| Story | Customer | Receives notices about changes | Customer: Receives notices about changes |
-| Story | System | Updates status and location | System: Updates status and location |
-| Story | System | Sends a notice | System: Sends a notice |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Customer | Views the expected arrival and status of the order | Customer: Views the expected arrival and status of the order |  |
+| Story | Customer | Receives notices about changes | Customer: Receives notices about changes |  |
+| Story | System | Updates status and location | System: Updates status and location | M1 Built · M2 Built · M3 Built · M4 Built |
+| Story | System | Sends a notice | System: Sends a notice |  |
 
 ##### Receives the order and confirms
 
@@ -449,12 +449,12 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Customer | Receives the order from the driver | Customer: Receives the order from the driver |
-| Story | Customer | Confirms receipt | Customer: Confirms receipt |
-| Exception | Customer | Reschedules a delivery | Customer: Reschedules a delivery |
-| Exception | Customer | Rejects a delivery at the door | Customer: Rejects a delivery at the door |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Customer | Receives the order from the driver | Customer: Receives the order from the driver |  |
+| Story | Customer | Confirms receipt | Customer: Confirms receipt |  |
+| Exception | Customer | Reschedules a delivery | Customer: Reschedules a delivery | M1 Manual · M2 Manual · M3 Built · M4 Built |
+| Exception | Customer | Rejects a delivery at the door | Customer: Rejects a delivery at the door |  |
 
 ##### Collects proof of delivery
 
@@ -462,10 +462,10 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Last Mile Driver | Collects proof of delivery | Last Mile Driver: Collects proof of delivery |
-| Story | System | Keeps the proof of delivery | System: Keeps the proof of delivery |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Last Mile Driver | Collects proof of delivery | Last Mile Driver: Collects proof of delivery |  |
+| Story | System | Keeps the proof of delivery | System: Keeps the proof of delivery |  |
 
 ##### Pays for the order
 
@@ -473,11 +473,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Customer | Pays for the order | Customer: Pays for the order |
-| Story | Last Mile Driver | Collects payment from the Customer | Last Mile Driver: Collects payment from the Customer |
-| Story | System | Records a payment | System: Records a payment |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Customer | Pays for the order | Customer: Pays for the order |  |
+| Story | Last Mile Driver | Collects payment from the Customer | Last Mile Driver: Collects payment from the Customer |  |
+| Story | System | Records a payment | System: Records a payment |  |
 
 ##### Ends the shift
 
@@ -485,10 +485,10 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Last Mile Driver | Marks duty end | Last Mile Driver: Marks duty end |
-| Story | DC Executive / Dispatcher | Confirms each driver is accounted for | DC Executive: Confirms each driver is accounted for |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Last Mile Driver | Marks duty end | Last Mile Driver: Marks duty end |  |
+| Story | DC Executive / Dispatcher | Confirms each driver is accounted for | DC Executive: Confirms each driver is accounted for |  |
 
 #### Activity 10. Reconcile the cash
 
@@ -500,11 +500,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Last Mile Driver | Hands cash in | Last Mile Driver: Hands cash in |
-| Story | DC Executive / Dispatcher | Receives cash from drivers | DC Executive: Receives cash from drivers |
-| Story | System | Records a cash handover | System: Records a cash handover |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Last Mile Driver | Hands cash in | Last Mile Driver: Hands cash in |  |
+| Story | DC Executive / Dispatcher | Receives cash from drivers | DC Executive: Receives cash from drivers |  |
+| Story | System | Records a cash handover | System: Records a cash handover |  |
 
 ##### Records and banks the cash
 
@@ -512,11 +512,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | DC Executive / Dispatcher | Records the cash collected | DC Executive: Records the cash collected |
-| Story | DC Executive / Dispatcher | Deposits the cash in the bank | DC Executive: Deposits the cash in the bank |
-| Story | System | Records a deposit | System: Records a deposit |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | DC Executive / Dispatcher | Records the cash collected | DC Executive: Records the cash collected |  |
+| Story | DC Executive / Dispatcher | Deposits the cash in the bank | DC Executive: Deposits the cash in the bank |  |
+| Story | System | Records a deposit | System: Records a deposit |  |
 
 ##### Matches and approves the cash
 
@@ -524,14 +524,14 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 System-assisted · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | System | Matches them against what was owed | System: Matches them against what was owed |
-| Story | Finance | Reviews cash collected against what was owed | Finance: Reviews cash collected against what was owed |
-| Story | Finance | Approves a cash deposit | Finance: Approves a cash deposit |
-| Story | Finance | Reviews the record of money movements | Finance: Reviews the record of money movements |
-| Exception | DC Executive / Dispatcher | Escalates a mismatch | DC Executive: Escalates a mismatch |
-| Exception | Finance | Closes a discrepancy | Finance: Closes a discrepancy |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | System | Matches them against what was owed | System: Matches them against what was owed |  |
+| Story | Finance | Reviews cash collected against what was owed | Finance: Reviews cash collected against what was owed |  |
+| Story | Finance | Approves a cash deposit | Finance: Approves a cash deposit |  |
+| Story | Finance | Reviews the record of money movements | Finance: Reviews the record of money movements |  |
+| Exception | DC Executive / Dispatcher | Escalates a mismatch | DC Executive: Escalates a mismatch |  |
+| Exception | Finance | Closes a discrepancy | Finance: Closes a discrepancy |  |
 
 ## Chapter 3. When it does not go to plan
 
@@ -549,11 +549,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Built · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Last Mile Driver | Marks the delivery as failed, with a reason | Last Mile Driver: Marks the delivery as failed, with a reason |
-| Story | Last Mile Driver | Brings the parcel back to the DC or warehouse | Last Mile Driver: Brings the parcel back to the DC or warehouse |
-| Story | System | Records a failed delivery and informs the Dispatcher | System: Records a failed delivery and informs the Dispatcher |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Last Mile Driver | Marks the delivery as failed, with a reason | Last Mile Driver: Marks the delivery as failed, with a reason |  |
+| Story | Last Mile Driver | Brings the parcel back to the DC or warehouse | Last Mile Driver: Brings the parcel back to the DC or warehouse |  |
+| Story | System | Records a failed delivery and informs the Dispatcher | System: Records a failed delivery and informs the Dispatcher |  |
 
 ##### Decides between a reattempt and an RTO
 
@@ -561,9 +561,9 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | System | Decides between a reattempt and an RTO | System: Decides between a reattempt and an RTO |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | System | Decides between a reattempt and an RTO | System: Decides between a reattempt and an RTO |  |
 
 ##### Replans the delivery for the next day
 
@@ -571,11 +571,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | DC Executive / Dispatcher | Triggers a replan for the next day | DC Executive: Triggers a replan for the next day |
-| Story | System | Replans a failed delivery for the next day | System: Replans a failed delivery for the next day |
-| Story | DC Executive / Dispatcher | Accepts the new plan or rearranges it | DC Executive: Accepts the new plan or rearranges it |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | DC Executive / Dispatcher | Triggers a replan for the next day | DC Executive: Triggers a replan for the next day |  |
+| Story | System | Replans a failed delivery for the next day | System: Replans a failed delivery for the next day |  |
+| Story | DC Executive / Dispatcher | Accepts the new plan or rearranges it | DC Executive: Accepts the new plan or rearranges it |  |
 
 ##### Schedules the return
 
@@ -583,9 +583,9 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Dispatcher | Schedules the return of a failed delivery | Dispatcher: Schedules the return of a failed delivery |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Dispatcher | Schedules the return of a failed delivery | Dispatcher: Schedules the return of a failed delivery |  |
 
 #### Activity 12. A Customer returns an order
 
@@ -597,10 +597,10 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Customer | Requests a return | Customer: Requests a return |
-| Story | System | Creates the return pickup | System: Creates the return pickup |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Customer | Requests a return | Customer: Requests a return |  |
+| Story | System | Creates the return pickup | System: Creates the return pickup |  |
 
 ##### Schedules the pickup
 
@@ -608,10 +608,10 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Dispatcher | Schedules a return pickup from the Customer | Dispatcher: Schedules a return pickup from the Customer |
-| Story | Customer | Views the pickup time | Customer: Views the pickup time |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Dispatcher | Schedules a return pickup from the Customer | Dispatcher: Schedules a return pickup from the Customer |  |
+| Story | Customer | Views the pickup time | Customer: Views the pickup time |  |
 
 ##### Collects the return
 
@@ -619,13 +619,13 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Last Mile Driver | Views the return pickup and the medicine details | Last Mile Driver: Views the return pickup and the medicine details |
-| Story | System | Shows medicine details on a return pickup | System: Shows medicine details on a return pickup |
-| Story | Last Mile Driver | Checks the medicine against the order details | Last Mile Driver: Checks the medicine against the order details |
-| Story | Customer | Hands the return to the driver | Customer: Hands the return to the driver |
-| Story | Last Mile Driver | Takes the parcel from the Customer | Last Mile Driver: Takes the parcel from the Customer |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Last Mile Driver | Views the return pickup and the medicine details | Last Mile Driver: Views the return pickup and the medicine details |  |
+| Story | System | Shows medicine details on a return pickup | System: Shows medicine details on a return pickup |  |
+| Story | Last Mile Driver | Checks the medicine against the order details | Last Mile Driver: Checks the medicine against the order details |  |
+| Story | Customer | Hands the return to the driver | Customer: Hands the return to the driver |  |
+| Story | Last Mile Driver | Takes the parcel from the Customer | Last Mile Driver: Takes the parcel from the Customer |  |
 
 #### Activity 13. Bring it back to the warehouse
 
@@ -637,10 +637,10 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | DC Executive | Receives returned parcels from drivers and scans them | DC Executive: Receives returned parcels from drivers and scans them |
-| Story | DC Executive | Sends returned shipments back as a consignment | DC Executive: Sends returned shipments back as a consignment |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | DC Executive | Receives returned parcels from drivers and scans them | DC Executive: Receives returned parcels from drivers and scans them |  |
+| Story | DC Executive | Sends returned shipments back as a consignment | DC Executive: Sends returned shipments back as a consignment |  |
 
 ##### Drives the consignment to the warehouse
 
@@ -654,12 +654,12 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Dispatcher | Receives the returned consignment from the vehicle | Dispatcher: Receives the returned consignment from the vehicle |
-| Story | Dispatcher | Scans and unloads the returned consignment | Dispatcher: Scans and unloads the returned consignment |
-| Story | Dispatcher | Hands the returned parcels to WH Ops and scans the handover | Dispatcher: Hands the returned parcels to WH Ops and scans the handover |
-| Exception | Dispatcher | Flags anything missing, damaged or mismatched on receipt | Dispatcher: Flags anything missing, damaged or mismatched on receipt |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Dispatcher | Receives the returned consignment from the vehicle | Dispatcher: Receives the returned consignment from the vehicle |  |
+| Story | Dispatcher | Scans and unloads the returned consignment | Dispatcher: Scans and unloads the returned consignment |  |
+| Story | Dispatcher | Hands the returned parcels to WH Ops and scans the handover | Dispatcher: Hands the returned parcels to WH Ops and scans the handover |  |
+| Exception | Dispatcher | Flags anything missing, damaged or mismatched on receipt | Dispatcher: Flags anything missing, damaged or mismatched on receipt |  |
 
 ##### Receives the returned parcel
 
@@ -667,11 +667,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | WH Ops | Receives the returned parcel | WH Ops: Receives the returned parcel |
-| Story | WH Ops | Scans the parcel on receipt | WH Ops: Scans the parcel on receipt |
-| Exception | WH Ops | Reports damage or mismatch | WH Ops: Reports damage or mismatch |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | WH Ops | Receives the returned parcel | WH Ops: Receives the returned parcel |  |
+| Story | WH Ops | Scans the parcel on receipt | WH Ops: Scans the parcel on receipt |  |
+| Exception | WH Ops | Reports damage or mismatch | WH Ops: Reports damage or mismatch |  |
 
 ## Chapter 4. Keep it running
 
@@ -689,10 +689,10 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | System | Computes a driver's earnings | System: Computes a driver's earnings |
-| Story | System | Tracks incentive progress | System: Tracks incentive progress |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | System | Computes a driver's earnings | System: Computes a driver's earnings |  |
+| Story | System | Tracks incentive progress | System: Tracks incentive progress |  |
 
 ##### Grants incentives to drivers
 
@@ -700,9 +700,9 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Team Lead | Grants an incentive to a driver | Team Lead: Grants an incentive to a driver |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Team Lead | Grants an incentive to a driver | Team Lead: Grants an incentive to a driver |  |
 
 ##### Sees earnings and incentive progress
 
@@ -710,9 +710,9 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Not needed · M2 Not needed · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Last Mile Driver | Views earnings and incentive progress | Last Mile Driver: Views earnings and incentive progress |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Last Mile Driver | Views earnings and incentive progress | Last Mile Driver: Views earnings and incentive progress |  |
 
 #### Activity 15. Pay the vendors
 
@@ -724,9 +724,9 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | System | Rolls driver earnings up per vendor | System: Rolls driver earnings up per vendor |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | System | Rolls driver earnings up per vendor | System: Rolls driver earnings up per vendor |  |
 
 ##### Calculates what each vendor is owed
 
@@ -734,9 +734,9 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Finance | Calculates the amount owed to each vendor | Finance: Calculates the amount owed to each vendor |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Finance | Calculates the amount owed to each vendor | Finance: Calculates the amount owed to each vendor |  |
 
 ##### Pays the vendor
 
@@ -744,10 +744,10 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Finance | Pays the vendor | Finance: Pays the vendor |
-| Story | System | Records a vendor payment | System: Records a vendor payment |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Finance | Pays the vendor | Finance: Pays the vendor |  |
+| Story | System | Records a vendor payment | System: Records a vendor payment |  |
 
 ### Row 2
 
@@ -761,10 +761,10 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Last Mile Driver | Raises a help request | Last Mile Driver: Raises a help request |
-| Story | DC Executive / Dispatcher | Responds to a driver's help request | DC Executive: Responds to a driver's help request |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Last Mile Driver | Raises a help request | Last Mile Driver: Raises a help request |  |
+| Story | DC Executive / Dispatcher | Responds to a driver's help request | DC Executive: Responds to a driver's help request |  |
 
 ##### Raises a payout dispute
 
@@ -772,9 +772,9 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Last Mile Driver | Raises a payout dispute | Last Mile Driver: Raises a payout dispute |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Last Mile Driver | Raises a payout dispute | Last Mile Driver: Raises a payout dispute |  |
 
 ##### Settles the dispute
 
@@ -782,13 +782,13 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | DC Executive / Team Lead | Reviews a payout dispute | DC Executive: Reviews a payout dispute; Team Lead: Reviews a payout dispute |
-| Story | DC Executive / Team Lead | Settles the dispute and informs the driver | DC Executive: Settles the dispute and informs the driver; Team Lead: Settles the dispute and informs the driver |
-| Story | System | Adjusts a driver's earnings after a dispute | System: Adjusts a driver's earnings after a dispute |
-| Exception | DC Executive / Team Lead | Escalates a dispute to Central Logistics Ops | DC Executive: Escalates a dispute to Central Logistics Ops; Team Lead: Escalates a dispute to Central Logistics Ops |
-| Exception | Central Logistics Ops | Settles an escalated payout dispute | Central Logistics Ops: Settles an escalated payout dispute |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | DC Executive / Team Lead | Reviews a payout dispute | DC Executive: Reviews a payout dispute; Team Lead: Reviews a payout dispute |  |
+| Story | DC Executive / Team Lead | Settles the dispute and informs the driver | DC Executive: Settles the dispute and informs the driver; Team Lead: Settles the dispute and informs the driver |  |
+| Story | System | Adjusts a driver's earnings after a dispute | System: Adjusts a driver's earnings after a dispute |  |
+| Exception | DC Executive / Team Lead | Escalates a dispute to Central Logistics Ops | DC Executive: Escalates a dispute to Central Logistics Ops; Team Lead: Escalates a dispute to Central Logistics Ops |  |
+| Exception | Central Logistics Ops | Settles an escalated payout dispute | Central Logistics Ops: Settles an escalated payout dispute |  |
 
 ##### Raises a ticket
 
@@ -796,10 +796,10 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Customer | Raises a ticket | Customer: Raises a ticket |
-| Story | System | Raises and routes a ticket | System: Raises and routes a ticket |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Customer | Raises a ticket | Customer: Raises a ticket |  |
+| Story | System | Raises and routes a ticket | System: Raises and routes a ticket |  |
 
 ##### Resolves the ticket
 
@@ -807,14 +807,14 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Grievance & Escalation Management Team | Reviews a Customer ticket | Grievance & Escalation Management Team: Reviews a Customer ticket |
-| Story | Grievance & Escalation Management Team | Resolves the ticket and informs the Customer | Grievance & Escalation Management Team: Resolves the ticket and informs the Customer |
-| Story | Grievance & Escalation Management Team | Reviews a driver ticket | Grievance & Escalation Management Team: Reviews a driver ticket |
-| Story | Grievance & Escalation Management Team | Resolves the ticket and informs the driver | Grievance & Escalation Management Team: Resolves the ticket and informs the driver |
-| Exception | Grievance & Escalation Management Team | Escalates a ticket | Grievance & Escalation Management Team: Escalates a ticket |
-| Exception | Grievance & Escalation Management Team | Investigates an incident with the Team Lead | Grievance & Escalation Management Team: Investigates an incident with the Team Lead |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Grievance & Escalation Management Team | Reviews a Customer ticket | Grievance & Escalation Management Team: Reviews a Customer ticket |  |
+| Story | Grievance & Escalation Management Team | Resolves the ticket and informs the Customer | Grievance & Escalation Management Team: Resolves the ticket and informs the Customer |  |
+| Story | Grievance & Escalation Management Team | Reviews a driver ticket | Grievance & Escalation Management Team: Reviews a driver ticket |  |
+| Story | Grievance & Escalation Management Team | Resolves the ticket and informs the driver | Grievance & Escalation Management Team: Resolves the ticket and informs the driver |  |
+| Exception | Grievance & Escalation Management Team | Escalates a ticket | Grievance & Escalation Management Team: Escalates a ticket |  |
+| Exception | Grievance & Escalation Management Team | Investigates an incident with the Team Lead | Grievance & Escalation Management Team: Investigates an incident with the Team Lead |  |
 
 ##### Keeps tickets within their time limits
 
@@ -822,11 +822,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Not needed · M2 Not needed · M3 Built · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | System | Tracks a ticket to resolution | System: Tracks a ticket to resolution |
-| Story | Grievance & Escalation Management Team | Tracks tickets against their time limits | Grievance & Escalation Management Team: Tracks tickets against their time limits |
-| Story | Grievance & Escalation Management Team | Follows up on a ticket near its limit | Grievance & Escalation Management Team: Follows up on a ticket near its limit |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | System | Tracks a ticket to resolution | System: Tracks a ticket to resolution |  |
+| Story | Grievance & Escalation Management Team | Tracks tickets against their time limits | Grievance & Escalation Management Team: Tracks tickets against their time limits |  |
+| Story | Grievance & Escalation Management Team | Follows up on a ticket near its limit | Grievance & Escalation Management Team: Follows up on a ticket near its limit |  |
 
 ##### Fixes the root cause
 
@@ -834,10 +834,10 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Not needed · M2 Not needed · M3 Not needed · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Grievance & Escalation Management Team | Reviews tickets for recurring problems | Grievance & Escalation Management Team: Reviews tickets for recurring problems |
-| Story | Grievance & Escalation Management Team | Raises a root-cause fix with the owning team | Grievance & Escalation Management Team: Raises a root-cause fix with the owning team |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Grievance & Escalation Management Team | Reviews tickets for recurring problems | Grievance & Escalation Management Team: Reviews tickets for recurring problems |  |
+| Story | Grievance & Escalation Management Team | Raises a root-cause fix with the owning team | Grievance & Escalation Management Team: Raises a root-cause fix with the owning team |  |
 
 ### Row 3
 
@@ -851,11 +851,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 System-assisted · M2 System-assisted · M3 System-assisted · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Control Tower | Watches live deliveries | Control Tower: Watches live deliveries |
-| Story | Control Tower | Calls out an operational failure | Control Tower: Calls out an operational failure |
-| Story | System | Detects a failure or fraud signal | System: Detects a failure or fraud signal |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Control Tower | Watches live deliveries | Control Tower: Watches live deliveries |  |
+| Story | Control Tower | Calls out an operational failure | Control Tower: Calls out an operational failure |  |
+| Story | System | Detects a failure or fraud signal | System: Detects a failure or fraud signal |  |
 
 ##### Reviews performance and fixes problems
 
@@ -863,12 +863,12 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 System-assisted · M2 System-assisted · M3 System-assisted · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Team Lead | Reviews delivery problems in the city | Team Lead: Reviews delivery problems in the city |
-| Story | Team Lead | Takes action on a delivery problem | Team Lead: Takes action on a delivery problem |
-| Story | Central Logistics Ops | Views performance across the country | Central Logistics Ops: Views performance across the country |
-| Story | Central Logistics Ops | Steps in where performance drops | Central Logistics Ops: Steps in where performance drops |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Team Lead | Reviews delivery problems in the city | Team Lead: Reviews delivery problems in the city |  |
+| Story | Team Lead | Takes action on a delivery problem | Team Lead: Takes action on a delivery problem |  |
+| Story | Central Logistics Ops | Views performance across the country | Central Logistics Ops: Views performance across the country |  |
+| Story | Central Logistics Ops | Steps in where performance drops | Central Logistics Ops: Steps in where performance drops |  |
 
 ##### Investigates loss, fraud and anomalies
 
@@ -876,12 +876,12 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 Manual · M2 Manual · M3 Manual · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Team Lead | Investigates a loss, fraud or cash anomaly | Team Lead: Investigates a loss, fraud or cash anomaly |
-| Story | Central Logistics Ops | Reviews fraud and leakage patterns | Central Logistics Ops: Reviews fraud and leakage patterns |
-| Story | Central Logistics Ops | Acts on a pattern | Central Logistics Ops: Acts on a pattern |
-| Story | System | Records every scan and change | System: Records every scan and change |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Team Lead | Investigates a loss, fraud or cash anomaly | Team Lead: Investigates a loss, fraud or cash anomaly |  |
+| Story | Central Logistics Ops | Reviews fraud and leakage patterns | Central Logistics Ops: Reviews fraud and leakage patterns |  |
+| Story | Central Logistics Ops | Acts on a pattern | Central Logistics Ops: Acts on a pattern |  |
+| Story | System | Records every scan and change | System: Records every scan and change |  |
 
 ##### Shares reports and data
 
@@ -889,11 +889,11 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 **Milestones:** M1 System-assisted · M2 System-assisted · M3 System-assisted · M4 Built
 
-| Type | Actor | Story | Actions |
-|---|---|---|---|
-| Story | Central Logistics Ops | Shares reports with leadership | Central Logistics Ops: Shares reports with leadership |
-| Story | Central Logistics Ops | Provides data to analytics | Central Logistics Ops: Provides data to analytics |
-| Story | System | Provides reports and a data feed | System: Provides reports and a data feed |
+| Type | Actor | Story | Actions | Milestones |
+|---|---|---|---|---|
+| Story | Central Logistics Ops | Shares reports with leadership | Central Logistics Ops: Shares reports with leadership |  |
+| Story | Central Logistics Ops | Provides data to analytics | Central Logistics Ops: Provides data to analytics |  |
+| Story | System | Provides reports and a data feed | System: Provides reports and a data feed |  |
 
 ## Runs underneath every step
 
