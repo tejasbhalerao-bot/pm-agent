@@ -299,18 +299,18 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 
 #### Activity 7. Plan the deliveries
 
-*The System plans who delivers what, and people adjust.*
+*The System plans deliveries and return pickups together, and people adjust.*
 
 ##### Creates batches and routes and allocates drivers
 
-**Actors:** System · **Flows:** Forward via DC; Forward Direct; Replanning
+**Actors:** System · **Flows:** Forward via DC; Forward Direct; Customer Return; Replanning
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | System | Creates delivery batches | System: Creates delivery batches |
 | Story | System | Creates routes | System: Creates routes |
 | Story | System | Allocates Last Mile Drivers | System: Allocates Last Mile Drivers |
-| Story | System | Sends the orders to the driver's app | System: Sends the orders to the driver's app |
+| Story | System | Sends the orders and pickups to the driver's app | System: Sends the orders and pickups to the driver's app |
 | Exception | DC Executive / Dispatcher | Triggers a replan | DC Executive: Triggers a replan |
 | Exception | System | Replans the affected batches and routes | System: Replans the affected batches and routes |
 | Exception | DC Executive / Dispatcher | Accepts the new plan or rearranges it | DC Executive: Accepts the new plan or rearranges it |
@@ -486,7 +486,7 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 
 #### Activity 12. A Customer returns an order
 
-*A Customer sends back a delivered order.*
+*A Customer sends back a delivered order. The pickup is planned together with forward deliveries.*
 
 ##### Requests a return
 
@@ -642,12 +642,13 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 
 ##### Settles the dispute
 
-**Actors:** DC Executive / Dispatcher / Team Lead · **Flows:** Driver Support and Payout Disputes
+**Actors:** DC Executive / Dispatcher / Team Lead · **Flows:** Driver Support and Payout Disputes; Driver Pay and Incentives
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | DC Executive / Team Lead | Reviews a payout dispute | DC Executive: Reviews a payout dispute; Team Lead: Reviews a payout dispute |
 | Story | DC Executive / Team Lead | Settles the dispute and informs the driver | DC Executive: Settles the dispute and informs the driver; Team Lead: Settles the dispute and informs the driver |
+| Story | System | Adjusts a driver's earnings after a dispute | System: Adjusts a driver's earnings after a dispute |
 | Exception | DC Executive / Team Lead | Escalates a dispute to Central Logistics Ops | DC Executive: Escalates a dispute to Central Logistics Ops; Team Lead: Escalates a dispute to Central Logistics Ops |
 | Exception | Central Logistics Ops | Settles an escalated payout dispute | Central Logistics Ops: Settles an escalated payout dispute |
 

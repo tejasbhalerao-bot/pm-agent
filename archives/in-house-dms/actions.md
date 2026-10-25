@@ -74,7 +74,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Schedules a return pickup from the Customer | Shipment, Order | Customer return requested | Pickup scheduled | Reverse |
+| Schedules a return pickup from the Customer | Shipment, Order | Customer return requested | Pickup scheduled and ready to be batched with forward deliveries | Reverse |
 | Schedules the return of a failed delivery | Shipment | RTO initiated | Return scheduled | Reverse |
 
 ## DC Executive
@@ -144,8 +144,8 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Triggers a replan | Shipment, People | Driver cannot complete the batch, or order is cancelled or changed after dispatch | System replans the affected batches and routes | Forward |
-| Accepts the new plan or rearranges it | Shipment, People | New plan shown | Plan confirmed and batches updated | Forward |
+| Triggers a replan | Shipment, People | Driver cannot complete the batch, or order is cancelled or changed after dispatch | System replans the affected batches and routes | Both |
+| Accepts the new plan or rearranges it | Shipment, People | New plan shown | Plan confirmed and batches updated | Both |
 
 *Job: Receive returns and failed deliveries from drivers, and release them towards the warehouse as consignments.*
 
@@ -309,8 +309,8 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Views the route for the batch | Shipment, Serviced Location | Batch collected | Stops shown in route order | Forward |
-| Navigates to the Customer's location | Serviced Location | Next stop begins | Driver reaches the Customer | Forward |
+| Views the route for the batch | Shipment, Serviced Location | Batch collected | Deliveries and pickups shown in route order | Both |
+| Navigates to the Customer's location | Serviced Location | Next stop begins | Driver reaches the Customer | Both |
 | Collects proof of delivery | Shipment | Shipment handed to the Customer | Proof recorded; shipment marked delivered | Forward |
 
 *Job: Collect payment accurately and hand cash in with a clear record.*
@@ -331,7 +331,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Views the return pickup and the medicine details | Shipment, Order | Return pickup assigned | Driver sees what to collect and the medicine details | Reverse |
+| Views the return pickup and the medicine details | Shipment, Order | Return pickup allocated in the driver's batch | Driver sees what to collect and the medicine details | Reverse |
 | Checks the medicine against the order details | Shipment, Order | Driver is with the Customer | Result of the check recorded | Reverse |
 | Takes the parcel from the Customer | Shipment | Check complete | Return collected | Reverse |
 
@@ -629,20 +629,20 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Shows which bin a shipment belongs in | Sorting Bin, Shipment | Shipment scanned at the DC | Bin shown | Forward |
 | Tracks bin contents | Sorting Bin | Shipment placed in or taken from a bin | Bin contents current | Forward |
 
-*Responsibility: Create delivery batches and routes, allocate Last Mile Drivers, and send the orders to the Driver's app.*
+*Responsibility: Create delivery batches and routes that combine forward deliveries and return pickups, allocate Last Mile Drivers, and send the orders and pickups to the Driver's app.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Creates delivery batches | Shipment | Shipments ready and drivers on duty | Batches formed | Forward |
-| Creates routes | Shipment, Serviced Location | Batches formed | Route set for each batch | Forward |
-| Allocates Last Mile Drivers | People, Shipment | Batches and routes ready | Batch assigned to a driver | Forward |
-| Sends the orders to the driver's app | Shipment, Device | Batch allocated | Orders appear on the driver's app | Forward |
+| Creates delivery batches | Shipment | Shipments and return pickups ready, and drivers on duty | Batches formed, combining forward deliveries and return pickups | Both |
+| Creates routes | Shipment, Serviced Location | Batches formed | Route set for each batch, covering deliveries and pickups | Both |
+| Allocates Last Mile Drivers | People, Shipment | Batches and routes ready | Batch assigned to a driver | Both |
+| Sends the orders and pickups to the driver's app | Shipment, Device | Batch allocated | Orders and return pickups appear on the driver's app | Both |
 
 *Responsibility: Replan the affected batches and routes, including reattempts for the next day, when the Dispatcher or DC Executive triggers it.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Replans the affected batches and routes | Shipment, People | Replan triggered | New plan shown to the Dispatcher or DC Executive | Forward |
+| Replans the affected batches and routes | Shipment, People | Replan triggered | New plan shown to the Dispatcher or DC Executive | Both |
 | Replans a failed delivery for the next day | Shipment | Replan triggered for a reattempt | Delivery included in the next day's plan, shown to the Dispatcher or DC Executive | Forward |
 
 *Responsibility: After a failed delivery, decide from the rules whether to reattempt it or initiate an RTO.*
@@ -680,6 +680,12 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Tracks incentive progress and awards incentives | Incentive, People | Driver activity that counts towards a scheme | Progress updated; incentive awarded when earned | Both |
+
+*Responsibility: Adjust a driver's earnings, and the amount payable to their vendor, when a payout dispute is settled.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Adjusts a driver's earnings after a dispute | Payout, Ticket | Payout dispute settled with an adjustment | Driver's earnings and the vendor's payable amount updated | Both |
 
 *Responsibility: Roll driver earnings up into the amount payable to each vendor.*
 

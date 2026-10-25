@@ -141,7 +141,7 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 - Tell the DC Executive which bin each shipment belongs in, and keep track of what each bin holds.
 
 **Allocation and delivery**
-- Create delivery batches and routes, allocate Last Mile Drivers, and send the orders to the Driver's app.
+- Create delivery batches and routes that combine forward deliveries and return pickups, allocate Last Mile Drivers, and send the orders and pickups to the Driver's app.
 - Replan the affected batches and routes, including reattempts for the next day, when the Dispatcher or DC Executive triggers it.
 - After a failed delivery, decide from the rules whether to reattempt it or initiate an RTO.
 - Show medicine details to the Last Mile Driver only in the returns flow.
@@ -151,6 +151,7 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 - Hold each driver's salary structure (per order delivered, or fixed with fuel expenses) and the incentive schemes that apply to them.
 - Compute each driver's earnings from their salary structure and incentives.
 - Track each driver's progress against incentive schemes (attendance-based, order-based, ad-hoc and others), and award incentives when earned.
+- Adjust a driver's earnings, and the amount payable to their vendor, when a payout dispute is settled.
 - Roll driver earnings up into the amount payable to each vendor.
 
 **Money**
