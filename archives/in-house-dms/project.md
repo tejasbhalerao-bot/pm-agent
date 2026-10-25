@@ -17,4 +17,5 @@ Index of the project's documents. Content lives in the files below; this file on
 | [jobs.md](jobs.md) | The jobs each actor needs done, and the System's responsibilities. The source for actions |
 | [actions.md](actions.md) | The actions each actor performs, each tied to the job it serves |
 | [story-map.md](story-map.md) | The end-to-end story of the system: chapters, activities, tasks and stories, tagged with flows |
+| [milestones.md](milestones.md) | The milestones: what each one builds, what runs on workarounds and who owns them |
 | [open-questions.md](open-questions.md) | Questions waiting for a decision |

@@ -1,15 +1,6 @@
 # Story map
 
-The end-to-end story of the system, in the style of Jeff Patton's story mapping. Chapters run in order. Within a chapter, activities run left to right in the order they happen. Each activity holds tasks, and each task holds its stories, which point to their actions as Actor: Action. Exceptions are marked, and tasks carry the flows they belong to.
-
-## Milestones
-
-Draft milestones. Each card carries its handling in every milestone: Built, System-assisted, Manual or Not needed.
-
-- **M1 · Pilot.** One DC and its warehouse run Forward orders end to end, with workarounds where the build is not ready.
-- **M2 · Complete the loop.** Returns, cash reconciliation, serviceability and driver management move into the system.
-- **M3 · Pay and support.** Driver pay, incentives, vendor payouts, tickets and Customer tracking move into the system.
-- **M4 · Scale.** Capacity planning, monitoring, reporting and vehicle tracking.
+The end-to-end story of the system, in the style of Jeff Patton's story mapping. Chapters run in order. Within a chapter, activities run left to right in the order they happen. Each activity holds tasks, and each task holds its stories, which point to their actions as Actor: Action. Exceptions are marked, and tasks carry the flows they belong to and how they are handled in each milestone.
 
 ## Chapter 1. Get ready
 
@@ -443,7 +434,7 @@ Draft milestones. Each card carries its handling in every milestone: Built, Syst
 
 **Actors:** Customer · **Flows:** Forward via DC; Forward Direct
 
-**Milestones:** M1 Manual · M2 Manual · M3 Built · M4 Built
+**Milestones:** M1 System-assisted · M2 System-assisted · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
@@ -531,7 +522,7 @@ Draft milestones. Each card carries its handling in every milestone: Built, Syst
 
 **Actors:** Finance · **Flows:** Cash Handling and Reconciliation
 
-**Milestones:** M1 Manual · M2 Built · M3 Built · M4 Built
+**Milestones:** M1 System-assisted · M2 Built · M3 Built · M4 Built
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
