@@ -22,7 +22,7 @@ The Dispatcher runs two flows: sending orders to a DC for last-mile delivery, an
 - Flag any loss, damage or delay of a consignment in transit.
 
 **Flow 2: direct from the warehouse**
-In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers scanning the orders each driver brings, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding and pay structures, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving forward consignments or releasing returns as consignments, since the warehouse is where returns end.
+In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers scanning the orders each driver brings, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding, serviceability and pay structures, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving forward consignments or releasing returns as consignments, since the warehouse is where returns end.
 
 **Both flows, returns**
 - Schedule return pickups and failed-delivery returns without delay.
@@ -30,6 +30,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 ## DC Executive
 - Onboard the DC's Last Mile Drivers with their vehicles, tag each to a vendor, and keep their details current.
+- Set each driver's serviceability: the zones and pincodes they serve, and the pincodes within them that they do not.
 - Assign each driver a pay structure, with the Team Lead and Central Logistics Ops.
 - Assign and recover devices and vehicles, and handle a lost or broken device.
 - Keep the DC's Last Mile Drivers ready and accounted for each day.
@@ -92,7 +93,7 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 - Keep a trustworthy record of every money movement.
 
 ## Central Logistics Ops (whole country)
-- Set up locations, serviceable areas and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.
+- Set up locations, their zones and the pincodes in each zone, and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.
 - Define the rules the system runs on: SLAs, batching, allocation, delivery attempts, cut-offs, and penalties.
 - Define the salary structures and incentive schemes drivers can be on.
 - Manage roles and access across the system.
@@ -108,7 +109,7 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 
 
 **Locations**
-- Hold serving locations and serviced locations. In Forward, serving locations are warehouses and DCs, and serviced locations are Customers' locations. In Reverse, they flip.
+- Hold serving locations, the zones mapped to each hub, and the serviced locations (pincodes) in each zone. In Forward, serving locations are warehouses and DCs, and serviced locations are Customers' locations. In Reverse, they flip.
 - Hold the links between warehouses and DCs, and which flow each location uses.
 
 **People, devices and access**
@@ -142,7 +143,7 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 - Tell the DC Executive which bin each shipment belongs in, and keep track of what each bin holds.
 
 **Allocation and delivery**
-- Create delivery batches and routes that combine forward deliveries and return pickups, allocate Last Mile Drivers, and send the orders and pickups to the Driver's app.
+- Create delivery batches and routes that combine forward deliveries and return pickups, allocate Last Mile Drivers whose serviceability covers each pincode, and send the orders and pickups to the Driver's app.
 - Replan the affected batches and routes, including reattempts for the next day, when the Dispatcher or DC Executive triggers it.
 - After a failed delivery, decide from the rules whether to reattempt it or initiate an RTO.
 - Show medicine details to the Last Mile Driver only in the returns flow.

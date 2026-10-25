@@ -66,7 +66,7 @@ The actions each actor performs, derived from [jobs.md](jobs.md). Each action si
 
 **Flow 2: direct from the warehouse**
 
-In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers scanning the orders each driver brings, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding and pay structures, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving forward consignments or releasing returns as consignments, since the warehouse is where returns end.
+In the direct flow, the Dispatcher does what the DC Executive does for the DC's Last Mile Drivers, for the warehouse's drivers instead. This covers scanning the orders each driver brings, keeping drivers ready and accounted for, replans and reattempts, cash, onboarding, serviceability and pay structures, payout disputes, devices and vehicles, and being the first point of contact. It does not cover receiving forward consignments or releasing returns as consignments, since the warehouse is where returns end.
 
 **Both flows, returns**
 
@@ -96,6 +96,13 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Registers the driver's vehicle | Vehicle, People | Driver is onboarded | Vehicle recorded against the driver | Both |
 | Tags the driver to a vendor | People, Vendor | Driver and vehicle recorded | Driver linked to the vendor | Both |
 | Updates a driver's details | People | Driver's details change | Record updated | Both |
+
+*Job: Set each driver's serviceability: the zones and pincodes they serve, and the pincodes within them that they do not.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Assigns the zones and pincodes a driver serves | People, Zone, Serviced Location | Driver is onboarded or their coverage changes | Driver's coverage recorded | Both |
+| Excludes pincodes a driver does not serve | People, Serviced Location | A pincode within the driver's zones is not served by them | Exclusions recorded | Both |
 
 *Job: Assign each driver a pay structure, with the Team Lead and Central Logistics Ops.*
 
@@ -452,12 +459,14 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 ## Central Logistics Ops
 
-*Job: Set up locations, serviceable areas and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.*
+*Job: Set up locations, their zones and the pincodes in each zone, and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Creates the serving locations | Serving Location | A new location is opened in an existing city | Serving locations set up | Both |
-| Defines the serviced locations each serving location covers | Serviced Location, Serving Location | Location set up or coverage changes | Coverage recorded | Both |
+| Creates the zones of a serving location | Zone, Serving Location | Location set up or coverage changes | Zones set up | Both |
+| Maps each zone to a hub | Zone, Serving Location | Zones created | Each zone mapped to a hub | Both |
+| Maps pincodes to zones | Serviced Location, Zone | Zones created or coverage changes | Pincodes recorded against zones | Both |
 | Links warehouses and DCs | Serving Location | Locations set up | Links recorded | Both |
 | Sets whether a location uses the direct flow or the DC flow | Serving Location | Location set up | Flow recorded for the location | Forward |
 
@@ -526,11 +535,11 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 
 ## System
 
-*Responsibility: Hold serving locations and serviced locations. In Forward, serving locations are warehouses and DCs, and serviced locations are Customers' locations. In Reverse, they flip.*
+*Responsibility: Hold serving locations, the zones mapped to each hub, and the serviced locations (pincodes) in each zone. In Forward, serving locations are warehouses and DCs, and serviced locations are Customers' locations. In Reverse, they flip.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Holds serving and serviced locations | Serving Location, Serviced Location | Locations set up | Locations available, flipped for Reverse | Both |
+| Holds serving locations, zones and serviced locations | Serving Location, Zone, Serviced Location | Locations, zones or pincodes set up | Hub, zone and pincode chain available, flipped for Reverse | Both |
 
 *Responsibility: Hold the links between warehouses and DCs, and which flow each location uses.*
 
@@ -640,13 +649,13 @@ In the direct flow, the Dispatcher does what the DC Executive does for the DC's 
 | Shows which bin a shipment belongs in | Sorting Bin, Shipment | Shipment scanned at the DC | Bin shown | Forward |
 | Tracks bin contents | Sorting Bin | Shipment placed in or taken from a bin | Bin contents current | Forward |
 
-*Responsibility: Create delivery batches and routes that combine forward deliveries and return pickups, allocate Last Mile Drivers, and send the orders and pickups to the Driver's app.*
+*Responsibility: Create delivery batches and routes that combine forward deliveries and return pickups, allocate Last Mile Drivers whose serviceability covers each pincode, and send the orders and pickups to the Driver's app.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
 | Creates delivery batches | Shipment | Shipments and return pickups ready, and drivers on duty | Batches formed, combining forward deliveries and return pickups | Both |
 | Creates routes | Shipment, Serviced Location | Batches formed | Route set for each batch, covering deliveries and pickups | Both |
-| Allocates Last Mile Drivers | People, Shipment | Batches and routes ready | Batch assigned to a driver | Both |
+| Allocates Last Mile Drivers | People, Shipment | Batches and routes ready | Batch assigned to a driver whose serviceability covers its pincodes | Both |
 | Sends the orders and pickups to the driver's app | Shipment, Device | Batch allocated | Orders and return pickups appear on the driver's app | Both |
 
 *Responsibility: Replan the affected batches and routes, including reattempts for the next day, when the Dispatcher or DC Executive triggers it.*

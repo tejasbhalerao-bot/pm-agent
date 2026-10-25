@@ -19,10 +19,12 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Central Logistics Ops | Creates the serving locations | Central Logistics Ops: Creates the serving locations |
-| Story | Central Logistics Ops | Defines the serviced locations each serving location covers | Central Logistics Ops: Defines the serviced locations each serving location covers |
+| Story | Central Logistics Ops | Creates the zones of a serving location | Central Logistics Ops: Creates the zones of a serving location |
+| Story | Central Logistics Ops | Maps each zone to a hub | Central Logistics Ops: Maps each zone to a hub |
+| Story | Central Logistics Ops | Maps pincodes to zones | Central Logistics Ops: Maps pincodes to zones |
 | Story | Central Logistics Ops | Links warehouses and DCs | Central Logistics Ops: Links warehouses and DCs |
 | Story | Central Logistics Ops | Sets whether a location uses the direct flow or the DC flow | Central Logistics Ops: Sets whether a location uses the direct flow or the DC flow |
-| Story | System | Holds serving and serviced locations | System: Holds serving and serviced locations |
+| Story | System | Holds serving locations, zones and serviced locations | System: Holds serving locations, zones and serviced locations |
 | Story | System | Holds the links and the flow per location | System: Holds the links and the flow per location |
 
 ##### Defines the rules the system runs on
@@ -85,6 +87,15 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Story | DC Executive / Dispatcher | Registers the driver's vehicle | DC Executive: Registers the driver's vehicle |
 | Story | DC Executive / Dispatcher | Tags the driver to a vendor | DC Executive: Tags the driver to a vendor |
 | Story | Team Lead | Checks a driver's documents | Team Lead: Checks a driver's documents |
+
+##### Sets the driver's serviceability
+
+**Actors:** DC Executive / Dispatcher · **Flows:** Driver Management
+
+| Type | Actor | Story | Actions |
+|---|---|---|---|
+| Story | DC Executive / Dispatcher | Assigns the zones and pincodes a driver serves | DC Executive: Assigns the zones and pincodes a driver serves |
+| Story | DC Executive / Dispatcher | Excludes pincodes a driver does not serve | DC Executive: Excludes pincodes a driver does not serve |
 
 ##### Agrees the driver's pay structure
 
