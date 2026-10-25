@@ -610,21 +610,13 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 
 *Every driver earns a salary and incentives, and the System keeps count.*
 
-##### Holds pay structures and computes earnings
+##### Computes earnings and tracks incentive progress
 
 **Actors:** System · **Flows:** Driver Pay and Incentives
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
-| Story | System | Holds driver pay structures and incentive schemes | System: Holds driver pay structures and incentive schemes |
 | Story | System | Computes a driver's earnings | System: Computes a driver's earnings |
-
-##### Tracks incentive progress
-
-**Actors:** System · **Flows:** Driver Pay and Incentives
-
-| Type | Actor | Story | Actions |
-|---|---|---|---|
 | Story | System | Tracks incentive progress | System: Tracks incentive progress |
 
 ##### Grants incentives to drivers
@@ -634,7 +626,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Team Lead | Grants an incentive to a driver | Team Lead: Grants an incentive to a driver |
-| Story | System | Computes a driver's earnings | System: Computes a driver's earnings |
 
 ##### Sees earnings and incentive progress
 
@@ -643,7 +634,6 @@ The end-to-end story of the system, in the style of Jeff Patton's user story map
 | Type | Actor | Story | Actions |
 |---|---|---|---|
 | Story | Last Mile Driver | Views earnings and incentive progress | Last Mile Driver: Views earnings and incentive progress |
-| Story | System | Computes a driver's earnings | System: Computes a driver's earnings |
 
 #### Activity 15. Pay the vendors
 
