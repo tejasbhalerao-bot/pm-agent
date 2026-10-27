@@ -64,7 +64,7 @@ The milestone plan. Each initiative sits under the milestone that builds it and 
 
 - #1 Creates the locations: already built.
 - #2 Defines the rules the system runs on: rules are set within each initiative, where the business can adjust them.
-- #54 Pays the vendor: no initiative yet.
+- #54 Pays the vendor: done manually for the foreseeable future.
 - #62 Watches live deliveries and calls out failures: monitoring and reporting ship with each initiative.
 - #63 Reviews performance and fixes problems: monitoring and reporting ship with each initiative.
 - #64 Investigates loss, fraud and anomalies: monitoring and reporting ship with each initiative.
