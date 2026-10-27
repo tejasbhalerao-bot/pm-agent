@@ -2,7 +2,7 @@
 
 The milestone plan. Each initiative sits under the milestone that builds it and carries a one-line description, a category and the story-map cards it delivers. Cutover Parity matches what Shipsy does today; Enhancement goes beyond Shipsy. A card that an initiative only partly delivers is marked with the part it covers. Card numbers match the story map page.
 
-## Milestone 1
+## Milestone 1: Cutover Parity & Foundational Capabilities
 
 14 initiatives: 9 Cutover Parity, 5 Enhancement.
 
@@ -23,7 +23,7 @@ The milestone plan. Each initiative sits under the milestone that builds it and 
 | M1.13 | Return Flow | Take a Customer's return from request to pickup to the parcel back at the warehouse. | Cutover Parity | #42 Requests a return; #43 Schedules the pickup; #44 Collects the return; #45 Receives the returns and sends them on; #47 Receives the returned consignment and hands it over; #48 Receives the returned parcel |
 | M1.14 | Address Quality Interventions | Capture where each order was delivered and store it against the address. | Enhancement | None |
 
-## Milestone 2
+## Milestone 2: Payout & Allocation
 
 8 initiatives: 0 Cutover Parity, 8 Enhancement.
 
@@ -38,7 +38,7 @@ The milestone plan. Each initiative sits under the milestone that builds it and 
 | M2.7 | Automated Replanning | The system replans the affected batches and routes when a delivery fails or plans change. | Enhancement | #26 Creates batches and routes and allocates drivers (only: Replans the affected batches and routes); #40 Replans the delivery for the next day (only: Replans a failed delivery for the next day) |
 | M2.8 | Reverse QC | The driver checks the returned medicine against the order at pickup. | Enhancement | #44 Collects the return (only: Checks the medicine against the order details) |
 
-## Milestone 3
+## Milestone 3: Mid-Mile Visibility
 
 3 initiatives: 0 Cutover Parity, 3 Enhancement.
 
