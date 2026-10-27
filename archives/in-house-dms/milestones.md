@@ -1,6 +1,6 @@
 # Milestones
 
-The milestone plan. Each initiative sits under the milestone that builds it and carries a one-line description, a category and the story-map cards it delivers. Cutover Parity matches what Shipsy does today; Enhancement goes beyond Shipsy. A card that an initiative only partly delivers is marked with the part it covers. Card numbers match the story map page.
+The milestone plan. Each initiative sits under the milestone that builds it and carries a one-line description, a category and the story-map cards it delivers. Cutover Parity matches what Shipsy does today; Enhancement goes beyond Shipsy. A card that an initiative only partly delivers is marked with the part it covers. Card numbers match the story map page. Initiatives follow the story map's order, except Attendance Tracking, which comes first in Milestone 2 because payout calculation depends on it.
 
 ## Milestone 1: Cutover Parity & Foundational Capabilities
 
@@ -25,28 +25,28 @@ The milestone plan. Each initiative sits under the milestone that builds it and 
 
 ## Milestone 2: Payout & Allocation
 
-8 initiatives: 0 Cutover Parity, 8 Enhancement.
+7 initiatives: 0 Cutover Parity, 7 Enhancement.
 
 | # | Initiative | Description | Category | Cards on story map |
 |---|---|---|---|---|
-| M2.1 | Driver & Vendor Payout | Compute driver earnings, roll them up per vendor and work out what each vendor is owed, with pay disputes settled in the system. | Enhancement | #3 Defines driver pay and incentives (only: Defines salary structures); #8 Agrees the driver's pay structure; #49 Computes earnings and tracks incentive progress (only: Computes a driver's earnings); #52 Rolls driver earnings up per vendor; #53 Calculates what each vendor is owed; #56 Raises a payout dispute; #57 Settles the dispute |
-| M2.2 | Incentives | Define incentive schemes, track each driver's progress and grant incentives. | Enhancement | #3 Defines driver pay and incentives (only: Defines incentive schemes); #49 Computes earnings and tracks incentive progress (only: Tracks incentive progress); #50 Grants incentives to drivers; #51 Sees earnings and incentive progress |
-| M2.3 | Attendance Tracking | Track who is on duty against each location's expected orders and arrange cover for absences. | Enhancement | #11 Keeps enough drivers on shift |
+| M2.1 | Attendance Tracking | Track who is on duty against each location's expected orders and arrange cover for absences, ahead of payout calculation. | Enhancement | #11 Keeps enough drivers on shift |
+| M2.2 | Driver & Vendor Payout | Compute driver earnings, roll them up per vendor and work out what each vendor is owed, with pay disputes settled in the system. | Enhancement | #3 Defines driver pay and incentives (only: Defines salary structures); #8 Agrees the driver's pay structure; #49 Computes earnings and tracks incentive progress (only: Computes a driver's earnings); #52 Rolls driver earnings up per vendor; #53 Calculates what each vendor is owed; #56 Raises a payout dispute; #57 Settles the dispute |
+| M2.3 | Incentives | Define incentive schemes, track each driver's progress and grant incentives. | Enhancement | #3 Defines driver pay and incentives (only: Defines incentive schemes); #49 Computes earnings and tracks incentive progress (only: Tracks incentive progress); #50 Grants incentives to drivers; #51 Sees earnings and incentive progress |
 | M2.4 | Batch Creation | The system groups orders and return pickups into batches. | Enhancement | #26 Creates batches and routes and allocates drivers (only: Creates delivery batches) |
 | M2.5 | Route Optimisation | The system sequences each batch's stops into a route. | Enhancement | #26 Creates batches and routes and allocates drivers (only: Creates routes) |
 | M2.6 | Automated Driver Allocation | The system allocates batches to drivers without a person choosing. | Enhancement | #26 Creates batches and routes and allocates drivers (only: Allocates Last Mile Drivers) |
 | M2.7 | Automated Replanning | The system replans the affected batches and routes when a delivery fails or plans change. | Enhancement | #26 Creates batches and routes and allocates drivers (only: Replans the affected batches and routes); #40 Replans the delivery for the next day (only: Replans a failed delivery for the next day) |
-| M2.8 | Reverse QC | The driver checks the returned medicine against the order at pickup. | Enhancement | #44 Collects the return (only: Checks the medicine against the order details) |
 
-## Milestone 3: Mid-Mile Visibility
+## Milestone 3: Visibility & Verification
 
-3 initiatives: 0 Cutover Parity, 3 Enhancement.
+4 initiatives: 0 Cutover Parity, 4 Enhancement.
 
 | # | Initiative | Description | Category | Cards on story map |
 |---|---|---|---|---|
 | M3.1 | Mid-Mile Journey Orchestration | Plan, record and track consignments from the warehouse to the DC and back. | Enhancement | #18 Sorts shipments by destination DC; #20 Plan the trip together; #21 Records the vendor, vehicle and driver; #23 Drives the consignment to the DC; #46 Drives the consignment to the warehouse |
 | M3.2 | Consignment Capture | Build, load and receive consignments in the system. | Enhancement | #19 Builds the consignment; #22 Loads the consignment and scans the handover (only: Loads the consignment); #24 Receives and unloads the consignment (only: Receives the consignment); #45 Receives the returns and sends them on (only: Sends returned shipments back as a consignment); #47 Receives the returned consignment and hands it over (only: Receives the returned consignment) |
 | M3.3 | Geofencing | Check the driver is at the Customer's location when they deliver, mark a delivery failed or collect a return. | Enhancement | #32 Collects proof of delivery (only: At delivery); #38 Marks the delivery failed (only: At a failed delivery); #44 Collects the return (only: At a return pickup) |
+| M3.4 | Reverse QC | The driver checks the returned medicine against the order at pickup. | Enhancement | #44 Collects the return (only: Checks the medicine against the order details) |
 
 ## Scoped out for the future
 
