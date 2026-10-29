@@ -18,4 +18,5 @@ Index of the project's documents. Content lives in the files below; this file on
 | [actions.md](actions.md) | The actions each actor performs, each tied to the job it serves |
 | [story-map.md](story-map.md) | The end-to-end story of the system: chapters, activities, tasks and stories, tagged with flows |
 | [milestones.md](milestones.md) | The milestone plan: the initiatives under each milestone, each with a description, a category and the story-map cards it covers |
+| [build-chains.md](build-chains.md) | Each milestone worked out backwards from the rider app as a chain of small executable chunks: what each needs first, what to build and when it is done |
 | [open-questions.md](open-questions.md) | Questions waiting for a decision |
