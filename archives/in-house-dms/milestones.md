@@ -20,7 +20,7 @@ The milestone plan. Each initiative sits under the milestone that builds it and 
 | M1.10 | Dynamic QR | Give each order its own payment QR so a Customer can pay by QR. | Enhancement | #33 Pays for the order (only: Pays for the order by QR) |
 | M1.11 | COD Reconciliation Module | Record the cash drivers collect, track it to the bank and match it against what was owed. | Enhancement | #35 Hands cash in; #36 Records and banks the cash; #37 Matches and approves the cash |
 | M1.12 | Delivery Failed & RTO Management | Record why a delivery failed, decide between a reattempt and a return to origin, and replan or schedule the return. | Cutover Parity | #38 Marks the delivery failed; #39 Decides between a reattempt and an RTO; #40 Replans the delivery for the next day; #41 Schedules the return |
-| M1.13 | Return Flow | Take a Customer's return from request to pickup to the parcel back at the warehouse. | Cutover Parity | #42 Requests a return; #43 Schedules the pickup; #44 Collects the return; #45 Receives the returns and sends them on; #47 Receives the returned consignment and hands it over; #48 Receives the returned parcel |
+| M1.13 | Return Flow | Take a Customer's return from request to pickup to the parcel back at the warehouse. | Cutover Parity | #42 Requests a return; #43 Schedules the pickup; #44 Collects the return (only: Views the return pickup, the Customer hands the return over, the driver takes the parcel); #45 Receives the returns and sends them on; #47 Receives the returned consignment and hands it over; #48 Receives the returned parcel |
 | M1.14 | Address Quality Interventions | Capture where each order was delivered and store it against the address. | Enhancement | None |
 
 ## Milestone 2: Payout & Allocation
@@ -46,7 +46,7 @@ The milestone plan. Each initiative sits under the milestone that builds it and 
 | M3.1 | Mid-Mile Journey Orchestration | Plan, record and track consignments from the warehouse to the DC and back. | Enhancement | #18 Sorts shipments by destination DC; #20 Plan the trip together; #21 Records the vendor, vehicle and driver; #23 Drives the consignment to the DC; #46 Drives the consignment to the warehouse |
 | M3.2 | Consignment Capture | Build, load and receive consignments in the system. | Enhancement | #19 Builds the consignment; #22 Loads the consignment and scans the handover (only: Loads the consignment); #24 Receives and unloads the consignment (only: Receives the consignment); #45 Receives the returns and sends them on (only: Sends returned shipments back as a consignment); #47 Receives the returned consignment and hands it over (only: Receives the returned consignment) |
 | M3.3 | Geofencing | Check the driver is at the Customer's location when they deliver, mark a delivery failed or collect a return. | Enhancement | #32 Collects proof of delivery (only: At delivery); #38 Marks the delivery failed (only: At a failed delivery); #44 Collects the return (only: At a return pickup) |
-| M3.4 | Reverse QC | The driver checks the returned medicine against the order at pickup. | Enhancement | #44 Collects the return (only: Checks the medicine against the order details) |
+| M3.4 | Reverse QC | The driver sees the medicine details on a return pickup and checks the medicine against the order. | Enhancement | #44 Collects the return (only: Shows the medicine details and checks the medicine against the order details) |
 
 ## Scoped out for the future
 

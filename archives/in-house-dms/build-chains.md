@@ -38,7 +38,7 @@ Backwards: The Customer has the order, with proof of delivery and payment ← th
 |---|---|---|---|---|---|
 | M1.9 | The driver can pick up the assigned orders, and the handover is scanned. | M1.8: the driver needs an assigned batch. | **App:** The driver picks the assigned orders from the bin and takes them to the DC Executive. **Portal:** The DC Executive or Dispatcher scans the orders the driver brings. **System:** Resolve each scan to its order. Reject an invalid or duplicate scan. | Trip Flow #27; Handover Validation #28 | Scanning the driver's orders marks them as with that driver. A wrong or repeated scan is rejected. |
 | M1.10 | The driver can navigate to the Customer and call them from the app. | M1.9: the driver must hold the orders. | **App:** View the route for the batch, navigate to the Customer, call through the app. Keep working offline and sync later. **System:** Mask phone numbers on a call. Save and sync offline work. | Trip Flow #29 | A driver opens an order, navigates to the address and calls the Customer without seeing their number. |
-| M1.11 | The driver can hand over the order, take payment in cash and capture proof of delivery. | M1.10: the driver must reach the Customer. | **App:** The Customer receives the order and confirms. The driver collects proof of delivery and the cash payment. **System:** Keep the proof of delivery. Record the payment. Note: Address Quality Interventions (no cards) rides on this chunk: the delivery location is stored against the address. | Trip Flow #31, #32, #33 | An order is delivered with proof of delivery, and the cash payment is recorded against it. |
+| M1.11 | The driver can hand over the order, take payment in cash and capture proof of delivery. | M1.10: the driver must reach the Customer. | **App:** The Customer receives the order and confirms, or rejects it at the door. The driver collects proof of delivery and the cash payment. **System:** Keep the proof of delivery. Record the payment. Note: Address Quality Interventions (no cards) rides on this chunk: the delivery location is stored against the address. | Trip Flow #31, #32, #33 | An order is delivered with proof of delivery, and the cash payment is recorded against it. |
 | M1.12 | A Customer can pay by QR when the driver arrives. | M1.11: the payment step must exist. | **System:** Give each order its own payment QR. Record the payment. **App:** Show the QR to the Customer. | Dynamic QR #33 | A Customer scans an order's QR, pays, and the payment shows against the order. |
 
 ### Chain 4. A delivery does not go to plan
@@ -68,7 +68,7 @@ Backwards: The parcel is back at the warehouse ← it passed the DC and the Disp
 | # | Someone can | Needs first | Build | Delivers | Done when |
 |---|---|---|---|---|---|
 | M1.19 | A Customer can request a return, and a Dispatcher can schedule the pickup. | M1.8: pickups are planned with forward deliveries. | **System:** Create the return pickup. **Portal:** The Dispatcher schedules the pickup. The Customer views the pickup time. | Return Flow #42, #43 | A return request becomes a pickup with a time the Customer can see. |
-| M1.20 | The driver can collect a return from the Customer. | M1.19: there must be a pickup. M1.10: getting to the Customer. | **App:** View the return pickup and the medicine details. The Customer hands the return over and the driver takes the parcel. **System:** Show the medicine details on the pickup. | Return Flow #44 | A driver completes a return pickup in the app. The medicine check arrives in Milestone 3. |
+| M1.20 | The driver can collect a return from the Customer. | M1.19: there must be a pickup. M1.10: getting to the Customer. | **App:** View the return pickup. The Customer hands the return over and the driver takes the parcel. | Return Flow #44 | A driver completes a return pickup in the app. The medicine details and the medicine check arrive in Milestone 3. |
 | M1.21 | Returned and undelivered parcels can travel back to the warehouse, scanned at each handover. | M1.20 and M1.13: parcels to return. M1.7: scanning at the DC. | **Portal:** The DC Executive receives returned parcels and scans them. The Dispatcher receives them, scans and unloads, hands them to WH Ops and scans the handover. WH Ops receives and scans each parcel and reports damage or mismatch. **Note:** The drive back stays outside the system until Milestone 3. | Return Flow #45, #47, #48; Handover Validation #45, #47, #48 | A returned parcel is scanned in at the DC, at the Dispatcher and at the warehouse, and ends as received. |
 
 ## Milestone 2: Payout & Allocation
@@ -105,11 +105,11 @@ Starts from: Milestone 1 is done. It needs nothing from Milestone 2. The three c
 
 ### Chain 1. The driver checks the medicine at a return pickup
 
-Backwards: The driver records the check ← a return pickup exists
+Backwards: The driver records the check ← the driver sees the medicine details ← a return pickup exists
 
 | # | Someone can | Needs first | Build | Delivers | Done when |
 |---|---|---|---|---|---|
-| M3.1 | The driver can check the returned medicine against the order at pickup. | M1.20: return pickups. | **App:** The driver checks the medicine against the order details. | Reverse QC #44 | A driver completes a return pickup with the medicine checked against the order. |
+| M3.1 | The driver can see the medicine details at a return pickup and check the medicine against the order. | M1.20: return pickups. | **App:** The driver views the medicine details on the return pickup and checks the medicine against the order details. **System:** Show the medicine details on the pickup. | Reverse QC #44 | A driver opens a return pickup, sees the medicine details and completes the pickup with the medicine checked against the order. |
 
 ### Chain 2. The system checks the driver is at the Customer's location
 
