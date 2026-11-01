@@ -51,14 +51,14 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 ##### Sets up users and their access
 
-**Actors:** Central Logistics Ops / Team Lead · **Flows:** User Management
+**Actors:** Admin / Control Tower / Team Lead / Regional Manager / Central Logistics Ops · **Flows:** User Management
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
-| Story | Central Logistics Ops | Defines roles and what each can do | Central Logistics Ops: Defines roles and what each can do |
-| Story | Central Logistics Ops | Assigns roles to users | Central Logistics Ops: Assigns roles to users |
-| Story | Team Lead | Creates a user and assigns a role | Team Lead: Creates a user and assigns a role |
-| Story | Team Lead | Changes or removes a user's access | Team Lead: Changes or removes a user's access |
+| Story | Admin | Adds roles | Admin: Adds roles |
+| Story | Admin | Sets which role can manage users | Admin: Sets which role can manage users |
+| Story | Control Tower / Team Lead / Regional Manager / Central Logistics Ops / Admin | Creates a user and assigns a role and serving locations | Control Tower: Creates a user and assigns a role and serving locations; Team Lead: Creates a user and assigns a role and serving locations; Regional Manager: Creates a user and assigns a role and serving locations; Central Logistics Ops: Creates a user and assigns a role and serving locations; Admin: Creates a user and assigns a role and serving locations |
+| Story | Control Tower / Team Lead / Regional Manager / Central Logistics Ops / Admin | Changes or removes a user's role, locations or access | Control Tower: Changes or removes a user's role, locations or access; Team Lead: Changes or removes a user's role, locations or access; Regional Manager: Changes or removes a user's role, locations or access; Central Logistics Ops: Changes or removes a user's role, locations or access; Admin: Changes or removes a user's role, locations or access |
 | Story | System | Holds users, drivers and Customers | System: Holds users, drivers and Customers |
 | Story | System | Enforces who can do what | System: Enforces who can do what |
 

@@ -486,11 +486,10 @@ In the direct flow, the Dispatcher does the same jobs as the DC Executive, for t
 | Defines salary structures | Payout | New or changed pay design | Salary structures available to assign: per order delivered, or fixed with fuel expenses | Both |
 | Defines incentive schemes | Incentive | New or changed incentive design | Incentive schemes available to apply: attendance-based, order-based, ad-hoc and others | Both |
 
-*Job: Manage roles and access across the system.*
+*Job: Manage access across the system.*
 
 | Action | Entity | Trigger | Output | Vertical |
 |---|---|---|---|---|
-| Defines roles and what each can do | People | New role needed | Role available | Both |
 | Assigns roles to users | People | New user or role change | Access updated | Both |
 
 *Job: Confirm each driver's pay structure with the DC Executive, Dispatcher and Team Lead.*
@@ -831,6 +830,15 @@ In the direct flow, the Dispatcher does the same jobs as the DC Executive, for t
 |---|---|---|---|---|
 | Switches a location between Shipsy and the new system | Serving Location | Go decision for a location | Location runs on the new system | Both |
 | Rolls a location back to Shipsy | Serving Location | Rollback decision | Location runs on Shipsy again | Both |
+
+## Admin
+
+*Job: Control which roles exist and which role can manage users.*
+
+| Action | Entity | Trigger | Output | Vertical |
+|---|---|---|---|---|
+| Adds roles | People | New role needed | Role available | Both |
+| Sets which role can manage users | People | Role needs, or no longer needs, to manage users | Role's Access admin setting updated | Both |
 
 ## Control Tower
 

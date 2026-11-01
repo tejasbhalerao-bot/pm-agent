@@ -96,7 +96,7 @@ In the direct flow, the Dispatcher does the same jobs as the DC Executive, for t
 - Set up locations, their zones and the pincodes in each zone, and the links between warehouses and DCs, including which locations use the direct flow and which use the DC flow.
 - Define the rules the system runs on: SLAs, batching, allocation, delivery attempts, cut-offs, and penalties.
 - Define the salary structures and incentive schemes drivers can be on.
-- Manage roles and access across the system.
+- Manage access across the system.
 - Confirm each driver's pay structure with the DC Executive, Dispatcher and Team Lead.
 - Forecast demand and plan drivers and DC capacity for growth from 39 to 150 locations.
 - See country-wide performance and step in where it drops.
@@ -179,6 +179,9 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 - Hold and apply the rules.
 - Provide reports and a data feed.
 - Switch a location between Shipsy and the new system, and roll back, during cutover.
+
+## Admin
+- Add roles and set which role can manage users.
 
 ## Control Tower
 - Watch live deliveries independently of Logistics Ops, and call out operational failures so none are hidden.
