@@ -4,6 +4,16 @@
 
 Before doing any PM work in this repo, always read `context/CLAUDE.md` using the Read tool. It contains the workflow entry point, team structure, logistics systems, and a critical instruction prohibiting the use of built-in skills for any task this repo handles. Do not skip this step even if the task seems simple.
 
+## Design system (read before building any UI)
+
+Every screen, prototype, mockup, design handoff and UI artifact uses the Truemeds design system in `design-system/`. It is a copy of https://github.com/apurvashetty-tm/pm-agent/tree/main/design-system (source commit in `design-system/SOURCE.md`). The PM rejected the look of earlier work for not following it.
+
+- Read `design-system/RULES.md` first, then check `design-system/preview.html` for the component you need. Hard rules: semantic tokens only (`--tm-…`, never a hex code or `--tm-core-*`), Plus Jakarta Sans only, Tabler icons through `icons.js` (no emoji), colour means state, one primary button per context, status as `.tm-tag`, no cards inside cards, the logo files are locked.
+- Portals and desktop tools use the internal-tools layer (`.tm-appbar`, `.tm-sidenav`, `.tm-table`, `.tm-card--flat`, `.tm-field`, `.tm-notice`, `.tm-status-card`, `.tm-empty`). Anything the system lacks is marked [PROPOSED] and listed to the PM, never invented in a project.
+- Never edit files in `design-system/`. Changes go through Apurva.
+- Claude artifacts cannot load local files. Run `python3 scripts/ds_bundle.py <dir>`; it writes `tm.css` (with the font inlined), `tm-icons.js` and `logo-data-uri.txt` to inline into the artifact. The design system has no dark mode, so artifacts are light only.
+- The in-house DMS portal is named **Hyperlocal Fleet Management Portal**.
+
 ## Archive structure
 
 All documents generated in this project must be saved under:

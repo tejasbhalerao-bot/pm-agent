@@ -20,3 +20,6 @@ Shipsy handles today:
 - Build 0 to 1, with no dependence on existing systems.
 - Build a parity version, then cut over location by location.
 - Cover Hyperlocal Forward and Hyperlocal Reverse.
+
+## Naming
+The portal is called the **Hyperlocal Fleet Management Portal**. Do not call it "Ops Portal".
