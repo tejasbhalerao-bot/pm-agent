@@ -14,7 +14,7 @@ The same actors apply in every location and in both Hyperlocal Forward and Rever
 | Finance | Reconciles cash and pays vendors |
 | Central Logistics Ops | Manages the whole country: geography, rules, pay design, access and performance |
 | System | Acts automatically, without a person triggering it |
-| Regional Manager | Portal role added in M1.1. Can manage users. What else a Regional Manager does is not yet defined |
-| Admin | Portal role added in M1.1. Can manage users. The only role that can give the Admin role, or edit or remove an Admin |
+| Regional Manager | Portal role added in M1.1. Can manage users with a lower rank. What else a Regional Manager does is not yet defined |
+| Admin | Portal role added in M1.1, ranked first of eight. Can manage users. No role is above it, so the Admin role is given, and an Admin is changed or removed, only by engineering in the system |
 | Control Tower | Independent of Logistics Ops. Monitors live deliveries and calls out operational failures so they are not hidden |
 | Grievance & Escalation Management Team | Owns Customer and driver complaints and escalations, investigates incidents, and drives root-cause fixes for recurring problems |
