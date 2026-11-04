@@ -8,7 +8,7 @@ The milestone plan. Each initiative sits under the milestone that builds it and 
 
 | # | Initiative | Description | Category | Cards on story map |
 |---|---|---|---|---|
-| M1.1 | User Management | Sign in with Google, create users with a role and serving locations, and let only Admin add roles and set which role can manage users. | Cutover Parity | #4 Sets up users and their access |
+| M1.1 | User Management | Sign in with Google and create users with a role and serving locations. Roles are fixed in the back end and decide which modules a user can open. | Cutover Parity | #4 Sets up users and their access |
 | M1.2 | Driver Management | Create and manage drivers with their vehicles, vendors and serviceable areas, including suspension and exit. | Cutover Parity | #5 Onboards vendors; #6 Onboards a driver; #7 Sets the driver's serviceability; #9 Looks after the driver |
 | M1.3 | Duty Start & End | Drivers mark when they start and end their shift, and DC Executives confirm each driver is accounted for. | Enhancement | #12 Starts the shift; #34 Ends the shift |
 | M1.4 | Order Intake, AWB Generation & Print | Receive orders from the order system, create the shipment, generate the AWB and print it. | Cutover Parity | #13 Receives the order and creates the shipment; #14 Generates the AWB and decides the path; #15 Prints the AWB |

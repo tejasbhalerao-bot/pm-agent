@@ -180,9 +180,6 @@ Responsibilities, not jobs. Grouped by the entities the System manages.
 - Provide reports and a data feed.
 - Switch a location between Shipsy and the new system, and roll back, during cutover.
 
-## Admin
-- Add roles and set which role can manage users.
-
 ## Control Tower
 - Watch live deliveries independently of Logistics Ops, and call out operational failures so none are hidden.
 

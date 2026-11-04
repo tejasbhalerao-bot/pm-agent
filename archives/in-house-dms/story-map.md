@@ -55,8 +55,6 @@ The end-to-end story of the system, in the style of Jeff Patton's story mapping.
 
 | Type | Actor | Story | Actions |
 |---|---|---|---|
-| Story | Admin | Adds roles | Admin: Adds roles |
-| Story | Admin | Sets which role can manage users | Admin: Sets which role can manage users |
 | Story | Control Tower / Team Lead / Regional Manager / Central Logistics Ops / Admin | Creates a user and assigns a role and serving locations | Control Tower: Creates a user and assigns a role and serving locations; Team Lead: Creates a user and assigns a role and serving locations; Regional Manager: Creates a user and assigns a role and serving locations; Central Logistics Ops: Creates a user and assigns a role and serving locations; Admin: Creates a user and assigns a role and serving locations |
 | Story | Control Tower / Team Lead / Regional Manager / Central Logistics Ops / Admin | Changes or removes a user's role, locations or access | Control Tower: Changes or removes a user's role, locations or access; Team Lead: Changes or removes a user's role, locations or access; Regional Manager: Changes or removes a user's role, locations or access; Central Logistics Ops: Changes or removes a user's role, locations or access; Admin: Changes or removes a user's role, locations or access |
 | Story | System | Holds users, drivers and Customers | System: Holds users, drivers and Customers |
